@@ -1,0 +1,7 @@
+.vim/autoload
+.vim/plugged
+.vim/project-specific
+.vim/lua/project-specific
+.undodir
+.vim/project-specific.vim
+.vim/lua/project-specific.lua
