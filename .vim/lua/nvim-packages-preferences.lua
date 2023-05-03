@@ -29,12 +29,14 @@ vim.api.nvim_set_var("copilot_filetypes", {
       ["dap-repl"] = false,
 })
 
-require("obsidian").setup({
-  dir = "/mnt/c/Users/xd111/Documents/Obsidian Vault meta",
-  completion = {
-    nvim_cmp = false, -- if using nvim-cmp, otherwise set to false
-  },
-})
+if vim.g.obsidian_dir then
+   require("obsidian").setup({
+   dir = vim.g.obsidian_dir,
+   completion = {
+      nvim_cmp = false, -- if using nvim-cmp, otherwise set to false
+   },
+   })
+end
 
 require'regexplainer'.setup {
   mode = 'narrative', -- TODO: 'ascii', 'graphical'
@@ -59,7 +61,7 @@ require'regexplainer'.setup {
   },
 }
 
-if not os.getenv("IS_ARISTA") then
+if not os.getenv("IS_ARISTA_SERVER") then
   require'nvim-treesitter.configs'.setup {
     ensure_installed = { "markdown", "markdown_inline" },
     -- Install parsers synchronously (only applied to `ensure_installed`)

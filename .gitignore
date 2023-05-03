@@ -5,3 +5,5 @@
 .undodir
 .vim/project-specific.vim
 .vim/lua/project-specific.lua
+.vim/personal-post.vim
+.vim/personal-pre.vim
