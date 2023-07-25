@@ -57,7 +57,7 @@ call plug#begin()
 
     Plug 'neovim/nvim-lspconfig'
 
-    Plug 'j-hui/fidget.nvim' " show spinner during the load of a lsp server
+    Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
 
     Plug 'filipdutescu/renamer.nvim'
 

@@ -126,7 +126,7 @@ vim.api.nvim_set_var('coq_settings', {
   -- ["keymap.copy_relname"] = { '<c-c>' }
 -- })
 
-require'bufferline'.setup { auto_hide = true, minimum_padding = 0, maximum_padding = 0, closable = false, icons = false }
+require'bufferline'.setup { auto_hide = true, minimum_padding = 0, maximum_padding = 0, icons = { filetype = { enabled = false }, modified = { button = false } } }
 
 require('leap').add_default_mappings()
 
@@ -168,11 +168,8 @@ vim.keymap.del({'x', 'o'}, 'X')
 -- }
 local null_ls = require "null-ls"
 
-require("mason-null-ls").setup_handlers {
-    function(_)
-      -- all sources with no handler get passed here
-    end,
-}
+require("mason-null-ls").setup({
+})
 
 null_ls.setup()
 
