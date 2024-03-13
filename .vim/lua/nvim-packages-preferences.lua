@@ -40,7 +40,7 @@ end
 
 require'regexplainer'.setup {
   mode = 'narrative', -- TODO: 'ascii', 'graphical'
-  auto = true,
+  auto = false,
   filetypes = {
     'html',
     'js',
@@ -52,9 +52,10 @@ require'regexplainer'.setup {
     'cjsx',
     'mjsx',
   },
+  debug = false, 
   display = 'popup',
   mappings = {
-    toggle = ',w',
+    toggle = 'gR',
   },
   narrative = {
     separator = '\n',
@@ -91,6 +92,8 @@ if not os.getenv("IS_ARISTA_SERVER") then
     },
   }
 end
+
+require("treesitter-context").setup()
 
 require("dapui").setup({
   controls = {
@@ -201,3 +204,13 @@ local client_id = results_lsp and next(results_lsp) or nil
 local client = vim.lsp.get_client_by_id(client_id)
 require"vim.lsp.util".apply_workspace_edit(resp, client.offset_encoding)
 end
+
+require("oil").setup()
+
+require("neotest").setup({
+  adapters = {
+    require("neotest-python")({
+      dap = { justMyCode = false },
+    }),
+  },
+})

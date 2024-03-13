@@ -8,7 +8,6 @@ call plug#begin()
 
   Plug 'tpope/vim-surround'
   Plug 'mbbill/undotree'
-  Plug 'mattn/emmet-vim'
   Plug 'mg979/vim-visual-multi' " multiple cursor
 
   Plug 'dag/vim-fish'
@@ -20,8 +19,6 @@ call plug#begin()
 
   Plug 'github/copilot.vim'
 
-  Plug 'dstein64/vim-startuptime'
-
   if !has("nvim")
     Plug 'ghifarit53/tokyonight-vim' " beautiful colorscheme
   end
@@ -30,7 +27,7 @@ call plug#begin()
     Plug 'lewis6991/impatient.nvim'
 
     " Plug 'luochen1990/rainbow'
-    Plug 'p00f/nvim-ts-rainbow'
+    Plug 'HiPhish/rainbow-delimiters.nvim'
 
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'ggandor/leap.nvim' " to jump to a part of code (click on s)
@@ -42,6 +39,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-context'
 
     Plug 'williamboman/mason.nvim'
     Plug 'RubixDev/mason-update-all'
@@ -88,13 +86,27 @@ call plug#begin()
 
     Plug 'ojroques/nvim-osc52' " to 
 
-    Plug 'epwalsh/obsidian.nvim'
     Plug 'hrsh7th/nvim-cmp' " needed for obsidian
 
     Plug 'MunifTanjim/nui.nvim'
     Plug 'sudormrfbin/cheatsheet.nvim'
 
     Plug 'bennypowers/nvim-regexplainer'
+
+    Plug 'RRethy/vim-illuminate'
+
+    Plug 'stevearc/oil.nvim'
+
+    Plug 'liuchengxu/vista.vim'
+
+    Plug 'skywind3000/asynctasks.vim'
+
+    Plug 'skywind3000/asyncrun.vim'
+
+    " Dependency of below
+    Plug 'antoinemadec/FixCursorHold.nvim'
+    Plug 'nvim-neotest/neotest'
+    Plug 'nvim-neotest/neotest-python'
   end
 call plug#end()
 

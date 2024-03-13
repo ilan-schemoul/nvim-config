@@ -12,3 +12,7 @@ autocmd FileType html,css EmmetInstall
 let g:rainbow_active = 1
 
 let g:auto_save = 1
+
+let g:vista_default_executive = 'nvim_lsp'
+
+let g:asyncrun_open = 6

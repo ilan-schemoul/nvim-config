@@ -87,12 +87,17 @@ imap ,c <plug>NERDCommenterInsert
 
 map ,? :Cheatsheet<CR>
 
-map ,oo :!/bin/fish -i -c obsidian %<CR>
-map ,ol :ObsidianQuickSwitch<CR>
-map ,of :ObsidianFollowLink<CR>
-map ,os :ObsidianSearch<CR>
+map ,o :Vista!!<CR>
 
-map ,zl :PlugInstall<CR>
+noremap <silent>;r :AsyncTask file-run<cr>
+noremap <silent>;b :AsyncTask file-build<cr>
+
+map <silent>;t :lua require("neotest").run.run()<cr>
+map <silent>;T :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
+
+" Defined by pacakges
+" gA to see all bases of number under cursor
+" cr{b/x/d/o} to modify number into another base
 
 tnoremap <Esc> <C-\><C-n><CR>
 
@@ -100,17 +105,27 @@ tnoremap <Esc> <C-\><C-n><CR>
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 nnoremap ,1 <Cmd>BufferGoto 1<CR>
-nnoremap ,& <Cmd>BufferGoto 1<CR>
 nnoremap ,2 <Cmd>BufferGoto 2<CR>
-nnoremap ,é <Cmd>BufferGoto 2<CR>
 nnoremap ,3 <Cmd>BufferGoto 3<CR>
-nnoremap ," <Cmd>BufferGoto 3<CR>
 nnoremap ,4 <Cmd>BufferGoto 4<CR>
-nnoremap ,' <Cmd>BufferGoto 4<CR>
 nnoremap ,5 <Cmd>BufferGoto 5<CR>
-nnoremap ,( <Cmd>BufferGoto 5<CR>
 nnoremap ,6 <Cmd>BufferGoto 6<CR>
-nnoremap ,- <Cmd>BufferGoto 6<CR>
+
+" Custom env variable
+if !empty($KEYBOARD_FR)
+  nmap à 0
+  nmap & 1
+  nmap é 2
+  nmap " 3
+  nmap ' 4
+  nmap ( 5
+  nmap - 6
+  nmap è 7
+  nmap _ 8
+  nmap ç 9
+
+  nnoremap ù `
+endif
 
 " debugging
 map <leader>b :lua require'dap'.toggle_breakpoint()<CR>
