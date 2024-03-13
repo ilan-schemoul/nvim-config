@@ -38,8 +38,8 @@ set list " tab as >, trailing whitespaces as ~, non breakable spaces as + (last 
 set listchars=tab:>-,trail:~,nbsp:+
 
 " Transparent background
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent background
-autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent background
+" autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 set cursorline " hightlight current selected line
 

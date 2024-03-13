@@ -1,9 +1,3 @@
-require("tokyonight").setup({
-  style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  transparent = true, -- Enable this to disable setting the background color
-})
-vim.cmd[[colorscheme tokyonight]]
-
 require'lspconfig'.hdl_checker.setup{}
 require'lspconfig'.gdscript.setup{}
 
@@ -213,4 +207,22 @@ require("neotest").setup({
       dap = { justMyCode = false },
     }),
   },
+})
+
+vim.cmd.colorscheme "catppuccin-mocha"
+
+require("catppuccin").setup({
+    integrations = {
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = true,
+        mason = true,
+        neotest = true,
+        dap = true,
+        dap_ui = true,
+        rainbow_delimiters = true,
+        telescope = { enabled = true },
+        illuminate = { enabled = true, lsp = true },
+    }
 })

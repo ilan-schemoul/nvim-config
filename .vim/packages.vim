@@ -77,8 +77,6 @@ call plug#begin()
 
     Plug 'ms-jpq/coq.thirdparty' " to add copilot suggestion to coq
 
-    Plug 'folke/tokyonight.nvim' " beautiful colorscheme
-
     Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' " lsp errors on multiple lines
     Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 
@@ -109,6 +107,7 @@ call plug#begin()
     Plug 'nvim-neotest/neotest-python'
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    Plug 'catppuccin/nvim'
   end
 call plug#end()
 
