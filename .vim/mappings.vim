@@ -72,7 +72,9 @@ tnoremap ,0 <C-\><C-n>:BufferNext<CR>
 nnoremap ,< <Cmd>BufferMovePrevious<CR>
 nnoremap ,> <Cmd>BufferMoveNext<CR><CR>
 
-nmap ,v :next ~/.vimrc ~/.config/nvim/init.vim<CR>
+nmap ,vp :next ~/.vim/packages.vim<CR>
+nmap ,vc :next ~/.vimrc<CR>
+nmap ,vm :next ~/.vim/mapping.vim<CR>
 nmap ,V :source $MYVIMRC <CR>
 " inoremap jk <esc>
 " tnoremap jk <C-\><C-n><CR>
