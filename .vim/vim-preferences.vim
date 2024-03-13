@@ -65,3 +65,9 @@ let g:clipboard = {
                         \   },
                         \   'cache_enabled': 0,
                         \ }
+
+let output = system("cd ~/nvim.ilanschemoul.me && git status --porcelain")
+
+if output != ""
+  echoerr "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)"
+endif

@@ -74,7 +74,7 @@ nnoremap ,> <Cmd>BufferMoveNext<CR><CR>
 
 nmap ,vp :next ~/.vim/packages.vim<CR>
 nmap ,vc :next ~/.vimrc<CR>
-nmap ,vm :next ~/.vim/mapping.vim<CR>
+nmap ,vm :next ~/.vim/mappings.vim<CR>
 nmap ,V :source $MYVIMRC <CR>
 " inoremap jk <esc>
 " tnoremap jk <C-\><C-n><CR>
@@ -91,11 +91,14 @@ map ,? :Cheatsheet<CR>
 
 map ,o :Vista!!<CR>
 
-noremap <silent>;r :AsyncTask file-run<cr>
-noremap <silent>;b :AsyncTask file-build<cr>
+noremap <silent>,kr :AsyncTask file-run<cr>
+noremap <silent>,kb :AsyncTask file-build<cr>
+noremap <silent>,kc <C-w>o
 
-map <silent>;t :lua require("neotest").run.run()<cr>
-map <silent>;T :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
+map <silent>,kf :lua require("neotest").run.run()<cr>
+map <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
+
+map ,B :GitBlameToggle<CR>
 
 " Defined by pacakges
 " gA to see all bases of number under cursor
@@ -139,7 +142,6 @@ map <leader>f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widg
 map <leader>e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<CR>
 map <leader>t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<CR>
 map <leader>u :lua require('dapui').toggle()<CR>
-
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <A-h> <C-\><C-N><C-w>h

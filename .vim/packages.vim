@@ -105,9 +105,12 @@ call plug#begin()
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'nvim-neotest/neotest'
     Plug 'nvim-neotest/neotest-python'
+    Plug 'rouge8/neotest-rust'
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'catppuccin/nvim'
+
+    Plug 'f-person/git-blame.nvim'
   end
 call plug#end()
 

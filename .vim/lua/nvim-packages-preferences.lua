@@ -11,6 +11,9 @@ require("mason-lspconfig").setup()
 require('mason-update-all').setup()
 require"fidget".setup{}
 require'colorizer'.setup()
+require('gitblame').setup {
+    enabled = false,
+}
 
 require('telescope').load_extension('fzf')
 require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } }
@@ -206,6 +209,7 @@ require("neotest").setup({
     require("neotest-python")({
       dap = { justMyCode = false },
     }),
+    require('neotest-rust')
   },
 })
 
