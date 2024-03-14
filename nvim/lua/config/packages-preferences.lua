@@ -1,3 +1,20 @@
+vim.g.auto_save_silent = 1
+vim.g.auto_save = 1
+vim.g.code_action_menu_show_details = false
+vim.NERDSpaceDelims = 1
+vim.g.NERDCustomDelimiters = {
+  c = { left = '//', right = '' }
+}
+vim.g.vista_default_executive = 'nvim_lsp'
+vim.g.asyncrun_open = 6 -- for AsyncTask
+
+vim.g.chadtree_settings = {
+  view = {
+    width = 30
+  },
+  keymap = { copy_relname = { '<c-c>' } },
+}
+
 require'lspconfig'.hdl_checker.setup{}
 require'lspconfig'.gdscript.setup{}
 
@@ -6,13 +23,18 @@ require'toggle_lsp_diagnostics'.init()
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require("nvim-dap-virtual-text").setup()
 require("trouble").setup{}
-require("mason").setup()
-require("mason-lspconfig").setup()
-require('mason-update-all').setup()
 require"fidget".setup{}
 require'colorizer'.setup()
 require('gitblame').setup {
     enabled = false,
+}
+
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-lspconfig").setup_handlers {
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {}
+    end,
 }
 
 require('telescope').load_extension('fzf')
@@ -109,23 +131,6 @@ end
 
 vim.g.code_action_menu_window_border = 'single'
 
-vim.api.nvim_set_var('NERDSpaceDelims', 1)
-vim.api.nvim_set_var('NERDCustomDelimiters', {
-  ["c"] = { ["left"] = "//", ["right"] = "" },
-})
-
-vim.api.nvim_set_var('coq_settings', {
-  ["auto_start"] = 'shut-up',
-  ["keymap.pre_select"] = false
-})
-
--- vim.api.nvim_set_var('chadtree_settings', {
-  -- ["view"] = {
-    -- ["width"] = 30,
-  -- },
-  -- ["keymap.copy_relname"] = { '<c-c>' }
--- })
-
 require'bufferline'.setup { auto_hide = true, minimum_padding = 0, maximum_padding = 0, icons = { filetype = { enabled = false }, modified = { button = false } } }
 
 require('leap').add_default_mappings()
@@ -172,12 +177,6 @@ require("mason-null-ls").setup({
 })
 
 null_ls.setup()
-
-require("mason-lspconfig").setup_handlers {
-    function (server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {}
-    end,
-}
 
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = {'*.tac'},

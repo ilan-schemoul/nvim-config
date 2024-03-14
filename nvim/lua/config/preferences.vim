@@ -53,21 +53,8 @@ map <ScrollWheelDown> <C-E>
 
 " autocmd CursorHold * lua vim.diagnostic.open_float()
 
-let g:clipboard = {
-                        \   'name': 'win32yank-wsl',
-                        \   'copy': {
-                        \      '+': 'win32yank.exe -i --crlf',
-                        \      '*': 'win32yank.exe -i --crlf',
-                        \    },
-                        \   'paste': {
-                        \      '+': 'win32yank.exe -o --lf',
-                        \      '*': 'win32yank.exe -o --lf',
-                        \   },
-                        \   'cache_enabled': 0,
-                        \ }
-
 let output = system("cd ~/nvim.ilanschemoul.me && git status --porcelain")
 
 if output != ""
-  echoerr "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)"
+  " echoerr "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)"
 endif
