@@ -10,5 +10,5 @@ My config is public to make it easier for me to install and share it.
 
 Install.sh creates symbolic links to this folder and install Plug ((n)vim package manager) and install all packages.
 
-# Todo
-- A command to warn when the git repo is out of sync
+For wsl markdownPreview support : `sudo apt-get install -y xdg-utils`
+
