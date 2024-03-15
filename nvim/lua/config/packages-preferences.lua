@@ -16,9 +16,6 @@ vim.g.chadtree_settings = {
   keymap = { copy_relname = { '<c-c>' } },
 }
 
---vim.g.codeium_disable_bindings = 1
---vim.cmd("imap <script><silent><nowait><expr> <C-g> codeium#Accept()")
-
 require'lspconfig'.hdl_checker.setup{}
 require'lspconfig'.gdscript.setup{}
 
@@ -30,6 +27,7 @@ require("trouble").setup{}
 require"fidget".setup{ progress = {
   display = { render_limit = 1 },
 } }
+
 require'colorizer'.setup()
 require('gitblame').setup {
     enabled = false,
@@ -149,58 +147,6 @@ require('leap').add_default_mappings()
 vim.keymap.del({'x', 'o'}, 'x')
 vim.keymap.del({'x', 'o'}, 'X')
 
--- below code to autoregister null-ls plugins installed by manson
--- it is commented because of this bug https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1190
--- (it gives a ugly warning at the start)
--- local function null_ls_default_handler(source_name)
-    -- local ok, null_ls = pcall(require, "null-ls")
-    -- if not ok then
-        -- vim.notify("Error missing null-ls!")
-        -- return
-    -- end
-    -- --vim.notify("Null-ls server " .. source_name .. " registered.")
-
-      -- -- Unfortunately this generates a warning
-      -- -- Register builtin formatters
-      -- if null_ls.builtins.formatting[source_name] ~= nil then
-          -- null_ls.register(null_ls.builtins.formatting[source_name])
-      -- end
-      -- -- Register builtin code actions
-      -- if null_ls.builtins.code_actions[source_name] ~= nil then
-          -- null_ls.register(null_ls.builtins.code_actions[source_name])
-      -- end
-      -- -- Register builtin diagnostics
-      -- if null_ls.builtins.diagnostics[source_name] ~= nil then
-          -- null_ls.register(null_ls.builtins.diagnostics[source_name])
-      -- end
-      -- -- Register builtin diagnostics
-      -- if null_ls.builtins.hover[source_name] ~= nil then
-          -- null_ls.register(null_ls.builtins.hover[source_name])
-      -- end
--- end
-
--- require("mason-null-ls").setup_handlers {
-    -- null_ls_default_handler
--- }
-local null_ls = require "null-ls"
-
-require("mason-null-ls").setup({
-})
-
-null_ls.setup()
-
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {'*.tac'},
-  callback = function(ev)
-    vim.lsp.start({
-      name = 'tacc',
-      cmd = {'/usr/bin/artaclsp'},
-      cmd_args = {'-I', '/bld/'},
-      root_dir = '/src',
-    })
-  end
-})
-
 local r = require"renamer"
 r.setup {}
 r._apply_workspace_edit = function(resp)
@@ -223,7 +169,7 @@ require("neotest").setup({
   },
 })
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "catppuccin-macchiato"
 
 require("catppuccin").setup({
     integrations = {

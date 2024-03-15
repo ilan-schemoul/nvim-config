@@ -62,9 +62,6 @@ require("lazy").setup({
   "theHamsta/nvim-dap-virtual-text",
   "mfussenegger/nvim-dap-python",
 
-  "jose-elias-alvarez/null-ls.nvim",
-  "jayp0521/mason-null-ls.nvim",
-
   "neovim/nvim-lspconfig",
 
   { "j-hui/fidget.nvim", tag = 'legacy' },
@@ -87,16 +84,12 @@ require("lazy").setup({
 
   "romgrk/barbar.nvim", -- the top bar with buffer and tabs
 
-  "ms-jpq/coq.thirdparty", -- to add copilot suggestion to coq
-
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- lsp errors on multiple lines
   "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
 
   "nvim-tree/nvim-tree.lua",
 
   "ojroques/nvim-osc52", 
-
-  "hrsh7th/nvim-cmp",
 
   "MunifTanjim/nui.nvim",
   "sudormrfbin/cheatsheet.nvim",
