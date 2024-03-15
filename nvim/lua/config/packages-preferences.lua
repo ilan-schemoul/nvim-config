@@ -16,6 +16,9 @@ vim.g.chadtree_settings = {
   keymap = { copy_relname = { '<c-c>' } },
 }
 
+--vim.g.codeium_disable_bindings = 1
+--vim.cmd("imap <script><silent><nowait><expr> <C-g> codeium#Accept()")
+
 require'lspconfig'.hdl_checker.setup{}
 require'lspconfig'.gdscript.setup{}
 
@@ -41,15 +44,20 @@ require("mason-lspconfig").setup_handlers {
 }
 
 require('telescope').load_extension('fzf')
-require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } }
+require('telescope').setup({
+  defaults = {
+    layout_strategy='vertical',
+    layout_config = {
+      vertical = {
+        width = 0.85
+      }
+    },
+  },
+})
 
 require("coq_3p") {
-    { src = "copilot", short_name = "COP", accept_key = "df" },
+    { src = "codeium", short_name = "COD" }
 }
-
-vim.api.nvim_set_var("copilot_filetypes", {
-      ["dap-repl"] = false,
-})
 
 if vim.g.obsidian_dir then
    require("obsidian").setup({

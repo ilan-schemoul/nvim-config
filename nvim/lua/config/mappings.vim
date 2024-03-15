@@ -102,7 +102,8 @@ map <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
 
 map ,B :GitBlameToggle<CR>
 
-vmap o :<C-U>!!g wslview "<cword>" & <CR><CR>
+vmap g :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
+vmap o :<C-U>!wslview "<cfile>" & <CR><CR>
 
 " Defined by pacakges
 " gA to see all bases of number under cursor
@@ -113,28 +114,40 @@ tnoremap <Esc> <C-\><C-n><CR>
 " select recently paste content
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-nnoremap ,1 <Cmd>BufferGoto 1<CR>
-nnoremap ,2 <Cmd>BufferGoto 2<CR>
-nnoremap ,3 <Cmd>BufferGoto 3<CR>
-nnoremap ,4 <Cmd>BufferGoto 4<CR>
-nnoremap ,5 <Cmd>BufferGoto 5<CR>
-nnoremap ,6 <Cmd>BufferGoto 6<CR>
-
 " Custom env variable
 if !empty($KEYBOARD_FR)
-  nmap à 0
-  nmap & 1
-  nmap é 2
-  nmap " 3
-  nmap ' 4
-  nmap ( 5
-  nmap - 6
-  nmap è 7
-  nmap _ 8
-  nmap ç 9
+  nnoremap à 0
+  nnoremap & 1
+  nnoremap é 2
+  nnoremap " 3
+  nnoremap ' 4
+  nnoremap ( 5
+  nnoremap - 6
+  nnoremap è 7
+  nnoremap _ 8
+  nnoremap ç 9
 
   nnoremap ù `
 endif
+
+nnoremap ,1 <Cmd>BufferGoto 1<CR>
+nnoremap ,& <Cmd>BufferGoto 1<CR>
+nnoremap ,2 <Cmd>BufferGoto 2<CR>
+nnoremap ,é <Cmd>BufferGoto 2<CR>
+nnoremap ,3 <Cmd>BufferGoto 3<CR>
+nnoremap ," <Cmd>BufferGoto 3<CR>
+nnoremap ,4 <Cmd>BufferGoto 4<CR>
+nnoremap ,' <Cmd>BufferGoto 4<CR>
+nnoremap ,5 <Cmd>BufferGoto 5<CR>
+nnoremap ,( <Cmd>BufferGoto 5<CR>
+nnoremap ,6 <Cmd>BufferGoto 6<CR>
+nnoremap ,- <Cmd>BufferGoto 6<CR>
+nnoremap ,7 <Cmd>BufferGoto 7<CR>
+nnoremap ,è <Cmd>BufferGoto 7<CR>
+nnoremap ,8 <Cmd>BufferGoto 8<CR>
+nnoremap ,_ <Cmd>BufferGoto 8<CR>
+nnoremap ,9 <Cmd>BufferGoto 9<CR>
+nnoremap ,ç <Cmd>BufferGoto 9<CR>
 
 " debugging
 map <leader>b :lua require'dap'.toggle_breakpoint()<CR>

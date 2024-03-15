@@ -55,7 +55,7 @@ map <ScrollWheelDown> <C-E>
 
 let output = system("cd ~/nvim.ilanschemoul.me && git status --porcelain")
 
-if output != ""
+if v:lua.math.random() > 0.9 && output != ""
    echohl WarningMsg | echo "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)"
 endif
 
