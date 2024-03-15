@@ -1,3 +1,4 @@
+vim.g.resurrect_ignore_patterns = { '/.git/', '^fugitive://' }
 vim.g.auto_save_silent = 1
 vim.g.auto_save = 1
 vim.g.code_action_menu_show_details = false
@@ -23,7 +24,9 @@ require'toggle_lsp_diagnostics'.init()
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require("nvim-dap-virtual-text").setup()
 require("trouble").setup{}
-require"fidget".setup{}
+require"fidget".setup{ progress = {
+  display = { render_limit = 1 },
+} }
 require'colorizer'.setup()
 require('gitblame').setup {
     enabled = false,

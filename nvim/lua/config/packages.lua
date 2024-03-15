@@ -128,4 +128,6 @@ require("lazy").setup({
   },
 
   "f-person/git-blame.nvim",
+
+  "supercrabtree/vim-resurrect"
 })

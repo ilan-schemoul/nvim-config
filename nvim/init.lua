@@ -1,3 +1,4 @@
+-- ~/.config/nvim/lua/config/
 require("config/packages")
 
 vim.cmd("source ~/.config/nvim/lua/config/basic.vim")

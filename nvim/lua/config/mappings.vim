@@ -57,6 +57,7 @@ map ,, :Telescope<cr>
 
 map ,x :BufferDelete<CR>
 tnoremap ,x <C-\><C-n>:BufferDelete!<CR>
+map ,r :Resurrect<CR>
 
 noremap ,ç :BufferPrevious<CR>
 tnoremap ,ç <C-\><C-n>:BufferPrevious<CR>
@@ -72,9 +73,10 @@ tnoremap ,0 <C-\><C-n>:BufferNext<CR>
 nnoremap ,< <Cmd>BufferMovePrevious<CR>
 nnoremap ,> <Cmd>BufferMoveNext<CR><CR>
 
-nmap ,vp :next ~/.vim/packages.vim<CR>
-nmap ,vc :next ~/.vimrc<CR>
-nmap ,vm :next ~/.vim/mappings.vim<CR>
+nmap ,vc :next ~/.config/nvim/init.lua<CR>
+nmap ,vp :next ~/.config/nvim/lua/config/packages.lua<CR>
+nmap ,vm :next ~/.config/nvim/lua/config/mappings.vim<CR>
+
 nmap ,V :source $MYVIMRC <CR>
 " inoremap jk <esc>
 " tnoremap jk <C-\><C-n><CR>
@@ -99,6 +101,8 @@ map <silent>,kf :lua require("neotest").run.run()<cr>
 map <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
 
 map ,B :GitBlameToggle<CR>
+
+vmap o :<C-U>!!g wslview "<cword>" & <CR><CR>
 
 " Defined by pacakges
 " gA to see all bases of number under cursor

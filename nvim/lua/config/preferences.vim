@@ -58,3 +58,9 @@ let output = system("cd ~/nvim.ilanschemoul.me && git status --porcelain")
 if output != ""
   " echoerr "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)"
 endif
+
+" Open file with cursor set to where last modification happened
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
