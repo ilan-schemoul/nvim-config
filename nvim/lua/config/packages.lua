@@ -86,8 +86,6 @@ require("lazy").setup({
 
   "MunifTanjim/nui.nvim",
 
-  "bennypowers/nvim-regexplainer",
-
   "RRethy/vim-illuminate",
 
   "stevearc/oil.nvim",
@@ -122,4 +120,5 @@ require("lazy").setup({
   },
 
   "max397574/better-escape.nvim",
+  "tomiis4/hypersonic.nvim"
 })

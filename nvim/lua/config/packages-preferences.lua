@@ -51,19 +51,6 @@ require('telescope').setup({
   },
 })
 
-require 'regexplainer'.setup {
-  mode = 'narrative', -- TODO: 'ascii', 'graphical'
-  auto = false,
-  filetypes = {
-    '*',
-  },
-  debug = true,
-  display = 'popup',
-  narrative = {
-    separator = '\n',
-  },
-}
-
 require 'nvim-treesitter.configs'.setup {
   ensure_installed = { "markdown", "markdown_inline", "regex" },
   -- Install parsers synchronously (only applied to `ensure_installed`)

@@ -105,7 +105,7 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>
 imap <C-h>   <Cmd>call codeium#CycleCompletions(-1)<CR>
 imap <C-l>   <Cmd>call codeium#CycleCompletions(1)<CR>
 
-map ,? :RegexplainerToggle<CR>
+vmap ,? :'<,'>Hypersonic<CR>
 
 tnoremap <Esc> <C-\><C-n><CR>
 
