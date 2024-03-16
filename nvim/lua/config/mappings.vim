@@ -96,8 +96,6 @@ noremap <silent>,kc <C-w>o
 map <silent>,kf :lua require("neotest").run.run()<cr>
 map <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
 
-map ,B :GitBlameToggle<CR>
-
 vmap g :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
 vmap o :<C-U>!wslview "<cfile>" & <CR><CR>
 
@@ -197,5 +195,5 @@ function! ToggleSignColumn()
     else
         set signcolumn=number
         let b:signcolumn_on=1
-    endif
+   endif
 endfunction

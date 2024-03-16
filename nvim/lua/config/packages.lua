@@ -111,8 +111,6 @@ require("lazy").setup({
     build = function() vim.fn["mkdp#util#install"]() end,
   },
 
-  "f-person/git-blame.nvim",
-
   "supercrabtree/vim-resurrect",
 
   "Exafunction/codeium.vim",
@@ -121,5 +119,7 @@ require("lazy").setup({
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     requires = { "nvim-lua/plenary.nvim" }
-  }
+  },
+
+  "max397574/better-escape.nvim",
 })

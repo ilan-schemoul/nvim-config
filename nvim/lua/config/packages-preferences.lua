@@ -30,9 +30,6 @@ require "fidget".setup { progress = {
 }
 
 require 'colorizer'.setup()
-require('gitblame').setup {
-  enabled = false,
-}
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -122,16 +119,7 @@ require('leap').add_default_mappings()
 vim.keymap.del({ 'x', 'o' }, 'x')
 vim.keymap.del({ 'x', 'o' }, 'X')
 
-local r = require "renamer"
-r.setup {}
-r._apply_workspace_edit = function(resp)
-  local params = vim.lsp.util.make_position_params()
-  local results_lsp, _ = vim.lsp.buf_request_sync(0,
-    require "renamer.constants".strings.lsp_req_rename, params)
-  local client_id = results_lsp and next(results_lsp) or nil
-  local client = vim.lsp.get_client_by_id(client_id)
-  require "vim.lsp.util".apply_workspace_edit(resp, client.offset_encoding)
-end
+require("renamer").setup()
 
 require("oil").setup()
 
@@ -144,7 +132,7 @@ require("neotest").setup({
   },
 })
 
-vim.cmd.colorscheme "catppuccin-macchiato"
+require("better_escape").setup()
 
 require("catppuccin").setup({
   integrations = {
@@ -186,20 +174,20 @@ vim.keymap.set("n", "<C-N>", function() harpoon:list():next() end)
 -- basic telescope configuration
 local conf = require("telescope.config").values
 local function toggle_telescope(harpoon_files)
-    local file_paths = {}
-    for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
-    end
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
 
-    require("telescope.pickers").new({}, {
-        prompt_title = "Harpoon",
-        finder = require("telescope.finders").new_table({
-            results = file_paths,
-        }),
-        previewer = conf.file_previewer({}),
-        sorter = conf.generic_sorter({}),
-    }):find()
+  require("telescope.pickers").new({}, {
+    prompt_title = "Harpoon",
+    finder = require("telescope.finders").new_table({
+      results = file_paths,
+    }),
+    previewer = conf.file_previewer({}),
+    sorter = conf.generic_sorter({}),
+  }):find()
 end
 
 vim.keymap.set("n", ",wm", function() toggle_telescope(harpoon:list()) end,
-    { desc = "Open harpoon window" })
+  { desc = "Open harpoon window" })

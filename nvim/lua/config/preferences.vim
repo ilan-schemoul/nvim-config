@@ -4,9 +4,7 @@ autocmd BufEnter term://* startinsert " start in insert mode in terminal
 set modelines=0 " modelines allows to enable options in a file with special comments
 
 set laststatus=0 " no bar at the bottom
-if has("nvim")
-  set cmdheight=0 " hide command line when not used
-end
+set cmdheight=0 " hide command line when not used
 
 set backspace=indent,eol,start " allows backspacing over everything in insert mode
 
@@ -37,10 +35,6 @@ set updatetime=300 " update interval of swap file (this value is useful for one 
 set list " tab as >, trailing whitespaces as ~, non breakable spaces as + (last one not working)
 set listchars=tab:>-,trail:~,nbsp:+
 
-" Transparent background
-" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent background
-" autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
-
 set cursorline " hightlight current selected line
 
 set undofile
@@ -50,8 +44,6 @@ set undodir=~/.vim/.undodir
 " command)
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
-
-" autocmd CursorHold * lua vim.diagnostic.open_float()
 
 let output = system("cd ~/nvim.ilanschemoul.me && git status --porcelain")
 
@@ -64,3 +56,5 @@ autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal g`\"" |
       \ endif
+
+colorscheme catppuccin-macchiato

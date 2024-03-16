@@ -1,4 +1,3 @@
-set nocompatible
 
 if executable("fish")
   set shell=/bin/fish
