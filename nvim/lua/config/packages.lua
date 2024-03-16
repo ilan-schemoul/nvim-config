@@ -58,7 +58,7 @@ require("lazy").setup({
 
   "neovim/nvim-lspconfig",
 
-  { "j-hui/fidget.nvim",     tag = 'legacy' },
+  "j-hui/fidget.nvim",
 
   "filipdutescu/renamer.nvim",
 
@@ -115,5 +115,11 @@ require("lazy").setup({
 
   "supercrabtree/vim-resurrect",
 
-  "Exafunction/codeium.vim"
+  "Exafunction/codeium.vim",
+
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
 })

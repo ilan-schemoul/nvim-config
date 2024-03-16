@@ -73,6 +73,7 @@ nnoremap ,> <Cmd>BufferMoveNext<CR><CR>
 nmap ,vc :next ~/.config/nvim/init.lua<CR>
 nmap ,vp :next ~/.config/nvim/lua/config/packages.lua<CR>
 nmap ,vm :next ~/.config/nvim/lua/config/mappings.vim<CR>
+nmap ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<CR><CR>
 
 nmap ,V :source $MYVIMRC <CR>
 " inoremap jk <esc>
@@ -107,10 +108,6 @@ imap <C-h>   <Cmd>call codeium#CycleCompletions(-1)<CR>
 imap <C-l>   <Cmd>call codeium#CycleCompletions(1)<CR>
 
 map ,? :RegexplainerToggle<CR>
-
-" Defined by pacakges
-" gA to see all bases of number under cursor
-" cr{b/x/d/o} to modify number into another base
 
 tnoremap <Esc> <C-\><C-n><CR>
 
