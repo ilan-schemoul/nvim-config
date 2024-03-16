@@ -1,3 +1,8 @@
+" Mappings defined by plugins
+" gA to see all bases for a number under the cursor cr{b/x/d/o} to change a
+" number base
+" s{char1}{char2}{label} to jump to a word (leap)
+
 " toggle relativenumber + number. It shows on the left column the number
 " of the current line and the relative number of lines aboves and below
 map ,I :set invrelativenumber<CR>
@@ -5,7 +10,6 @@ map ,N :set invnumber<CR>
 
 map ,S :call ToggleSignColumn()<CR>
 map ,E :lua require("lsp_lines").toggle()<CR>
-map ,e <Plug>(toggle-lsp-diag)
 
 " multiple cursors
 let g:VM_mouse_mappings = 1
@@ -43,13 +47,6 @@ map ,m :Mason<CR>
 
 map ,X :SnipRun<CR>
 map ,Z :SnipClose<CR>
-
-imap <C-p> <ESC> :Copilot panel<CR>
-
-inoremap <C-f> <Plug>(copilot-suggest)
-inoremap <C-d> <Plug>(copilot-dismiss)
-inoremap <M-i> <Plug>(copilot-previous)
-inoremap <M-o> <Plug>(copilot-next)
 
 map ,l :Telescope find_files<cr>
 map ,g :Telescope live_grep<cr>
@@ -89,8 +86,6 @@ map ,b :TroubleToggle<CR>
 map ,c <plug>NERDCommenterToggle
 imap ,c <plug>NERDCommenterInsert
 
-map ,? :Cheatsheet<CR>
-
 map ,o :Vista!!<CR>
 
 noremap <silent>,kr :AsyncTask file-run<cr>
@@ -104,6 +99,14 @@ map ,B :GitBlameToggle<CR>
 
 vmap g :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
 vmap o :<C-U>!wslview "<cfile>" & <CR><CR>
+
+imap <C-c> <Cmd>call codeium#Complete()<CR>
+imap <script><silent><nowait><expr> <C-g> codeium#Accept()
+imap <C-x>   <Cmd>call codeium#Clear()<CR>
+imap <C-h>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+imap <C-l>   <Cmd>call codeium#CycleCompletions(1)<CR>
+
+map ,? :RegexplainerToggle<CR>
 
 " Defined by pacakges
 " gA to see all bases of number under cursor
@@ -146,8 +149,6 @@ nnoremap ,7 <Cmd>BufferGoto 7<CR>
 nnoremap ,è <Cmd>BufferGoto 7<CR>
 nnoremap ,8 <Cmd>BufferGoto 8<CR>
 nnoremap ,_ <Cmd>BufferGoto 8<CR>
-nnoremap ,9 <Cmd>BufferGoto 9<CR>
-nnoremap ,ç <Cmd>BufferGoto 9<CR>
 
 " debugging
 map <leader>b :lua require'dap'.toggle_breakpoint()<CR>

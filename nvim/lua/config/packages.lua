@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.coq_settings = {
   auto_start = 'shut-up',
-  keymap = { pre_select = false },
 }
 
 require("lazy").setup({
@@ -35,11 +34,6 @@ require("lazy").setup({
   "glts/vim-magnum",
   "glts/vim-radical", -- cr{d/b/o/x} to modify the base of a number gA to see all bases
 
-  "github/copilot.vim",
-
-  "lewis6991/impatient.nvim",
-
-  "luochen1990/rainbow",
   "HiPhish/rainbow-delimiters.nvim",
 
   "norcalli/nvim-colorizer.lua",
@@ -50,7 +44,7 @@ require("lazy").setup({
   "nvim-telescope/telescope.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
 
-  { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' },
+  { "nvim-treesitter/nvim-treesitter",          build = ':TSUpdate' },
   "nvim-treesitter/nvim-treesitter-context",
 
   "williamboman/mason.nvim",
@@ -64,12 +58,12 @@ require("lazy").setup({
 
   "neovim/nvim-lspconfig",
 
-  { "j-hui/fidget.nvim", tag = 'legacy' },
+  { "j-hui/fidget.nvim",     tag = 'legacy' },
 
   "filipdutescu/renamer.nvim",
 
-  { "ms-jpq/coq_nvim", branch = 'coq' },
-  { "ms-jpq/coq.artifacts", branch = 'artifacts' },
+  { "ms-jpq/coq_nvim",       branch = 'coq' },
+  { "ms-jpq/coq.artifacts",  branch = 'artifacts' },
   { "ms-jpq/coq.thirdparty", branch = '3p' },
 
   "BurntSushi/ripgrep",
@@ -82,17 +76,15 @@ require("lazy").setup({
 
   "habamax/vim-godot",
 
-  "romgrk/barbar.nvim", -- the top bar with buffer and tabs
+  "romgrk/barbar.nvim",                           -- the top bar with buffer and tabs
 
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- lsp errors on multiple lines
-  "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
 
   "nvim-tree/nvim-tree.lua",
 
-  "ojroques/nvim-osc52", 
+  "ojroques/nvim-osc52",
 
   "MunifTanjim/nui.nvim",
-  "sudormrfbin/cheatsheet.nvim",
 
   "bennypowers/nvim-regexplainer",
 
@@ -103,7 +95,6 @@ require("lazy").setup({
   "liuchengxu/vista.vim",
 
   "skywind3000/asynctasks.vim",
-
   "skywind3000/asyncrun.vim",
 
   "antoinemadec/FixCursorHold.nvim",
@@ -114,10 +105,10 @@ require("lazy").setup({
   "catppuccin/nvim",
 
   {
-	  "iamcco/markdown-preview.nvim",
-	  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-	  ft = { "markdown" },
-	  build = function() vim.fn["mkdp#util#install"]() end,
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
 
   "f-person/git-blame.nvim",
