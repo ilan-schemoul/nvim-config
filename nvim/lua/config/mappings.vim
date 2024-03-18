@@ -11,12 +11,6 @@ map ,N :set invnumber<CR>
 map ,S :call ToggleSignColumn()<CR>
 map ,E :lua require("lsp_lines").toggle()<CR>
 
-" multiple cursors
-let g:VM_mouse_mappings = 1
-nmap   <C-LeftMouse>         <Plug>(VM-Mouse-Cursor)
-nmap   <C-RightMouse>        <Plug>(VM-Mouse-Word)
-nmap   <M-C-RightMouse>      <Plug>(VM-Mouse-Column)
-
 " allows to choose a buffer in the top bar with dynamic keyboards shorcut
 map ,p <Cmd>BufferPick<CR>
 
@@ -45,12 +39,8 @@ map ,R :GodotRunCurrent<CR>
 
 map ,m :Mason<CR>
 
-map ,X :SnipRun<CR>
-map ,Z :SnipClose<CR>
-
 map ,l :Telescope find_files<cr>
 map ,g :Telescope live_grep<cr>
-map ,, :Telescope<cr>
 
 map ,x :BufferDelete<CR>
 tnoremap ,x <C-\><C-n>:BufferDelete!<CR>
@@ -96,16 +86,16 @@ noremap <silent>,kc <C-w>o
 map <silent>,kf :lua require("neotest").run.run()<cr>
 map <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
 
-vmap g :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
-vmap o :<C-U>!wslview "<cfile>" & <CR><CR>
+vmap e :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
+
+map ,wa :lua require("harpoon.mark").add_file()<cr>
+map ,wl :Telescope harpoon marks<cr>
 
 imap <C-c> <Cmd>call codeium#Complete()<CR>
 imap <script><silent><nowait><expr> <C-g> codeium#Accept()
 imap <C-x>   <Cmd>call codeium#Clear()<CR>
 imap <C-h>   <Cmd>call codeium#CycleCompletions(-1)<CR>
 imap <C-l>   <Cmd>call codeium#CycleCompletions(1)<CR>
-
-vmap ,? :'<,'>Hypersonic<CR>
 
 tnoremap <Esc> <C-\><C-n><CR>
 
@@ -146,15 +136,16 @@ nnoremap ,8 <Cmd>BufferGoto 8<CR>
 nnoremap ,_ <Cmd>BufferGoto 8<CR>
 
 " debugging
-map <leader>b :lua require'dap'.toggle_breakpoint()<CR>
-map <leader>c :lua require'dap'.continue()<CR>
-map <leader>o :lua require'dap'.step_over()<CR>
-map <leader>i :lua require'dap'.step_into()<CR>
-map <leader>s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<CR>
-map <leader>f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<CR>
-map <leader>e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<CR>
-map <leader>t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<CR>
-map <leader>u :lua require('dapui').toggle()<CR>
+map ;b :lua require'dap'.toggle_breakpoint()<CR>
+map ;c :lua require'dap'.continue()<CR>
+map ;o :lua require'dap'.step_over()<CR>
+map ;i :lua require'dap'.step_into()<CR>
+
+map ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<CR>
+map ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<CR>
+map ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<CR>
+map ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<CR>
+map ;u :lua require('dapui').toggle()<CR>
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <A-h> <C-\><C-N><C-w>h

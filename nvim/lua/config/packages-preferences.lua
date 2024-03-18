@@ -1,3 +1,4 @@
+vim.g.VM_mouse_mappings = 1
 vim.g.resurrect_ignore_patterns = { '/.git/', '^fugitive://' }
 vim.g.auto_save_silent = 1
 vim.g.auto_save = 1
@@ -18,8 +19,8 @@ vim.g.chadtree_settings = {
 
 vim.g.codeium_manual = true
 
-require 'lspconfig'.hdl_checker.setup {}
-require 'lspconfig'.gdscript.setup {}
+vim.g.calendar_google_calendar = 1
+vim.g.calendar_google_task = 1
 
 require("nvim-tree").setup()
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
@@ -30,14 +31,6 @@ require "fidget".setup { progress = {
 }
 
 require 'colorizer'.setup()
-
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers {
-  function(server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {}
-  end,
-}
 
 require('telescope').load_extension('fzf')
 require('telescope').setup({
@@ -51,36 +44,6 @@ require('telescope').setup({
   },
 })
 
-require 'nvim-treesitter.configs'.setup {
-  ensure_installed = { "markdown", "markdown_inline", "regex" },
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  auto_install = true,
-
-  -- List of parsers to ignore installing (for "all")
-  ignore_install = {},
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-    disable = function(lang, buf)
-      local max_filesize = 100 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    additional_vim_regex_highlighting = { "markdown" },
-  },
-}
-
-require("treesitter-context").setup()
 
 require("dapui").setup({
   controls = {
@@ -133,48 +96,62 @@ require("catppuccin").setup({
     dap_ui = true,
     rainbow_delimiters = true,
     telescope = { enabled = true },
-    illuminate = { enabled = true, lsp = true },
   }
 })
 
-local harpoon = require("harpoon")
+require("telescope").load_extension('harpoon')
 
--- REQUIRED
-harpoon:setup({})
--- REQUIRED
+-- local harpoon = require("harpoon")
 
-vim.keymap.set("n", ",wa", function() harpoon:list():append() end)
+-- -- REQUIRED
+-- harpoon:setup({})
+-- -- REQUIRED
 
-vim.keymap.set("n", ",w1", function() harpoon:list():select(1) end)
-vim.keymap.set("n", ",w&", function() harpoon:list():select(1) end)
-vim.keymap.set("n", ",w2", function() harpoon:list():select(2) end)
-vim.keymap.set("n", ",wé", function() harpoon:list():select(2) end)
-vim.keymap.set("n", ",w3", function() harpoon:list():select(3) end)
-vim.keymap.set("n", ",w'", function() harpoon:list():select(3) end)
-vim.keymap.set("n", ",w4", function() harpoon:list():select(4) end)
-vim.keymap.set("n", ",w\"", function() harpoon:list():select(4) end)
+-- vim.keymap.set("n", ",wa", function() harpoon:list():append() end)
 
--- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<C-P>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-N>", function() harpoon:list():next() end)
+-- vim.keymap.set("n", ",w1", function() harpoon:list():select(1) end)
+-- vim.keymap.set("n", ",w&", function() harpoon:list():select(1) end)
 
--- basic telescope configuration
-local conf = require("telescope.config").values
-local function toggle_telescope(harpoon_files)
-  local file_paths = {}
-  for _, item in ipairs(harpoon_files.items) do
-    table.insert(file_paths, item.value)
-  end
+-- vim.keymap.set("n", ",w2", function() harpoon:list():select(2) end)
+-- vim.keymap.set("n", ",wé", function() harpoon:list():select(2) end)
 
-  require("telescope.pickers").new({}, {
-    prompt_title = "Harpoon",
-    finder = require("telescope.finders").new_table({
-      results = file_paths,
-    }),
-    previewer = conf.file_previewer({}),
-    sorter = conf.generic_sorter({}),
-  }):find()
-end
+-- vim.keymap.set("n", ",w3", function() harpoon:list():select(3) end)
+-- vim.keymap.set("n", ",w\"", function() harpoon:list():select(3) end)
 
-vim.keymap.set("n", ",wm", function() toggle_telescope(harpoon:list()) end,
-  { desc = "Open harpoon window" })
+-- vim.keymap.set("n", ",w4", function() harpoon:list():select(4) end)
+-- vim.keymap.set("n", ",w'", function() harpoon:list():select(4) end)
+
+-- -- Toggle previous & next buffers stored within Harpoon list
+-- vim.keymap.set("n", "<C-P>", function() harpoon:list():prev() end)
+-- vim.keymap.set("n", "<C-N>", function() harpoon:list():next() end)
+
+-- -- basic telescope configuration
+-- local conf = require("telescope.config").values
+-- local function toggle_telescope(harpoon_files)
+  -- local file_paths = {}
+  -- for _, item in ipairs(harpoon_files.items) do
+    -- table.insert(file_paths, item.value)
+  -- end
+
+  -- require("telescope.pickers").new({}, {
+    -- prompt_title = "Harpoon",
+    -- finder = require("telescope.finders").new_table({
+      -- results = file_paths,
+    -- }),
+    -- previewer = conf.file_previewer({}),
+    -- sorter = conf.generic_sorter({}),
+  -- }):find()
+-- end
+
+-- vim.keymap.set("n", ",wl", function() toggle_telescope(harpoon:list()) end,
+  -- { desc = "Open harpoon window" })
+
+  -- local conf = require("telescope.config").values
+-- local pickers = require("telescope.pickers")
+-- local themes = require("telescope.themes")
+-- local finders = require("telescope.finders")
+-- local actions = require("telescope.actions")
+-- local action_state = require("telescope.actions.state")
+-- local harpoon = require('harpoon')
+-- harpoon:setup({})
+

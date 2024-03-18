@@ -1,4 +1,3 @@
-set completeopt=menu,noinsert
 autocmd BufEnter term://* startinsert " start in insert mode in terminal
 
 set modelines=0 " modelines allows to enable options in a file with special comments
@@ -40,14 +39,17 @@ set cursorline " hightlight current selected line
 set undofile
 set undodir=~/.vim/.undodir
 
+set number relativenumber
+set numberwidth=1
+
 " scroll line by line (do not put this comment on the same line as the
 " command)
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
 let output = system("cd ~/nvim.ilanschemoul.me && git status --porcelain")
-
-if v:lua.math.random() > 0.9 && output != ""
+let g:seed = srand()
+if rand(g:seed) % 100 > 90 && output != ""
    echohl WarningMsg | echo "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)"
 endif
 
@@ -58,3 +60,5 @@ autocmd BufReadPost *
       \ endif
 
 colorscheme catppuccin-macchiato
+
+hi CursorLineNr guifg=#aaaaaa

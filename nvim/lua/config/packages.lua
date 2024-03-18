@@ -1,22 +1,9 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-vim.g.coq_settings = {
-  auto_start = 'shut-up',
-}
+require("config/init-lazy")
 
 require("lazy").setup({
-  "tpope/vim-eunuch", -- unix helpers for other packages
+  { import = "plugins" }, -- imports ~/.config/nvim/lua/plugins/*.lua
+
+  "tpope/vim-eunuch",     -- unix helpers for other packages
 
   "907th/vim-auto-save",
   "preservim/nerdcommenter",
@@ -25,7 +12,7 @@ require("lazy").setup({
 
   "tpope/vim-surround",
   "mbbill/undotree",
-  "mg979/vim-visual-multi", -- multiple cursor
+  -- multiple cursor
 
   "dag/vim-fish",
 
@@ -34,7 +21,7 @@ require("lazy").setup({
   "glts/vim-magnum",
   "glts/vim-radical", -- cr{d/b/o/x} to modify the base of a number gA to see all bases
 
-  "HiPhish/rainbow-delimiters.nvim",
+  { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" } },
 
   "norcalli/nvim-colorizer.lua",
   "ggandor/leap.nvim", -- to jump to a part of code (click on s)
@@ -44,31 +31,16 @@ require("lazy").setup({
   "nvim-telescope/telescope.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
 
-  { "nvim-treesitter/nvim-treesitter",          build = ':TSUpdate' },
-  "nvim-treesitter/nvim-treesitter-context",
-
-  "williamboman/mason.nvim",
-  "RubixDev/mason-update-all",
-  "williamboman/mason-lspconfig.nvim",
-
   "mfussenegger/nvim-dap",
   "rcarriga/nvim-dap-ui",
   "theHamsta/nvim-dap-virtual-text",
   "mfussenegger/nvim-dap-python",
 
-  "neovim/nvim-lspconfig",
-
   "j-hui/fidget.nvim",
 
   "filipdutescu/renamer.nvim",
 
-  { "ms-jpq/coq_nvim",       branch = 'coq' },
-  { "ms-jpq/coq.artifacts",  branch = 'artifacts' },
-  { "ms-jpq/coq.thirdparty", branch = '3p' },
-
   "BurntSushi/ripgrep",
-
-  { "michaelb/sniprun", build = 'bash install.sh' },
 
   "weilbith/nvim-code-action-menu",
 
@@ -76,18 +48,15 @@ require("lazy").setup({
 
   "habamax/vim-godot",
 
-  "romgrk/barbar.nvim",                           -- the top bar with buffer and tabs
-
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- lsp errors on multiple lines
-
   "nvim-tree/nvim-tree.lua",
 
   "ojroques/nvim-osc52",
 
   "MunifTanjim/nui.nvim",
 
-  "RRethy/vim-illuminate",
+  { "RRethy/vim-illuminate",                    event = { "BufReadPre", "BufNewFile" } },
 
+  { "romgrk/barbar.nvim",                       event = { "BufReadPost", "BufNewFile" }, VeryLazy = true },
   "stevearc/oil.nvim",
 
   "liuchengxu/vista.vim",
@@ -97,6 +66,7 @@ require("lazy").setup({
 
   "antoinemadec/FixCursorHold.nvim",
   "nvim-neotest/neotest",
+  "nvim-neotest/nvim-nio",
   "nvim-neotest/neotest-python",
   "rouge8/neotest-rust",
 
@@ -115,10 +85,11 @@ require("lazy").setup({
 
   {
     "ThePrimeagen/harpoon",
-    branch = "harpoon2",
+    version = "ccae1b9bec717ae284906b0bf83d720e59d12b91", -- v1
     requires = { "nvim-lua/plenary.nvim" }
   },
 
   "max397574/better-escape.nvim",
-  "tomiis4/hypersonic.nvim"
-})
+
+  "tpope/vim-sleuth", -- adjusts shiftwidth/expandtab based on other files
+}, { change_detection = { enabled = false } })
