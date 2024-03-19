@@ -50,7 +50,7 @@ map <ScrollWheelDown> <C-E>
 let output = system("cd ~/nvim.ilanschemoul.me && git status --porcelain")
 let g:seed = srand()
 if rand(g:seed) % 100 > 90 && output != ""
-   echohl WarningMsg | echo "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)"
+   echohl WarningMsg | echo "The nvim git repository (~/nvim.ilanschemoul.me) is out of sync (must commit/push or pull)" | echohl None
 endif
 
 " Open file with cursor set to where last modification happened
