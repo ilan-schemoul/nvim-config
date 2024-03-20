@@ -81,8 +81,6 @@ require("lazy").setup({
 
   "supercrabtree/vim-resurrect",
 
-  "Exafunction/codeium.vim",
-
   {
     "ThePrimeagen/harpoon",
     version = "ccae1b9bec717ae284906b0bf83d720e59d12b91", -- v1
@@ -92,4 +90,6 @@ require("lazy").setup({
   "max397574/better-escape.nvim",
 
   "tpope/vim-sleuth", -- adjusts shiftwidth/expandtab based on other files
+
+  { dir = "~/code/forks/ChatGPT.nvim" },
 }, { change_detection = { enabled = false } })

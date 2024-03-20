@@ -21,7 +21,7 @@ map ,Q :wqa!<CR>
 " toggle the tree files on the left
 map ,t :NvimTreeToggle<CR>
 
-map ,f :lua vim.lsp.buf.format{async=true}<CR>
+:lua vim.keymap.set({"n", "v"}, ",f", function() vim.lsp.buf.format({ async = true }) end)
 map ,D :lua vim.diagnostic.open_float()<CR>
 map ,h :lua vim.lsp.buf.hover()<CR>
 " i for implementation
@@ -64,6 +64,7 @@ nmap ,vc :next ~/.config/nvim/init.lua<CR>
 nmap ,vp :next ~/.config/nvim/lua/config/packages.lua<CR>
 nmap ,vm :next ~/.config/nvim/lua/config/mappings.vim<CR>
 nmap ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<CR><CR>
+nmap ,vf :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
 
 nmap ,V :source $MYVIMRC <CR>
 " inoremap jk <esc>
@@ -91,11 +92,24 @@ vmap e :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
 map ,wa :lua require("harpoon.mark").add_file()<cr>
 map ,wl :Telescope harpoon marks<cr>
 
-imap <C-c> <Cmd>call codeium#Complete()<CR>
-imap <script><silent><nowait><expr> <C-g> codeium#Accept()
-imap <C-x>   <Cmd>call codeium#Clear()<CR>
-imap <C-h>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-imap <C-l>   <Cmd>call codeium#CycleCompletions(1)<CR>
+lua << EOF
+function _G.create_org_file()
+  local dirman = require('neorg').modules.get_module("core.dirman")
+  local file = vim.fn.input("File :", "", "file")
+
+  dirman.create_file(file, "notes", {
+      no_open  = false,  -- open file after creation?
+      force    = false,  -- overwrite file if exists
+      metadata = {}      -- key-value table for metadata fields
+  })
+end
+EOF
+
+map ,yi :Neorg index<cr>
+map ,yr :Neorg return<cr>
+map ,yf :Telescope find_files search_dirs={"~/notes"}<cr>
+map ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
+map ,yn :call v:lua.create_org_file()<cr>
 
 tnoremap <Esc> <C-\><C-n><CR>
 
@@ -135,17 +149,21 @@ nnoremap ,è <Cmd>BufferGoto 7<CR>
 nnoremap ,8 <Cmd>BufferGoto 8<CR>
 nnoremap ,_ <Cmd>BufferGoto 8<CR>
 
-" debugging
-map ;b :lua require'dap'.toggle_breakpoint()<CR>
-map ;c :lua require'dap'.continue()<CR>
-map ;o :lua require'dap'.step_over()<CR>
-map ;i :lua require'dap'.step_into()<CR>
+autocmd FileType norg let b:norg = v:true
 
-map ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<CR>
-map ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<CR>
-map ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<CR>
-map ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<CR>
-map ;u :lua require('dapui').toggle()<CR>
+if !exists("b:norg")
+    " debugging
+    map ;b :lua require'dap'.toggle_breakpoint()<CR>
+    map ;c :lua require'dap'.continue()<CR>
+    map ;o :lua require'dap'.step_over()<CR>
+    map ;i :lua require'dap'.step_into()<CR>
+
+    map ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<CR>
+    map ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<CR>
+    map ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<CR>
+    map ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<CR>
+    map ;u :lua require('dapui').toggle()<CR>
+endif
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <A-h> <C-\><C-N><C-w>h
