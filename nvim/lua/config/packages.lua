@@ -1,6 +1,7 @@
 require("config/init-lazy")
 
 require("lazy").setup({
+  -- SnipRun.lua, chatgpt.lua, coq.lua, hypersonic.lua, lsp.lua, neorg.lua, tresitter.lua, vim-visual-multi.lua
   { import = "plugins" }, -- imports ~/.config/nvim/lua/plugins/*.lua
 
   "tpope/vim-eunuch",     -- unix helpers for other packages
@@ -12,7 +13,6 @@ require("lazy").setup({
 
   "tpope/vim-surround",
   "mbbill/undotree",
-  -- multiple cursor
 
   "dag/vim-fish",
 
@@ -92,4 +92,6 @@ require("lazy").setup({
   "tpope/vim-sleuth", -- adjusts shiftwidth/expandtab based on other files
 
   { dir = "~/code/forks/ChatGPT.nvim" },
+  "stevearc/conform.nvim"
+
 }, { change_detection = { enabled = false } })

@@ -99,57 +99,8 @@ require("catppuccin").setup({
 
 require("telescope").load_extension('harpoon')
 
--- local harpoon = require("harpoon")
-
--- -- REQUIRED
--- harpoon:setup({})
--- -- REQUIRED
-
--- vim.keymap.set("n", ",wa", function() harpoon:list():append() end)
-
--- vim.keymap.set("n", ",w1", function() harpoon:list():select(1) end)
--- vim.keymap.set("n", ",w&", function() harpoon:list():select(1) end)
-
--- vim.keymap.set("n", ",w2", function() harpoon:list():select(2) end)
--- vim.keymap.set("n", ",wé", function() harpoon:list():select(2) end)
-
--- vim.keymap.set("n", ",w3", function() harpoon:list():select(3) end)
--- vim.keymap.set("n", ",w\"", function() harpoon:list():select(3) end)
-
--- vim.keymap.set("n", ",w4", function() harpoon:list():select(4) end)
--- vim.keymap.set("n", ",w'", function() harpoon:list():select(4) end)
-
--- -- Toggle previous & next buffers stored within Harpoon list
--- vim.keymap.set("n", "<C-P>", function() harpoon:list():prev() end)
--- vim.keymap.set("n", "<C-N>", function() harpoon:list():next() end)
-
--- -- basic telescope configuration
--- local conf = require("telescope.config").values
--- local function toggle_telescope(harpoon_files)
-  -- local file_paths = {}
-  -- for _, item in ipairs(harpoon_files.items) do
-    -- table.insert(file_paths, item.value)
-  -- end
-
-  -- require("telescope.pickers").new({}, {
-    -- prompt_title = "Harpoon",
-    -- finder = require("telescope.finders").new_table({
-      -- results = file_paths,
-    -- }),
-    -- previewer = conf.file_previewer({}),
-    -- sorter = conf.generic_sorter({}),
-  -- }):find()
--- end
-
--- vim.keymap.set("n", ",wl", function() toggle_telescope(harpoon:list()) end,
-  -- { desc = "Open harpoon window" })
-
-  -- local conf = require("telescope.config").values
--- local pickers = require("telescope.pickers")
--- local themes = require("telescope.themes")
--- local finders = require("telescope.finders")
--- local actions = require("telescope.actions")
--- local action_state = require("telescope.actions.state")
--- local harpoon = require('harpoon')
--- harpoon:setup({})
-
+require("conform").setup({
+  -- format_after_save = {
+  -- lsp_fallback = true,
+  -- },
+})

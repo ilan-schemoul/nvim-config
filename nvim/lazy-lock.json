@@ -4,6 +4,7 @@
   "asynctasks.vim": { "branch": "master", "commit": "851da4282ffb2ce3d5e4c2f70d2d09da7839d48f" },
   "barbar.nvim": { "branch": "master", "commit": "3c48b5edf61dda21ad41c514e53448fee366a824" },
   "better-escape.nvim": { "branch": "master", "commit": "7e86edafb8c7e73699e0320f225464a298b96d12" },
+  "conform.nvim": { "branch": "master", "commit": "bf109f061fc3cd75394b7823923187ae045cbf22" },
   "coq.artifacts": { "branch": "artifacts", "commit": "9c5067a471322c6bb866545e88e5b28c82511865" },
   "coq.thirdparty": { "branch": "3p", "commit": "d9c1492ee60d627b171c7a9bcd0c3bb35af3e0fd" },
   "fidget.nvim": { "branch": "main", "commit": "ebb8e44d6c37337e3b4f9bce31842573fa96bf8d" },
