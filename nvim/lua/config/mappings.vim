@@ -21,7 +21,7 @@ map ,Q :wqa!<CR>
 " toggle the tree files on the left
 map ,t :NvimTreeToggle<CR>
 
-:lua vim.keymap.set({"n", "v"}, ",f", function() vim.lsp.buf.format({ async = true }) end)
+:lua vim.keymap.set({"n", "v"}, ",f", function() require("conform").format({ async = true, lsp_fallback = true }) end)
 map ,D :lua vim.diagnostic.open_float()<CR>
 map ,h :lua vim.lsp.buf.hover()<CR>
 " i for implementation
@@ -65,6 +65,7 @@ nmap ,vp :next ~/.config/nvim/lua/config/packages.lua<CR>
 nmap ,vm :next ~/.config/nvim/lua/config/mappings.vim<CR>
 nmap ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<CR><CR>
 nmap ,vf :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
+nmap ,vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
 
 nmap ,V :source $MYVIMRC <CR>
 " inoremap jk <esc>
@@ -91,6 +92,7 @@ vmap e :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
 
 map ,wa :lua require("harpoon.mark").add_file()<cr>
 map ,wl :Telescope harpoon marks<cr>
+map ,wf :Telescope harpoon marks<cr>
 
 lua << EOF
 function _G.create_org_file()
@@ -108,6 +110,7 @@ EOF
 map ,yi :Neorg index<cr>
 map ,yr :Neorg return<cr>
 map ,yf :Telescope find_files search_dirs={"~/notes"}<cr>
+map ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map ,yn :call v:lua.create_org_file()<cr>
 
@@ -118,18 +121,18 @@ nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Custom env variable
 if !empty($KEYBOARD_FR)
-  nnoremap à 0
-  nnoremap & 1
-  nnoremap é 2
-  nnoremap " 3
-  nnoremap ' 4
-  nnoremap ( 5
-  nnoremap - 6
-  nnoremap è 7
-  nnoremap _ 8
-  nnoremap ç 9
+  map à 0
+  map & 1
+  map é 2
+  map " 3
+  map ' 4
+  map ( 5
+  map - 6
+  map è 7
+  map _ 8
+  map ç 9
 
-  nnoremap ù `
+  nmap ù `
 endif
 
 nnoremap ,1 <Cmd>BufferGoto 1<CR>

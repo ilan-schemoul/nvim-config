@@ -1,7 +1,5 @@
 -- ~/.config/nvim/lua/config/
 
-vim.loader.enable()
-
 require("config/packages")
 
 vim.cmd("source ~/.config/nvim/lua/config/basic.vim")

@@ -1,4 +1,3 @@
-
 if executable("fish")
   set shell=/bin/fish
 else
@@ -24,10 +23,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-if has('nvim')
-  set ttimeout
-  set ttimeoutlen=100
-endif
+set ttimeout
+set ttimeoutlen=100
 
 if has("multi_byte")
   if &encoding !~? '^u'
