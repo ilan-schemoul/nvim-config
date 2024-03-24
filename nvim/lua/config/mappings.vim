@@ -22,6 +22,7 @@ map ,Q :wqa!<CR>
 map ,t :NvimTreeToggle<CR>
 
 :lua vim.keymap.set({"n", "v"}, ",f", function() require("conform").format({ async = true, lsp_fallback = true }) end)
+map ,F :lua require('FTerm').toggle()<CR>
 map ,D :lua vim.diagnostic.open_float()<CR>
 map ,h :lua vim.lsp.buf.hover()<CR>
 " i for implementation
@@ -198,7 +199,7 @@ inoremap <A-L> <C-\><C-N><C-w>L
 nnoremap <A-H> <C-w>H
 nnoremap <A-J> <C-w>J
 nnoremap <A-K> <C-w>K
-nnoremap <A-L> <C-w>l
+nnoremap <A-L> <C-w>L
 " ----- end of window movement
 
 function! ToggleSignColumn()
