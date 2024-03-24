@@ -60,8 +60,6 @@ end
 
 vim.g.code_action_menu_window_border = 'single'
 
-require 'bufferline'.setup { auto_hide = true, minimum_padding = 0, maximum_padding = 0, icons = { filetype = { enabled = false }, modified = { button = false } } }
-
 require('leap').add_default_mappings()
 
 vim.keymap.del({ 'x', 'o' }, 'x')
@@ -94,13 +92,13 @@ require("catppuccin").setup({
     dap_ui = true,
     rainbow_delimiters = true,
     telescope = { enabled = true },
+    illuminate = { enabled = true, lsp = false },
+    dashboard = true,
   }
 })
 
+vim.cmd.colorscheme "catppuccin-macchiato"
+
 require("telescope").load_extension('harpoon')
 
-require("conform").setup({
-  -- format_after_save = {
-  -- lsp_fallback = true,
-  -- },
-})
+require("conform").setup()
