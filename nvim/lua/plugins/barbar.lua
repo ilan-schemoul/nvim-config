@@ -8,6 +8,9 @@ return {
       filetype = {
         custom_colors = true,
       },
+      diagnostics = {
+        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = '🐛' },
+      },
     },
   },
 }
