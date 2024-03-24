@@ -115,6 +115,13 @@ map ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map ,yn :call v:lua.create_org_file()<cr>
 
+map ,jt :Gitsigns toggle_numhl<cr>
+map ,js :Gitsigns stage_hunk<cr>
+map ,jr :Gitsigns reset_hunk<cr>
+vmap ,js :'<,'>Gitsigns stage_hunk<cr>
+vmap ,jr :'<,'>Gitsigns reset_hunk<cr>
+map ,jp :Gitsigns preview_hunk<cr>
+
 tnoremap <Esc> <C-\><C-n><CR>
 
 " select recently paste content

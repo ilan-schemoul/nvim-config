@@ -1,6 +1,9 @@
 return {
   "gelguy/wilder.nvim",
   event = "CmdlineEnter",
+  build = function()
+    vim.cmd("UpdateRemotePlugins")
+  end,
   config = function()
     local wilder = require('wilder')
     wilder.setup({ modes = { ':' } })
