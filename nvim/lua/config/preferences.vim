@@ -59,6 +59,4 @@ autocmd BufReadPost *
       \   exe "normal g`\"" |
       \ endif
 
-colorscheme catppuccin-macchiato
-
 hi CursorLineNr guifg=#aaaaaa

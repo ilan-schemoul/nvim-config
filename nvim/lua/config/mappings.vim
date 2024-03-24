@@ -166,6 +166,7 @@ if !exists("b:norg")
     map ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<CR>
     map ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<CR>
     map ;u :lua require('dapui').toggle()<CR>
+    map ; ;;
 endif
 
 " ------ alt instead of ctrl for moving windows

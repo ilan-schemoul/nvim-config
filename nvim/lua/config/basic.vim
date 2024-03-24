@@ -25,6 +25,7 @@ endif
 
 set ttimeout
 set ttimeoutlen=100
+set timeoutlen=700
 
 if has("multi_byte")
   if &encoding !~? '^u'
