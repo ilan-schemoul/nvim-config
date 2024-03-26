@@ -1,5 +1,5 @@
 return {
-  "jackMort/ChatGPT.nvim",
+  "ilan-schemoul/ChatGPT.nvim",
   cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTCompleteCode", "ChatGPTEditWithInstructions", "ChatGPTRun" },
   opts = {
     api_key_cmd = "op.exe read op://Personal/OPENSSH_API_KEY/credential --no-newline",
