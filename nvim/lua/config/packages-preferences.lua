@@ -1,12 +1,6 @@
 vim.g.VM_mouse_mappings = 1
 vim.g.resurrect_ignore_patterns = { '/.git/', '^fugitive://' }
-vim.g.auto_save_silent = 1
-vim.g.auto_save = 1
 vim.g.code_action_menu_show_details = false
-vim.g.NERDSpaceDelims = 1
-vim.g.NERDCustomDelimiters = {
-  c = { left = '//', right = '' }
-}
 vim.g.vista_default_executive = 'nvim_lsp'
 vim.g.asyncrun_open = 6 -- for AsyncTask
 
@@ -29,7 +23,7 @@ local function my_on_attach(bufnr)
 
   -- default mappings
   api.config.mappings.default_on_attach(bufnr)
-    vim.keymap.set('n', '<C-b>', api.node.open.vertical, opts('Open: Vertical Split'))
+  vim.keymap.set('n', '<C-b>', api.node.open.vertical, opts('Open: Vertical Split'))
 end
 
 require("nvim-tree").setup {
@@ -119,5 +113,3 @@ require("catppuccin").setup({
 vim.cmd.colorscheme "catppuccin-macchiato"
 
 require("telescope").load_extension('harpoon')
-
-require("conform").setup()

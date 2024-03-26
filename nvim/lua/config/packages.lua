@@ -1,17 +1,12 @@
 require("config/init-lazy")
 
-vim.g.NERDCreateDefaultMappings = 0
-
 require("lazy").setup({
   -- SnipRun.lua, chatgpt.lua, coq.lua, hypersonic.lua, lsp.lua, neorg.lua, tresitter.lua, vim-visual-multi.lua
   { import = "plugins" }, -- imports ~/.config/nvim/lua/plugins/*.lua
 
   "tpope/vim-eunuch",     -- unix helpers for other packages
 
-  "907th/vim-auto-save",
-  "preservim/nerdcommenter",
-
-  "tpope/vim-fugitive", -- git
+  "tpope/vim-fugitive",   -- git
 
   "tpope/vim-surround",
   "mbbill/undotree",
@@ -93,7 +88,4 @@ require("lazy").setup({
   "tpope/vim-sleuth", -- adjusts shiftwidth/expandtab based on other files
 
   { dir = "~/code/forks/ChatGPT.nvim" },
-  "stevearc/conform.nvim",
-  "eandrju/cellular-automaton.nvim",
-
-}, { change_detection = { enabled = false } })
+}, { change_detection = { enabled = true, notify = false } })

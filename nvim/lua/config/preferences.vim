@@ -22,7 +22,7 @@ autocmd FileType gdscript set expandtab
 set tabstop=2 " number of spaces a tab is
 set shiftwidth=2 " number of spaces when using >> and autoindent
 set shiftround " round indent to multiples
-set signcolumn=number " show in the same column as the numbers, hide if no signs (like auto option)
+set signcolumn=no " show in the same column as the numbers, hide if no signs (like auto option)
 
 set scrolloff=4 " minimum number of lines below and above cursor
 set sidescrolloff=5 " columns to keep on right and left of cursor
