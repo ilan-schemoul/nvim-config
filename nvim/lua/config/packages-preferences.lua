@@ -11,9 +11,6 @@ vim.g.chadtree_settings = {
   keymap = { copy_relname = { "<c-c>" } },
 }
 
-vim.g.calendar_google_calendar = 1
-vim.g.calendar_google_task = 1
-
 local function my_on_attach(bufnr)
   local api = require("nvim-tree.api")
 
@@ -39,6 +36,7 @@ require("fidget").setup({ progress = {
 require("colorizer").setup()
 
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("notify")
 require("telescope").setup({
   defaults = {
     mappings = {
@@ -78,8 +76,6 @@ vim.keymap.del({ "x", "o" }, "x")
 vim.keymap.del({ "x", "o" }, "X")
 
 require("renamer").setup()
-
-require("oil").setup()
 
 require("neotest").setup({
   adapters = {

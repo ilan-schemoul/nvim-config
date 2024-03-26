@@ -53,8 +53,6 @@ require("lazy").setup({
 
   { "RRethy/vim-illuminate", event = { "BufReadPre", "BufNewFile" } },
 
-  "stevearc/oil.nvim",
-
   "liuchengxu/vista.vim",
 
   "skywind3000/asynctasks.vim",
