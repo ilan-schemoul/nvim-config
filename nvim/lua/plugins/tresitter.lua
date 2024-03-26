@@ -15,7 +15,7 @@ return {
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     keys = {
       { "<c-space>", desc = "Increment selection" },
-      { "<bs>",      desc = "Decrement selection", mode = "x" },
+      { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     opts = {
       ensure_installed = { "c", "markdown_inline", "regex", "markdown", "cpp", "rust" },
@@ -70,13 +70,13 @@ return {
           enable = true,
           swap_next = {
             [",;"] = "@parameter.inner", -- swap parameters/argument with next
-            ["à;"] = "@function.outer",  -- swap function with next
-            ["0;"] = "@function.outer",  -- swap function with next
+            ["à;"] = "@function.outer", -- swap function with next
+            ["0;"] = "@function.outer", -- swap function with next
           },
           swap_previous = {
             [";,"] = "@parameter.inner", -- swap parameters/argument with prev
-            [";à"] = "@function.outer",  -- swap function with previous
-            [";0"] = "@function.outer",  -- swap function with previous
+            [";à"] = "@function.outer", -- swap function with previous
+            [";0"] = "@function.outer", -- swap function with previous
           },
         },
       },
@@ -106,7 +106,6 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
-
 
   -- Show context of the current function
   {

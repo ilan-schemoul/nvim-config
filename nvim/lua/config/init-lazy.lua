@@ -70,8 +70,8 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufWritePre" }, {
 })
 
 vim.g.coq_settings = {
-  auto_start = 'shut-up',
+  auto_start = "shut-up",
   display = {
     mark_applied_notify = false,
-  }
+  },
 }

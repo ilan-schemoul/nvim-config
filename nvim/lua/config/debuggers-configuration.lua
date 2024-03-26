@@ -1,16 +1,16 @@
-local dap = require('dap')
+local dap = require("dap")
 
 -- for c/c++/rust (rust can be improved with https://github.com/simrat39/rust-tools.nvim/wiki/Debugging)
 dap.adapters.codelldb = {
-  type = 'server',
+  type = "server",
   port = "2000",
   executable = {
-    command = '/home/ilan/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb',
-    args = {"--port", "2000"},
+    command = "/home/ilan/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb",
+    args = { "--port", "2000" },
 
     -- On windows you may have to uncomment this:
     -- detached = false,
-  }
+  },
 }
 local codelldb_config = {
   {
@@ -18,9 +18,9 @@ local codelldb_config = {
     type = "codelldb",
     request = "launch",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
-    cwd = '${workspaceFolder}',
+    cwd = "${workspaceFolder}",
     stopOnEntry = false,
   },
 }

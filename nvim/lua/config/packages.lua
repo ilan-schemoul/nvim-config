@@ -4,9 +4,9 @@ require("lazy").setup({
   -- SnipRun.lua, chatgpt.lua, coq.lua, hypersonic.lua, lsp.lua, neorg.lua, tresitter.lua, vim-visual-multi.lua
   { import = "plugins" }, -- imports ~/.config/nvim/lua/plugins/*.lua
 
-  "tpope/vim-eunuch",     -- unix helpers for other packages
+  "tpope/vim-eunuch", -- unix helpers for other packages
 
-  "tpope/vim-fugitive",   -- git
+  "tpope/vim-fugitive", -- git
 
   "tpope/vim-surround",
   "mbbill/undotree",
@@ -26,7 +26,7 @@ require("lazy").setup({
   "kyazdani42/nvim-web-devicons",
   "nvim-lua/plenary.nvim",
   "nvim-telescope/telescope.nvim",
-  { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   "mfussenegger/nvim-dap",
   "rcarriga/nvim-dap-ui",
@@ -51,7 +51,7 @@ require("lazy").setup({
 
   "MunifTanjim/nui.nvim",
 
-  { "RRethy/vim-illuminate",                    event = { "BufReadPre", "BufNewFile" } },
+  { "RRethy/vim-illuminate", event = { "BufReadPre", "BufNewFile" } },
 
   "stevearc/oil.nvim",
 
@@ -72,7 +72,9 @@ require("lazy").setup({
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 
   "supercrabtree/vim-resurrect",
@@ -80,7 +82,7 @@ require("lazy").setup({
   {
     "ThePrimeagen/harpoon",
     version = "ccae1b9bec717ae284906b0bf83d720e59d12b91", -- v1
-    requires = { "nvim-lua/plenary.nvim" }
+    requires = { "nvim-lua/plenary.nvim" },
   },
 
   "max397574/better-escape.nvim",
