@@ -21,7 +21,7 @@ return {
       ensure_installed = { "c", "markdown_inline", "regex", "markdown", "cpp", "rust" },
       sync_install = false,
       auto_install = true,
-      ignore_install = { "zig" },
+      ignore_install = { "zig", "asm" },
 
       highlight = {
         enable = true,
@@ -111,7 +111,11 @@ return {
   -- Show context of the current function
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "LazyFile",
     enabled = true,
+    opts = {
+      mode = "cursor",
+      max_lines = 3,
+      min_window_height = 40,
+    },
   },
 }

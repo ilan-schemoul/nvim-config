@@ -21,7 +21,6 @@ map ,Q :wqa!<CR>
 " toggle the tree files on the left
 map ,t :NvimTreeToggle<CR>
 
-:lua vim.keymap.set({"n", "v"}, ",f", function() require("conform").format({ async = true, lsp_fallback = true }) end)
 map ,F :lua require('FTerm').toggle()<CR>
 map ,D :lua vim.diagnostic.open_float()<CR>
 map ,h :lua vim.lsp.buf.hover()<CR>
@@ -66,6 +65,7 @@ nmap ,vp :next ~/.config/nvim/lua/config/packages.lua<CR>
 nmap ,vm :next ~/.config/nvim/lua/config/mappings.vim<CR>
 nmap ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<CR><CR>
 nmap ,vf :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
+nmap ,vg :Telescope live_grep search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
 nmap ,vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
 
 nmap ,V :source $MYVIMRC <CR>
@@ -76,9 +76,6 @@ map ,u :UndotreeToggle<CR>
 
 "  b fo bugs
 map ,b :TroubleToggle<CR>
-
-map ,c <plug>NERDCommenterToggle
-imap ,c <plug>NERDCommenterInsert
 
 map ,o :Vista!!<CR>
 
@@ -94,6 +91,16 @@ vmap e :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
 map ,wa :lua require("harpoon.mark").add_file()<cr>
 map ,wl :Telescope harpoon marks<cr>
 map ,wf :Telescope harpoon marks<cr>
+map ,w& :lua require("harpoon.ui").nav_file(1)<cr>
+map ,w1 :lua require("harpoon.ui").nav_file(1)<cr>
+map ,wé :lua require("harpoon.ui").nav_file(2)<cr>
+map ,w2 :lua require("harpoon.ui").nav_file(2)<cr>
+map ,w" :lua require("harpoon.ui").nav_file(3)<cr>
+map ,w3 :lua require("harpoon.ui").nav_file(3)<cr>
+map ,w' :lua require("harpoon.ui").nav_file(4)<cr>
+map ,w4 :lua require("harpoon.ui").nav_file(4)<cr>
+map ,w( :lua require("harpoon.ui").nav_file(5)<cr>
+map ,w5 :lua require("harpoon.ui").nav_file(5)<cr>
 
 lua << EOF
 function _G.create_org_file()
@@ -103,7 +110,6 @@ function _G.create_org_file()
   dirman.create_file(file, "notes", {
       no_open  = false,  -- open file after creation?
       force    = false,  -- overwrite file if exists
-      metadata = {}      -- key-value table for metadata fields
   })
 end
 EOF
@@ -115,7 +121,9 @@ map ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map ,yn :call v:lua.create_org_file()<cr>
 
+map ,jn :Gitsigns toggle_numhl<cr>
 map ,jt :Gitsigns toggle_numhl<cr>
+map ,jh :Gitsigns toggle_linehl<cr>
 map ,js :Gitsigns stage_hunk<cr>
 map ,jr :Gitsigns reset_hunk<cr>
 vmap ,js :'<,'>Gitsigns stage_hunk<cr>
