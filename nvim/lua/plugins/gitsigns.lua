@@ -3,6 +3,6 @@ return {
   cmd = "Gitsigns",
   opts = {
     signcolumn = false,
-    numhl = true,
+    numhl = false,
   },
 }

@@ -14,6 +14,7 @@ return {
     -- end
     require("dashboard").setup({
       theme = "hyper",
+      shortcut_type = "number",
       config = {
         header = {},
         shortcut = {},
