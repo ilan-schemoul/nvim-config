@@ -10,7 +10,6 @@ return {
     },
     write_all_buffers = false,
     debounce_delay = 135,
-    prompt_message = '',
+    prompt_message = "",
   },
 }
-

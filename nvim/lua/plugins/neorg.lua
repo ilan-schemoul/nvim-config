@@ -2,11 +2,11 @@ return {
   "nvim-neorg/neorg",
   tag = "v7.0.0",
   build = ":Neorg sync-parsers",
-  ft = "norg",   -- lazy load on file type
+  ft = "norg", -- lazy load on file type
   cmd = "Neorg", -- lazy load on command
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    require("neorg").setup {
+    require("neorg").setup({
       load = {
         ["core.defaults"] = {},
         ["core.concealer"] = {},
@@ -30,7 +30,7 @@ return {
           },
         },
       },
-    }
+    })
 
     vim.wo.foldlevel = 99
     vim.wo.conceallevel = 2

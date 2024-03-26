@@ -26,7 +26,7 @@ return {
     keymaps = {
       select_session = "<cr>",
     },
-    actions_paths = "~/nvim.ilanschemoul.me/nvim/actions_gpt.json"
+    actions_paths = "~/nvim.ilanschemoul.me/nvim/actions_gpt.json",
   },
   config = function(_, opts)
     require("chatgpt").setup(opts)
@@ -35,6 +35,6 @@ return {
     "MunifTanjim/nui.nvim",
     "nvim-lua/plenary.nvim",
     "folke/trouble.nvim",
-    "nvim-telescope/telescope.nvim"
+    "nvim-telescope/telescope.nvim",
   },
 }
