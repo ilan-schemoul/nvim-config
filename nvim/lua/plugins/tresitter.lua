@@ -113,7 +113,7 @@ return {
     enabled = true,
     opts = {
       mode = "cursor",
-      max_lines = 3,
+      max_lines = 5,
       min_window_height = 40,
     },
   },
