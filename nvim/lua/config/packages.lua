@@ -25,7 +25,7 @@ require("lazy").setup({
 
   "kyazdani42/nvim-web-devicons",
   "nvim-lua/plenary.nvim",
-  "nvim-telescope/telescope.nvim",
+  "ilan-schemoul/telescope.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   "mfussenegger/nvim-dap",
