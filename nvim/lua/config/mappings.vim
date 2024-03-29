@@ -26,8 +26,7 @@ map ,h :lua vim.lsp.buf.hover()<CR>
 " i for implementation
 map ,i :Telescope lsp_references<CR>
 map ,d :Telescope lsp_definitions<CR>
-map ,sw :Telescope lsp_workspace_symbols<CR>
-map ,sd :Telescope lsp_document_symbols<CR>
+map ,s :Telescope lsp_dynamic_workspace_symbols<CR>
 
 map ,a :CodeActionMenu<CR>
 map ,n :lua require('renamer').rename()<CR>
@@ -42,7 +41,6 @@ map ,m :Mason<CR>
 map ,l :Telescope find_files<cr>
 map ,g :Telescope live_grep<cr>
 map ,G :Telescope grep_string<cr>
-map ,ù :Telescope marks<cr>
 map ùù :Telescope marks<cr>
 map ,$ :Telescope oldfiles<cr>
 
@@ -126,8 +124,7 @@ map ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map ,yn :call v:lua.create_org_file()<cr>
 
 noremap zc 1z=
-noremap z= :lua require'telescope.builtin'.spell_suggest{}<cr>
-map zl :lua require'telescope.builtin'.spell_suggest{}<cr>
+map z= :lua require'telescope.builtin'.spell_suggest{}<cr>
 map zr :spellr<cr>
 
 tnoremap <Esc> <C-\><C-n><CR>
