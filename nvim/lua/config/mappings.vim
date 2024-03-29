@@ -33,13 +33,16 @@ map ,n :lua require('renamer').rename()<CR>
 
 map ,/ :!g 
 
-map ,G :GodotRunLast<CR>
-map ,R :GodotRunCurrent<CR>
+" map ,G :GodotRunLast<CR>
+" map ,R :GodotRunCurrent<CR>
 
 map ,m :Mason<CR>
 
 map ,l :Telescope find_files<cr>
 map ,g :Telescope live_grep<cr>
+map ,G :Telescope grep_string<cr>
+map ùù :Telescope marks<cr>
+map ,$ :Telescope oldfiles<cr>
 
 map ,x :BufferDelete<CR>
 tnoremap ,x <C-\><C-n>:BufferDelete!<CR>
@@ -119,6 +122,10 @@ map ,yf :Telescope find_files search_dirs={"~/notes"}<cr>
 map ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map ,yn :call v:lua.create_org_file()<cr>
+
+noremap zc 1z=
+map z= :lua require'telescope.builtin'.spell_suggest{}<cr>
+map zr :spellr<cr>
 
 tnoremap <Esc> <C-\><C-n><CR>
 

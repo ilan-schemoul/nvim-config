@@ -49,6 +49,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "580bc045c7ab3ab3ebd267774038c0d8cc19c789" },
   "renamer.nvim": { "branch": "develop", "commit": "1614d466df53899f11dd5395eaac3c09a275c384" },
   "ripgrep": { "branch": "master", "commit": "eca13f08a2a0ece89a423565891e48a90a8aedef" },
+  "sexy_scroller.vim": { "branch": "master", "commit": "4f6780102ac74e3473e9f6f3d48b6041975e4300" },
   "sniprun": { "branch": "master", "commit": "97daa506e2faa3939e0491642103635f9d22cd04" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
   "telescope.nvim": { "branch": "master", "commit": "c2b8311dfacd08b3056b8f0249025d633a4e71a8" },

@@ -9,9 +9,6 @@ return {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     },
     config = function(_, _)
-      require("lspconfig").hdl_checker.setup({})
-      require("lspconfig").gdscript.setup({})
-
       require("lspconfig").lua_ls.setup({
         settings = {
           Lua = {

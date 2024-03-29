@@ -1,5 +1,9 @@
 autocmd BufEnter term://* startinsert " start in insert mode in terminal
 
+set spelllang=en_us
+set spell
+set spellsuggest=best,5
+
 set modelines=0 " modelines allows to enable options in a file with special comments
 
 set laststatus=0 " no bar at the bottom
