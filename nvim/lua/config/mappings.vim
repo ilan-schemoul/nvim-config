@@ -38,6 +38,7 @@ map ,/ :!g
 
 map ,m :Mason<CR>
 
+map ,T :Telescope<cr>
 map ,l :Telescope find_files<cr>
 map ,g :Telescope live_grep<cr>
 map ,G :Telescope grep_string<cr>

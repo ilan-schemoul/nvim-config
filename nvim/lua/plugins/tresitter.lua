@@ -8,9 +8,8 @@ return {
       require("nvim-treesitter.query_predicates")
     end,
     dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-      },
+      { "ilan-schemoul/nvim-treesitter-textobjects", branch = "lookbehind-local-keymap-setting" },
+      -- dir = "~/code/forks/nvim-treesitter-textobjects",
     },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     keys = {
@@ -46,6 +45,7 @@ return {
             ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
             ["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
             ["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
+            ["t="] = { query = "@type", desc = "Select right hand side of an assignment", lookbehind = true },
 
             ["oa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
             ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
