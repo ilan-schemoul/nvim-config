@@ -1,6 +1,7 @@
 autocmd BufEnter term://* startinsert " start in insert mode in terminal
 
 set spelllang=en_us
+set spellcapcheck=no
 set spell
 set spellsuggest=best,5
 
