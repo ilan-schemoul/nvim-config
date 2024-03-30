@@ -124,7 +124,8 @@ map ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map ,yn :call v:lua.create_org_file()<cr>
 
 noremap zc 1z=
-map z= :lua require'telescope.builtin'.spell_suggest{}<cr>
+map z= :CustomTelescopeSpellSuggest<cr>
+map zl :CustomTelescopeSpellSuggest<cr>
 map zr :spellr<cr>
 
 tnoremap <Esc> <C-\><C-n><CR>

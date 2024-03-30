@@ -35,6 +35,30 @@ require("fidget").setup({ progress = {
 
 require("colorizer").setup()
 
+vim.api.nvim_create_user_command('CustomTelescopeSpellSuggest', function()
+  require('telescope.builtin').spell_suggest({
+    attach_mappings = function(prompt_bufnr)
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
+      local utils = require("telescope.utils")
+
+      actions.select_default:replace(function()
+        local selection = action_state.get_selected_entry()
+        if selection == nil then
+          utils.__warn_no_selection("builtin.spell_suggest")
+          return
+        end
+
+        action_state.get_current_picker(prompt_bufnr)._original_mode = "i"
+        actions.close(prompt_bufnr)
+        vim.cmd("normal! " .. selection.index .. "z=")
+        vim.cmd("stopinsert")
+      end)
+      return true
+    end,
+  })
+end, {})
+
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("notify")
 require("telescope").setup({
