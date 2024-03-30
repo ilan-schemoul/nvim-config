@@ -40,12 +40,12 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
+            ["t"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
             -- You can use the capture groups defined in textobjects.scm
             ["o="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
             ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
             ["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
             ["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
-            ["t="] = { query = "@type", desc = "Select right hand side of an assignment", lookbehind = true },
 
             ["oa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
             ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
