@@ -42,6 +42,7 @@ map ,T :Telescope<cr>
 map ,l :Telescope find_files<cr>
 map ,g :Telescope live_grep<cr>
 map ,G :Telescope grep_string<cr>
+map ,ù :Telescope marks<cr>
 map ùù :Telescope marks<cr>
 map ,$ :Telescope oldfiles<cr>
 
@@ -104,6 +105,8 @@ map ,w' :lua require("harpoon.ui").nav_file(4)<cr>
 map ,w4 :lua require("harpoon.ui").nav_file(4)<cr>
 map ,w( :lua require("harpoon.ui").nav_file(5)<cr>
 map ,w5 :lua require("harpoon.ui").nav_file(5)<cr>
+map ,w- :lua require("harpoon.ui").nav_file(6)<cr>
+map ,w6 :lua require("harpoon.ui").nav_file(6)<cr>
 
 lua << EOF
 function _G.create_org_file()
