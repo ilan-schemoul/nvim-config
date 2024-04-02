@@ -2,7 +2,6 @@ vim.g.VM_mouse_mappings = 1
 vim.g.resurrect_ignore_patterns = { "/.git/", "^fugitive://" }
 vim.g.code_action_menu_show_details = false
 vim.g.vista_default_executive = "nvim_lsp"
-vim.g.asyncrun_open = 6 -- for AsyncTask
 
 vim.g.chadtree_settings = {
   view = {
@@ -59,8 +58,8 @@ vim.api.nvim_create_user_command('CustomTelescopeSpellSuggest', function()
   })
 end, {})
 
+require("telescope").load_extension("noice")
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("notify")
 require("telescope").setup({
   defaults = {
     mappings = {
@@ -82,15 +81,6 @@ require("dapui").setup({
     enabled = false,
   },
 })
-
-local notify = vim.notify
-vim.notify = function(msg, ...)
-  if msg:match("warning: multiple different client offset_encodings") then
-    return
-  end
-
-  notify(msg, ...)
-end
 
 vim.g.code_action_menu_window_border = "single"
 
