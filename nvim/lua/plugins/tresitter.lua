@@ -8,8 +8,7 @@ return {
       require("nvim-treesitter.query_predicates")
     end,
     dependencies = {
-      { "ilan-schemoul/nvim-treesitter-textobjects", branch = "lookbehind-local-keymap-setting" },
-      -- dir = "~/code/forks/nvim-treesitter-textobjects",
+      { "ilan-schemoul/nvim-treesitter-textobjects", branch = "custom" },
     },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     keys = {
@@ -41,6 +40,7 @@ return {
           lookahead = true,
           keymaps = {
             ["t"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
+
             -- You can use the capture groups defined in textobjects.scm
             ["o="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
             ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
@@ -50,8 +50,10 @@ return {
             ["oa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
             ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
 
-            ["oi"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
-            ["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
+            ["o,"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
+            ["i,"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
+            ["o?"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
+            ["i?"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
 
             ["ol"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
             ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
@@ -64,6 +66,12 @@ return {
 
             ["oo"] = { query = "@class.outer", desc = "Select outer part of a class" },
             ["io"] = { query = "@class.inner", desc = "Select inner part of a class" },
+
+            ["ob"] = { query = "@block.outer" },
+            ["ib"] = { query = "@block.inner" },
+
+            ["or"] = { query = "@return.outer", desc = "Select outer part of return" },
+            ["ir"] = { query = "@return.inner", desc = "Select inner part of return" },
           },
         },
         swap = {

@@ -55,9 +55,6 @@ require("lazy").setup({
 
   "liuchengxu/vista.vim",
 
-  "skywind3000/asynctasks.vim",
-  "skywind3000/asyncrun.vim",
-
   "antoinemadec/FixCursorHold.nvim",
   "nvim-neotest/neotest",
   "nvim-neotest/nvim-nio",
