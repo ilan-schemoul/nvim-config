@@ -61,8 +61,6 @@ require("lazy").setup({
   "nvim-neotest/neotest-python",
   "rouge8/neotest-rust",
 
-  "catppuccin/nvim",
-
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

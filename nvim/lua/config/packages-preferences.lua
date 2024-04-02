@@ -102,23 +102,4 @@ require("neotest").setup({
 
 require("better_escape").setup()
 
-require("catppuccin").setup({
-  integrations = {
-    gitsigns = true,
-    nvimtree = true,
-    treesitter = true,
-    notify = true,
-    mason = true,
-    neotest = true,
-    dap = true,
-    dap_ui = true,
-    rainbow_delimiters = true,
-    telescope = { enabled = true },
-    illuminate = { enabled = true, lsp = false },
-    dashboard = true,
-  },
-})
-
-vim.cmd.colorscheme("catppuccin-macchiato")
-
 require("telescope").load_extension("harpoon")

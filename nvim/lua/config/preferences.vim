@@ -1,3 +1,5 @@
+colorscheme catppuccin
+
 autocmd BufEnter term://* startinsert " start in insert mode in terminal
 
 set spelllang=en_us
