@@ -1,4 +1,4 @@
-colorscheme catppuccin
+colorscheme catppuccin-macchiato
 
 autocmd BufEnter term://* startinsert " start in insert mode in terminal
 
