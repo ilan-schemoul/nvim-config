@@ -1,27 +1,41 @@
 return {
-  "nvimdev/dashboard-nvim",
+  "ilan-schemoul/dashboard-nvim",
+  branch = "dashboard-update-footer",
+
   event = "VimEnter",
   config = function()
-    local curl = require("plenary.curl")
-    -- local ok, res = pcall(curl.get, "wttr.in/?format=1", { timeout = 150 })
-    local weather = ""
-    -- if ok and res.status == 200 then
-    -- weather = res.body
-    -- elseif not ok then
-    -- vim.cmd("echom \"curl failed\"")
-    -- else
-    -- vim.cmd("echom " .. res.status)
-    -- end
-    require("dashboard").setup({
-      theme = "hyper",
-      shortcut_type = "number",
-      config = {
-        header = {},
-        shortcut = {},
-        footer = { "", weather },
-      },
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "dashboard",
+      callback = function()
+        require("plenary.curl").get("wttr.in/?format=1", {
+          callback = vim.schedule_wrap(function(response)
+            if response.status == 200 then
+              local body = response.body:gsub('%s+', "\\ ")
+              vim.cmd("DashboardUpdateFooter \\  " .. body)
+            else
+              vim.cmd("DashboardUpdateFooter")
+              print("weather failed status is ", response.status)
+            end
+          end),
+          on_error = vim.schedule_wrap(function(opts)
+            print("curl weather failed " .. opts.message)
+            vim.cmd("DashboardUpdateFooter")
+          end),
+        })
+
+        require("dashboard").setup({
+          theme = "hyper",
+          shortcut_type = "number",
+          config = {
+            header = {},
+            shortcut = {},
+            -- footer = { "", "Loading...", "deded", "dede" },
+          },
+        })
+
+        vim.cmd("highlight DashboardFooter cterm=italic gui=italic guifg=#6e738d")
+      end,
     })
-    vim.cmd("highlight DashboardFooter cterm=italic gui=italic guifg=#6e738d")
   end,
   dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }
