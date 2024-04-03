@@ -26,7 +26,8 @@ map <silent> ,h :lua vim.lsp.buf.hover()<CR>
 " i for implementation
 map <silent> ,i :Telescope lsp_references<CR>
 map <silent> ,d :Telescope lsp_definitions<CR>
-map <silent> ,s :Telescope lsp_dynamic_workspace_symbols<CR>
+map <silent> ,sd :Telescope lsp_dynamic_workspace_symbols<CR>
+map <silent> ,ss :Telescope lsp_workspace_symbols<CR>
 
 map <silent> ,a :CodeActionMenu<CR>
 map <silent> ,n :lua require('renamer').rename()<CR>
@@ -41,6 +42,7 @@ map <silent> ,m :Mason<CR>
 map <silent> ,T :Telescope<cr>
 map <silent> ,z :Telescope buffers<cr>
 map <silent> ,l :Telescope find_files<cr>
+map <silent> ,f :Telescope find_files<cr>
 map <silent> ,g :Telescope live_grep<cr>
 map <silent> ,G :Telescope grep_string<cr>
 map <silent> ,ù :Telescope marks<cr>
