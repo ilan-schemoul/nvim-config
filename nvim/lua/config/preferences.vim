@@ -7,6 +7,8 @@ set spellcapcheck=no
 set spell
 set spellsuggest=best,5
 
+set magic " No need to escape in regex
+
 set modelines=0 " modelines allows to enable options in a file with special comments
 
 set laststatus=0 " no bar at the bottom

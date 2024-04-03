@@ -42,11 +42,9 @@ map <silent> ,m :Mason<CR>
 map <silent> ,T :Telescope<cr>
 map <silent> ,z :Telescope buffers<cr>
 map <silent> ,l :Telescope find_files<cr>
-map <silent> ,f :Telescope find_files<cr>
 map <silent> ,g :Telescope live_grep<cr>
 map <silent> ,G :Telescope grep_string<cr>
 map <silent> ,ù :Telescope marks<cr>
-map <silent> ùù :Telescope marks<cr>
 map <silent> ,$ :Telescope oldfiles<cr>
 
 map <silent> ,x :bd<CR>
@@ -67,7 +65,6 @@ nmap <silent> ,vc :next ~/.config/nvim/init.lua<CR>
 nmap <silent> ,vp :next ~/.config/nvim/lua/config/packages.lua<CR>
 nmap <silent> ,vm :next ~/.config/nvim/lua/config/mappings.vim<CR>
 nmap <silent> ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<CR><CR>
-nmap <silent> ,vf :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
 nmap <silent> ,vg :Telescope live_grep search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
 nmap <silent> ,vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
 
@@ -89,7 +86,6 @@ vmap <silent> e :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <
 
 map <silent> ,wa :lua require("harpoon.mark").add_file()<cr>
 map <silent> ,wl :Telescope harpoon marks<cr>
-map <silent> ,wf :Telescope harpoon marks<cr>
 map <silent> ,w& :lua require("harpoon.ui").nav_file(1)<cr>
 map <silent> ,w1 :lua require("harpoon.ui").nav_file(1)<cr>
 map <silent> ,wé :lua require("harpoon.ui").nav_file(2)<cr>
@@ -117,7 +113,6 @@ EOF
 
 map <silent> ,yi :Neorg index<cr>
 map <silent> ,yr :Neorg return<cr>
-map <silent> ,yf :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map <silent> ,yn :call v:lua.create_org_file()<cr>
@@ -131,6 +126,9 @@ tnoremap <silent> <Esc> <C-\><C-n><CR>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Very magic by default
+nnoremap / /\v
 
 " Custom env variable
 if !empty($KEYBOARD_FR)

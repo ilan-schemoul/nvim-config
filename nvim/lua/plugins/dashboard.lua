@@ -1,6 +1,5 @@
 return {
   "ilan-schemoul/dashboard-nvim",
-  branch = "dashboard-update-footer",
 
   event = "VimEnter",
   config = function()
