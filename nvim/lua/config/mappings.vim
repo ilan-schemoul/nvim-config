@@ -1,7 +1,6 @@
 " Mappings defined by plugins
 " gA to see all bases for a number under the cursor cr{b/x/d/o} to change a
 " number base
-" s{char1}{char2}{label} to jump to a word (leap)
 
 " toggle relativenumber + number. It shows on the left column the number
 " of the current line and the relative number of lines aboves and below
