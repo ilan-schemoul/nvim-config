@@ -31,3 +31,4 @@ zig/!
 zig
 are/!
 are
+SIMD
