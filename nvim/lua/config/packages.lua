@@ -21,7 +21,6 @@ require("lazy").setup({
   { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" } },
 
   "norcalli/nvim-colorizer.lua",
-  "ggandor/leap.nvim", -- to jump to a part of code (click on s)
 
   "kyazdani42/nvim-web-devicons",
   "nvim-lua/plenary.nvim",

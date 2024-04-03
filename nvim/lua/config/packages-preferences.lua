@@ -84,8 +84,6 @@ require("dapui").setup({
 
 vim.g.code_action_menu_window_border = "single"
 
-require("leap").add_default_mappings()
-
 vim.keymap.del({ "x", "o" }, "x")
 vim.keymap.del({ "x", "o" }, "X")
 
