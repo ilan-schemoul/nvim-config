@@ -8,7 +8,7 @@ return {
       require("nvim-treesitter.query_predicates")
     end,
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "custom" },
+      { "ilan-schemoul/nvim-treesitter-textobjects", branch = "lookbehind-local-keymap-setting" },
     },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     keys = {
@@ -39,7 +39,7 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
-            ["t"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
+            ["y"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
 
             -- You can use the capture groups defined in textobjects.scm
             ["o="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
