@@ -8,7 +8,7 @@ return {
       require("nvim-treesitter.query_predicates")
     end,
     dependencies = {
-      { "ilan-schemoul/nvim-treesitter-textobjects", branch = "custom" },
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "custom" },
     },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     keys = {

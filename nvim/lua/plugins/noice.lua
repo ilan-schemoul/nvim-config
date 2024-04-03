@@ -1,5 +1,6 @@
 return {
   "folke/noice.nvim",
+  -- dir = "~/code/forks/noice.nvim",
   event = "VeryLazy",
   keys = {
     { "<leader><BS>", "<cmd>Noice dismiss<cr>" },
@@ -20,6 +21,9 @@ return {
       view = "mini",
       view_error = "notify",
       enabled = true,
+    },
+    popupmenu = {
+      enabled = false,
     },
 
     routes = {
