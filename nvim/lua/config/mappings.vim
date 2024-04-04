@@ -81,8 +81,6 @@ map <silent> ,o :Vista!!<CR>
 map <silent> <silent>,kf :lua require("neotest").run.run()<cr>
 map <silent> <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
 
-vmap <silent> e :<C-U>!wslview "http://www.google.fr/search?hl=fr&q=<cword>" & <CR><CR>
-
 map <silent> ,wa :lua require("harpoon.mark").add_file()<cr>
 map <silent> ,wl :Telescope harpoon marks<cr>
 map <silent> ,w& :lua require("harpoon.ui").nav_file(1)<cr>
@@ -121,13 +119,15 @@ map <silent> z= :CustomTelescopeSpellSuggest<cr>
 map <silent> zl :CustomTelescopeSpellSuggest<cr>
 map <silent> zr :spellr<cr>
 
+nmap <silent> <Leader>, <Plug>SearchNormal
+nmap <silent> <Leader>? <Plug>SearchNormal
+vmap <silent> <Leader>, <Plug>SearchVisual
+vmap <silent> <Leader>? <Plug>SearchVisual
+
 tnoremap <silent> <Esc> <C-\><C-n><CR>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-" Very magic by default
-nnoremap / /\v
 
 " Custom env variable
 if !empty($KEYBOARD_FR)
