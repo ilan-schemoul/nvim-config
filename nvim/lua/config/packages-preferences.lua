@@ -84,9 +84,6 @@ require("dapui").setup({
 
 vim.g.code_action_menu_window_border = "single"
 
-vim.keymap.del({ "x", "o" }, "x")
-vim.keymap.del({ "x", "o" }, "X")
-
 require("renamer").setup()
 
 require("neotest").setup({
