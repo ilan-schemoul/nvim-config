@@ -1,5 +1,6 @@
 return {
   "ilan-schemoul/ChatGPT.nvim",
+  enabled = false,
   cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTCompleteCode", "ChatGPTEditWithInstructions", "ChatGPTRun" },
   opts = {
     api_key_cmd = "op.exe read op://Personal/OPENSSH_API_KEY/credential --no-newline",

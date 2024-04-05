@@ -52,7 +52,7 @@ require("lazy").setup({
 
   { "RRethy/vim-illuminate", event = { "BufReadPre", "BufNewFile" } },
 
-  "liuchengxu/vista.vim",
+  { "liuchengxu/vista.vim", enabled = false },
 
   "antoinemadec/FixCursorHold.nvim",
   "nvim-neotest/neotest",
