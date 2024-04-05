@@ -4,36 +4,36 @@
 
 " toggle relativenumber + number. It shows on the left column the number
 " of the current line and the relative number of lines aboves and below
-map <silent> ,I :set invrelativenumber<CR>
-map <silent> ,N :set invnumber<CR>
+map <silent> ,I :set invrelativenumber<cr>
+map <silent> ,N :set invnumber<cr>
 
-map <silent> ,S :call ToggleSignColumn()<CR>
-map <silent> ,E :lua require("lsp_lines").toggle()<CR>
+map <silent> ,S :call ToggleSignColumn()<cr>
+map <silent> ,E :lua require("lsp_lines").toggle()<cr>
 
 " closes everything
-map <silent> ,q :q<CR>
-map <silent> ,Q :wqa!<CR>
+map <silent> ,q :q<cr>
+map <silent> ,Q :wqa!<cr>
 
 " toggle the tree files on the left
-map <silent> ,t :NvimTreeToggle<CR>
+map <silent> ,t :NvimTreeToggle<cr>
 
-map <silent> ,D :lua vim.diagnostic.open_float()<CR>
-map <silent> ,h :lua vim.lsp.buf.hover()<CR>
+map <silent> ,D :lua vim.diagnostic.open_float()<cr>
+map <silent> ,h :lua vim.lsp.buf.hover()<cr>
 " i for implementation
-map <silent> ,i :Telescope lsp_references<CR>
-map <silent> ,d :Telescope lsp_definitions<CR>
-map <silent> ,sd :Telescope lsp_dynamic_workspace_symbols<CR>
-map <silent> ,ss :Telescope lsp_workspace_symbols<CR>
+map <silent> ,i :Telescope lsp_references<cr>
+map <silent> ,d :Telescope lsp_definitions<cr>
+map <silent> ,sd :Telescope lsp_dynamic_workspace_symbols<cr>
+map <silent> ,ss :Telescope lsp_workspace_symbols<cr>
 
-map <silent> ,a :CodeActionMenu<CR>
-map <silent> ,n :lua require('renamer').rename()<CR>
+map <silent> ,a :CodeActionMenu<cr>
+map <silent> ,n :lua require('renamer').rename()<cr>
 
 map <silent> ,/ :!g 
 
-" map <silent> ,G :GodotRunLast<CR>
-" map <silent> ,R :GodotRunCurrent<CR>
+" map <silent> ,G :GodotRunLast<cr>
+" map <silent> ,R :GodotRunCurrent<cr>
 
-map <silent> ,m :Mason<CR>
+map <silent> ,m :Mason<cr>
 
 map <silent> ,T :Telescope<cr>
 map <silent> ,z :Telescope buffers<cr>
@@ -43,37 +43,37 @@ map <silent> ,G :Telescope grep_string<cr>
 map <silent> ,ù :Telescope marks<cr>
 map <silent> ,$ :Telescope oldfiles<cr>
 
-map <silent> ,x :bd<CR>
-tnoremap <silent> ,x <C-\><C-n>:bd!<CR>
-map <silent> ,r :Resurrect<CR>
+map <silent> ,x :bd<cr>
+tnoremap <silent> ,x <C-\><C-n>:bd!<cr>
+map <silent> ,r :Resurrect<cr>
 
-noremap <silent> ,ç :bp<CR>
-tnoremap <silent> ,ç <C-\><C-n>:bp<CR>
-noremap <silent> ,à :bn<CR>
-tnoremap <silent> ,à <C-\><C-n>:bn<CR>
+noremap <silent> ,ç :bp<cr>
+tnoremap <silent> ,ç <C-\><C-n>:bp<cr>
+noremap <silent> ,à :bn<cr>
+tnoremap <silent> ,à <C-\><C-n>:bn<cr>
 
-noremap <silent> ,9 :bp<CR>
-tnoremap <silent> ,9 <C-\><C-n>:bp<CR>
-noremap <silent> ,0 :bn<CR>
-tnoremap <silent> ,0 <C-\><C-n>:bn<CR>
+noremap <silent> ,9 :bp<cr>
+tnoremap <silent> ,9 <C-\><C-n>:bp<cr>
+noremap <silent> ,0 :bn<cr>
+tnoremap <silent> ,0 <C-\><C-n>:bn<cr>
 
-nmap <silent> ,vc :next ~/.config/nvim/init.lua<CR>
-nmap <silent> ,vp :next ~/.config/nvim/lua/config/packages.lua<CR>
-nmap <silent> ,vm :next ~/.config/nvim/lua/config/mappings.vim<CR>
-nmap <silent> ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<CR><CR>
-nmap <silent> ,vg :Telescope live_grep search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
-nmap <silent> ,vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<CR>
+nmap <silent> ,vc :next ~/.config/nvim/init.lua<cr>
+nmap <silent> ,vp :next ~/.config/nvim/lua/config/packages.lua<cr>
+nmap <silent> ,vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
+nmap <silent> ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
+nmap <silent> ,vg :Telescope live_grep search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
+nmap <silent> ,vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
 
-nmap <silent> ,V :source $MYVIMRC <CR>
+nmap <silent> ,V :source $MYVIMRC <cr>
 " inoremap <silent> jk <esc>
-" tnoremap <silent> jk <C-\><C-n><CR>
+" tnoremap <silent> jk <C-\><C-n><cr>
 
-map <silent> ,u :UndotreeToggle<CR>
+map <silent> ,u :UndotreeToggle<cr>
 
 "  b fo bugs
-map <silent> ,b :TroubleToggle<CR>
+map <silent> ,b :TroubleToggle<cr>
 
-map <silent> ,o :Vista!!<CR>
+map <silent> ,o :Vista!!<cr>
 
 map <silent> <silent>,kf :lua require("neotest").run.run()<cr>
 map <silent> <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
@@ -107,9 +107,9 @@ EOF
 
 map <silent> ,yi :Neorg index<cr>
 map <silent> ,yr :Neorg return<cr>
-map <silent> ,ym :e ~/notes/memoey.norg<cr>Ga
+map <silent> ,ym :e ~/notes/memory.norg<cr>Ga
 map <silent> ,yM :botright 20vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
-" :set invrelativenumber<CR> :set invnumber<CR>
+" :set invrelativenumber<cr> :set invnumber<cr>
 map <silent> ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map <silent> ,yn :call v:lua.create_org_file()<cr>
@@ -122,7 +122,7 @@ map <silent> zr :spellr<cr>
 nmap <silent> <Leader>? <Plug>SearchNormal
 vmap <silent> <Leader>? <Plug>SearchVisual
 
-tnoremap <silent> <Esc> <C-\><C-n><CR>
+tnoremap <silent> <Esc> <C-\><C-n><cr>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -143,37 +143,37 @@ if !empty($KEYBOARD_FR)
   nmap <silent> ù `
 endif
 
-nnoremap <silent> ,1 <Cmd>BufferGoto 1<CR>
-nnoremap <silent> ,& <Cmd>BufferGoto 1<CR>
-nnoremap <silent> ,2 <Cmd>BufferGoto 2<CR>
-nnoremap <silent> ,é <Cmd>BufferGoto 2<CR>
-nnoremap <silent> ,3 <Cmd>BufferGoto 3<CR>
-nnoremap <silent> ," <Cmd>BufferGoto 3<CR>
-nnoremap <silent> ,4 <Cmd>BufferGoto 4<CR>
-nnoremap <silent> ,' <Cmd>BufferGoto 4<CR>
-nnoremap <silent> ,5 <Cmd>BufferGoto 5<CR>
-nnoremap <silent> ,( <Cmd>BufferGoto 5<CR>
-nnoremap <silent> ,6 <Cmd>BufferGoto 6<CR>
-nnoremap <silent> ,- <Cmd>BufferGoto 6<CR>
-nnoremap <silent> ,7 <Cmd>BufferGoto 7<CR>
-nnoremap <silent> ,è <Cmd>BufferGoto 7<CR>
-nnoremap <silent> ,8 <Cmd>BufferGoto 8<CR>
-nnoremap <silent> ,_ <Cmd>BufferGoto 8<CR>
+nnoremap <silent> ,1 <Cmd>BufferGoto 1<cr>
+nnoremap <silent> ,& <Cmd>BufferGoto 1<cr>
+nnoremap <silent> ,2 <Cmd>BufferGoto 2<cr>
+nnoremap <silent> ,é <Cmd>BufferGoto 2<cr>
+nnoremap <silent> ,3 <Cmd>BufferGoto 3<cr>
+nnoremap <silent> ," <Cmd>BufferGoto 3<cr>
+nnoremap <silent> ,4 <Cmd>BufferGoto 4<cr>
+nnoremap <silent> ,' <Cmd>BufferGoto 4<cr>
+nnoremap <silent> ,5 <Cmd>BufferGoto 5<cr>
+nnoremap <silent> ,( <Cmd>BufferGoto 5<cr>
+nnoremap <silent> ,6 <Cmd>BufferGoto 6<cr>
+nnoremap <silent> ,- <Cmd>BufferGoto 6<cr>
+nnoremap <silent> ,7 <Cmd>BufferGoto 7<cr>
+nnoremap <silent> ,è <Cmd>BufferGoto 7<cr>
+nnoremap <silent> ,8 <Cmd>BufferGoto 8<cr>
+nnoremap <silent> ,_ <Cmd>BufferGoto 8<cr>
 
 autocmd FileType norg let b:norg = v:true
 
 if !exists("b:norg")
     " debugging
-    map <silent> ;b :lua require'dap'.toggle_breakpoint()<CR>
-    map <silent> ;c :lua require'dap'.continue()<CR>
-    map <silent> ;o :lua require'dap'.step_over()<CR>
-    map <silent> ;i :lua require'dap'.step_into()<CR>
+    map <silent> ;b :lua require'dap'.toggle_breakpoint()<cr>
+    map <silent> ;c :lua require'dap'.continue()<cr>
+    map <silent> ;o :lua require'dap'.step_over()<cr>
+    map <silent> ;i :lua require'dap'.step_into()<cr>
 
-    map <silent> ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<CR>
-    map <silent> ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<CR>
-    map <silent> ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<CR>
-    map <silent> ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<CR>
-    map <silent> ;u :lua require('dapui').toggle()<CR>
+    map <silent> ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>
+    map <silent> ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>
+    map <silent> ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<cr>
+    map <silent> ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<cr>
+    map <silent> ;u :lua require('dapui').toggle()<cr>
     map <silent> ; ;;
 endif
 
