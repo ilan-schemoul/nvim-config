@@ -108,7 +108,7 @@ EOF
 map <silent> ,yi :Neorg index<cr>
 map <silent> ,yr :Neorg return<cr>
 map <silent> ,ym :e ~/notes/memory.norg<cr>Ga
-map <silent> ,yM :botright 20vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
+map <silent> ,yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
 " :set invrelativenumber<cr> :set invnumber<cr>
 map <silent> ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
