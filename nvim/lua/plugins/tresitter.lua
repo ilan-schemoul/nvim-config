@@ -39,7 +39,7 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
-            ["y"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
+            ["it"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
 
             -- You can use the capture groups defined in textobjects.scm
             ["o="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
