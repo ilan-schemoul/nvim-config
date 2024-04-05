@@ -6,7 +6,7 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "dashboard",
       callback = function()
-        require("plenary.curl").get("wttr.in/?format=1", {
+        require("plenary.curl").get("wttr.in/Paris?format=1", {
           callback = vim.schedule_wrap(function(response)
             if response.status == 200 then
               local body = response.body:gsub('%s+', "\\ ")

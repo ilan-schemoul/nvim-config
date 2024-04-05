@@ -10,9 +10,6 @@ map <silent> ,N :set invnumber<CR>
 map <silent> ,S :call ToggleSignColumn()<CR>
 map <silent> ,E :lua require("lsp_lines").toggle()<CR>
 
-" allows to choose a buffer in the top bar with dynamic keyboards shorcut
-map <silent> ,p <Cmd>BufferPick<CR>
-
 " closes everything
 map <silent> ,q :q<CR>
 map <silent> ,Q :wqa!<CR>
@@ -99,7 +96,7 @@ map <silent> ,w6 :lua require("harpoon.ui").nav_file(6)<cr>
 lua << EOF
 function _G.create_org_file()
   local dirman = require('neorg').modules.get_module("core.dirman")
-  local file = vim.fn.input("File :", "", "file")
+  local file = vim.fn.input("File : ", "", "file")
 
   dirman.create_file(file, "notes", {
       no_open  = false,  -- open file after creation?
@@ -110,6 +107,9 @@ EOF
 
 map <silent> ,yi :Neorg index<cr>
 map <silent> ,yr :Neorg return<cr>
+map <silent> ,ym :e ~/notes/memoey.norg<cr>Ga
+map <silent> ,yM :botright 20vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
+" :set invrelativenumber<CR> :set invnumber<CR>
 map <silent> ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map <silent> ,yn :call v:lua.create_org_file()<cr>
@@ -119,9 +119,7 @@ map <silent> z= :CustomTelescopeSpellSuggest<cr>
 map <silent> zl :CustomTelescopeSpellSuggest<cr>
 map <silent> zr :spellr<cr>
 
-nmap <silent> <Leader>, <Plug>SearchNormal
 nmap <silent> <Leader>? <Plug>SearchNormal
-vmap <silent> <Leader>, <Plug>SearchVisual
 vmap <silent> <Leader>? <Plug>SearchVisual
 
 tnoremap <silent> <Esc> <C-\><C-n><CR>
