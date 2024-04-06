@@ -19,11 +19,14 @@ map <silent> ,t :NvimTreeToggle<cr>
 
 map <silent> ,D :lua vim.diagnostic.open_float()<cr>
 map <silent> ,h :lua vim.lsp.buf.hover()<cr>
+map <silent> [d :lua vim.diagnostic.goto_prev()<cr>
+map <silent> ]d :lua vim.diagnostic.goto_next()<cr>
 " i for implementation
 map <silent> ,i :Telescope lsp_references<cr>
 map <silent> ,d :Telescope lsp_definitions<cr>
 map <silent> ,sd :Telescope lsp_dynamic_workspace_symbols<cr>
 map <silent> ,ss :Telescope lsp_workspace_symbols<cr>
+imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
 map <silent> ,a :CodeActionMenu<cr>
 map <silent> ,n :lua require('renamer').rename()<cr>
