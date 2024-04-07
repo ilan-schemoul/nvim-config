@@ -54,12 +54,6 @@ require("lazy").setup({
 
   { "liuchengxu/vista.vim", enabled = false },
 
-  "antoinemadec/FixCursorHold.nvim",
-  "nvim-neotest/neotest",
-  "nvim-neotest/nvim-nio",
-  "nvim-neotest/neotest-python",
-  "rouge8/neotest-rust",
-
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
