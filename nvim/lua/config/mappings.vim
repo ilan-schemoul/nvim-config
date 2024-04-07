@@ -78,9 +78,6 @@ map <silent> ,b :TroubleToggle<cr>
 
 map <silent> ,o :Vista!!<cr>
 
-map <silent> <silent>,kf :lua require("neotest").run.run()<cr>
-map <silent> <silent>,kt :lua require("neotest").run.run(vim.fn.expand("%"))<cr>
-
 map <silent> ,wa :lua require("harpoon.mark").add_file()<cr>
 map <silent> ,wl :Telescope harpoon marks<cr>
 map <silent> ,w& :lua require("harpoon.ui").nav_file(1)<cr>
