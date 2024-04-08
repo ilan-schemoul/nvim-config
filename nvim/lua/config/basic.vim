@@ -17,7 +17,9 @@ set ttyfast
 set visualbell
 set t_vb=
 
-vnoremap p "_dP " nocopy when pasting 
+vnoremap p "_dP " nocopy when pasting
+noremap x "_x " nocopy when deleting with x
+noremap X "_x " nocopy when deleting with x
 
 if (has("termguicolors"))
   set termguicolors

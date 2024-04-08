@@ -4,94 +4,91 @@
 
 " toggle relativenumber + number. It shows on the left column the number
 " of the current line and the relative number of lines aboves and below
-map <silent> ,I :set invrelativenumber<cr>
-map <silent> ,N :set invnumber<cr>
+map <silent> <leader>I :set invrelativenumber<cr>
+map <silent> <leader>N :set invnumber<cr>
 
-map <silent> ,S :call ToggleSignColumn()<cr>
-map <silent> ,E :lua require("lsp_lines").toggle()<cr>
+map <silent> <leader>S :call ToggleSignColumn()<cr>
+map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
 " closes everything
-map <silent> ,q :q<cr>
-map <silent> ,Q :wqa!<cr>
+map <silent> <leader>q :q<cr>
+map <silent> <leader>Q :wqa!<cr>
 
-" toggle the tree files on the left
-map <silent> ,t :NvimTreeToggle<cr>
-
-map <silent> ,D :lua vim.diagnostic.open_float()<cr>
-map <silent> ,h :lua vim.lsp.buf.hover()<cr>
+map <silent> <leader>D :lua vim.diagnostic.open_float()<cr>
+map <silent> <leader>h :lua vim.lsp.buf.hover()<cr>
 map <silent> [d :lua vim.diagnostic.goto_prev()<cr>
 map <silent> ]d :lua vim.diagnostic.goto_next()<cr>
 " i for implementation
-map <silent> ,i :Telescope lsp_references<cr>
-map <silent> ,d :Telescope lsp_definitions<cr>
-map <silent> ,sd :Telescope lsp_dynamic_workspace_symbols<cr>
-map <silent> ,ss :Telescope lsp_workspace_symbols<cr>
+map <silent> <leader>i :Telescope lsp_references<cr>
+map <silent> <leader>d :Telescope lsp_definitions<cr>
+map <silent> <leader>sd :Telescope lsp_dynamic_workspace_symbols<cr>
+map <silent> <leader>ss :Telescope lsp_workspace_symbols<cr>
 imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
-map <silent> ,a :CodeActionMenu<cr>
-map <silent> ,n :lua require('renamer').rename()<cr>
+map <silent> <leader>a :CodeActionMenu<cr>
+map <silent> <leader>n :lua require('renamer').rename()<cr>
 
-map <silent> ,/ :!g 
+map <silent> <leader>/ :!g
 
-" map <silent> ,G :GodotRunLast<cr>
-" map <silent> ,R :GodotRunCurrent<cr>
+" map <silent> <leader>G :GodotRunLast<cr>
+" map <silent> <leader>R :GodotRunCurrent<cr>
 
-map <silent> ,m :Mason<cr>
+map <silent> <leader>m :Mason<cr>
 
-map <silent> ,T :Telescope<cr>
-map <silent> ,z :Telescope buffers<cr>
-map <silent> ,l :Telescope find_files<cr>
-map <silent> ,g :Telescope live_grep<cr>
-map <silent> ,G :Telescope grep_string<cr>
-map <silent> ,ù :Telescope marks<cr>
-map <silent> ,$ :Telescope oldfiles<cr>
+map <silent> <leader>T :Telescope<cr>
+map <silent> <leader>z :Telescope buffers<cr>
+map <silent> <leader>l :Telescope find_files<cr>
+map <silent> <leader>g :Telescope live_grep<cr>
+map <silent> <leader>G :Telescope grep_string<cr>
+map <silent> <leader>ù :Telescope marks<cr>
+map <silent> <leader>$ :Telescope oldfiles<cr>
 
-map <silent> ,x :bd<cr>
-tnoremap <silent> ,x <C-\><C-n>:bd!<cr>
-map <silent> ,r :Resurrect<cr>
+map <silent> <leader>x :bd<cr>
+tnoremap <silent> <leader>x <C-\><C-n>:bd!<cr>
+map <silent> <leader>r :Resurrect<cr>
 
-noremap <silent> ,ç :bp<cr>
-tnoremap <silent> ,ç <C-\><C-n>:bp<cr>
-noremap <silent> ,à :bn<cr>
-tnoremap <silent> ,à <C-\><C-n>:bn<cr>
+noremap <silent> <leader>ç :bp<cr>
+tnoremap <silent> <leader>ç <C-\><C-n>:bp<cr>
+noremap <silent> <leader>à :bn<cr>
+tnoremap <silent> <leader>à <C-\><C-n>:bn<cr>
 
-noremap <silent> ,9 :bp<cr>
-tnoremap <silent> ,9 <C-\><C-n>:bp<cr>
-noremap <silent> ,0 :bn<cr>
-tnoremap <silent> ,0 <C-\><C-n>:bn<cr>
+noremap <silent> <leader>9 :bp<cr>
+tnoremap <silent> <leader>9 <C-\><C-n>:bp<cr>
+noremap <silent> <leader>0 :bn<cr>
+tnoremap <silent> <leader>0 <C-\><C-n>:bn<cr>
 
-nmap <silent> ,vc :next ~/.config/nvim/init.lua<cr>
-nmap <silent> ,vp :next ~/.config/nvim/lua/config/packages.lua<cr>
-nmap <silent> ,vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
-nmap <silent> ,vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
-nmap <silent> ,vg :Telescope live_grep search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
-nmap <silent> ,vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
+nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
+nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
+nmap <silent> <leader>vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
+nmap <silent> <leader>vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
+nmap <silent> <leader>vg :Telescope live_grep search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
+nmap <silent> <leader>vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
 
-nmap <silent> ,V :source $MYVIMRC <cr>
+nmap <silent> <leader>V :source $MYVIMRC <cr>
 " inoremap <silent> jk <esc>
 " tnoremap <silent> jk <C-\><C-n><cr>
 
-map <silent> ,u :UndotreeToggle<cr>
+map <silent> <leader>u :UndotreeToggle<cr>
 
 "  b fo bugs
-map <silent> ,b :TroubleToggle<cr>
+map <silent> <leader>b :TroubleToggle<cr>
 
-map <silent> ,o :Vista!!<cr>
+map <silent> <leader>o :Vista!!<cr>
 
-map <silent> ,wa :lua require("harpoon.mark").add_file()<cr>
-map <silent> ,wl :Telescope harpoon marks<cr>
-map <silent> ,w& :lua require("harpoon.ui").nav_file(1)<cr>
-map <silent> ,w1 :lua require("harpoon.ui").nav_file(1)<cr>
-map <silent> ,wé :lua require("harpoon.ui").nav_file(2)<cr>
-map <silent> ,w2 :lua require("harpoon.ui").nav_file(2)<cr>
-map <silent> ,w" :lua require("harpoon.ui").nav_file(3)<cr>
-map <silent> ,w3 :lua require("harpoon.ui").nav_file(3)<cr>
-map <silent> ,w' :lua require("harpoon.ui").nav_file(4)<cr>
-map <silent> ,w4 :lua require("harpoon.ui").nav_file(4)<cr>
-map <silent> ,w( :lua require("harpoon.ui").nav_file(5)<cr>
-map <silent> ,w5 :lua require("harpoon.ui").nav_file(5)<cr>
-map <silent> ,w- :lua require("harpoon.ui").nav_file(6)<cr>
-map <silent> ,w6 :lua require("harpoon.ui").nav_file(6)<cr>
+map <silent> <leader>wa :lua require("harpoon.mark").add_file()<cr>
+map <silent> <leader>wl :Telescope harpoon marks<cr>
+map <silent> <leader>w& :lua require("harpoon.ui").nav_file(1)<cr>
+map <silent> <leader>w1 :lua require("harpoon.ui").nav_file(1)<cr>
+map <silent> <leader>wé :lua require("harpoon.ui").nav_file(2)<cr>
+map <silent> <leader>w2 :lua require("harpoon.ui").nav_file(2)<cr>
+map <silent> <leader>w" :lua require("harpoon.ui").nav_file(3)<cr>
+map <silent> <leader>w3 :lua require("harpoon.ui").nav_file(3)<cr>
+map <silent> <leader>w' :lua require("harpoon.ui").nav_file(4)<cr>
+map <silent> <leader>w4 :lua require("harpoon.ui").nav_file(4)<cr>
+map <silent> <leader>w( :lua require("harpoon.ui").nav_file(5)<cr>
+map <silent> <leader>w5 :lua require("harpoon.ui").nav_file(5)<cr>
+map <silent> <leader>w- :lua require("harpoon.ui").nav_file(6)<cr>
+map <silent> <leader>w6 :lua require("harpoon.ui").nav_file(6)<cr>
 
 lua << EOF
 function _G.create_org_file()
@@ -99,28 +96,28 @@ function _G.create_org_file()
   local file = vim.fn.input("File : ", "", "file")
 
   dirman.create_file(file, "notes", {
-      no_open  = false,  -- open file after creation?
-      force    = false,  -- overwrite file if exists
+      no_open  = false, -- open file after creation?
+      force    = false, -- overwrite file if exists
   })
 end
 EOF
 
-map <silent> ,yi :Neorg index<cr>
-map <silent> ,yr :Neorg return<cr>
-map <silent> ,ym :e ~/notes/memory.norg<cr>Ga
-map <silent> ,yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
+map <silent> <leader>yi :Neorg index<cr>
+map <silent> <leader>yr :Neorg return<cr>
+map <silent> <leader>ym :e ~/notes/memory.norg<cr>Ga
+map <silent> <leader>yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
 " :set invrelativenumber<cr> :set invnumber<cr>
-map <silent> ,yl :Telescope find_files search_dirs={"~/notes"}<cr>
-map <silent> ,yg :Telescope live_grep search_dirs={"~/notes"}<cr>
-map <silent> ,yn :call v:lua.create_org_file()<cr>
+map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"}<cr>
+map <silent> <leader>yg :Telescope live_grep search_dirs={"~/notes"}<cr>
+map <silent> <leader>yn :call v:lua.create_org_file()<cr>
 
 noremap <silent> zc 1z=
 map <silent> z= :CustomTelescopeSpellSuggest<cr>
 map <silent> zl :CustomTelescopeSpellSuggest<cr>
 map <silent> zr :spellr<cr>
 
-nmap <silent> <Leader>? <Plug>SearchNormal
-vmap <silent> <Leader>? <Plug>SearchVisual
+nmap <silent> <leader>? <Plug>SearchNormal
+vmap <silent> <leader>? <Plug>SearchVisual
 
 tnoremap <silent> <Esc> <C-\><C-n><cr>
 
@@ -143,22 +140,22 @@ if !empty($KEYBOARD_FR)
   nmap <silent> ù `
 endif
 
-nnoremap <silent> ,1 <Cmd>BufferGoto 1<cr>
-nnoremap <silent> ,& <Cmd>BufferGoto 1<cr>
-nnoremap <silent> ,2 <Cmd>BufferGoto 2<cr>
-nnoremap <silent> ,é <Cmd>BufferGoto 2<cr>
-nnoremap <silent> ,3 <Cmd>BufferGoto 3<cr>
-nnoremap <silent> ," <Cmd>BufferGoto 3<cr>
-nnoremap <silent> ,4 <Cmd>BufferGoto 4<cr>
-nnoremap <silent> ,' <Cmd>BufferGoto 4<cr>
-nnoremap <silent> ,5 <Cmd>BufferGoto 5<cr>
-nnoremap <silent> ,( <Cmd>BufferGoto 5<cr>
-nnoremap <silent> ,6 <Cmd>BufferGoto 6<cr>
-nnoremap <silent> ,- <Cmd>BufferGoto 6<cr>
-nnoremap <silent> ,7 <Cmd>BufferGoto 7<cr>
-nnoremap <silent> ,è <Cmd>BufferGoto 7<cr>
-nnoremap <silent> ,8 <Cmd>BufferGoto 8<cr>
-nnoremap <silent> ,_ <Cmd>BufferGoto 8<cr>
+nnoremap <silent> <leader>1 <Cmd>BufferGoto 1<cr>
+nnoremap <silent> <leader>& <Cmd>BufferGoto 1<cr>
+nnoremap <silent> <leader>2 <Cmd>BufferGoto 2<cr>
+nnoremap <silent> <leader>é <Cmd>BufferGoto 2<cr>
+nnoremap <silent> <leader>3 <Cmd>BufferGoto 3<cr>
+nnoremap <silent> <leader>" <Cmd>BufferGoto 3<cr>
+nnoremap <silent> <leader>4 <Cmd>BufferGoto 4<cr>
+nnoremap <silent> <leader>' <Cmd>BufferGoto 4<cr>
+nnoremap <silent> <leader>5 <Cmd>BufferGoto 5<cr>
+nnoremap <silent> <leader>( <Cmd>BufferGoto 5<cr>
+nnoremap <silent> <leader>6 <Cmd>BufferGoto 6<cr>
+nnoremap <silent> <leader>- <Cmd>BufferGoto 6<cr>
+nnoremap <silent> <leader>7 <Cmd>BufferGoto 7<cr>
+nnoremap <silent> <leader>è <Cmd>BufferGoto 7<cr>
+nnoremap <silent> <leader>8 <Cmd>BufferGoto 8<cr>
+nnoremap <silent> <leader>_ <Cmd>BufferGoto 8<cr>
 
 autocmd FileType norg let b:norg = v:true
 
