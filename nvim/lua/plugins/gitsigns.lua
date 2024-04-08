@@ -15,6 +15,7 @@ return {
       mode = "v",
     },
     { "<leader>jr", "<cmd>Gitsigns reset_hunk<cr>", mode = "n" },
+    { "<leader>jR", "<cmd>lua require('gitsigns').reset_hunk {vim.fn.line('.'), vim.fn.line('v')}<cr>", mode = "n" },
     {
       "<leader>jr",
       function()

@@ -44,8 +44,6 @@ require("lazy").setup({
 
   "habamax/vim-godot",
 
-  "nvim-tree/nvim-tree.lua",
-
   "ojroques/nvim-osc52",
 
   "MunifTanjim/nui.nvim",
