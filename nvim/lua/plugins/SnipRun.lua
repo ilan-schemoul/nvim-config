@@ -7,8 +7,8 @@ return {
     live_display = { "VirtualTextOk" }, --..or anything you wantk
   },
   keys = {
-    { ",X", "<Plug>SnipRun", mode = "n" },
-    { ",X", "<Plug>SnipRun", mode = "v" },
-    { ",Z", "<cmd>SnipClose<cr>" },
+    { "<leader>X", "<Plug>SnipRun", mode = "n" },
+    { "<leader>X", "<Plug>SnipRun", mode = "v" },
+    { "<leader>Z", "<cmd>SnipClose<cr>" },
   },
 }
