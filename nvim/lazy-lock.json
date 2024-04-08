@@ -12,6 +12,7 @@
   "coq.thirdparty": { "branch": "3p", "commit": "d9c1492ee60d627b171c7a9bcd0c3bb35af3e0fd" },
   "coq_nvim": { "branch": "coq", "commit": "0afa42d88991a3f3f7b1ea96114f41b906aa7f65" },
   "dashboard-nvim": { "branch": "master", "commit": "353c6914cfdf825c2d3fb1e0dc569df320999f4c" },
+  "dropbar.nvim": { "branch": "master", "commit": "26173fd5347bddc28fdc645d7020abd860754a73" },
   "fidget.nvim": { "branch": "main", "commit": "1ba38e4cbb24683973e00c2e36f53ae64da38ef5" },
   "gitsigns.nvim": { "branch": "main", "commit": "81369ed5405ec0c5d55a9608b495dbf827415116" },
   "harpoon": { "branch": "master", "commit": "ccae1b9bec717ae284906b0bf83d720e59d12b91" },
