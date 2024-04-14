@@ -1,5 +1,6 @@
 return {
   "numToStr/Comment.nvim",
+  enabled = true,
   opts = {
     padding = true,
     sticky = true,
@@ -7,7 +8,8 @@ return {
       line = "<leader>cc",
     },
     opleader = {
-      block = "<leader>c",
+      line = "<leader>c",
+      block = "<leader>C",
     },
     extra = {
       above = "<leader>cO",
