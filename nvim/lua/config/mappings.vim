@@ -61,8 +61,8 @@ nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
 nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
 nmap <silent> <leader>vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
 nmap <silent> <leader>vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
-nmap <silent> <leader>vg :Telescope live_grep search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
-nmap <silent> <leader>vl :Telescope find_files search_dirs=~/nvim.ilanschemoul.me/nvim<cr>
+nmap <silent> <leader>vg :Telescope live_grep search_dirs=~/.config/nvim<cr>
+nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 
 nmap <silent> <leader>V :source $MYVIMRC <cr>
 " inoremap <silent> jk <esc>
