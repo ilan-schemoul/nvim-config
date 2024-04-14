@@ -43,7 +43,6 @@ vim.api.nvim_create_user_command('CustomTelescopeSpellSuggest', function()
   })
 end, {})
 
-require("telescope").load_extension("noice")
 require("telescope").load_extension("fzf")
 require("telescope").setup({
   defaults = {
