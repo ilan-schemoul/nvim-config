@@ -72,4 +72,5 @@ require("lazy").setup({
   "max397574/better-escape.nvim",
 
   "tpope/vim-sleuth", -- adjusts shiftwidth/expandtab based on other files
+  "embear/vim-localvimrc",
 }, { change_detection = { enabled = true, notify = false } })

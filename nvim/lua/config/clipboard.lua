@@ -11,7 +11,7 @@ if os.getenv("WSL_DISTRO_NAME") ~= nil then
     },
     cache_enabled = 0,
   }
-else
+elseif vim.fn.executable("osc") ~= 0 then
   local function copy(lines, _)
     require("osc52").copy(table.concat(lines, "\n"))
   end
