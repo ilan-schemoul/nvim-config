@@ -9,3 +9,5 @@ vim.cmd("source ~/.config/nvim/lua/config/mappings.vim")
 require("config/clipboard")
 require("config/packages-preferences")
 require("config/debuggers-configuration")
+
+vim.cmd("source ~/.config/nvim/lua/config/private.vim")
