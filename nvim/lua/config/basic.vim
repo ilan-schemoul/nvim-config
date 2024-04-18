@@ -18,8 +18,8 @@ set visualbell
 set t_vb=
 
 vnoremap p "_dP " nocopy when pasting
-noremap x "_x " nocopy when deleting with x
-noremap X "_x " nocopy when deleting with x
+nnoremap x "_x
+nnoremap X "_X
 
 if (has("termguicolors"))
   set termguicolors
