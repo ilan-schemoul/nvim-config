@@ -75,8 +75,8 @@ nmap <silent> <leader>vg :Telescope live_grep search_dirs=~/.config/nvim<cr>
 nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 
 nmap <silent> <leader>V :source $MYVIMRC <cr>
-" inoremap <silent> jk <esc>
-" tnoremap <silent> jk <C-\><C-n><cr>
+inoremap <silent> jk <esc>
+tnoremap <silent> jk <C-\><C-n><cr>
 
 map <silent> <leader>u :UndotreeToggle<cr>
 
@@ -130,10 +130,17 @@ map <silent> <leader>yi :Neorg index<cr>
 map <silent> <leader>yr :Neorg return<cr>
 map <silent> <leader>ym :e ~/notes/memory.norg<cr>Ga
 map <silent> <leader>yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
-" :set invrelativenumber<cr> :set invnumber<cr>
 map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> <leader>yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map <silent> <leader>yn :call v:lua.create_org_file()<cr>
+
+tmap <silent> <leader>yi <C-\><C-n>:Neorg index<cr>
+tmap <silent> <leader>yr <C-\><C-n>:Neorg return<cr>
+tmap <silent> <leader>ym <C-\><C-n>:e ~/notes/memory.norg<cr>Ga
+tmap <silent> <leader>yM <C-\><C-n>:botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
+tmap <silent> <leader>yl <C-\><C-n>:Telescope find_files search_dirs={"~/notes"}<cr>
+tmap <silent> <leader>yg <C-\><C-n>:Telescope live_grep search_dirs={"~/notes"}<cr>
+tmap <silent> <leader>yn <C-\><C-n>:call v:lua.create_org_file()<cr>
 
 noremap <silent> zc 1z=
 map <silent> z= :CustomTelescopeSpellSuggest<cr>
@@ -143,7 +150,7 @@ map <silent> zr :spellr<cr>
 nmap <silent> <leader>? <Plug>SearchNormal
 vmap <silent> <leader>? <Plug>SearchVisual
 
-tnoremap <silent> <Esc> <C-\><C-n><cr>
+map <leader>p :term<cr>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
