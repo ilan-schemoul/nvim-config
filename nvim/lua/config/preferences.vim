@@ -1,6 +1,7 @@
 colorscheme catppuccin-macchiato
 
 autocmd BufEnter term://* startinsert " start in insert mode in terminal
+autocmd TermOpen * startinsert
 
 set spelllang=en_us
 set spellcapcheck=no
