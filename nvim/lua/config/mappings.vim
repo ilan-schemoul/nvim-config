@@ -12,6 +12,7 @@ map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
 " closes everything
 map <silent> <leader>q :q<cr>
+tmap <silent> <leader>q <C-\><C-o>:q<cr>
 map <silent> <leader>Q :wqa!<cr>
 
 map <silent> <leader>D :lua vim.diagnostic.open_float()<cr>
@@ -43,9 +44,18 @@ map <silent> <leader>G :Telescope grep_string<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 
+tmap <silent> <leader>T <C-\><C-n>:Telescope<cr>
+tmap <silent> <leader>z <C-\><C-n>:Telescope buffers<cr>
+tmap <silent> <leader>l <C-\><C-n>:Telescope find_files<cr>
+tmap <silent> <leader>g <C-\><C-n>:Telescope live_grep<cr>
+tmap <silent> <leader>G <C-\><C-n>:Telescope grep_string<cr>
+tmap <silent> <leader>ù <C-\><C-n>:Telescope marks<cr>
+tmap <silent> <leader>$ <C-\><C-n>:Telescope oldfiles<cr>
+
 map <silent> <leader>x :bd<cr>
 tnoremap <silent> <leader>x <C-\><C-n>:bd!<cr>
 map <silent> <leader>r :Resurrect<cr>
+tmap <silent> <leader>r <C-\><C-n>:Resurrect<cr>
 
 noremap <silent> <leader>ç :bp<cr>
 tnoremap <silent> <leader>ç <C-\><C-n>:bp<cr>
@@ -89,6 +99,20 @@ map <silent> <leader>w( :lua require("harpoon.ui").nav_file(5)<cr>
 map <silent> <leader>w5 :lua require("harpoon.ui").nav_file(5)<cr>
 map <silent> <leader>w- :lua require("harpoon.ui").nav_file(6)<cr>
 map <silent> <leader>w6 :lua require("harpoon.ui").nav_file(6)<cr>
+
+tmap <silent> <leader>wl <C-\><C-n>:Telescope harpoon marks<cr>
+tmap <silent> <leader>w& <C-\><C-n>:lua require("harpoon.ui").nav_file(1)<cr>
+tmap <silent> <leader>w1 <C-\><C-n>:lua require("harpoon.ui").nav_file(1)<cr>
+tmap <silent> <leader>wé <C-\><C-n>:lua require("harpoon.ui").nav_file(2)<cr>
+tmap <silent> <leader>w2 <C-\><C-n>:lua require("harpoon.ui").nav_file(2)<cr>
+tmap <silent> <leader>w" <C-\><C-n>:lua require("harpoon.ui").nav_file(3)<cr>
+tmap <silent> <leader>w3 <C-\><C-n>:lua require("harpoon.ui").nav_file(3)<cr>
+tmap <silent> <leader>w' <C-\><C-n>:lua require("harpoon.ui").nav_file(4)<cr>
+tmap <silent> <leader>w4 <C-\><C-n>:lua require("harpoon.ui").nav_file(4)<cr>
+tmap <silent> <leader>w( <C-\><C-n>:lua require("harpoon.ui").nav_file(5)<cr>
+tmap <silent> <leader>w5 <C-\><C-n>:lua require("harpoon.ui").nav_file(5)<cr>
+tmap <silent> <leader>w- <C-\><C-n>:lua require("harpoon.ui").nav_file(6)<cr>
+tmap <silent> <leader>w6 <C-\><C-n>:lua require("harpoon.ui").nav_file(6)<cr>
 
 lua << EOF
 function _G.create_org_file()
@@ -151,39 +175,7 @@ if !empty($KEYBOARD_FR)
   nmap <silent> ù `
 endif
 
-nnoremap <silent> <leader>1 <Cmd>BufferGoto 1<cr>
-nnoremap <silent> <leader>& <Cmd>BufferGoto 1<cr>
-nnoremap <silent> <leader>2 <Cmd>BufferGoto 2<cr>
-nnoremap <silent> <leader>é <Cmd>BufferGoto 2<cr>
-nnoremap <silent> <leader>3 <Cmd>BufferGoto 3<cr>
-nnoremap <silent> <leader>" <Cmd>BufferGoto 3<cr>
-nnoremap <silent> <leader>4 <Cmd>BufferGoto 4<cr>
-nnoremap <silent> <leader>' <Cmd>BufferGoto 4<cr>
-nnoremap <silent> <leader>5 <Cmd>BufferGoto 5<cr>
-nnoremap <silent> <leader>( <Cmd>BufferGoto 5<cr>
-nnoremap <silent> <leader>6 <Cmd>BufferGoto 6<cr>
-nnoremap <silent> <leader>- <Cmd>BufferGoto 6<cr>
-nnoremap <silent> <leader>7 <Cmd>BufferGoto 7<cr>
-nnoremap <silent> <leader>è <Cmd>BufferGoto 7<cr>
-nnoremap <silent> <leader>8 <Cmd>BufferGoto 8<cr>
-nnoremap <silent> <leader>_ <Cmd>BufferGoto 8<cr>
-
 autocmd FileType norg let b:norg = v:true
-
-if !exists("b:norg")
-    " debugging
-    map <silent> ;b :lua require'dap'.toggle_breakpoint()<cr>
-    map <silent> ;c :lua require'dap'.continue()<cr>
-    map <silent> ;o :lua require'dap'.step_over()<cr>
-    map <silent> ;i :lua require'dap'.step_into()<cr>
-
-    map <silent> ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>
-    map <silent> ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>
-    map <silent> ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<cr>
-    map <silent> ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<cr>
-    map <silent> ;u :lua require('dapui').toggle()<cr>
-    map <silent> ; ;;
-endif
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <silent> <A-h> <C-\><C-N><C-w>h
