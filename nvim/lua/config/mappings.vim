@@ -126,16 +126,27 @@ nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Custom env variable
 if !empty($KEYBOARD_FR)
-  map <silent> à 0
-  map <silent> & 1
-  map <silent> é 2
-  map <silent> " 3
-  map <silent> ' 4
-  map <silent> ( 5
-  map <silent> - 6
-  map <silent> è 7
-  map <silent> _ 8
-  map <silent> ç 9
+  noremap <silent> à 0
+  noremap <silent> & 1
+  noremap <silent> é 2
+  noremap <silent> " 3
+  noremap <silent> ' 4
+  noremap <silent> ( 5
+  noremap <silent> - 6
+  noremap <silent> è 7
+  noremap <silent> _ 8
+  noremap <silent> ç 9
+
+  noremap <silent> 0 à
+  noremap <silent> 1 &
+  noremap <silent> 2 é
+  noremap <silent> 3 "
+  noremap <silent> 4 '
+  noremap <silent> 5 (
+  noremap <silent> 6 -
+  noremap <silent> 7 è
+  noremap <silent> 8 _
+  noremap <silent> 9 ç
 
   nmap <silent> ù `
 endif
