@@ -1,6 +1,5 @@
 return {
   "folke/noice.nvim",
-  -- dir = "~/code/forks/noice.nvim",
   event = "VeryLazy",
   keys = {
     { "<leader><BS>", "<cmd>Noice dismiss<cr>" },
@@ -39,12 +38,23 @@ return {
         view = "split",
         opts = { enter = true, format = "details" },
         filter = {
-            cond = function(_) return true end,
+          cond = function(_)
+            return true
+          end,
         },
       },
     },
 
     routes = {
+      {
+        view = "mini",
+        filter = {
+          event = "msg_showmode",
+          any = {
+            { find = "recording" },
+          },
+        },
+      },
       {
         event = "notify",
         kind = "",
