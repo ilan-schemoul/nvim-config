@@ -84,8 +84,6 @@ return {
             { find = "%d+ lines yanked" },
             { find = "^Hunk %d+ of %d+$" },
             { find = "%d+L, %d+B$" },
-            { find = "^[/?].*" }, -- Searching up/down
-            { find = "E486: Pattern not found:" }, -- Searcingh not found
             { find = "%d+ changes?;" }, -- Undoing/redoing
             { find = "%d+ fewer lines" }, -- Deleting multiple lines
             { find = "%d+ more lines" }, -- Undoing deletion of multiple lines
