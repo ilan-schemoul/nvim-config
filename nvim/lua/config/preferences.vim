@@ -3,6 +3,7 @@ colorscheme catppuccin-macchiato
 highlight ColorColumn ctermbg=0 guibg=#212337
 
 autocmd BufEnter term://* startinsert " start in insert mode in terminal
+autocmd TermOpen * startinsert
 
 set spelllang=en_us
 set spellcapcheck=no
