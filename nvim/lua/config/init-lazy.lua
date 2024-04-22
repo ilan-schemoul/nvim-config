@@ -71,6 +71,10 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufWritePre" }, {
 
 vim.g.coq_settings = {
   auto_start = "shut-up",
+  keymap = {
+      jump_to_mark = "<C-m>",
+      bigger_preview = "null",
+  },
   display = {
     mark_applied_notify = false,
   },

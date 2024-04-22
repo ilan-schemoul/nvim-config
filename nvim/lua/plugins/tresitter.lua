@@ -81,11 +81,11 @@ return {
             ["à;"] = "@function.outer", -- swap function with next
             ["0;"] = "@function.outer", -- swap function with next
           },
-          swap_previous = {
-            [";,"] = "@parameter.inner", -- swap parameters/argument with prev
-            [";à"] = "@function.outer", -- swap function with previous
-            [";0"] = "@function.outer", -- swap function with previous
-          },
+          -- swap_previous = {
+          --   [";,"] = "@parameter.inner", -- swap parameters/argument with prev
+          --   [";à"] = "@function.outer", -- swap function with previous
+          --   [";0"] = "@function.outer", -- swap function with previous
+          -- },
         },
       },
       incremental_selection = {

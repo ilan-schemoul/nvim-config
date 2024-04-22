@@ -1,4 +1,3 @@
-vim.g.VM_mouse_mappings = 1
 vim.g.resurrect_ignore_patterns = { "/.git/", "^fugitive://" }
 vim.g.code_action_menu_show_details = false
 vim.g.vista_default_executive = "nvim_lsp"
@@ -43,9 +42,11 @@ vim.api.nvim_create_user_command('CustomTelescopeSpellSuggest', function()
   })
 end, {})
 
+local lga_actions = require("telescope-live-grep-args.actions")
 require("telescope").load_extension("fzf")
 require("telescope").setup({
   defaults = {
+    -- file_ignore_patterns = {"eric", "elie", "camel", "muyao", "yannick", "yossef"},
     mappings = {
       i = {
         ["<C-b>"] = "file_vsplit",
@@ -57,6 +58,17 @@ require("telescope").setup({
         width = 0.85,
       },
     },
+  },
+  extensions = {
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        },
+      },
+    }
   },
 })
 

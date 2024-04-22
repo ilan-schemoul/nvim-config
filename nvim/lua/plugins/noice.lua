@@ -25,17 +25,42 @@ return {
       view_error = "notify",
       enabled = true,
     },
+    views = {
+      mini = {
+        timeout = 8000,
+      },
+    },
     popupmenu = {
       enabled = false,
     },
+    commands = {
+      history = {
+        -- options for the message history that you get with `:Noice`
+        view = "split",
+        opts = { enter = true, format = "details" },
+        filter = {
+            cond = function(_) return true end,
+        },
+      },
+    },
 
     routes = {
+      {
+        event = "notify",
+        kind = "",
+        filter = {
+          any = {
+            { find = "E486" },
+            { find = "search hit" },
+          },
+        },
+        view = "mini",
+      },
       {
         filter = {
           event = "msg_show",
           kind = "",
           any = {
-
             { find = "no lines in buffer" },
             -- Edit
             { find = "%d+ less lines" },
