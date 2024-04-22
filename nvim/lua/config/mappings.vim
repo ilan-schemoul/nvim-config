@@ -12,6 +12,7 @@ map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
 " closes everything
 map <silent> <leader>q :q<cr>
+tmap <silent> <leader>q <C-\><C-o>:q<cr>
 map <silent> <leader>Q :wqa!<cr>
 
 map <silent> <leader>D :lua vim.diagnostic.open_float()<cr>
@@ -42,9 +43,18 @@ map <silent> <leader>g :lua require('telescope').extensions.live_grep_args.live_
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 
+tmap <silent> <leader>T <C-\><C-n>:Telescope<cr>
+tmap <silent> <leader>z <C-\><C-n>:Telescope buffers<cr>
+tmap <silent> <leader>l <C-\><C-n>:Telescope find_files<cr>
+tmap <silent> <leader>g <C-\><C-n>:Telescope live_grep<cr>
+tmap <silent> <leader>G <C-\><C-n>:Telescope grep_string<cr>
+tmap <silent> <leader>ù <C-\><C-n>:Telescope marks<cr>
+tmap <silent> <leader>$ <C-\><C-n>:Telescope oldfiles<cr>
+
 map <silent> <leader>x :bd<cr>
 tnoremap <silent> <leader>x <C-\><C-n>:bd!<cr>
 map <silent> <leader>r :Resurrect<cr>
+tmap <silent> <leader>r <C-\><C-n>:Resurrect<cr>
 
 noremap <silent> <leader>ç :bp<cr>
 tnoremap <silent> <leader>ç <C-\><C-n>:bp<cr>
@@ -89,6 +99,20 @@ map <silent> <leader>w5 :lua require("harpoon.ui").nav_file(5)<cr>
 map <silent> <leader>w- :lua require("harpoon.ui").nav_file(6)<cr>
 map <silent> <leader>w6 :lua require("harpoon.ui").nav_file(6)<cr>
 
+tmap <silent> <leader>wl <C-\><C-n>:Telescope harpoon marks<cr>
+tmap <silent> <leader>w& <C-\><C-n>:lua require("harpoon.ui").nav_file(1)<cr>
+tmap <silent> <leader>w1 <C-\><C-n>:lua require("harpoon.ui").nav_file(1)<cr>
+tmap <silent> <leader>wé <C-\><C-n>:lua require("harpoon.ui").nav_file(2)<cr>
+tmap <silent> <leader>w2 <C-\><C-n>:lua require("harpoon.ui").nav_file(2)<cr>
+tmap <silent> <leader>w" <C-\><C-n>:lua require("harpoon.ui").nav_file(3)<cr>
+tmap <silent> <leader>w3 <C-\><C-n>:lua require("harpoon.ui").nav_file(3)<cr>
+tmap <silent> <leader>w' <C-\><C-n>:lua require("harpoon.ui").nav_file(4)<cr>
+tmap <silent> <leader>w4 <C-\><C-n>:lua require("harpoon.ui").nav_file(4)<cr>
+tmap <silent> <leader>w( <C-\><C-n>:lua require("harpoon.ui").nav_file(5)<cr>
+tmap <silent> <leader>w5 <C-\><C-n>:lua require("harpoon.ui").nav_file(5)<cr>
+tmap <silent> <leader>w- <C-\><C-n>:lua require("harpoon.ui").nav_file(6)<cr>
+tmap <silent> <leader>w6 <C-\><C-n>:lua require("harpoon.ui").nav_file(6)<cr>
+
 lua << EOF
 function _G.create_org_file()
   local dirman = require('neorg').modules.get_module("core.dirman")
@@ -105,10 +129,17 @@ map <silent> <leader>yi :Neorg index<cr>
 map <silent> <leader>yr :Neorg return<cr>
 map <silent> <leader>ym :e ~/notes/memory.norg<cr>Ga
 map <silent> <leader>yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
-" :set invrelativenumber<cr> :set invnumber<cr>
 map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> <leader>yg :lua require('telescope').extensions.live_grep_args.live_grep_args({search_dirs={"~/notes"}})<cr>
 map <silent> <leader>yn :call v:lua.create_org_file()<cr>
+
+tmap <silent> <leader>yi <C-\><C-n>:Neorg index<cr>
+tmap <silent> <leader>yr <C-\><C-n>:Neorg return<cr>
+tmap <silent> <leader>ym <C-\><C-n>:e ~/notes/memory.norg<cr>Ga
+tmap <silent> <leader>yM <C-\><C-n>:botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
+tmap <silent> <leader>yl <C-\><C-n>:Telescope find_files search_dirs={"~/notes"}<cr>
+tmap <silent> <leader>yg <C-\><C-n>:Telescope live_grep search_dirs={"~/notes"}<cr>
+tmap <silent> <leader>yn <C-\><C-n>:call v:lua.create_org_file()<cr>
 
 noremap <silent> zc 1z=
 map <silent> z= :CustomTelescopeSpellSuggest<cr>
@@ -118,43 +149,37 @@ map <silent> zr :spellr<cr>
 nmap <silent> <leader>? <Plug>SearchNormal
 vmap <silent> <leader>? <Plug>SearchVisual
 
-" tnoremap <silent> <Esc> <C-\><C-n><cr>
+map <leader>p :term<cr>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Custom env variable
 if !empty($KEYBOARD_FR)
-  map <silent> à 0
-  map <silent> & 1
-  map <silent> é 2
-  map <silent> " 3
-  map <silent> ' 4
-  map <silent> ( 5
-  map <silent> - 6
-  map <silent> è 7
-  map <silent> _ 8
-  map <silent> ç 9
+  noremap <silent> à 0
+  noremap <silent> & 1
+  noremap <silent> é 2
+  noremap <silent> " 3
+  noremap <silent> ' 4
+  noremap <silent> ( 5
+  noremap <silent> - 6
+  noremap <silent> è 7
+  noremap <silent> _ 8
+  noremap <silent> ç 9
+
+  noremap <silent> 0 à
+  noremap <silent> 1 &
+  noremap <silent> 2 é
+  noremap <silent> 3 "
+  noremap <silent> 4 '
+  noremap <silent> 5 (
+  noremap <silent> 6 -
+  noremap <silent> 7 è
+  noremap <silent> 8 _
+  noremap <silent> 9 ç
 
   nmap <silent> ù `
 endif
-
-nnoremap <silent> <leader>1 <Cmd>BufferGoto 1<cr>
-nnoremap <silent> <leader>& <Cmd>BufferGoto 1<cr>
-nnoremap <silent> <leader>2 <Cmd>BufferGoto 2<cr>
-nnoremap <silent> <leader>é <Cmd>BufferGoto 2<cr>
-nnoremap <silent> <leader>3 <Cmd>BufferGoto 3<cr>
-nnoremap <silent> <leader>" <Cmd>BufferGoto 3<cr>
-nnoremap <silent> <leader>4 <Cmd>BufferGoto 4<cr>
-nnoremap <silent> <leader>' <Cmd>BufferGoto 4<cr>
-nnoremap <silent> <leader>5 <Cmd>BufferGoto 5<cr>
-nnoremap <silent> <leader>( <Cmd>BufferGoto 5<cr>
-nnoremap <silent> <leader>6 <Cmd>BufferGoto 6<cr>
-nnoremap <silent> <leader>- <Cmd>BufferGoto 6<cr>
-nnoremap <silent> <leader>7 <Cmd>BufferGoto 7<cr>
-nnoremap <silent> <leader>è <Cmd>BufferGoto 7<cr>
-nnoremap <silent> <leader>8 <Cmd>BufferGoto 8<cr>
-nnoremap <silent> <leader>_ <Cmd>BufferGoto 8<cr>
 
 autocmd FileType norg let b:norg = v:true
 

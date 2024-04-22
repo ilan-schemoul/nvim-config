@@ -18,8 +18,8 @@ require("fidget").setup({ progress = {
 
 require("colorizer").setup()
 
-vim.api.nvim_create_user_command('CustomTelescopeSpellSuggest', function()
-  require('telescope.builtin').spell_suggest({
+vim.api.nvim_create_user_command("CustomTelescopeSpellSuggest", function()
+  require("telescope.builtin").spell_suggest({
     attach_mappings = function(prompt_bufnr)
       local actions = require("telescope.actions")
       local action_state = require("telescope.actions.state")
@@ -43,8 +43,25 @@ vim.api.nvim_create_user_command('CustomTelescopeSpellSuggest', function()
 end, {})
 
 local lga_actions = require("telescope-live-grep-args.actions")
+local finders = require "telescope.finders"
+local make_entry = require "telescope.make_entry"
+vim.api.nvim_create_user_command("Cl", function()
+  local locations = vim.fn.getqflist({ nr = "$", items = true }).items
+  locations = vim.tbl_filter(function(value)
+    return value.valid == 1 and value.lnum > 0
+  end, locations)
+
+  require("telescope.builtin").quickfix({
+    finder = finders.new_table({
+      results = locations,
+      entry_maker = make_entry.gen_from_quickfix(),
+    }),
+  })
+end, {})
+
 require("telescope").load_extension("fzf")
 require("telescope").setup({
+  pickers = {},
   defaults = {
     -- file_ignore_patterns = {"eric", "elie", "camel", "muyao", "yannick", "yossef"},
     mappings = {
