@@ -50,7 +50,7 @@ require("lazy").setup({
 
   { "RRethy/vim-illuminate", event = { "BufReadPre", "BufNewFile" } },
 
-  { "liuchengxu/vista.vim", enabled = false },
+  "liuchengxu/vista.vim",
 
   {
     "iamcco/markdown-preview.nvim",
@@ -71,6 +71,8 @@ require("lazy").setup({
 
   "max397574/better-escape.nvim",
 
-  "tpope/vim-sleuth", -- adjusts shiftwidth/expandtab based on other files
+  { "tpope/vim-sleuth", enabled = false }, -- adjusts shiftwidth/expandtab based on other files
   "embear/vim-localvimrc",
+  "glacambre/firenvim",
+  "nvim-telescope/telescope-live-grep-args.nvim",
 }, { change_detection = { enabled = true, notify = false } })

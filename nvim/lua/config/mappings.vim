@@ -38,8 +38,7 @@ map <silent> <leader>m :Mason<cr>
 map <silent> <leader>T :Telescope<cr>
 map <silent> <leader>z :Telescope buffers<cr>
 map <silent> <leader>l :Telescope find_files<cr>
-map <silent> <leader>g :Telescope live_grep<cr>
-map <silent> <leader>G :Telescope grep_string<cr>
+map <silent> <leader>g :lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 
@@ -61,12 +60,12 @@ nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
 nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
 nmap <silent> <leader>vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
 nmap <silent> <leader>vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
-nmap <silent> <leader>vg :Telescope live_grep search_dirs=~/.config/nvim<cr>
+nmap <silent> <leader>vg :lua require('telescope').extensions.live_grep_args.live_grep_args({search_dirs={"~/.config/nvim"}})<cr>
 nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 
 nmap <silent> <leader>V :source $MYVIMRC <cr>
-" inoremap <silent> jk <esc>
-" tnoremap <silent> jk <C-\><C-n><cr>
+inoremap <silent> jk <esc>
+tnoremap <silent> jk <C-\><C-n><cr>
 
 map <silent> <leader>u :UndotreeToggle<cr>
 
@@ -108,7 +107,7 @@ map <silent> <leader>ym :e ~/notes/memory.norg<cr>Ga
 map <silent> <leader>yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
 " :set invrelativenumber<cr> :set invnumber<cr>
 map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"}<cr>
-map <silent> <leader>yg :Telescope live_grep search_dirs={"~/notes"}<cr>
+map <silent> <leader>yg :lua require('telescope').extensions.live_grep_args.live_grep_args({search_dirs={"~/notes"}})<cr>
 map <silent> <leader>yn :call v:lua.create_org_file()<cr>
 
 noremap <silent> zc 1z=
@@ -119,7 +118,7 @@ map <silent> zr :spellr<cr>
 nmap <silent> <leader>? <Plug>SearchNormal
 vmap <silent> <leader>? <Plug>SearchVisual
 
-tnoremap <silent> <Esc> <C-\><C-n><cr>
+" tnoremap <silent> <Esc> <C-\><C-n><cr>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -159,20 +158,24 @@ nnoremap <silent> <leader>_ <Cmd>BufferGoto 8<cr>
 
 autocmd FileType norg let b:norg = v:true
 
-if !exists("b:norg")
-    " debugging
-    map <silent> ;b :lua require'dap'.toggle_breakpoint()<cr>
-    map <silent> ;c :lua require'dap'.continue()<cr>
-    map <silent> ;o :lua require'dap'.step_over()<cr>
-    map <silent> ;i :lua require'dap'.step_into()<cr>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
 
-    map <silent> ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>
-    map <silent> ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>
-    map <silent> ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<cr>
-    map <silent> ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<cr>
-    map <silent> ;u :lua require('dapui').toggle()<cr>
-    map <silent> ; ;;
-endif
+" if !exists("b:norg")
+"     " debugging
+"     map <silent> ;b :lua require'dap'.toggle_breakpoint()<cr>
+"     map <silent> ;c :lua require'dap'.continue()<cr>
+"     map <silent> ;o :lua require'dap'.step_over()<cr>
+"     map <silent> ;i :lua require'dap'.step_into()<cr>
+"
+"     map <silent> ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>
+"     map <silent> ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>
+"     map <silent> ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<cr>
+"     map <silent> ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<cr>
+"     map <silent> ;u :lua require('dapui').toggle()<cr>
+" endif
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <silent> <A-h> <C-\><C-N><C-w>h

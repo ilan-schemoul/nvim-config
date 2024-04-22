@@ -1,3 +1,4 @@
+lua vim.filetype.add({ extension = { blk = 'c' } }) 
 " Compilation
 set makeprg=LC_ALL=C\ make\ MONOCHROME=1
 set grepprg=git\ grep\ -H\ -n
@@ -11,6 +12,8 @@ set softtabstop=4
 set expandtab
 set textwidth=0
 set shiftwidth=4
+
+set colorcolumn=78
 
 set cinoptions=
 set cinoptions+=L1s            " Align labels on previous indent level
