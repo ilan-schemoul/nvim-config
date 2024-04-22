@@ -188,6 +188,8 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 inoremap <C-j> <Down>
 
+map <leader>F :echo @%<cr>
+
 " if !exists("b:norg")
 "     " debugging
 "     map <silent> ;b :lua require'dap'.toggle_breakpoint()<cr>
