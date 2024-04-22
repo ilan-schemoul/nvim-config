@@ -11,10 +11,6 @@ return {
       { "ilan-schemoul/nvim-treesitter-textobjects", branch = "lookbehind-local-keymap-setting" },
     },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    keys = {
-      { "<c-space>", desc = "Increment selection" },
-      { "<bs>", desc = "Decrement selection", mode = "x" },
-    },
     opts = {
       ensure_installed = { "c", "markdown_inline", "regex", "markdown", "cpp", "rust" },
       sync_install = false,
@@ -77,24 +73,13 @@ return {
         swap = {
           enable = true,
           swap_next = {
-            [",;"] = "@parameter.inner", -- swap parameters/argument with next
-            ["à;"] = "@function.outer", -- swap function with next
-            ["0;"] = "@function.outer", -- swap function with next
+            [",sl"] = "@parameter.inner", -- swap parameters/argument with next
+            [",sj"] = "@function.outer", -- swap function with next
           },
-          -- swap_previous = {
-          --   [";,"] = "@parameter.inner", -- swap parameters/argument with prev
-          --   [";à"] = "@function.outer", -- swap function with previous
-          --   [";0"] = "@function.outer", -- swap function with previous
-          -- },
-        },
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
+          swap_previous = {
+            [",sh"] = "@parameter.inner", -- swap parameters/argument with next
+            [",sk"] = "@function.outer", -- swap function with previous
+          },
         },
       },
     },

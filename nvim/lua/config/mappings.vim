@@ -149,7 +149,7 @@ map <silent> zr :spellr<cr>
 nmap <silent> <leader>? <Plug>SearchNormal
 vmap <silent> <leader>? <Plug>SearchVisual
 
-map <leader>p :term<cr>
+map <leader>pp :term<cr>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -190,19 +190,19 @@ inoremap <C-j> <Down>
 
 map <leader>F :echo @%<cr>
 
-" if !exists("b:norg")
-"     " debugging
-"     map <silent> ;b :lua require'dap'.toggle_breakpoint()<cr>
-"     map <silent> ;c :lua require'dap'.continue()<cr>
-"     map <silent> ;o :lua require'dap'.step_over()<cr>
-"     map <silent> ;i :lua require'dap'.step_into()<cr>
-"
-"     map <silent> ;s :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>
-"     map <silent> ;f :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>
-"     map <silent> ;e :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<cr>
-"     map <silent> ;t :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<cr>
-"     map <silent> ;u :lua require('dapui').toggle()<cr>
-" endif
+if !exists("b:norg")
+    " debugging
+    map <silent> <leader>eb :lua require'dap'.toggle_breakpoint()<cr>
+    map <silent> <leader>ec :lua require'dap'.continue()<cr>
+    map <silent> <leader>eo :lua require'dap'.step_over()<cr>
+    map <silent> <leader>ei :lua require'dap'.step_into()<cr>
+
+    map <silent> <leader>es :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>
+    map <silent> <leader>ef :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>
+    map <silent> <leader>ee :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<cr>
+    map <silent> <leader>et :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<cr>
+    map <silent> <leader>eu :lua require('dapui').toggle()<cr>
+endif
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <silent> <A-h> <C-\><C-N><C-w>h
