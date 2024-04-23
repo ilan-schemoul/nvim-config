@@ -13,6 +13,7 @@ map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 map <silent> <leader>q :q<cr>
 tmap <silent> <leader>q <C-\><C-o>:q<cr>
 map <silent> <leader>Q :wqa!<cr>
+tmap <silent> <leader>Q <C-\><C-o>:wqa!<cr>
 
 map <silent> <leader>D :lua vim.diagnostic.open_float()<cr>
 map <silent> <leader>h :lua vim.lsp.buf.hover()<cr>
@@ -195,6 +196,17 @@ map <leader>tà :tabnext<cr>
 map <leader>t0 :tabnext<cr>
 map <leader>tç :tabprevious<cr>
 map <leader>t9 :tabprevious<cr>
+map <leader>tl :+tabmove<cr>
+map <leader>th :-tabmove<cr>
+
+tmap <leader>tn <C-\><C-n>:tabnew<cr>
+tmap <leader>tx <C-\><C-n>:tabclose<cr>
+tmap <leader>tà <C-\><C-n>:tabnext<cr>
+tmap <leader>t0 <C-\><C-n>:tabnext<cr>
+tmap <leader>tç <C-\><C-n>:tabprevious<cr>
+tmap <leader>t9 <C-\><C-n>:tabprevious<cr>
+tmap <leader>tl <C-\><C-n>:+tabmove<cr>
+tmap <leader>th <C-\><C-n>:-tabmove<cr>
 
 if !exists("b:norg")
     " debugging
