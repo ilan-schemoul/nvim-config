@@ -1,7 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua",
   keys = {
-    { "<leader>t", "<cmd>NvimTreeToggle<cr>" },
+    { "<leader>tt", "<cmd>NvimTreeToggle<cr>" },
   },
   opts = {
     on_attach = function(bufnr)

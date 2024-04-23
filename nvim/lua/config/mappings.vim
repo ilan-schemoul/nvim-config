@@ -7,7 +7,6 @@
 map <silent> <leader>I :set invrelativenumber<cr>
 map <silent> <leader>N :set invnumber<cr>
 
-map <silent> <leader>S :call ToggleSignColumn()<cr>
 map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
 " closes everything
@@ -189,6 +188,13 @@ inoremap <C-l> <Right>
 inoremap <C-j> <Down>
 
 map <leader>F :echo @%<cr>
+
+map <leader>tn :tabnew<cr>
+map <leader>tx :tabclose<cr>
+map <leader>tà :tabnext<cr>
+map <leader>t0 :tabnext<cr>
+map <leader>tç :tabprevious<cr>
+map <leader>t9 :tabprevious<cr>
 
 if !exists("b:norg")
     " debugging
