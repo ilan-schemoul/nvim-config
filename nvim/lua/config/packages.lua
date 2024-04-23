@@ -22,7 +22,7 @@ require("lazy").setup({
 
   "norcalli/nvim-colorizer.lua",
 
-  "kyazdani42/nvim-web-devicons",
+  "nvim-tree/nvim-web-devicons",
   "nvim-lua/plenary.nvim",
   "nvim-telescope/telescope.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -66,7 +66,7 @@ require("lazy").setup({
   {
     "ThePrimeagen/harpoon",
     version = "ccae1b9bec717ae284906b0bf83d720e59d12b91", -- v1
-    requires = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
 
   "max397574/better-escape.nvim",
@@ -75,4 +75,5 @@ require("lazy").setup({
   "embear/vim-localvimrc",
   "glacambre/firenvim",
   "nvim-telescope/telescope-live-grep-args.nvim",
+  "folke/which-key.nvim",
 }, { change_detection = { enabled = true, notify = false } })
