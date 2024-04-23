@@ -187,7 +187,7 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 inoremap <C-j> <Down>
 
-map <leader>F :echo @%<cr>
+map <silent> <leader>F :echo @%<cr>
 
 map <leader>tn :tabnew<cr>
 map <leader>tx :tabclose<cr>
