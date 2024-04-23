@@ -12,8 +12,8 @@ map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 " closes everything
 map <silent> <leader>q :q<cr>
 tmap <silent> <leader>q <C-\><C-o>:q<cr>
-map <silent> <leader>Q :wqa!<cr>
-tmap <silent> <leader>Q <C-\><C-o>:wqa!<cr>
+map <silent> <leader>Q :qa!<cr>
+tmap <silent> <leader>Q <C-\><C-o>:qa!<cr>
 
 map <silent> <leader>D :lua vim.diagnostic.open_float()<cr>
 map <silent> <leader>h :lua vim.lsp.buf.hover()<cr>
@@ -75,8 +75,8 @@ nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 
 nmap <silent> <leader>V :source $MYVIMRC <cr>
 inoremap <silent> jk <esc>
-tnoremap <silent> jk <C-\><C-O>
-tnoremap <silent> ,: <C-\><C-O>:
+tnoremap <silent> jk <C-\><C-N>
+tnoremap <silent> ,: <C-\><C-N>:
 
 map <silent> <leader>u :UndotreeToggle<cr>
 
