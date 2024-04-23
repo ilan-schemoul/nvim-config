@@ -75,7 +75,8 @@ nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 
 nmap <silent> <leader>V :source $MYVIMRC <cr>
 inoremap <silent> jk <esc>
-tnoremap <silent> jk <C-\><C-n><cr>
+tnoremap <silent> jk <C-\><C-O>
+tnoremap <silent> ,: <C-\><C-O>:
 
 map <silent> <leader>u :UndotreeToggle<cr>
 
