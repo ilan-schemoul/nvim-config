@@ -6,3 +6,5 @@ For wsl markdownPreview support : `sudo apt-get install -y xdg-utils`
 
 `git config core.hooksPath hooks/`
 
+https://thevaluable.dev/vim-advanced/
+
