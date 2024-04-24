@@ -40,6 +40,7 @@ map <silent> <leader>T :Telescope<cr>
 map <silent> <leader>z :Telescope buffers<cr>
 map <silent> <leader>l :Telescope find_files<cr>
 map <silent> <leader>g :lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>
+map <silent> <leader>G :Telescope grep_string<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 
@@ -53,8 +54,8 @@ tmap <silent> <leader>$ <C-\><C-n>:Telescope oldfiles<cr>
 
 map <silent> <leader>x :bd<cr>
 tnoremap <silent> <leader>x <C-\><C-n>:bd!<cr>
-map <silent> <leader>r :Resurrect<cr>
-tmap <silent> <leader>r <C-\><C-n>:Resurrect<cr>
+map <silent> <leader>rr :Resurrect<cr>
+tmap <silent> <leader>rr <C-\><C-n>:Resurrect<cr>
 
 noremap <silent> <leader>ç :bp<cr>
 tnoremap <silent> <leader>ç <C-\><C-n>:bp<cr>
@@ -146,9 +147,6 @@ noremap <silent> zc 1z=
 map <silent> z= :CustomTelescopeSpellSuggest<cr>
 map <silent> zl :CustomTelescopeSpellSuggest<cr>
 map <silent> zr :spellr<cr>
-
-nmap <silent> <leader>? <Plug>SearchNormal
-vmap <silent> <leader>? <Plug>SearchVisual
 
 map <leader>pp :term<cr>
 
