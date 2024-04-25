@@ -1,9 +1,11 @@
 return {
   "lewis6991/gitsigns.nvim",
   cmd = "Gitsigns",
+  lazy = false,
   opts = {
-    signcolumn = false,
     numhl = false,
+    signcolumn = false,
+    linehl = true,
   },
   keys = {
     { "<leader>jn", "<cmd>Gitsigns toggle_numhl<cr>" },
@@ -26,7 +28,7 @@ return {
 
     { "<leader>jp", "<cmd>Gitsigns preview_hunk<cr>" },
 
-    { "<leader>jr", "<cmd>Gitsigns reset_hunk<cr>", mode = "n" },
+    { "<leader>jr", "<cmd>Gitsigns reset_hunk<cr>",      mode = "n" },
     {
       "<leader>jr",
       function()
@@ -36,7 +38,7 @@ return {
     },
 
     { "<leader>jd", "<cmd>Gitsigns diffthis<cr>" },
-    { "ih", ":<C-U>Gitsigns select_hunk<cr>", mode = { "o", "x" } },
+    { "ih",         ":<C-U>Gitsigns select_hunk<cr>", mode = { "o", "x" } },
 
     {
       "]c",
