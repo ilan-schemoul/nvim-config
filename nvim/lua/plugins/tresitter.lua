@@ -38,11 +38,11 @@ return {
             ["it"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
 
             -- You can use the capture groups defined in textobjects.scm
-            ["o="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
+                ["o="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
             ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
-            -- Disabled as "l" is a motion
-            ["il="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
-            ["iv="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
+            -- Reversed order as "l" is a motion
+            ["=l"] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
+            ["=r"] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
 
             ["oa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
             ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
@@ -69,46 +69,46 @@ return {
 
             ["or"] = { query = "@return.outer", desc = "Select outer part of return" },
             ["ir"] = { query = "@return.inner", desc = "Select inner part of return" },
-          },
         },
-        swap = {
-          enable = true,
-          swap_next = {
+    },
+    swap = {
+        enable = true,
+        swap_next = {
             [",sl"] = "@parameter.inner", -- swap parameters/argument with next
             [",sj"] = "@function.outer", -- swap function with next
-          },
-          swap_previous = {
+        },
+        swap_previous = {
             [",sh"] = "@parameter.inner", -- swap parameters/argument with next
             [",sk"] = "@function.outer", -- swap function with previous
-          },
         },
-      },
+    },
+},
     },
 
     config = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        ---@type table<string, boolean>
-        local added = {}
-        opts.ensure_installed = vim.tbl_filter(function(lang)
-          if added[lang] then
-            return false
-          end
-          added[lang] = true
-          return true
-        end, opts.ensure_installed)
-      end
-      require("nvim-treesitter.configs").setup(opts)
+        if type(opts.ensure_installed) == "table" then
+            ---@type table<string, boolean>
+            local added = {}
+            opts.ensure_installed = vim.tbl_filter(function(lang)
+                if added[lang] then
+                    return false
+                end
+                added[lang] = true
+                return true
+            end, opts.ensure_installed)
+        end
+        require("nvim-treesitter.configs").setup(opts)
     end,
-  },
+},
 
-  -- Show context of the current function
-  {
+-- Show context of the current function
+{
     "nvim-treesitter/nvim-treesitter-context",
     enabled = true,
     opts = {
-      mode = "cursor",
-      max_lines = 5,
-      min_window_height = 40,
+        mode = "cursor",
+        max_lines = 5,
+        min_window_height = 40,
     },
-  },
+},
 }
