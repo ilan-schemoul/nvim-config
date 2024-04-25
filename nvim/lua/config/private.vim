@@ -63,3 +63,9 @@ let g:localvimrc_sandbox = 0
 
 " Whitelist ~/dev, which must contains all our repositories
 let g:localvimrc_whitelist = $HOME.'/dev/'
+
+cab F G commit --fixup
+command L G log
+command A G commit --amend
+command I G rebase -i
+command P G push-for f/master/ilan
