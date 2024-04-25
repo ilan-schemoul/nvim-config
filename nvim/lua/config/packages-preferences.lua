@@ -43,8 +43,9 @@ vim.api.nvim_create_user_command("CustomTelescopeSpellSuggest", function()
 end, {})
 
 local lga_actions = require("telescope-live-grep-args.actions")
-local finders = require "telescope.finders"
-local make_entry = require "telescope.make_entry"
+local actions = require("telescope.actions")
+local finders = require("telescope.finders")
+local make_entry = require("telescope.make_entry")
 vim.api.nvim_create_user_command("Cl", function()
   local locations = vim.fn.getqflist({ nr = "$", items = true }).items
   locations = vim.tbl_filter(function(value)
@@ -83,9 +84,10 @@ require("telescope").setup({
         i = {
           ["<C-k>"] = lga_actions.quote_prompt(),
           ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+          ["<C-space>"] = actions.to_fuzzy_refine,
         },
       },
-    }
+    },
   },
 })
 
