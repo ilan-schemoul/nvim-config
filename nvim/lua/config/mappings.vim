@@ -24,6 +24,7 @@ map <silent> <leader>i :Telescope lsp_references<cr>
 map <silent> <leader>d :Telescope lsp_definitions<cr>
 map <silent> <leader>sd :Telescope lsp_dynamic_workspace_symbols<cr>
 map <silent> <leader>ss :Telescope lsp_workspace_symbols<cr>
+map <silent> <leader>tr :Telescope resume<cr>
 imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
 map <silent> <leader>a :CodeActionMenu<cr>
