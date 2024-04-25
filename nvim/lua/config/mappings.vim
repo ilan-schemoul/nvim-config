@@ -1,3 +1,4 @@
+" Useful others gF open file with line number (a.c:10)
 " Mappings defined by plugins
 " gA to see all bases for a number under the cursor cr{b/x/d/o} to change a
 " number base
