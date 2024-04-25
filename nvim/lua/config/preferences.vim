@@ -72,3 +72,5 @@ autocmd BufReadPost *
       \ endif
 
 hi CursorLineNr guifg=#aaaaaa
+
+set sessionoptions=buffers,curdir,folds,globals,help,tabpages,terminal,winsize

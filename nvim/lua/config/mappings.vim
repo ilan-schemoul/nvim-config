@@ -39,8 +39,8 @@ map <silent> <leader>m :Mason<cr>
 map <silent> <leader>T :Telescope<cr>
 map <silent> <leader>z :Telescope buffers<cr>
 map <silent> <leader>l :Telescope find_files<cr>
-map <silent> <leader>g :lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>
 map <silent> <leader>G :Telescope grep_string<cr>
+map <silent> <leader>g :Telescope live_grep_args<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 
@@ -52,10 +52,12 @@ tmap <silent> <leader>G <C-\><C-n>:Telescope grep_string<cr>
 tmap <silent> <leader>ù <C-\><C-n>:Telescope marks<cr>
 tmap <silent> <leader>$ <C-\><C-n>:Telescope oldfiles<cr>
 
-map <silent> <leader>x :bd<cr>
-tnoremap <silent> <leader>x <C-\><C-n>:bd!<cr>
 map <silent> <leader>rr :Resurrect<cr>
 tmap <silent> <leader>rr <C-\><C-n>:Resurrect<cr>
+" Close buffer not window
+" (https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window)
+map <silent> <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>
+tnoremap <silent> <leader>x <C-\><C-n>:bp<bar>sp<bar>bn<bar>bd<CR>
 
 noremap <silent> <leader>ç :bp<cr>
 tnoremap <silent> <leader>ç <C-\><C-n>:bp<cr>
@@ -71,7 +73,7 @@ nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
 nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
 nmap <silent> <leader>vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
 nmap <silent> <leader>vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
-nmap <silent> <leader>vg :lua require('telescope').extensions.live_grep_args.live_grep_args({search_dirs={"~/.config/nvim"}})<cr>
+nmap <silent> <leader>vg :Telescope live_grep_args search_dirs=~/.config/nvim<cr>
 nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 
 nmap <silent> <leader>V :source $MYVIMRC <cr>
@@ -132,7 +134,7 @@ map <silent> <leader>yr :Neorg return<cr>
 map <silent> <leader>ym :e ~/notes/memory.norg<cr>Ga
 map <silent> <leader>yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
 map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"}<cr>
-map <silent> <leader>yg :lua require('telescope').extensions.live_grep_args.live_grep_args({search_dirs={"~/notes"}})<cr>
+map <silent> <leader>yg :Telescope live_grep_args search_dirs={"~/notes"}<cr>
 map <silent> <leader>yn :call v:lua.create_org_file()<cr>
 
 tmap <silent> <leader>yi <C-\><C-n>:Neorg index<cr>
@@ -178,6 +180,7 @@ if !empty($KEYBOARD_FR)
   noremap <silent> 9 ç
 
   nmap <silent> ù `
+  noremap <C--> <C-^> " Otherwise C-^ for alternate file
 endif
 
 autocmd FileType norg let b:norg = v:true
@@ -189,6 +192,22 @@ inoremap <C-j> <Down>
 
 map <silent> <leader>F :echo @%<cr>
 
+map <leader>t& :tabn 1<cr>
+map <leader>té :tabn 2<cr>
+map <leader>t" :tabn 3<cr>
+map <leader>t' :tabn 4<cr>
+map <leader>t( :tabn 5<cr>
+map <leader>t- :tabn 6<cr>
+map <leader>tè :tabn 7<cr>
+
+map <leader>t1 :tabn 1<cr>
+map <leader>t2 :tabn 2<cr>
+map <leader>t3 :tabn 3<cr>
+map <leader>t4 :tabn 4<cr>
+map <leader>t5 :tabn 5<cr>
+map <leader>t6 :tabn 6<cr>
+map <leader>t7 :tabn 7<cr>
+
 map <leader>tn :tabnew<cr>
 map <leader>tx :tabclose<cr>
 map <leader>tà :tabnext<cr>
@@ -197,6 +216,22 @@ map <leader>tç :tabprevious<cr>
 map <leader>t9 :tabprevious<cr>
 map <leader>tl :+tabmove<cr>
 map <leader>th :-tabmove<cr>
+
+tmap <leader>t& <C-\><C-n>:tabn 1<cr>
+tmap <leader>té <C-\><C-n>:tabn 2<cr>
+tmap <leader>t" <C-\><C-n>:tabn 3<cr>
+tmap <leader>t' <C-\><C-n>:tabn 4<cr>
+tmap <leader>t( <C-\><C-n>:tabn 5<cr>
+tmap <leader>t- <C-\><C-n>:tabn 6<cr>
+tmap <leader>tè <C-\><C-n>:tabn 7<cr>
+
+tmap <leader>t1 <C-\><C-n>:tabn 1<cr>
+tmap <leader>t2 <C-\><C-n>:tabn 2<cr>
+tmap <leader>t3 <C-\><C-n>:tabn 3<cr>
+tmap <leader>t4 <C-\><C-n>:tabn 4<cr>
+tmap <leader>t5 <C-\><C-n>:tabn 5<cr>
+tmap <leader>t6 <C-\><C-n>:tabn 6<cr>
+tmap <leader>t7 <C-\><C-n>:tabn 7<cr>
 
 tmap <leader>tn <C-\><C-n>:tabnew<cr>
 tmap <leader>tx <C-\><C-n>:tabclose<cr>

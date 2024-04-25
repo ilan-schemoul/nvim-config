@@ -47,15 +47,6 @@ return {
 
     routes = {
       {
-        view = "mini",
-        filter = {
-          event = "msg_showmode",
-          any = {
-            { find = "recording" },
-          },
-        },
-      },
-      {
         event = "notify",
         kind = "",
         filter = {
