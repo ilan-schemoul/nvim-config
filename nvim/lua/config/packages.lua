@@ -1,7 +1,6 @@
 require("config/init-lazy")
 
 require("lazy").setup({
-  -- SnipRun.lua, chatgpt.lua, coq.lua, hypersonic.lua, lsp.lua, neorg.lua, tresitter.lua, vim-visual-multi.lua
   { import = "plugins" }, -- imports ~/.config/nvim/lua/plugins/*.lua
 
   "tpope/vim-eunuch", -- unix helpers for other packages
@@ -67,8 +66,10 @@ require("lazy").setup({
   "max397574/better-escape.nvim",
 
   { "tpope/vim-sleuth", enabled = false }, -- adjusts shiftwidth/expandtab based on other files
-  "embear/vim-localvimrc",
-  "glacambre/firenvim",
+
+  "embear/vim-localvimrc", -- intersec
+
   "nvim-telescope/telescope-live-grep-args.nvim",
+
   "folke/which-key.nvim",
 }, { change_detection = { enabled = true, notify = false } })
