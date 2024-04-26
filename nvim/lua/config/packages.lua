@@ -27,11 +27,6 @@ require("lazy").setup({
   "nvim-telescope/telescope.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
-  "mfussenegger/nvim-dap",
-  "rcarriga/nvim-dap-ui",
-  "theHamsta/nvim-dap-virtual-text",
-  "mfussenegger/nvim-dap-python",
-
   "j-hui/fidget.nvim",
 
   "filipdutescu/renamer.nvim",
