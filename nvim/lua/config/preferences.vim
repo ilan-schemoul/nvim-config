@@ -93,4 +93,6 @@ set sessionoptions=buffers,curdir,folds,globals,help,tabpages,terminal,winsize
 
 command L G log
 command A G commit --amend
+command F G commit --fixup
+command P G push
 command I G rebase -i
