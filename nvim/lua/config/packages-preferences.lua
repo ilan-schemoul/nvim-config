@@ -9,8 +9,6 @@ vim.g.chadtree_settings = {
   keymap = { copy_relname = { "<c-c>" } },
 }
 
-require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
-require("nvim-dap-virtual-text").setup()
 require("trouble").setup({})
 require("fidget").setup({ progress = {
   display = { render_limit = 1 },
@@ -88,12 +86,6 @@ require("telescope").setup({
         },
       },
     },
-  },
-})
-
-require("dapui").setup({
-  controls = {
-    enabled = false,
   },
 })
 
