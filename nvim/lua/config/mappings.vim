@@ -144,6 +144,7 @@ if !empty($KEYBOARD_FR)
 
   nmap <silent> ù `
   noremap <C--> <C-^> " Otherwise C-^ for alternate file
+  tnoremap <C--> <C-\><C-N><C-^> " Otherwise C-^ for alternate file
 endif
 
 inoremap <C-k> <Up>
