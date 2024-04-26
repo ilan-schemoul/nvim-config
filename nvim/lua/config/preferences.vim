@@ -1,4 +1,20 @@
+if executable("fish")
+  set shell=/bin/fish
+else
+  set shell=/bin/bash
+endif
+
+set clipboard+=unnamedplus
+
+set visualbell
+
 colorscheme catppuccin-macchiato
+
+vnoremap p "_dP " nocopy when pasting
+nnoremap x "_x
+nnoremap X "_X
+
+set termguicolors
 
 highlight ColorColumn ctermbg=0 guibg=#212337
 
@@ -74,3 +90,7 @@ autocmd BufReadPost *
 hi CursorLineNr guifg=#aaaaaa
 
 set sessionoptions=buffers,curdir,folds,globals,help,tabpages,terminal,winsize
+
+command L G log
+command A G commit --amend
+command I G rebase -i
