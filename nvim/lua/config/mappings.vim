@@ -185,8 +185,6 @@ if !empty($KEYBOARD_FR)
   noremap <C--> <C-^> " Otherwise C-^ for alternate file
 endif
 
-autocmd FileType norg let b:norg = v:true
-
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
@@ -244,20 +242,6 @@ tmap <leader>t9 <C-\><C-n>:tabprevious<cr>
 tmap <leader>tl <C-\><C-n>:+tabmove<cr>
 tmap <leader>th <C-\><C-n>:-tabmove<cr>
 
-if !exists("b:norg")
-    " debugging
-    map <silent> <leader>eb :lua require'dap'.toggle_breakpoint()<cr>
-    map <silent> <leader>ec :lua require'dap'.continue()<cr>
-    map <silent> <leader>eo :lua require'dap'.step_over()<cr>
-    map <silent> <leader>ei :lua require'dap'.step_into()<cr>
-
-    map <silent> <leader>es :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>
-    map <silent> <leader>ef :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>
-    map <silent> <leader>ee :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').expression)<cr>
-    map <silent> <leader>et :lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').threads)<cr>
-    map <silent> <leader>eu :lua require('dapui').toggle()<cr>
-endif
-
 " ------ alt instead of ctrl for moving windows
 tnoremap <silent> <A-h> <C-\><C-N><C-w>h
 tnoremap <silent> <A-j> <C-\><C-N><C-w>j
@@ -289,13 +273,3 @@ nnoremap <silent> <A-J> <C-w>J
 nnoremap <silent> <A-K> <C-w>K
 nnoremap <silent> <A-L> <C-w>L
 " ----- end of window movement
-
-function! ToggleSignColumn()
-    if !exists("b:signcolumn_on") || b:signcolumn_on
-        set signcolumn=no
-        let b:signcolumn_on=0
-    else
-        set signcolumn=number
-        let b:signcolumn_on=1
-   endif
-endfunction
