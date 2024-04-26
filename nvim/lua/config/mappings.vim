@@ -12,9 +12,9 @@ map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
 " closes everything
 map <silent> <leader>q :q<cr>
-tmap <silent> <leader>q <C-\><C-o>:q<cr>
+tmap <silent> <LocalLeader>q <C-\><C-o>:q<cr>
 map <silent> <leader>Q :qa!<cr>
-tmap <silent> <leader>Q <C-\><C-o>:qa!<cr>
+tmap <silent> <LocalLeader>Q <C-\><C-o>:qa!<cr>
 
 map <silent> <leader>D :lua vim.diagnostic.open_float()<cr>
 map <silent> <leader>h :lua vim.lsp.buf.hover()<cr>
@@ -46,20 +46,20 @@ map <silent> <leader>g :Telescope live_grep_args<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 
-tmap <silent> <leader>T <C-\><C-n>:Telescope<cr>
-tmap <silent> <leader>z <C-\><C-n>:Telescope buffers<cr>
-tmap <silent> <leader>l <C-\><C-n>:Telescope find_files<cr>
-tmap <silent> <leader>g <C-\><C-n>:Telescope live_grep<cr>
-tmap <silent> <leader>G <C-\><C-n>:Telescope grep_string<cr>
-tmap <silent> <leader>ù <C-\><C-n>:Telescope marks<cr>
-tmap <silent> <leader>$ <C-\><C-n>:Telescope oldfiles<cr>
+tmap <silent> <LocalLeader>T <C-\><C-n>:Telescope<cr>
+tmap <silent> <LocalLeader>z <C-\><C-n>:Telescope buffers<cr>
+tmap <silent> <LocalLeader>l <C-\><C-n>:Telescope find_files<cr>
+tmap <silent> <LocalLeader>g <C-\><C-n>:Telescope live_grep<cr>
+tmap <silent> <LocalLeader>G <C-\><C-n>:Telescope grep_string<cr>
+tmap <silent> <LocalLeader>ù <C-\><C-n>:Telescope marks<cr>
+tmap <silent> <LocalLeader>$ <C-\><C-n>:Telescope oldfiles<cr>
 
 map <silent> <leader>rr :Resurrect<cr>
-tmap <silent> <leader>rr <C-\><C-n>:Resurrect<cr>
+tmap <silent> <LocalLeader>rr <C-\><C-n>:Resurrect<cr>
 " Close buffer not window
 " (https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window)
 map <silent> <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>
-tnoremap <silent> <leader>x <C-\><C-n>:bp<bar>sp<bar>bn<bar>bd<CR>
+tnoremap <silent> <LocalLeader>x <C-\><C-n>:bp<bar>sp<bar>bn<bar>bd<CR>
 
 nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
 nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
@@ -71,7 +71,7 @@ nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 nmap <silent> <leader>V :source $MYVIMRC <cr>
 inoremap <silent> jk <esc>
 tnoremap <silent> jk <C-\><C-N>
-tnoremap <silent> ,: <C-\><C-N>:
+tnoremap <silent> <LocalLeader>: <C-\><C-N>:
 
 map <silent> <leader>u :UndotreeToggle<cr>
 
@@ -100,20 +100,24 @@ map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"}<cr>
 map <silent> <leader>yg :Telescope live_grep_args search_dirs={"~/notes"}<cr>
 map <silent> <leader>yn :call v:lua.create_org_file()<cr>
 
-tmap <silent> <leader>yi <C-\><C-n>:Neorg index<cr>
-tmap <silent> <leader>yr <C-\><C-n>:Neorg return<cr>
-tmap <silent> <leader>ym <C-\><C-n>:e ~/notes/memory.norg<cr>Ga
-tmap <silent> <leader>yM <C-\><C-n>:botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
-tmap <silent> <leader>yl <C-\><C-n>:Telescope find_files search_dirs={"~/notes"}<cr>
-tmap <silent> <leader>yg <C-\><C-n>:Telescope live_grep search_dirs={"~/notes"}<cr>
-tmap <silent> <leader>yn <C-\><C-n>:call v:lua.create_org_file()<cr>
+tmap <silent> <LocalLeader>yi <C-\><C-n>:Neorg index<cr>
+tmap <silent> <LocalLeader>yr <C-\><C-n>:Neorg return<cr>
+tmap <silent> <LocalLeader>ym <C-\><C-n>:e ~/notes/memory.norg<cr>Ga
+tmap <silent> <LocalLeader>yM <C-\><C-n>:botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
+tmap <silent> <LocalLeader>yl <C-\><C-n>:Telescope find_files search_dirs={"~/notes"}<cr>
+tmap <silent> <LocalLeader>yg <C-\><C-n>:Telescope live_grep search_dirs={"~/notes"}<cr>
+tmap <silent> <LocalLeader>yn <C-\><C-n>:call v:lua.create_org_file()<cr>
 
 noremap <silent> zc 1z=
 map <silent> z= :CustomTelescopeSpellSuggest<cr>
 map <silent> zl :CustomTelescopeSpellSuggest<cr>
 map <silent> zr :spellr<cr>
 
-map <leader>pp :term<cr>
+map <leader>pn :term<cr>
+map <leader>ph :vsplit \| term<cr>
+map <leader>pj :belowright split \| term<cr>
+map <leader>pk :topleft split \| term<cr>
+map <leader>pl :botright vs \| term<cr>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -144,15 +148,17 @@ if !empty($KEYBOARD_FR)
 
   nmap <silent> ù `
   noremap <C--> <C-^> " Otherwise C-^ for alternate file
-  tnoremap <C--> <C-\><C-N><C-^> " Otherwise C-^ for alternate file
 endif
+
+tmap <C-^> <C-\><C-N><C-^>
 
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 inoremap <C-j> <Down>
 
-map <silent> <leader>F :echo @%<cr>
+" map <space> ciw
+" map <C-space> ciW
 
 map <leader>t& :tabn 1<cr>
 map <leader>té :tabn 2<cr>
@@ -179,30 +185,30 @@ map <leader>t9 :tabprevious<cr>
 map <leader>tl :+tabmove<cr>
 map <leader>th :-tabmove<cr>
 
-tmap <leader>t& <C-\><C-n>:tabn 1<cr>
-tmap <leader>té <C-\><C-n>:tabn 2<cr>
-tmap <leader>t" <C-\><C-n>:tabn 3<cr>
-tmap <leader>t' <C-\><C-n>:tabn 4<cr>
-tmap <leader>t( <C-\><C-n>:tabn 5<cr>
-tmap <leader>t- <C-\><C-n>:tabn 6<cr>
-tmap <leader>tè <C-\><C-n>:tabn 7<cr>
+tmap <LocalLeader>t& <C-\><C-n>:tabn 1<cr>
+tmap <LocalLeader>té <C-\><C-n>:tabn 2<cr>
+tmap <LocalLeader>t" <C-\><C-n>:tabn 3<cr>
+tmap <LocalLeader>t' <C-\><C-n>:tabn 4<cr>
+tmap <LocalLeader>t( <C-\><C-n>:tabn 5<cr>
+tmap <LocalLeader>t- <C-\><C-n>:tabn 6<cr>
+tmap <LocalLeader>tè <C-\><C-n>:tabn 7<cr>
 
-tmap <leader>t1 <C-\><C-n>:tabn 1<cr>
-tmap <leader>t2 <C-\><C-n>:tabn 2<cr>
-tmap <leader>t3 <C-\><C-n>:tabn 3<cr>
-tmap <leader>t4 <C-\><C-n>:tabn 4<cr>
-tmap <leader>t5 <C-\><C-n>:tabn 5<cr>
-tmap <leader>t6 <C-\><C-n>:tabn 6<cr>
-tmap <leader>t7 <C-\><C-n>:tabn 7<cr>
+tmap <LocalLeader>t1 <C-\><C-n>:tabn 1<cr>
+tmap <LocalLeader>t2 <C-\><C-n>:tabn 2<cr>
+tmap <LocalLeader>t3 <C-\><C-n>:tabn 3<cr>
+tmap <LocalLeader>t4 <C-\><C-n>:tabn 4<cr>
+tmap <LocalLeader>t5 <C-\><C-n>:tabn 5<cr>
+tmap <LocalLeader>t6 <C-\><C-n>:tabn 6<cr>
+tmap <LocalLeader>t7 <C-\><C-n>:tabn 7<cr>
 
-tmap <leader>tn <C-\><C-n>:tabnew<cr>
-tmap <leader>tx <C-\><C-n>:tabclose<cr>
-tmap <leader>tà <C-\><C-n>:tabnext<cr>
-tmap <leader>t0 <C-\><C-n>:tabnext<cr>
-tmap <leader>tç <C-\><C-n>:tabprevious<cr>
-tmap <leader>t9 <C-\><C-n>:tabprevious<cr>
-tmap <leader>tl <C-\><C-n>:+tabmove<cr>
-tmap <leader>th <C-\><C-n>:-tabmove<cr>
+tmap <LocalLeader>tn <C-\><C-n>:tabnew<cr>
+tmap <LocalLeader>tx <C-\><C-n>:tabclose<cr>
+tmap <LocalLeader>tà <C-\><C-n>:tabnext<cr>
+tmap <LocalLeader>t0 <C-\><C-n>:tabnext<cr>
+tmap <LocalLeader>tç <C-\><C-n>:tabprevious<cr>
+tmap <LocalLeader>t9 <C-\><C-n>:tabprevious<cr>
+tmap <LocalLeader>tl <C-\><C-n>:+tabmove<cr>
+tmap <LocalLeader>th <C-\><C-n>:-tabmove<cr>
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <silent> <A-h> <C-\><C-N><C-w>h

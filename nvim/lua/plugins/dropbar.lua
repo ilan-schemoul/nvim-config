@@ -7,6 +7,6 @@ return {
   enabled = false,
   lazy = false,
   keys = {
-    { "<leader>p", "<cmd>lua require('dropbar.api').pick()<cr>" },
+    -- { "<leader>pd", "<cmd>lua require('dropbar.api').pick()<cr>" },
   },
 }
