@@ -61,16 +61,6 @@ tmap <silent> <leader>rr <C-\><C-n>:Resurrect<cr>
 map <silent> <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>
 tnoremap <silent> <leader>x <C-\><C-n>:bp<bar>sp<bar>bn<bar>bd<CR>
 
-noremap <silent> <leader>ç :bp<cr>
-tnoremap <silent> <leader>ç <C-\><C-n>:bp<cr>
-noremap <silent> <leader>à :bn<cr>
-tnoremap <silent> <leader>à <C-\><C-n>:bn<cr>
-
-noremap <silent> <leader>9 :bp<cr>
-tnoremap <silent> <leader>9 <C-\><C-n>:bp<cr>
-noremap <silent> <leader>0 :bn<cr>
-tnoremap <silent> <leader>0 <C-\><C-n>:bn<cr>
-
 nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
 nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
 nmap <silent> <leader>vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
@@ -89,35 +79,6 @@ map <silent> <leader>u :UndotreeToggle<cr>
 map <silent> <leader>b :TroubleToggle<cr>
 
 map <silent> <leader>o :Vista!!<cr>
-
-map <silent> <leader>wa :lua require("harpoon.mark").add_file()<cr>
-map <silent> <leader>wl :Telescope harpoon marks<cr>
-map <silent> <leader>w& :lua require("harpoon.ui").nav_file(1)<cr>
-map <silent> <leader>w1 :lua require("harpoon.ui").nav_file(1)<cr>
-map <silent> <leader>wé :lua require("harpoon.ui").nav_file(2)<cr>
-map <silent> <leader>w2 :lua require("harpoon.ui").nav_file(2)<cr>
-map <silent> <leader>w" :lua require("harpoon.ui").nav_file(3)<cr>
-map <silent> <leader>w3 :lua require("harpoon.ui").nav_file(3)<cr>
-map <silent> <leader>w' :lua require("harpoon.ui").nav_file(4)<cr>
-map <silent> <leader>w4 :lua require("harpoon.ui").nav_file(4)<cr>
-map <silent> <leader>w( :lua require("harpoon.ui").nav_file(5)<cr>
-map <silent> <leader>w5 :lua require("harpoon.ui").nav_file(5)<cr>
-map <silent> <leader>w- :lua require("harpoon.ui").nav_file(6)<cr>
-map <silent> <leader>w6 :lua require("harpoon.ui").nav_file(6)<cr>
-
-tmap <silent> <leader>wl <C-\><C-n>:Telescope harpoon marks<cr>
-tmap <silent> <leader>w& <C-\><C-n>:lua require("harpoon.ui").nav_file(1)<cr>
-tmap <silent> <leader>w1 <C-\><C-n>:lua require("harpoon.ui").nav_file(1)<cr>
-tmap <silent> <leader>wé <C-\><C-n>:lua require("harpoon.ui").nav_file(2)<cr>
-tmap <silent> <leader>w2 <C-\><C-n>:lua require("harpoon.ui").nav_file(2)<cr>
-tmap <silent> <leader>w" <C-\><C-n>:lua require("harpoon.ui").nav_file(3)<cr>
-tmap <silent> <leader>w3 <C-\><C-n>:lua require("harpoon.ui").nav_file(3)<cr>
-tmap <silent> <leader>w' <C-\><C-n>:lua require("harpoon.ui").nav_file(4)<cr>
-tmap <silent> <leader>w4 <C-\><C-n>:lua require("harpoon.ui").nav_file(4)<cr>
-tmap <silent> <leader>w( <C-\><C-n>:lua require("harpoon.ui").nav_file(5)<cr>
-tmap <silent> <leader>w5 <C-\><C-n>:lua require("harpoon.ui").nav_file(5)<cr>
-tmap <silent> <leader>w- <C-\><C-n>:lua require("harpoon.ui").nav_file(6)<cr>
-tmap <silent> <leader>w6 <C-\><C-n>:lua require("harpoon.ui").nav_file(6)<cr>
 
 lua << EOF
 function _G.create_org_file()

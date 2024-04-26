@@ -57,12 +57,6 @@ require("lazy").setup({
 
   "supercrabtree/vim-resurrect",
 
-  {
-    "ThePrimeagen/harpoon",
-    version = "ccae1b9bec717ae284906b0bf83d720e59d12b91", -- v1
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-
   "max397574/better-escape.nvim",
 
   { "tpope/vim-sleuth", enabled = false }, -- adjusts shiftwidth/expandtab based on other files

@@ -94,5 +94,3 @@ vim.g.code_action_menu_window_border = "single"
 require("renamer").setup()
 
 require("better_escape").setup()
-
-require("telescope").load_extension("harpoon")
