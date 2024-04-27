@@ -1,6 +1,5 @@
 return {
   "ilan-schemoul/dashboard-nvim",
-  enabled = false,
 
   event = "VimEnter",
   config = function()
