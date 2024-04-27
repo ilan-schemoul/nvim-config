@@ -21,7 +21,7 @@ highlight ColorColumn ctermbg=0 guibg=#212337
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* startinsert
 
-set spelllang=en_us
+set spelllang=en_us,programming,fr
 set spellcapcheck=no
 set spell
 set spellsuggest=best,5
