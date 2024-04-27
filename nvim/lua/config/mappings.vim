@@ -33,24 +33,19 @@ map <silent> <leader>n :lua require('renamer').rename()<cr>
 
 map <silent> <leader>/ :!g
 
-" map <silent> <leader>G :GodotRunLast<cr>
-" map <silent> <leader>R :GodotRunCurrent<cr>
-
 map <silent> <leader>m :Mason<cr>
 
 map <silent> <leader>T :Telescope<cr>
 map <silent> <leader>z :Telescope buffers<cr>
 map <silent> <leader>l :Telescope find_files<cr>
-map <silent> <leader>G :Telescope grep_string<cr>
-map <silent> <leader>g :Telescope live_grep_args<cr>
+map <silent> <leader>gg :Telescope live_grep_args<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 
 tmap <silent> <LocalLeader>T <C-\><C-n>:Telescope<cr>
 tmap <silent> <LocalLeader>z <C-\><C-n>:Telescope buffers<cr>
 tmap <silent> <LocalLeader>l <C-\><C-n>:Telescope find_files<cr>
-tmap <silent> <LocalLeader>g <C-\><C-n>:Telescope live_grep<cr>
-tmap <silent> <LocalLeader>G <C-\><C-n>:Telescope grep_string<cr>
+tmap <silent> <LocalLeader>gg <C-\><C-n>:Telescope live_grep<cr>
 tmap <silent> <LocalLeader>ù <C-\><C-n>:Telescope marks<cr>
 tmap <silent> <LocalLeader>$ <C-\><C-n>:Telescope oldfiles<cr>
 
@@ -78,7 +73,8 @@ map <silent> <leader>u :UndotreeToggle<cr>
 "  b fo bugs
 map <silent> <leader>b :TroubleToggle<cr>
 
-map <silent> <leader>o :Vista!!<cr>
+map <silent> <leader>of :Vista!!<cr>
+map <silent> <leader>od :Oil<cr>
 
 lua << EOF
 function _G.create_org_file()
@@ -118,6 +114,13 @@ map <leader>ph :vsplit \| term<cr>
 map <leader>pj :belowright split \| term<cr>
 map <leader>pk :topleft split \| term<cr>
 map <leader>pl :botright vs \| term<cr>
+
+map <Leader>gl :G log<cr>
+map <Leader>ga :G commit --amend<cr>
+map <Leader>gf :G commit --fixup<cr>
+map <Leader>gp :G push<cr>
+map <Leader>gi :G rebase -i<cr>
+map <Leader>go :G<cr>
 
 " select recently paste content
 nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
