@@ -20,9 +20,12 @@ return {
       },
     },
     messages = {
+      enabled = true, -- enables the Noice messages UI
       view = "mini",
       view_error = "notify",
-      enabled = true,
+      view_warn = "notify", -- view for warnings
+      view_history = "messages", -- view for :messages
+      -- enabled = true,
     },
     views = {
       mini = {

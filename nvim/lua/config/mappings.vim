@@ -116,10 +116,7 @@ map <leader>pk :topleft split \| term<cr>
 map <leader>pl :botright vs \| term<cr>
 
 map <Leader>gl :G log<cr>
-map <Leader>ga :G commit --amend<cr>
-map <Leader>gf :G commit --fixup<cr>
 map <Leader>gp :G push<cr>
-map <Leader>gi :G rebase -i<cr>
 map <Leader>go :G<cr>
 
 " select recently paste content
