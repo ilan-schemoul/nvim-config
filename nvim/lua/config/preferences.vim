@@ -7,16 +7,17 @@ endif
 set clipboard+=unnamedplus
 
 set visualbell
+set termguicolors
 
 colorscheme catppuccin-macchiato
+" More bright than default one
+highlight DiffChange guibg=#2b3148
+" Less bright than default one
+highlight ColorColumn ctermbg=0 guibg=#212337
 
 vnoremap p "_dP " nocopy when pasting
 nnoremap x "_x
 nnoremap X "_X
-
-set termguicolors
-
-highlight ColorColumn ctermbg=0 guibg=#212337
 
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* startinsert
