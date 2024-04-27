@@ -28,7 +28,8 @@ map <silent> <leader>ss :Telescope lsp_workspace_symbols<cr>
 map <silent> <leader>tr :Telescope resume<cr>
 imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
-map <silent> <leader>a :CodeActionMenu<cr>
+map <silent> <leader>al :CodeActionMenu<cr>
+map <silent> <leader>at :NodeAction<cr>
 map <silent> <leader>n :lua require('renamer').rename()<cr>
 
 map <silent> <leader>/ :!g
