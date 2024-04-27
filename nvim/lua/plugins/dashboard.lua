@@ -31,8 +31,6 @@ return {
             -- footer = { "", "Loading...", "deded", "dede" },
           },
         })
-
-        vim.cmd("highlight DashboardFooter cterm=italic gui=italic guifg=#6e738d")
       end,
     })
   end,

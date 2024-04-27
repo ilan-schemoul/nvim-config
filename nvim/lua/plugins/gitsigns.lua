@@ -3,9 +3,8 @@ return {
   cmd = "Gitsigns",
   lazy = false,
   opts = {
-    numhl = false,
-    signcolumn = false,
-    linehl = true,
+    numhl = true,
+    linehl = false,
   },
   keys = {
     { "<leader>jn", "<cmd>Gitsigns toggle_numhl<cr>" },
