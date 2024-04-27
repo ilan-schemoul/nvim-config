@@ -6,3 +6,6 @@ Gerrit (create plugin to see code review's comments with virtual text ? Prolly o
 Change highlight for modified line (invisible RN)
 
 Refactor everything to glorious lua
+Refactor move every plugins to plugins/
+
+Symlink this note to ~/notes at work
