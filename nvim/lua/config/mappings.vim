@@ -117,6 +117,7 @@ map <leader>pl :botright vs \| term<cr>
 
 map <Leader>gl :G log<cr>
 map <Leader>gp :G push<cr>
+map <Leader>gu :G pull<cr>
 map <Leader>go :G<cr>
 
 " select recently paste content
