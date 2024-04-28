@@ -9,6 +9,7 @@
   "coq.thirdparty": { "branch": "3p", "commit": "5f45777bcb0c14266a7e07ed474cb70c4e8b6397" },
   "coq_nvim": { "branch": "coq", "commit": "0afa42d88991a3f3f7b1ea96114f41b906aa7f65" },
   "dashboard-nvim": { "branch": "master", "commit": "353c6914cfdf825c2d3fb1e0dc569df320999f4c" },
+  "dropbar.nvim": { "branch": "master", "commit": "3dd8edba9f9eeb129db269dd57ef6c0427b7ad9d" },
   "fidget.nvim": { "branch": "main", "commit": "1ba38e4cbb24683973e00c2e36f53ae64da38ef5" },
   "gitsigns.nvim": { "branch": "main", "commit": "035da036e68e509ed158414416c827d022d914bd" },
   "gx.nvim": { "branch": "main", "commit": "ea4cc715326a8bd060a450c24c3c9831cdee2f59" },

@@ -75,7 +75,6 @@ map <silent> <leader>u :UndotreeToggle<cr>
 map <silent> <leader>b :TroubleToggle<cr>
 
 map <silent> <leader>of :Vista!!<cr>
-map <silent> <leader>od :Oil<cr>
 
 lua << EOF
 function _G.create_org_file()

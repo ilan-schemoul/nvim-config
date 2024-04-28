@@ -4,8 +4,6 @@ return {
     { "nvim-lua/plenary.nvim" },
     { "nvim-treesitter/nvim-treesitter" },
   },
-  enabled = true,
-  lazy = false,
   keys = {
     -- extract functions
     { "<leader>ref", "<cmd>Refactor extract <cr>", mode = "x" },
