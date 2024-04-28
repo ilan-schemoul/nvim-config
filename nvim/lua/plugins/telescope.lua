@@ -4,6 +4,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "ilan-schemoul/telescope-insert-path.nvim",
   },
   config = function()
     require("telescope").load_extension("fzf")
@@ -11,12 +12,18 @@ return {
     local actions = require("telescope.actions")
     local lga_actions = require("telescope-live-grep-args.actions")
 
+    local path_actions = require("telescope_insert_path")
+
     require("telescope").setup({
       pickers = {},
       defaults = {
         mappings = {
           i = {
             ["<C-b>"] = "file_vsplit",
+            ["<C-f>r"] = path_actions.insert_path("buf", "i", "i"),
+            ["<C-f>a"] = path_actions.insert_path("abs", "i", "i"),
+            ["<C-f>g"] = path_actions.insert_path("git", "i", "i"),
+            ["<C-f>s"] = path_actions.insert_path("source", "i", "i"),
           },
         },
         layout_strategy = "vertical",
