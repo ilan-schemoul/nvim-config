@@ -20,10 +20,10 @@ return {
         mappings = {
           i = {
             ["<C-b>"] = "file_vsplit",
-            ["<C-f>r"] = path_actions.insert_path("buf", "i", "i"),
-            ["<C-f>a"] = path_actions.insert_path("abs", "i", "i"),
-            ["<C-f>g"] = path_actions.insert_path("git", "i", "i"),
-            ["<C-f>s"] = path_actions.insert_path("source", "i", "i"),
+            ["<C-f>r"] = path_actions.insert_path("buf", true),
+            ["<C-f>a"] = path_actions.insert_path("abs", true),
+            ["<C-f>g"] = path_actions.insert_path("git", true),
+            ["<C-f>s"] = path_actions.insert_path("source", true),
           },
         },
         layout_strategy = "vertical",
