@@ -120,8 +120,8 @@ map <Leader>gp :G push<cr>
 map <Leader>gu :G pull<cr>
 map <Leader>go :G<cr>
 
-" select recently paste content
-nnoremap <silent> <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+map <silent> <leader>pp :put<cr>
+map <silent> <leader>pP :put!<cr>
 
 " Custom env variable
 if !empty($KEYBOARD_FR)
