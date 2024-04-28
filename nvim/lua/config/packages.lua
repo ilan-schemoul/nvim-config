@@ -21,11 +21,6 @@ require("lazy").setup({
 
   "norcalli/nvim-colorizer.lua",
 
-  "nvim-tree/nvim-web-devicons",
-  "nvim-lua/plenary.nvim",
-  "nvim-telescope/telescope.nvim",
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-
   "j-hui/fidget.nvim",
 
   "filipdutescu/renamer.nvim",
