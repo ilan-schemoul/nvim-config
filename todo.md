@@ -11,4 +11,4 @@ Refactor everything to glorious Lua
 Refactor move every plugins to plugins/
 # 0.10
 - Remove comment.vim
-- Enable dropbar
+- Enable dropbar (and remove ChadTree)
