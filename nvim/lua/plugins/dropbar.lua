@@ -4,6 +4,7 @@ return {
   dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
   },
+  -- Waiting on 0.10 to enable dropbar
   enabled = false,
   lazy = false,
   keys = {

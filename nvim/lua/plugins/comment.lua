@@ -1,3 +1,4 @@
+-- TODO: With 0.10 comes native comment support
 return {
   "numToStr/Comment.nvim",
   opts = {
