@@ -4,7 +4,7 @@ return {
   dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
   },
-  enabled = true,
+  enabled = false,
   lazy = false,
   keys = {
     { "<leader>op", "<cmd>lua require('dropbar.api').pick()<cr>" },
