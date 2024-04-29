@@ -61,5 +61,8 @@ require("lazy").setup({
   "nvim-telescope/telescope-live-grep-args.nvim",
 
   "folke/which-key.nvim",
+
   { 'psliwka/vim-dirtytalk', build = ':DirtytalkUpdate' },
+
+  { "folke/todo-comments.nvim", opts = { signs = false } },
 }, { change_detection = { enabled = true, notify = false } })
