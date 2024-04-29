@@ -25,7 +25,6 @@ map <silent> <leader>i :Telescope lsp_references<cr>
 map <silent> <leader>d :Telescope lsp_definitions<cr>
 map <silent> <leader>sd :Telescope lsp_dynamic_workspace_symbols<cr>
 map <silent> <leader>ss :Telescope lsp_workspace_symbols<cr>
-map <silent> <leader>tr :Telescope resume<cr>
 imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
 map <silent> <leader>al :CodeActionMenu<cr>
@@ -42,13 +41,18 @@ map <silent> <leader>l :Telescope find_files<cr>
 map <silent> <leader>gg :Telescope live_grep_args<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
+map <silent> <leader>trr :Telescope resume<cr>
+map <silent> <leader>trh :Telescope search_history<cr>
 
-tmap <silent> <LocalLeader>T <C-\><C-n>:Telescope<cr>
-tmap <silent> <LocalLeader>z <C-\><C-n>:Telescope buffers<cr>
-tmap <silent> <LocalLeader>l <C-\><C-n>:Telescope find_files<cr>
-tmap <silent> <LocalLeader>gg <C-\><C-n>:Telescope live_grep<cr>
-tmap <silent> <LocalLeader>ù <C-\><C-n>:Telescope marks<cr>
-tmap <silent> <LocalLeader>$ <C-\><C-n>:Telescope oldfiles<cr>
+tmap <silent> <leader>T <C-\><C-n>:Telescope<cr>
+tmap <silent> <leader>z <C-\><C-n>:Telescope buffers<cr>
+tmap <silent> <leader>l <C-\><C-n>:Telescope find_files<cr>
+tmap <silent> <leader>g <C-\><C-n>:Telescope live_grep<cr>
+tmap <silent> <leader>G <C-\><C-n>:Telescope grep_string<cr>
+tmap <silent> <leader>ù <C-\><C-n>:Telescope marks<cr>
+tmap <silent> <leader>$ <C-\><C-n>:Telescope oldfiles<cr>
+tmap <silent> <leader>tr <C-\><C-n>:Telescope resume<cr>
+tmap <silent> <leader>trh :Telescope search_history<cr>
 
 map <silent> <leader>rr :Resurrect<cr>
 tmap <silent> <LocalLeader>rr <C-\><C-n>:Resurrect<cr>
