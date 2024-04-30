@@ -18,6 +18,7 @@
   - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
   - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Generate programmatically in lua key mapping
+  - ( ) Rename tab auto based on (pwd)
 * Not urgent at all
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua
