@@ -1,4 +1,6 @@
 lua vim.filetype.add({ extension = { blk = 'c' } }) 
+autocmd BufNewFile,BufRead wscript_build set filetype=python
+
 " Compilation
 set makeprg=LC_ALL=C\ make\ MONOCHROME=1
 set grepprg=git\ grep\ -H\ -n
@@ -65,5 +67,3 @@ let g:localvimrc_sandbox = 0
 let g:localvimrc_whitelist = $HOME.'/dev/'
 
 map <Leader>gf :G push-for f/master/ilan<cr>
-
-autocmd BufNewFile,BufRead wscript_build set filetype=python

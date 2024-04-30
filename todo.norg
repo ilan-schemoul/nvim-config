@@ -1,20 +1,13 @@
 * Urgent
   - (!) Make tabs NON closeable
-  - ( ) Enable Back sleuth if not Intersec
-  - ( ) Load Intersec.vim conditionally
-  - ( ) Symlink this note to ~/notes at work
+  - (x) Enable Back sleuth if not Intersec
+  - (x) Load Intersec.vim conditionally
+  - ( ) Symlink this note to ~/notes at work (fix telescope)
   - ( ) Fix define in libs when openeed neovim
   - ( ) Fix nvim-remote does not use full path
   - ( ) Fix space used in terminal mode
-<<<<<<< Updated upstream
-  - ( ) Enable Back sleuth if not Intersec
-  - ( ) Load Intersec.vim conditionally
-  - ( ) Symlink this note to ~/notes at work
   - ( ) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
-=======
-  - ( ) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
-  - ( ) Symlink this note to ~/notes at work (fix with Telescope)
->>>>>>> Stashed changes
+  - ( ) Fix wscript_build lsp errors
 * Somewhat important
   - ( ) Make gdb work with vim
   - ( ) Use quickfix (cannot make it work because of bug #14638)
