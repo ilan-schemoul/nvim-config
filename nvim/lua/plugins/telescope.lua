@@ -5,10 +5,12 @@ return {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "ilan-schemoul/telescope-insert-path.nvim",
+    "debugloop/telescope-undo.nvim",
   },
   config = function()
     require("telescope").load_extension("fzf")
-
+    require("telescope").load_extension("undo")
+    require("telescope").load_extension("undo")
     local actions = require("telescope.actions")
     local lga_actions = require("telescope-live-grep-args.actions")
 
@@ -20,6 +22,7 @@ return {
         mappings = {
           i = {
             ["<C-b>"] = "file_vsplit",
+            ["<C-x>"] = actions.delete_buffer,
             ["<C-f>r"] = path_actions.insert_path("buf", true),
             ["<C-f>a"] = path_actions.insert_path("abs", true),
             ["<C-f>g"] = path_actions.insert_path("git", true),

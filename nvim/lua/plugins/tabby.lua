@@ -25,6 +25,11 @@ return {
           }
         end),
         line.spacer(),
+        {
+            vim.fn.strftime("%H:%M"),
+            hl = { fg = "#a9adbe" }
+        },
+        line.spacer(),
         line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
           local hl = win.is_current() and theme.current or theme.not_current
 

@@ -10,9 +10,8 @@ map <silent> <leader>N :set invnumber<cr>
 
 map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
-" closes everything
-map <silent> <leader>q :q<cr>
-tmap <silent> <LocalLeader>q <C-\><C-o>:q<cr>
+map <silent> <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+tmap <silent> <LocalLeader>q <C-\><C-o>:bp<bar>sp<bar>bn<bar>bd<CR>
 map <silent> <leader>Q :qa!<cr>
 tmap <silent> <LocalLeader>Q <C-\><C-o>:qa!<cr>
 
@@ -44,15 +43,15 @@ map <silent> <leader>$ :Telescope oldfiles<cr>
 map <silent> <leader>trr :Telescope resume<cr>
 map <silent> <leader>trh :Telescope search_history<cr>
 
-tmap <silent> <leader>T <C-\><C-n>:Telescope<cr>
-tmap <silent> <leader>z <C-\><C-n>:Telescope buffers<cr>
-tmap <silent> <leader>l <C-\><C-n>:Telescope find_files<cr>
-tmap <silent> <leader>g <C-\><C-n>:Telescope live_grep<cr>
-tmap <silent> <leader>G <C-\><C-n>:Telescope grep_string<cr>
-tmap <silent> <leader>ù <C-\><C-n>:Telescope marks<cr>
-tmap <silent> <leader>$ <C-\><C-n>:Telescope oldfiles<cr>
-tmap <silent> <leader>tr <C-\><C-n>:Telescope resume<cr>
-tmap <silent> <leader>trh :Telescope search_history<cr>
+tmap <silent> <LocalLeader>T <C-\><C-n>:Telescope<cr>
+tmap <silent> <LocalLeader>z <C-\><C-n>:Telescope buffers<cr>
+tmap <silent> <LocalLeader>l <C-\><C-n>:Telescope find_files<cr>
+tmap <silent> <LocalLeader>g <C-\><C-n>:Telescope live_grep<cr>
+tmap <silent> <LocalLeader>G <C-\><C-n>:Telescope grep_string<cr>
+tmap <silent> <LocalLeader>ù <C-\><C-n>:Telescope marks<cr>
+tmap <silent> <LocalLeader>$ <C-\><C-n>:Telescope oldfiles<cr>
+tmap <silent> <LocalLeader>tr <C-\><C-n>:Telescope resume<cr>
+tmap <silent> <LocalLeader>trh :Telescope search_history<cr>
 
 map <silent> <leader>rr :Resurrect<cr>
 tmap <silent> <LocalLeader>rr <C-\><C-n>:Resurrect<cr>
@@ -73,7 +72,7 @@ inoremap <silent> jk <esc>
 tnoremap <silent> jk <C-\><C-N>
 tnoremap <silent> <LocalLeader>: <C-\><C-N>:
 
-map <silent> <leader>u :UndotreeToggle<cr>
+map <silent> <leader>u :Telescope undo<cr>
 
 "  b fo bugs
 map <silent> <leader>b :TroubleToggle<cr>
@@ -127,6 +126,8 @@ map <Leader>go :G<cr>
 map <silent> <leader>pp :put<cr>
 map <silent> <leader>pP :put!<cr>
 
+command TeeSave :w !sudo tee %
+
 " Custom env variable
 if !empty($KEYBOARD_FR)
   noremap <silent> à 0
@@ -152,7 +153,8 @@ if !empty($KEYBOARD_FR)
   noremap <silent> 9 ç
 
   nmap <silent> ù `
-  noremap <C--> <C-^> " Otherwise C-^ for alternate file
+  noremap <C--> <C-^>
+  tmap <C-^> <C-\><C-N><C-^>
 endif
 
 tmap <C-^> <C-\><C-N><C-^>
@@ -181,14 +183,12 @@ map <leader>t5 :tabn 5<cr>
 map <leader>t6 :tabn 6<cr>
 map <leader>t7 :tabn 7<cr>
 
-map <leader>tn :tabnew<cr>
-map <leader>tx :tabclose<cr>
-map <leader>tà :tabnext<cr>
-map <leader>t0 :tabnext<cr>
-map <leader>tç :tabprevious<cr>
-map <leader>t9 :tabprevious<cr>
-map <leader>tl :+tabmove<cr>
-map <leader>th :-tabmove<cr>
+map <Leader>tn :tabnew<cr>
+map <Leader>tx :tabclose<cr>
+map <Leader>tl :tabnext<cr>
+map <Leader>th :tabprevious<cr>
+map <Leader>tL :+tabmove<cr>
+map <Leader>tH :-tabmove<cr>
 
 tmap <LocalLeader>t& <C-\><C-n>:tabn 1<cr>
 tmap <LocalLeader>té <C-\><C-n>:tabn 2<cr>
@@ -208,12 +208,10 @@ tmap <LocalLeader>t7 <C-\><C-n>:tabn 7<cr>
 
 tmap <LocalLeader>tn <C-\><C-n>:tabnew<cr>
 tmap <LocalLeader>tx <C-\><C-n>:tabclose<cr>
-tmap <LocalLeader>tà <C-\><C-n>:tabnext<cr>
-tmap <LocalLeader>t0 <C-\><C-n>:tabnext<cr>
-tmap <LocalLeader>tç <C-\><C-n>:tabprevious<cr>
-tmap <LocalLeader>t9 <C-\><C-n>:tabprevious<cr>
-tmap <LocalLeader>tl <C-\><C-n>:+tabmove<cr>
-tmap <LocalLeader>th <C-\><C-n>:-tabmove<cr>
+tmap <LocalLeader>tl <C-\><C-n>:tabnext<cr>
+tmap <LocalLeader>th <C-\><C-n>:tabprevious<cr>
+tmap <LocalLeader>tL <C-\><C-n>:+tabmove<cr>
+tmap <LocalLeader>tH <C-\><C-n>:-tabmove<cr>
 
 " ------ alt instead of ctrl for moving windows
 tnoremap <silent> <A-h> <C-\><C-N><C-w>h

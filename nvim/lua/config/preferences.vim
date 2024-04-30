@@ -95,3 +95,5 @@ autocmd BufReadPost *
       \ endif
 
 set sessionoptions=buffers,curdir,folds,globals,help,tabpages,terminal,winsize
+
+set nofoldenable

@@ -1,15 +1,27 @@
 * Urgent
-- Enable Back sleuth if not Intersec
-- Load Intersec.vim conditionally
-- Symlink this note to ~/notes at work
+  - (!) Make tabs NON closeable
+  - ( ) Enable Back sleuth if not Intersec
+  - ( ) Load Intersec.vim conditionally
+  - ( ) Symlink this note to ~/notes at work
+  - ( ) Fix define in libs when openeed neovim
+  - ( ) Fix nvim-remote does not use full path
+  - ( ) Fix space used in terminal mode
 * Somewhat important
-- Make gdb work with vim
-- Use quickfix (cannot make it work because of bug #14638)
-- https://github.com/debugloop/telescope-undo.nvim
+  - ( ) Make gdb work with vim
+  - ( ) Use quickfix (cannot make it work because of bug #14638)
+  - ( ) https://github.com/debugloop/telescope-undo.nvim
+  - ( ) send a breakpoint to runnin gdb (or other workaround)
+  - ( ) Git fugitive open smaller height
+  - ( ) Add Treesitter to end ( with ) etc.
+  - ( ) Shortcut to focus on terminal and type "!!<cr>"
+  - ( ) Pick a tab via name
+  - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
+  - ( ) Hide tab name (not buffer name) when only one tab
+  - ( ) Generate programmatically in lua key mapping
 * Not urgent at all
-- Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
-- Refactor everything to glorious Lua
-- Refactor move every plugins to plugins/
+  - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
+  - ( ) Refactor everything to glorious Lua
+  - ( ) Refactor move every plugins to plugins/
 * 0.10
-- Remove comment.vim
-- Enable dropbar (and remove ChadTree)
+  - ( ) Remove comment.vim
+  - ( ) Enable dropbar (and remove ChadTree)
