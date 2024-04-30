@@ -44,6 +44,7 @@
   "ripgrep": { "branch": "master", "commit": "bb8601b2bafb5e68181cbbb84e6ffa4f7a72bf16" },
   "scope.nvim": { "branch": "main", "commit": "86a0f5b594b08b2ad65f470ffdee81654942b6ac" },
   "sniprun": { "branch": "master", "commit": "97daa506e2faa3939e0491642103635f9d22cd04" },
+  "suda.vim": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
   "tabby.nvim": { "branch": "main", "commit": "67d374290efc6108a7a5017c3405c0dbb4c8b92d" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
   "telescope-insert-path.nvim": { "branch": "master", "commit": "c9d1751da62b2fc8cba015784169e0e9d688beaf" },

@@ -65,3 +65,5 @@ let g:localvimrc_sandbox = 0
 let g:localvimrc_whitelist = $HOME.'/dev/'
 
 map <Leader>gf :G push-for f/master/ilan<cr>
+
+autocmd BufNewFile,BufRead wscript_build set filetype=python
