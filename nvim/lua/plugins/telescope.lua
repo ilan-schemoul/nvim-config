@@ -6,6 +6,7 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "ilan-schemoul/telescope-insert-path.nvim",
     "debugloop/telescope-undo.nvim",
+    "nvim-telescope/telescope-live-grep-args.nvim",
   },
   config = function()
     require("telescope").load_extension("fzf")

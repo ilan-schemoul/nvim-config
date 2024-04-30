@@ -10,8 +10,8 @@ map <silent> <leader>N :set invnumber<cr>
 
 map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
-map <silent> <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
-tmap <silent> <LocalLeader>q <C-\><C-o>:bp<bar>sp<bar>bn<bar>bd<CR>
+map <silent> <leader>q :q<cr>
+tmap <silent> <LocalLeader>q <C-\><C-o>:q<CR>
 map <silent> <leader>Q :qa!<cr>
 tmap <silent> <LocalLeader>Q <C-\><C-o>:qa!<cr>
 

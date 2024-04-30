@@ -81,3 +81,8 @@ vim.g.coq_settings = {
     mark_applied_notify = false,
   },
 }
+
+require("lazy").setup("plugins", {
+  enabled = true,
+  notify = false,
+})

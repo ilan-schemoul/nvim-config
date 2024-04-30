@@ -1,6 +1,6 @@
 -- ~/.config/nvim/lua/config/
 
-require("config/packages")
+require("config/lazy")
 
 vim.cmd("source ~/.config/nvim/lua/config/preferences.vim")
 vim.cmd("source ~/.config/nvim/lua/config/mappings.vim")
