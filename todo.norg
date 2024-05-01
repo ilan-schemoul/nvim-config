@@ -1,5 +1,5 @@
 * Urgent
-  - (!) Make tabs NON closeable
+  - (x) Make tabs NON closeable
   - (x) Enable Back sleuth if not Intersec
   - (x) Load Intersec.vim conditionally
   - ( ) Symlink this note to ~/notes at work (fix telescope)
