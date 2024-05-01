@@ -104,8 +104,6 @@ map <silent> <leader>u :Telescope undo<cr>
 "  b fo bugs
 map <silent> <leader>b :TroubleToggle<cr>
 
-map <silent> <leader>of :Vista!!<cr>
-
 lua << EOF
 function _G.create_org_file()
   local dirman = require('neorg').modules.get_module("core.dirman")
