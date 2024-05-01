@@ -1,3 +1,30 @@
+lua << EOF
+  function _G.CloseBuffer()
+    if vim.startswith(vim.fn.expand("%"), "term://") then
+      -- Closing buffer without closing window
+      vim.cmd("bp|sp|bn|bd!")
+    else
+      -- Closing buffer without closing window
+      vim.cmd("bp|sp|bn|bd")
+    end
+  end
+
+  function _G.CloseWindowIfNotLast()
+  local get_ls = vim.tbl_filter(function(buf)
+    return vim.api.nvim_buf_is_valid(buf)
+          and vim.api.nvim_buf_get_option(buf, 'buflisted')
+  end, vim.api.nvim_list_bufs()) 
+    -- Below require 0.10
+    -- local windows_in_tab = vim.iter(vim.api.nvim_tabpage_list_wins(0)):filter(vim.api.nvim_tabpage_is_valid)
+    if #windows_in_tab == 1 then
+      print("Not closing as it's the last window")
+      return
+    end
+
+    vim.cmd("q")
+  end
+EOF
+
 " Useful others gF open file with line number (a.c:10)
 " Mappings defined by plugins
 " gA to see all bases for a number under the cursor cr{b/x/d/o} to change a
@@ -10,8 +37,8 @@ map <silent> <leader>N :set invnumber<cr>
 
 map <silent> <leader>E :lua require("lsp_lines").toggle()<cr>
 
-map <silent> <leader>q :q<cr>
-tmap <silent> <LocalLeader>q <C-\><C-o>:q<CR>
+map <silent> <leader>q :lua _G.CloseWindowIfNotLast()<cr>
+tmap <silent> <LocalLeader>q <C-\><C-o>:lua _G.CloseWindowIfNotLast()<CR>
 map <silent> <leader>Q :qa!<cr>
 tmap <silent> <LocalLeader>Q <C-\><C-o>:qa!<cr>
 
@@ -40,7 +67,7 @@ map <silent> <leader>l :Telescope find_files<cr>
 map <silent> <leader>gg :Telescope live_grep_args<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
-map <silent> <leader>trr :Telescope resume<cr>
+map <silent> <leader>tr :Telescope resume<cr>
 map <silent> <leader>trh :Telescope search_history<cr>
 
 tmap <silent> <LocalLeader>T <C-\><C-n>:Telescope<cr>
@@ -55,23 +82,6 @@ tmap <silent> <LocalLeader>trh :Telescope search_history<cr>
 
 map <silent> <leader>rr :Resurrect<cr>
 tmap <silent> <LocalLeader>rr <C-\><C-n>:Resurrect<cr>
-
-lua << EOF
-  function _G.CloseBuffer()
-    local buffers_id = vim.tbl_filter(function(buf)
-      return vim.api.nvim_buf_is_valid(buf)
-            and vim.api.nvim_buf_get_option(buf, 'buflisted')
-    end, vim.api.nvim_list_bufs()) 
-
-    if vim.startswith(vim.fn.expand("%"), "term://") then
-      -- Closing buffer without closing window
-      vim.cmd("bp|sp|bn|bd!")
-    else
-      -- Closing buffer without closing window
-      vim.cmd("bp|sp|bn|bd")
-    end
-  end
-EOF
 
 " Close buffer not window
 " (https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window)
