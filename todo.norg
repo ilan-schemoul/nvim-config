@@ -9,6 +9,7 @@
   - ( ) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
   - ( ) Fix wscript_build lsp errors
 * Somewhat important
+  - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Make gdb work with vim
   - ( ) Use quickfix (cannot make it work because of bug #14638)
   - ( ) https://github.com/debugloop/telescope-undo.nvim
@@ -21,11 +22,18 @@
   - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Generate programmatically in lua key mapping
   - ( ) Rename tab auto based on (pwd)
+  - ( ) https://dotfyle.com/plugins/windwp/nvim-autopairs
 * Not urgent at all
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua
-  - ( ) Refactor move every plugins to plugins/
+  - (x) Refactor move every plugins to plugins/
+  - ( ) Nvim-spectre
 * 0.10
   - ( ) Remove comment.vim
   - ( ) Enable dropbar (and remove ChadTree)
   - ( ) Osc52
+  - ( ) Can use quickfix lists
+
+* Plugins creation ideas
+  - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
+  - See linux notifications/slack/teams ? (if not exist)
