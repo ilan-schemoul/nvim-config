@@ -10,18 +10,17 @@ lua << EOF
   end
 
   function _G.CloseWindowIfNotLast()
-  local get_ls = vim.tbl_filter(function(buf)
-    return vim.api.nvim_buf_is_valid(buf)
-          and vim.api.nvim_buf_get_option(buf, 'buflisted')
-  end, vim.api.nvim_list_bufs()) 
-    -- Below require 0.10
-    -- local windows_in_tab = vim.iter(vim.api.nvim_tabpage_list_wins(0)):filter(vim.api.nvim_tabpage_is_valid)
-    if #windows_in_tab == 1 then
-      print("Not closing as it's the last window")
-      return
-    end
+    local windows_in_tab = vim.tbl_filter(function(win)
+      buf = vim.api.nvim_win_get_buf(win)
+      name = vim.api.nvim_buf_get_name(buf)
+      return vim.api.nvim_win_is_valid(win) and #name > 0
+    end, vim.api.nvim_tabpage_list_wins(0))
 
-    vim.cmd("q")
+    if #windows_in_tab <= 1 then
+      print("Not closing as it's the last window")
+    else
+      vim.cmd("q")
+    end
   end
 EOF
 
