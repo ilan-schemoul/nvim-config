@@ -55,10 +55,28 @@ tmap <silent> <LocalLeader>trh :Telescope search_history<cr>
 
 map <silent> <leader>rr :Resurrect<cr>
 tmap <silent> <LocalLeader>rr <C-\><C-n>:Resurrect<cr>
+
+lua << EOF
+  function _G.CloseBuffer()
+    local buffers_id = vim.tbl_filter(function(buf)
+      return vim.api.nvim_buf_is_valid(buf)
+            and vim.api.nvim_buf_get_option(buf, 'buflisted')
+    end, vim.api.nvim_list_bufs()) 
+
+    if vim.startswith(vim.fn.expand("%"), "term://") then
+      -- Closing buffer without closing window
+      vim.cmd("bp|sp|bn|bd!")
+    else
+      -- Closing buffer without closing window
+      vim.cmd("bp|sp|bn|bd")
+    end
+  end
+EOF
+
 " Close buffer not window
 " (https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window)
-map <silent> <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>
-tnoremap <silent> <LocalLeader>x <C-\><C-n>:bp<bar>sp<bar>bn<bar>bd<CR>
+map <silent> <leader>x :lua _G.CloseBuffer()<cr>
+tnoremap <silent> <LocalLeader>x <C-\><C-n>:lua _G.CloseBuffer()<cr>
 
 nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
 nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
