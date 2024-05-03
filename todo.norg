@@ -43,3 +43,4 @@
 * Plugins creation ideas
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
   - See linux notifications/slack/teams ? (if not exist)
+  - A plugin to take screenshots that doesnt require installing 1GB of dependencies
