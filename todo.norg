@@ -2,7 +2,7 @@
   - (x) Make tabs NON closeable
   - (x) Enable Back sleuth if not Intersec
   - (x) Load Intersec.vim conditionally
-  - ( ) Symlink this note to ~/notes at work (fix telescope)
+  - (x) Symlink this note to ~/notes at work (fix telescope)
   - ( ) Fix define in libs when openeed neovim
   - ( ) Fix nvim-remote does not use full path
   - ( ) Fix space used in terminal mode

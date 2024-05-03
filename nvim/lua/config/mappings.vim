@@ -120,16 +120,16 @@ map <silent> <leader>yi :Neorg index<cr>
 map <silent> <leader>yr :Neorg return<cr>
 map <silent> <leader>ym :e ~/notes/memory.norg<cr>Ga
 map <silent> <leader>yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
-map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"}<cr>
-map <silent> <leader>yg :Telescope live_grep_args search_dirs={"~/notes"}<cr>
+map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"} follow=true<cr>
+map <silent> <leader>yg :Telescope live_grep_args search_dirs={"~/notes"u<cr>
 map <silent> <leader>yn :call v:lua.create_org_file()<cr>
 
 tmap <silent> <LocalLeader>yi <C-\><C-n>:Neorg index<cr>
 tmap <silent> <LocalLeader>yr <C-\><C-n>:Neorg return<cr>
 tmap <silent> <LocalLeader>ym <C-\><C-n>:e ~/notes/memory.norg<cr>Ga
 tmap <silent> <LocalLeader>yM <C-\><C-n>:botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
-tmap <silent> <LocalLeader>yl <C-\><C-n>:Telescope find_files search_dirs={"~/notes"}<cr>
-tmap <silent> <LocalLeader>yg <C-\><C-n>:Telescope live_grep search_dirs={"~/notes"}<cr>
+tmap <silent> <LocalLeader>yl <C-\><C-n>:Telescope find_files search_dirs={"~/notes"} follow=true<cr>
+tmap <silent> <LocalLeader>yg <C-\><C-n>:Telescope live_grep search_dirs={"~/notes"} follow=true<cr>
 tmap <silent> <LocalLeader>yn <C-\><C-n>:call v:lua.create_org_file()<cr>
 
 noremap <silent> zc 1z=
