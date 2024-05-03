@@ -8,6 +8,8 @@
   - ( ) Fix space used in terminal mode
   - ( ) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
   - ( ) Fix wscript_build lsp errors
+  - ( ) Detect qm_t(de) * de
+  - ( ) Detect struct when not necessary typdef
 * Somewhat important
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Make gdb work with vim
@@ -23,6 +25,10 @@
   - ( ) Generate programmatically in lua key mapping
   - ( ) Rename tab auto based on (pwd)
   - ( ) https://dotfyle.com/plugins/windwp/nvim-autopairs
+  - ( ) Add treesitter actions to code action menu
+  - (x) Zen mode
+  - ( ) Improve refactoring
+  - ( ) Create LSP plugin that warn if not using t_ version
 * Not urgent at all
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua

@@ -22,7 +22,8 @@ return {
       defaults = {
         mappings = {
           i = {
-            ["<C-b>"] = "file_vsplit",
+            ["<C-v>"] = "file_vsplit",
+            ["<C-s>"] = "file_split",
             ["<C-x>"] = actions.delete_buffer,
             ["<C-f>r"] = path_actions.insert_path("buf", true),
             ["<C-f>a"] = path_actions.insert_path("abs", true),

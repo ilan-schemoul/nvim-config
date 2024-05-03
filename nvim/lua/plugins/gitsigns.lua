@@ -3,7 +3,7 @@ return {
   cmd = "Gitsigns",
   lazy = false,
   opts = {
-    signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+    signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
     numhl = true,
     linehl = false,
   },
