@@ -74,12 +74,12 @@ return {
     swap = {
         enable = true,
         swap_next = {
-            [",sl"] = "@parameter.inner", -- swap parameters/argument with next
-            [",sj"] = "@function.outer", -- swap function with next
+            ["<space>sl"] = "@parameter.inner", -- swap parameters/argument with next
+            ["<space>sj"] = "@function.outer", -- swap function with next
         },
         swap_previous = {
-            [",sh"] = "@parameter.inner", -- swap parameters/argument with next
-            [",sk"] = "@function.outer", -- swap function with previous
+            ["<space>sh"] = "@parameter.inner", -- swap parameters/argument with next
+            ["<space>sk"] = "@function.outer", -- swap function with previous
         },
     },
 },

@@ -1,4 +1,4 @@
-My neovim config.
+ neovim config.
 
 Install.sh creates symbolic links to this folder.
 
