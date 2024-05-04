@@ -52,8 +52,7 @@ map <silent> <leader>sd :Telescope lsp_dynamic_workspace_symbols<cr>
 map <silent> <leader>ss :Telescope lsp_workspace_symbols<cr>
 imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
-map <silent> <leader>aa :CodeActionMenu<cr>
-map <silent> <leader>at :NodeAction<cr>
+map <silent> <leader>A :NodeAction<cr>
 map <silent> <leader>n :lua require('renamer').rename()<cr>
 
 map <silent> <leader>/ :!g
@@ -88,7 +87,7 @@ map <silent> <leader>x :lua _G.CloseBuffer()<cr>
 tnoremap <silent> <LocalLeader>x <C-\><C-n>:lua _G.CloseBuffer()<cr>
 
 nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
-nmap <silent> <leader>vp :next ~/.config/nvim/lua/config/packages.lua<cr>
+nmap <silent> <leader>vp :next ~/.config/nvim/lua/plugins<cr>
 nmap <silent> <leader>vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
 nmap <silent> <leader>vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
 nmap <silent> <leader>vg :Telescope live_grep_args search_dirs=~/.config/nvim<cr>

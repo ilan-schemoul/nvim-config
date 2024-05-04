@@ -29,6 +29,7 @@
   - (x) Zen mode
   - ( ) Improve refactoring
   - ( ) Create LSP plugin that warn if not using t_ version
+  - ( ) Make cmp work with commandline/searchline etc.
 * Not urgent at all
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua
@@ -44,3 +45,5 @@
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
   - See linux notifications/slack/teams ? (if not exist)
   - A plugin to take screenshots that doesnt require installing 1GB of dependencies
+  - Coq UI like cmp and bring luasnip or other engine to get vscode snippets
+  - A code action replacement
