@@ -6,6 +6,7 @@
   - (x) Fix nvim-remote does not use full path
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
+  - ( ) Make cmp work with commandline/searchline etc. (including Noice)
 ** Lsp/formating
   - ( ) Fix wscript_build lsp errors
   - ( ) Fix define in libs when openeed neovim
@@ -17,9 +18,11 @@
   -- ( ) Code action when declaration after definition to move defintion upward
   - ( ) Create LSP plugin that warn if not using t_ version
 * Somewhat important
+  - ( ) Improve refactoring plugin
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
-  - ( ) Make gdb work with vim
   - ( ) Use quickfix (cannot make it work because of bug #14638)
+  -- ( ) Possibly make it automatic when calling waf with a fish wrapper or something (see "Plugins creation ideas")
+  -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
   - (x) https://github.com/debugloop/telescope-undo.nvim
   - ( ) send a breakpoint to runnin gdb (or other workaround)
   - ( ) Git fugitive open smaller height
@@ -27,13 +30,12 @@
   - ( ) Shortcut to focus on terminal and type "!!<cr>"
   - ( ) Pick a tab via name
   - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
-  - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Generate programmatically in lua key mapping
   - ( ) Rename tab auto based on (pwd)
   - (x) Zen mode
-  - ( ) Improve refactoring
-  - ( ) Make cmp work with commandline/searchline etc. (including Noice)
 * Not urgent at all
+  - ( ) Make gdb work with vim
+  - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua
   - (x) Refactor move every plugins to plugins/
@@ -51,3 +53,4 @@
   - See linux notifications/slack/teams ? (if not exist)
   - A plugin to take screenshots that doesnt require installing 1GB of dependencies
   - Make coq engine work with cmp (cmp used as a frontend)
+  - Plugin to constantly reload quickfix list when typing command output (add a :0 if lacking in a.c:3)
