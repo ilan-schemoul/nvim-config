@@ -4,12 +4,16 @@
   - (x) Load Intersec.vim conditionally
   - (x) Symlink this note to ~/notes at work (fix telescope)
   - ( ) Fix define in libs when openeed neovim
-  - ( ) Fix nvim-remote does not use full path
-  - ( ) Fix space used in terminal mode
-  - ( ) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
+  - (x) Fix nvim-remote does not use full path
+  - (x) Fix space used in terminal mode
+  - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
   - ( ) Fix wscript_build lsp errors
-  - ( ) Detect qm_t(de) * de
-  - ( ) Detect struct when not necessary typdef
+  - ( ) Clang-format
+  -- ( ) Detect struct when not necessary because typdef (https://github.com/llvm/llvm-project/issues/91063) (not clang-format according to someone)
+  -- ( ) Fix "q_m(t) * e" (https://github.com/llvm/llvm-project/issues/91062)
+  -- ( ) Newline after declarations (https://github.com/llvm/llvm-project/issues/91064)
+  - ( ) Clangd
+  -- ( ) Code action when declaration after definition to move defintion upward
 * Somewhat important
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Make gdb work with vim
@@ -29,7 +33,7 @@
   - (x) Zen mode
   - ( ) Improve refactoring
   - ( ) Create LSP plugin that warn if not using t_ version
-  - ( ) Make cmp work with commandline/searchline etc.
+  - ( ) Make cmp work with commandline/searchline etc. (including Noice)
 * Not urgent at all
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua
@@ -47,3 +51,4 @@
   - A plugin to take screenshots that doesnt require installing 1GB of dependencies
   - Coq UI like cmp and bring luasnip or other engine to get vscode snippets
   - A code action replacement
+  - Make coq engine work with cmp (cmp used as a frontend)
