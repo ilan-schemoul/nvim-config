@@ -3,43 +3,44 @@
   - (x) Enable Back sleuth if not Intersec
   - (x) Load Intersec.vim conditionally
   - (x) Symlink this note to ~/notes at work (fix telescope)
-  - ( ) Fix define in libs when openeed neovim
   - (x) Fix nvim-remote does not use full path
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
+** Lsp/formating
   - ( ) Fix wscript_build lsp errors
+  - ( ) Fix define in libs when openeed neovim
   - ( ) Clang-format
   -- ( ) Detect struct when not necessary because typdef (https://github.com/llvm/llvm-project/issues/91063) (not clang-format according to someone)
   -- ( ) Fix "q_m(t) * e" (https://github.com/llvm/llvm-project/issues/91062)
   -- ( ) Newline after declarations (https://github.com/llvm/llvm-project/issues/91064)
   - ( ) Clangd
   -- ( ) Code action when declaration after definition to move defintion upward
+  - ( ) Create LSP plugin that warn if not using t_ version
 * Somewhat important
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Make gdb work with vim
   - ( ) Use quickfix (cannot make it work because of bug #14638)
-  - ( ) https://github.com/debugloop/telescope-undo.nvim
+  - (x) https://github.com/debugloop/telescope-undo.nvim
   - ( ) send a breakpoint to runnin gdb (or other workaround)
   - ( ) Git fugitive open smaller height
-  - ( ) Add Treesitter to end ( with ) etc.
+  - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
   - ( ) Shortcut to focus on terminal and type "!!<cr>"
   - ( ) Pick a tab via name
   - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
   - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Generate programmatically in lua key mapping
   - ( ) Rename tab auto based on (pwd)
-  - ( ) https://dotfyle.com/plugins/windwp/nvim-autopairs
-  - ( ) Add treesitter actions to code action menu
   - (x) Zen mode
   - ( ) Improve refactoring
-  - ( ) Create LSP plugin that warn if not using t_ version
   - ( ) Make cmp work with commandline/searchline etc. (including Noice)
 * Not urgent at all
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua
   - (x) Refactor move every plugins to plugins/
   - ( ) Nvim-spectre
-* 0.10
+  - ( ) Hide prompt telescope theme cursor (for code action)
+
+* 0.10 (May 7th)
   - ( ) Remove comment.vim
   - ( ) Enable dropbar (and remove ChadTree)
   - ( ) Osc52
@@ -49,6 +50,4 @@
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
   - See linux notifications/slack/teams ? (if not exist)
   - A plugin to take screenshots that doesnt require installing 1GB of dependencies
-  - Coq UI like cmp and bring luasnip or other engine to get vscode snippets
-  - A code action replacement
   - Make coq engine work with cmp (cmp used as a frontend)
