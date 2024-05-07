@@ -62,7 +62,7 @@ map <silent> <leader>m :Mason<cr>
 map <silent> <leader>T :Telescope<cr>
 map <silent> <leader>z :Telescope buffers<cr>
 map <silent> <leader>l :Telescope find_files<cr>
-map <silent> <leader>gg :Telescope live_grep_args<cr>
+map <silent> <leader>gg :Telescope live_grep<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
 map <silent> <leader>tr :Telescope resume<cr>
@@ -90,7 +90,7 @@ nmap <silent> <leader>vc :next ~/.config/nvim/init.lua<cr>
 nmap <silent> <leader>vp :next ~/.config/nvim/lua/plugins<cr>
 nmap <silent> <leader>vm :next ~/.config/nvim/lua/config/mappings.vim<cr>
 nmap <silent> <leader>vr :next ~/.config/nvim/lua/config/packages-preferences.lua<cr><cr>
-nmap <silent> <leader>vg :Telescope live_grep_args search_dirs=~/.config/nvim<cr>
+nmap <silent> <leader>vg :Telescope live_grep search_dirs=~/.config/nvim<cr>
 nmap <silent> <leader>vl :Telescope find_files search_dirs=~/.config/nvim<cr>
 
 nmap <silent> <leader>V :source $MYVIMRC <cr>
@@ -120,7 +120,7 @@ map <silent> <leader>yr :Neorg return<cr>
 map <silent> <leader>ym :e ~/notes/memory.norg<cr>Ga
 map <silent> <leader>yM :botright 30vnew ~/notes/memory.norg<cr>:set invrelativenumber<cr>:set invnumber<cr>GA
 map <silent> <leader>yl :Telescope find_files search_dirs={"~/notes"} follow=true<cr>
-map <silent> <leader>yg :Telescope live_grep_args search_dirs={"~/notes"u<cr>
+map <silent> <leader>yg :Telescope live_grep search_dirs={"~/notes"}<cr>
 map <silent> <leader>yn :call v:lua.create_org_file()<cr>
 
 tmap <silent> <LocalLeader>yi <C-\><C-n>:Neorg index<cr>
