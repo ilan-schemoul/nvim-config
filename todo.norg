@@ -6,6 +6,7 @@
   - (x) Fix nvim-remote does not use full path
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
+  - ( ) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
   - ( ) Make cmp work with commandline/searchline etc. (including Noice)
   - ( ) Tabline
   -- ( ) Fix time
@@ -64,3 +65,4 @@
   - Make coq engine work with cmp (cmp used as a frontend)
   - Plugin to constantly reload quickfix list when typing command output (add a :0 if lacking in a.c:3)
   - Writing guidelines for how to write configs with advices and bits of config. What to use : Lazy, cmp vs coq etc. File structure.
+  - Load all suggestions of code review in quickfix list

@@ -24,7 +24,6 @@ return {
       view = "mini",
       view_error = "notify",
       view_warn = "notify", -- view for warnings
-      view_history = "messages", -- view for :messages
       -- enabled = true,
     },
     views = {
@@ -33,7 +32,8 @@ return {
       },
     },
     popupmenu = {
-      enabled = false,
+      enabled = true,
+      backend = 'cmp',
     },
     commands = {
       history = {
