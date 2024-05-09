@@ -2,6 +2,7 @@ return {
   "ilan-schemoul/dashboard-nvim",
 
   event = "VimEnter",
+  enabled = false,
   config = function()
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "dashboard",

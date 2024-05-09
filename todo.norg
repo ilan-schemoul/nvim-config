@@ -7,6 +7,7 @@
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
   - ( ) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
+  - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Make cmp work with commandline/searchline etc. (including Noice)
   - ( ) Tabline
   -- ( ) Fix time
@@ -16,6 +17,7 @@
   - ( ) Improve treesitter textobjects keymap
   -- ( ) (do o instead of a like for native motions ?)
   -- ( ) Delete empty line automatically
+  -- ( ) cit for types is stupid
 ** Lsp/formating
   - ( ) Fix wscript_build lsp errors
   - ( ) Fix define in libs when openeed neovim
@@ -58,7 +60,8 @@
   - ( ) Osc52
   - ( ) Can use quickfix lists
 
-* Plugins creation ideas
+* Plugins creation ideas/contributions
+  - Search multilines (with grep args or taking last live_grep output for the next one)
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
   - See linux notifications/slack/teams ? (if not exist)
   - A plugin to take screenshots that doesnt require installing 1GB of dependencies
@@ -66,3 +69,7 @@
   - Plugin to constantly reload quickfix list when typing command output (add a :0 if lacking in a.c:3)
   - Writing guidelines for how to write configs with advices and bits of config. What to use : Lazy, cmp vs coq etc. File structure.
   - Load all suggestions of code review in quickfix list
+  - (maybe in core) check if keymap exists natively
+  - (core) fix download spelling not work
+  - Experiment: mark something in undo list with a mark so if experiment fail you can go back to that time
+    when experiment is over
