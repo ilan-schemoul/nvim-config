@@ -11,6 +11,7 @@ return {
     "hrsh7th/cmp-cmdline",
     "petertriho/cmp-git",
     "ilan-schemoul/friendly-snippets",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
     {
       "L3MON4D3/LuaSnip",
       build = "make install_jsregexp",
@@ -37,6 +38,7 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },
+        { name = 'nvim_lsp_signature_help' },
       }, {
         { name = "buffer" },
       }),
