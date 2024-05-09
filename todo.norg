@@ -6,9 +6,15 @@
   - (x) Fix nvim-remote does not use full path
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
+  - ( ) Better ways to move windows. (maybe with mouse)
   - ( ) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
   - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Make cmp work with commandline/searchline etc. (including Noice)
+  - ( ) Better popup menu code action (telescope shows useless input) (make nui work with relative pos)
+  - ( ) Snippets. Install snippets scissors and make Intersec snippets
+  - ( ) Better quickfix with nvim-bqf
+  - ( ) List of previous copy with yankbank-nvim
+  - ( ) See function graph (what function call what function)
   - ( ) Tabline
   -- ( ) Fix time
   -- ( ) Change workspaces and text files positions
@@ -30,6 +36,7 @@
   - ( ) Create LSP plugin that warn if not using t_ version
 * Somewhat important
   - ( ) Improve refactoring plugin
+  - ( ) Plugin Telescope frecency to see recent files opened
   - ( ) Refactor all my mappings so they make more sense, remove useless etc.
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Use quickfix (cannot make it work because of bug #14638)
@@ -60,6 +67,8 @@
   - ( ) Osc52
   - ( ) Can use quickfix lists
 
+* Cool plugins to try
+
 * Plugins creation ideas/contributions
   - Search multilines (with grep args or taking last live_grep output for the next one)
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
@@ -73,3 +82,4 @@
   - (core) fix download spelling not work
   - Experiment: mark something in undo list with a mark so if experiment fail you can go back to that time
     when experiment is over
+  - Good LSP graph call
