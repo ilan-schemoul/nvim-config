@@ -82,12 +82,6 @@ set numberwidth=1
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
-let output = system("cd $(readlink ~/.config/nvim) && git status --porcelain")
-let g:seed = srand()
-if rand(g:seed) % 100 > 90 && output != ""
-   echohl WarningMsg | echo "The nvim git repository is out of sync (must commit/push or pull)" | echohl None
-endif
-
 " Open file with cursor set to where last modification happened
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |

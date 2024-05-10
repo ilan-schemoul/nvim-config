@@ -25,15 +25,16 @@
   -- ( ) Delete empty line automatically
   -- ( ) cit for types is stupid
 ** Lsp/formating
-  - ( ) Fix wscript_build lsp errors
-  - ( ) Fix define in libs when openeed neovim
-  - ( ) Clang-format
-  -- ( ) Detect struct when not necessary because typdef (https://github.com/llvm/llvm-project/issues/91063) (not clang-format according to someone)
-  -- ( ) Fix "q_m(t) * e" (https://github.com/llvm/llvm-project/issues/91062)
-  -- ( ) Newline after declarations (https://github.com/llvm/llvm-project/issues/91064)
-  - ( ) Clangd
-  -- ( ) Code action when declaration after definition to move defintion upward
-  - ( ) Create LSP plugin that warn if not using t_ version
+   - ( ) Fix wscript_build lsp errors
+   - ( ) Fix define in libs when openeed neovim
+   - ( ) Clang-format
+   -- ( ) Detect struct when not necessary because typdef (https://github.com/llvm/llvm-project/issues/91063) (not clang-format according to someone)
+   -- ( ) Fix "q_m(t) * e" (https://github.com/llvm/llvm-project/issues/91062)
+   -- ( ) Newline after declarations (https://github.com/llvm/llvm-project/issues/91064)
+   - ( ) Clangd
+   -- ( ) Code action when declaration after definition to move defintion upward
+   - ( ) Create LSP plugin that warn if not using t_ version
+   - ( ) (fish, not vim) poetry in subfolder
 * Somewhat important
   - ( ) Improve refactoring plugin
   - ( ) Plugin Telescope frecency to see recent files opened
