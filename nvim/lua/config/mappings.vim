@@ -151,6 +151,8 @@ map <Leader>go :G<cr>
 map <silent> <leader>pp :put<cr>
 map <silent> <leader>pP :put!<cr>
 
+map <silent> <leader>F :echo @%<cr>
+
 command TeeSave :w !sudo tee %
 
 " Custom env variable
