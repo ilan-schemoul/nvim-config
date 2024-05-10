@@ -21,7 +21,6 @@ return {
     },
     messages = {
       enabled = true, -- enables the Noice messages UI
-      view = "mini",
       view_error = "notify",
       view_warn = "notify", -- view for warnings
       -- enabled = true,

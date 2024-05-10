@@ -6,6 +6,8 @@
   - (x) Fix nvim-remote does not use full path
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
+  - ( ) Rename buggy with cmp
+  - ( ) Noice doesn't keep what is "echo" so I lose fugitive messages when i git push-for !!
   - ( ) Better ways to move windows. (maybe with mouse)
   - ( ) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
   - ( ) Multiline search but easier than weird live grep with args syntax.
@@ -28,6 +30,14 @@
    - ( ) Fix wscript_build lsp errors
    - ( ) Fix define in libs when openeed neovim
    - ( ) Clang-format
+   -- ( ) Detect single line comments (forbidden)
+   -- ( ) || end of line if "if" multiple lines
+        @code 
+        if (test1 && test2 &&
+        (test3 || test4 ||
+        test5))
+        {
+        @end
    -- ( ) Detect struct when not necessary because typdef (https://github.com/llvm/llvm-project/issues/91063) (not clang-format according to someone)
    -- ( ) Fix "q_m(t) * e" (https://github.com/llvm/llvm-project/issues/91062)
    -- ( ) Newline after declarations (https://github.com/llvm/llvm-project/issues/91064)
