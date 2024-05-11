@@ -18,6 +18,4 @@ require("fidget").setup({ progress = {
 
 require("colorizer").setup()
 
-require("renamer").setup()
-
 require("better_escape").setup()

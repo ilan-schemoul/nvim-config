@@ -60,7 +60,6 @@ map <silent> <leader>ss :Telescope lsp_workspace_symbols<cr>
 imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
 map <silent> <leader>A :NodeAction<cr>
-map <silent> <leader>n :lua require('renamer').rename()<cr>
 
 map <silent> <leader>/ :!g
 
