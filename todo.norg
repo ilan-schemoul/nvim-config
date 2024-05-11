@@ -17,7 +17,7 @@
   - ( ) Snippets. Install snippets scissors and make Intersec snippets
   - ( ) List of previous copy with yankbank-nvim
   - ( ) See function graph (what function call what function)
-  - ( ) Plugin Telescope frecency to see recent files opened
+  - ( ) Plugin Telescope frecency (not the one named frecency the other one) to see recent files opened
   - ( ) Improve treesitter textobjects keymap
   -- ( ) (do o instead of a like for native motions ?)
   -- ( ) Delete empty line automatically
@@ -27,6 +27,7 @@
   -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
   - ( ) Git fugitive open smaller height
 * Somewhat important
+  - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit
   - ( ) Pick a tab via name
   - ( ) Tabline
   -- ( ) Fix time

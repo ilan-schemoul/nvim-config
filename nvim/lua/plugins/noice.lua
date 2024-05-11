@@ -135,7 +135,6 @@ return {
         endif
     ]])
 
-    require("noice").redirect("G pull")
     require("noice").setup(opts)
   end,
   dependencies = {
