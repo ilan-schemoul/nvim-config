@@ -6,7 +6,7 @@
   - (x) Fix nvim-remote does not use full path
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
-  - ( ) Rename buggy with cmp
+  - (x) Rename buggy with cmp
   - ( ) Noice doesn't keep what is "echo" so I lose fugitive messages when i git push-for !!
   - ( ) Better ways to move windows. (maybe with mouse)
   - ( ) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
@@ -97,4 +97,4 @@
     when experiment is over
   - Good LSP graph call
   - Noisekun (noisli like) as plugin
-  - Plugin to use Telescope to browse source of truths SO, Slack, Google, Docs, AI etc. Shortcut to open in browser, scratch buffer. Detect code blocks to paste them.
+  - Plugin to use Telescope to browse source of truths SO, Github code, Slack, Google, Docs, AI etc. Shortcut to open in browser, scratch buffer. Detect code blocks to paste them.

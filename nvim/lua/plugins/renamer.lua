@@ -1,3 +1,0 @@
-return {
-  "filipdutescu/renamer.nvim",
-}
