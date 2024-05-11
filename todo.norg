@@ -17,11 +17,17 @@
   - ( ) Snippets. Install snippets scissors and make Intersec snippets
   - ( ) List of previous copy with yankbank-nvim
   - ( ) See function graph (what function call what function)
+  - ( ) Plugin Telescope frecency to see recent files opened
   - ( ) Improve treesitter textobjects keymap
   -- ( ) (do o instead of a like for native motions ?)
   -- ( ) Delete empty line automatically
   -- ( ) cit for types is stupid
+  - ( ) Use quickfix (cannot make it work because of bug #14638)
+  -- ( ) Possibly make it automatic when calling waf with a fish wrapper or something (see "Plugins creation ideas")
+  -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
+  - ( ) Git fugitive open smaller height
 * Somewhat important
+  - ( ) Pick a tab via name
   - ( ) Tabline
   -- ( ) Fix time
   -- ( ) Change workspaces and text files positions
@@ -29,18 +35,12 @@
   -- ( ) Add notifications
   - ( ) Better quickfix with nvim-bqf
   - ( ) Improve refactoring plugin
-  - ( ) Plugin Telescope frecency to see recent files opened
   - ( ) Refactor all my mappings so they make more sense, remove useless etc.
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
-  - ( ) Use quickfix (cannot make it work because of bug #14638)
-  -- ( ) Possibly make it automatic when calling waf with a fish wrapper or something (see "Plugins creation ideas")
-  -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
   - (x) https://github.com/debugloop/telescope-undo.nvim
   - ( ) send a breakpoint to runnin gdb (or other workaround)
-  - ( ) Git fugitive open smaller height
   - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
   - ( ) Shortcut to focus on terminal and type "!!<cr>"
-  - ( ) Pick a tab via name
   - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
   - ( ) Generate programmatically in lua key mapping
   - ( ) Rename tab auto based on (pwd)
