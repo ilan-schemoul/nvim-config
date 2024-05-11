@@ -23,6 +23,7 @@ return {
       enabled = true, -- enables the Noice messages UI
       view_error = "notify",
       view_warn = "notify", -- view for warnings
+      view = "mini", -- default view for messages
       -- enabled = true,
     },
     views = {
@@ -32,7 +33,7 @@ return {
     },
     popupmenu = {
       enabled = true,
-      backend = 'cmp',
+      backend = "cmp",
     },
     commands = {
       history = {
@@ -40,11 +41,19 @@ return {
         view = "split",
         opts = { enter = true, format = "details" },
         filter = {
-          cond = function(_)
-            return true
-          end,
+          any = {
+            {
+              cond = function(_)
+                return true
+              end,
+            },
+          },
         },
       },
+    },
+    redirect = {
+      view = "mini",
+      filter = { event = "msg_show" },
     },
     presets = { inc_rename = true },
 
@@ -114,10 +123,10 @@ return {
         },
         opts = { skip = true },
       },
+    },
   },
-  },
-  config = function (_, opts)
-      vim.cmd([[
+  config = function(_, opts)
+    vim.cmd([[
         let output = system("cd $(readlink ~/.config/nvim) && git status --porcelain")
         let g:seed = srand()
 
@@ -126,6 +135,7 @@ return {
         endif
     ]])
 
+    require("noice").redirect("G pull")
     require("noice").setup(opts)
   end,
   dependencies = {

@@ -5,17 +5,20 @@ return {
   },
   config = function(_, opts)
     require("actions-preview").setup({
-      backend = { "telescope", "nui" },
-      telescope = vim.tbl_extend(
-        "force",
-        -- telescope theme: https://github.com/nvim-telescope/telescope.nvim#themes
-        require("telescope.themes").get_cursor(),
-        {
-          make_value = nil,
-          make_make_display = nil,
-          previewer = false,
-        }
-      ),
+      backend = { "nui", "telescope" },
+      nui = {
+        layout = {
+          position = {
+            row = "1",
+            col = "0",
+          },
+          size = {
+            width = "90%",
+            height = "30%"
+          },
+          relative = "cursor",
+        },
+      },
     })
   end,
   keys = {

@@ -6,47 +6,28 @@
   - (x) Fix nvim-remote does not use full path
   - (x) Fix space used in terminal mode
   - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
-  - (x) Rename buggy with cmp
-  - ( ) Noice doesn't keep what is "echo" so I lose fugitive messages when i git push-for !!
-  - ( ) Better ways to move windows. (maybe with mouse)
-  - ( ) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
-  - ( ) Multiline search but easier than weird live grep with args syntax.
   - (x) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
-  - ( ) Make cmp work with commandline/searchline etc. (including Noice)
-  - ( ) Better popup menu code action (telescope shows useless input) (make nui work with relative pos)
+  - (x) Rename buggy with cmp
+  - (x) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
+  - (x) Make cmp work with commandline/searchline etc. (including Noice)
+  - (x) Noice doesn't keep what is "echo" so I lose fugitive messages when i git push-for !!
+  - (x) Better popup menu code action (telescope shows useless input) (make nui work with relative pos)
+  - ( ) Better ways to move windows. (maybe with mouse)
+  - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Snippets. Install snippets scissors and make Intersec snippets
-  - ( ) Better quickfix with nvim-bqf
   - ( ) List of previous copy with yankbank-nvim
   - ( ) See function graph (what function call what function)
+  - ( ) Improve treesitter textobjects keymap
+  -- ( ) (do o instead of a like for native motions ?)
+  -- ( ) Delete empty line automatically
+  -- ( ) cit for types is stupid
+* Somewhat important
   - ( ) Tabline
   -- ( ) Fix time
   -- ( ) Change workspaces and text files positions
   -- ( ) Add warning if Settings git not synced
   -- ( ) Add notifications
-  - ( ) Improve treesitter textobjects keymap
-  -- ( ) (do o instead of a like for native motions ?)
-  -- ( ) Delete empty line automatically
-  -- ( ) cit for types is stupid
-** Lsp/formating
-   - ( ) Fix wscript_build lsp errors
-   - ( ) Fix define in libs when openeed neovim
-   - ( ) Clang-format
-   -- ( ) Detect single line comments (forbidden)
-   -- ( ) || end of line if "if" multiple lines
-        @code 
-        if (test1 && test2 &&
-        (test3 || test4 ||
-        test5))
-        {
-        @end
-   -- ( ) Detect struct when not necessary because typdef (https://github.com/llvm/llvm-project/issues/91063) (not clang-format according to someone)
-   -- ( ) Fix "q_m(t) * e" (https://github.com/llvm/llvm-project/issues/91062)
-   -- ( ) Newline after declarations (https://github.com/llvm/llvm-project/issues/91064)
-   - ( ) Clangd
-   -- ( ) Code action when declaration after definition to move defintion upward
-   - ( ) Create LSP plugin that warn if not using t_ version
-   - ( ) (fish, not vim) poetry in subfolder
-* Somewhat important
+  - ( ) Better quickfix with nvim-bqf
   - ( ) Improve refactoring plugin
   - ( ) Plugin Telescope frecency to see recent files opened
   - ( ) Refactor all my mappings so they make more sense, remove useless etc.
@@ -80,7 +61,25 @@
   - ( ) Osc52
   - ( ) Can use quickfix lists
 
-* Cool plugins to try
+* Lsp/formating
+  - ( ) Fix wscript_build lsp errors
+  - ( ) Fix define in libs when openeed neovim
+  - ( ) Clang-format
+  -- ( ) Detect single line comments (forbidden)
+  -- ( ) || end of line if "if" multiple lines
+  @code 
+  if (test1 && test2 &&
+  (test3 || test4 ||
+  test5))
+  {
+  @end
+  -- ( ) Detect struct when not necessary because typdef (https://github.com/llvm/llvm-project/issues/91063) (not clang-format according to someone)
+  -- ( ) Fix "q_m(t) * e" (https://github.com/llvm/llvm-project/issues/91062)
+  -- ( ) Newline after declarations (https://github.com/llvm/llvm-project/issues/91064)
+  - ( ) Clangd
+  -- ( ) Code action when declaration after definition to move defintion upward
+  - ( ) Create LSP plugin that warn if not using t_ version
+  - ( ) (fish, not vim) poetry in subfolder
 
 * Plugins creation ideas/contributions
   - Search multilines (with grep args or taking last live_grep output for the next one)
