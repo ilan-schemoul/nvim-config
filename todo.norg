@@ -11,6 +11,7 @@
   - ( ) Better ways to move windows. (maybe with mouse)
   - ( ) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
   - ( ) Multiline search but easier than weird live grep with args syntax.
+  - (x) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
   - ( ) Make cmp work with commandline/searchline etc. (including Noice)
   - ( ) Better popup menu code action (telescope shows useless input) (make nui work with relative pos)
   - ( ) Snippets. Install snippets scissors and make Intersec snippets
@@ -63,6 +64,7 @@
   - ( ) Generate programmatically in lua key mapping
   - ( ) Rename tab auto based on (pwd)
   - (x) Zen mode
+  - ( ) Plugin to find mnemonic for new keymap
 * Not urgent at all
   - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
@@ -94,3 +96,5 @@
   - Experiment: mark something in undo list with a mark so if experiment fail you can go back to that time
     when experiment is over
   - Good LSP graph call
+  - Noisekun (noisli like) as plugin
+  - Plugin to use Telescope to browse source of truths SO, Slack, Google, Docs, AI etc. Shortcut to open in browser, scratch buffer. Detect code blocks to paste them.

@@ -9,17 +9,24 @@ lua << EOF
     end
   end
 
+  -- Close window is it is a floating window or if it not the last opened window in the current tab
   function _G.CloseWindowIfNotLast()
-    local windows_in_tab = vim.tbl_filter(function(win)
-      buf = vim.api.nvim_win_get_buf(win)
-      name = vim.api.nvim_buf_get_name(buf)
-      return vim.api.nvim_win_is_valid(win) and #name > 0
-    end, vim.api.nvim_tabpage_list_wins(0))
-
-    if #windows_in_tab <= 1 then
-      print("Not closing as it's the last window")
-    else
+    current_win_is_floating = vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= ''
+    if current_win_is_floating then
       vim.cmd("q")
+    else
+      local windows_in_tab = vim.tbl_filter(function(win)
+        is_valid = vim.api.nvim_win_is_valid(win)
+        buf = vim.api.nvim_win_get_buf(win)
+        ft = vim.bo[vim.api.nvim_win_get_buf(win)].filetype
+        loaded = vim.api.nvim_buf_is_loaded(buf)
+        win_is_floating = vim.api.nvim_win_get_config(win).relative ~= ''
+        return is_valid and buf and loaded and not win_is_floating
+      end, vim.api.nvim_tabpage_list_wins(0))
+
+      if #windows_in_tab > 1 then
+        vim.cmd("q")
+      end
     end
   end
 EOF
