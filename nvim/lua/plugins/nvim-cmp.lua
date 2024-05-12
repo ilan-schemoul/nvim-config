@@ -11,6 +11,7 @@ return {
     "hrsh7th/cmp-cmdline",
     "petertriho/cmp-git",
     "ilan-schemoul/friendly-snippets",
+    "dmitmel/cmp-cmdline-history",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     {
       "L3MON4D3/LuaSnip",
@@ -18,7 +19,7 @@ return {
     },
     "saadparwaiz1/cmp_luasnip",
   },
-  config = function(_, opts)
+  config = function(_, _)
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
@@ -38,7 +39,7 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },
-        { name = 'nvim_lsp_signature_help' },
+        { name = "nvim_lsp_signature_help" },
       }, {
         { name = "buffer" },
       }),
@@ -95,9 +96,11 @@ return {
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = {
+      sources = cmp.config.sources({
         { name = "buffer" },
-      },
+      }, {
+        { name = "cmdline_history" },
+      }),
     })
 
     -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
@@ -107,6 +110,7 @@ return {
         { name = "path" },
       }, {
         { name = "cmdline" },
+        { name = "cmdline_history" },
       }),
       matching = { disallow_symbol_nonprefix_matching = false },
     })
