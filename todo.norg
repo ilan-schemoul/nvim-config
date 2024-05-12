@@ -12,7 +12,8 @@
   - (x) Make cmp work with commandline/searchline etc. (including Noice)
   - (x) Noice doesn't keep what is "echo" so I lose fugitive messages when i git push-for !!
   - (x) Better popup menu code action (telescope shows useless input) (make nui work with relative pos)
-  - ( ) Better ways to move windows. (maybe with mouse)
+  - (x) Better ways to move windows. (maybe with mouse)
+  - ( ) Replace popup menu code action by dressing
   - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Snippets. Install snippets scissors and make Intersec snippets
   - ( ) List of previous copy with yankbank-nvim
@@ -25,7 +26,7 @@
   - ( ) Use quickfix (cannot make it work because of bug #14638)
   -- ( ) Possibly make it automatic when calling waf with a fish wrapper or something (see "Plugins creation ideas")
   -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
-  - ( ) Git fugitive open smaller height
+  - ( ) Git fugitive open smaller height or floating window
 * Somewhat important
   - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit
   - ( ) Pick a tab via name
@@ -98,3 +99,5 @@
   - Good LSP graph call
   - Noisekun (noisli like) as plugin
   - Plugin to use Telescope to browse source of truths SO, Github code, Slack, Google, Docs, AI etc. Shortcut to open in browser, scratch buffer. Detect code blocks to paste them.
+  - Update to the core to have a permission system so plugins can only have network  access if granted
+  - Warn if options passed to lazy does not exist (setup instead of config etc.)

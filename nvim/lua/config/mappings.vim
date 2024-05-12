@@ -253,7 +253,7 @@ tnoremap <silent> <A-k> <C-\><C-N><C-w>k
 tnoremap <silent> <A-l> <C-\><C-N><C-w>l
 
 inoremap <silent> <A-h> <C-\><C-N><C-w>h
-inoremap <silent> <A-j> <C-\><C-N><C-w>j
+inoremap <silent> <A-j> <C-\><C-N><C-w>mitj
 inoremap <silent> <A-k> <C-\><C-N><C-w>k
 inoremap <silent> <A-l> <C-\><C-N><C-w>l
 
@@ -261,6 +261,8 @@ nnoremap <silent> <A-h> <C-w>h
 nnoremap <silent> <A-j> <C-w>j
 nnoremap <silent> <A-k> <C-w>k
 nnoremap <silent> <A-l> <C-w>l
+nnoremap <silent> <A-m> :WinShift<cr>
+nnoremap <silent> <A-s> :WinShift swap<cr>
 
 tnoremap <silent> <A-H> <C-\><C-N><C-w>H
 tnoremap <silent> <A-J> <C-\><C-N><C-w>J
