@@ -29,6 +29,7 @@
   - ( ) Git fugitive open smaller height or floating window
 * Somewhat important
   - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit
+  - ( ) Telescope equivalent of Trouble (see both LSP errors and todo list)
   - ( ) Pick a tab via name
   - ( ) Tabline
   -- ( ) Fix time
@@ -101,3 +102,4 @@
   - Plugin to use Telescope to browse source of truths SO, Github code, Slack, Google, Docs, AI etc. Shortcut to open in browser, scratch buffer. Detect code blocks to paste them.
   - Update to the core to have a permission system so plugins can only have network  access if granted
   - Warn if options passed to lazy does not exist (setup instead of config etc.)
+  - Make lazy detect automatically commands and keys
