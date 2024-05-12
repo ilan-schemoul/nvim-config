@@ -15,9 +15,9 @@
   - (x) Better ways to move windows. (maybe with mouse)
   - (x) Replace popup menu code action by dressing
   - (!) Disable <C-p>/<C-n>
-  - ( ) Snippets. Install snippets scissors and make Intersec snippets
-  - ( ) Multiline search but easier than weird live grep with args syntax.
+  - (x) Snippets. Install snippets scissors and make Intersec snippets
   - ( ) List of previous copy with yankbank-nvim
+  - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) See function graph (what function call what function)
   - ( ) Plugin Telescope frecency (not the one named frecency the other one) to see recent files opened
   - ( ) Improve treesitter textobjects keymap
