@@ -61,6 +61,9 @@ imap <silent> <C-s> <C-\><C-O>:lua vim.lsp.buf.signature_help()<cr>
 
 map <silent> <leader>A :NodeAction<cr>
 
+map <silent> <leader>n :lua vim.lsp.buf.rename()<cr>
+map <silent> <leader>a :lua vim.lsp.buf.code_action()<cr>
+
 map <silent> <leader>/ :!g
 
 map <silent> <leader>m :Mason<cr>
