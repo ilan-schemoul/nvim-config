@@ -38,6 +38,7 @@
   "nvim-nio": { "branch": "master", "commit": "8765cbc4d0c629c8158a5341e1b4305fd93c3a90" },
   "nvim-notify": { "branch": "master", "commit": "5371f4bfc1f6d3adf4fe9d62cd3a9d44356bfd15" },
   "nvim-osc52": { "branch": "main", "commit": "5e0210990b3c809ec58bbf830e0dabd4bda3a949" },
+  "nvim-scissors": { "branch": "main", "commit": "db2dae01d1d1e823e141b01dad010d3c95715ace" },
   "nvim-treesitter": { "branch": "master", "commit": "6587d8e6942b8d2146d61bab4c4acff9dec5ae59" },
   "nvim-treesitter-context": { "branch": "master", "commit": "1e52a2c4223c1e7b0def9c76a1f3757d372196c3" },
   "nvim-treesitter-textobjects": { "branch": "lookbehind-local-keymap-setting", "commit": "3abfc72a3fdb1884515ef2a411b43802cd4afec0" },
