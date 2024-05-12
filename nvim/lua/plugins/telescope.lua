@@ -11,7 +11,7 @@ return {
   config = function()
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("undo")
-    require("telescope").load_extension("undo")
+
     local actions = require("telescope.actions")
     local lga_actions = require("telescope-live-grep-args.actions")
 

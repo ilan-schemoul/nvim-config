@@ -1,3 +1,0 @@
-return {
-  "BurntSushi/ripgrep",
-}
