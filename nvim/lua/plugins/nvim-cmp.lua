@@ -23,7 +23,9 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
-    require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_vscode").lazy_load({
+      paths = { "~/.config/nvim/snippets" }
+    })
 
     cmp.setup({
       snippet = {
@@ -93,13 +95,10 @@ return {
     })
     require("cmp_git").setup()
 
-    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = "buffer" },
-      }, {
-        { name = "cmdline_history" },
       }),
     })
 
@@ -110,7 +109,6 @@ return {
         { name = "path" },
       }, {
         { name = "cmdline" },
-        { name = "cmdline_history" },
       }),
       matching = { disallow_symbol_nonprefix_matching = false },
     })
