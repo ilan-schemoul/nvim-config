@@ -70,7 +70,6 @@ map <silent> <leader>m :Mason<cr>
 
 map <silent> <leader>T :Telescope<cr>
 map <silent> <leader>z :Telescope buffers<cr>
-map <silent> <leader>l :Telescope find_files<cr>
 map <silent> <leader>gg :Telescope live_grep<cr>
 map <silent> <leader>ù :Telescope marks<cr>
 map <silent> <leader>$ :Telescope oldfiles<cr>
@@ -79,7 +78,6 @@ map <silent> <leader>trh :Telescope search_history<cr>
 
 tmap <silent> <LocalLeader>T <C-\><C-n>:Telescope<cr>
 tmap <silent> <LocalLeader>z <C-\><C-n>:Telescope buffers<cr>
-tmap <silent> <LocalLeader>l <C-\><C-n>:Telescope find_files<cr>
 tmap <silent> <LocalLeader>g <C-\><C-n>:Telescope live_grep<cr>
 tmap <silent> <LocalLeader>G <C-\><C-n>:Telescope grep_string<cr>
 tmap <silent> <LocalLeader>ù <C-\><C-n>:Telescope marks<cr>
