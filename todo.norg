@@ -32,7 +32,7 @@
   -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
   - ( ) Git fugitive open smaller height or floating window
 * Somewhat important
-  - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit
+  - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit
   - ( ) Telescope equivalent of Trouble (see both LSP errors and todo list)
   - ( ) Pick a tab via name
   - ( ) Tabline
