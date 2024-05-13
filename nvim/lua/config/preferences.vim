@@ -77,11 +77,6 @@ set undodir=~/.vim/.undodir
 set number relativenumber
 set numberwidth=1
 
-" scroll line by line (do not put this comment on the same line as the
-" command)
-map <ScrollWheelUp> <C-Y>
-map <ScrollWheelDown> <C-E>
-
 " Open file with cursor set to where last modification happened
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
