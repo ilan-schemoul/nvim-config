@@ -18,6 +18,9 @@
   - (x) Snippets. Install snippets scissors and make Intersec snippets
   - (x) List of previous copy with yankbank-nvim
   - (x) Plugin Telescope frecency (not the one named frecency the other one) to see recent files opened
+  - ( ) Fix noice not ignoring anymore when undoing
+  - ( ) Import things from /srv/tools/../vim like colors for .iop colors
+  - ( ) Telescope smart-open should use local scope and cwd
   - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) See function graph (what function call what function)
   - ( ) Improve treesitter textobjects keymap
@@ -104,3 +107,4 @@
   - Update to the core to have a permission system so plugins can only have network  access if granted
   - Warn if options passed to lazy does not exist (setup instead of config etc.)
   - Make lazy detect automatically commands and keys
+  - Show buffers local to scope only (already exist as a plugin)
