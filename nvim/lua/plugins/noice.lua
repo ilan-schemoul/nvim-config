@@ -33,7 +33,7 @@ return {
     },
     popupmenu = {
       enabled = true,
-      backend = "cmp",
+      backend = "nui",
     },
     commands = {
       history = {
