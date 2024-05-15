@@ -7,6 +7,7 @@ return {
   { filter = { find = "less;" }, opts = { skip = true } },
   { filter = { find = "Already at newest" }, view = "mini" },
   { filter = { find = "Already at oldest" }, view = "mini" },
+  { filter = { find = "TeeSave" }, view = "mini" },
   { filter = { find = "change;" }, opts = { skip = true } },
   { filter = { find = "changes;" }, opts = { skip = true } },
   { filter = { find = "indent" }, opts = { skip = true } },
