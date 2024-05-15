@@ -37,37 +37,19 @@ return {
           keymaps = {
             ["it"] = { query = "@type", desc = "Select type of a method/function/argument/assignment", lookbehind = true },
 
-            -- You can use the capture groups defined in textobjects.scm
-            ["o="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
-            ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
-            -- Reversed order as "l" is a motion
-            ["L="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
-            ["R="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
+            ["in"] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
+            ["iv"] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
 
-            ["oa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
+            -- TODO: How to delete whitespaces when deleting parameter.outer
+            ["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
             ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
 
-            ["o,"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
-            ["i,"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
-            ["o?"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
-            ["i?"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
-
-            ["ol"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
-            ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
-
-            ["oc"] = { query = "@call.outer", desc = "Select outer part of a function call" },
-            ["ic"] = { query = "@call.inner", desc = "Select inner part of a function call" },
-
-            ["of"] = { query = "@function.outer", desc = "Select outer part of a method/function definition" },
+            ["af"] = { query = "@function.outer", desc = "Select outer part of a method/function definition" },
             ["if"] = { query = "@function.inner", desc = "Select inner part of a method/function definition" },
 
-            ["oo"] = { query = "@class.outer", desc = "Select outer part of a class" },
-            ["io"] = { query = "@class.inner", desc = "Select inner part of a class" },
-
-            ["ob"] = { query = "@block.outer" },
+            ["ab"] = { query = "@block.outer" },
             ["ib"] = { query = "@block.inner" },
 
-            ["or"] = { query = "@return.outer", desc = "Select outer part of return" },
             ["ir"] = { query = "@return.inner", desc = "Select inner part of return" },
         },
     },

@@ -1,40 +1,17 @@
 * Urgent
-  - (x) Make tabs NON closeable
-  - (x) Enable Back sleuth if not Intersec
-  - (x) Load Intersec.vim conditionally
-  - (x) Symlink this note to ~/notes at work (fix telescope)
-  - (x) Fix nvim-remote does not use full path
-  - (x) Fix space used in terminal mode
-  - (x) Prevent closing tabs https://matrix.to/#/!cylwlNXSwagQmZSkzs:matrix.org/$E9pD_TXl40X2LFcnuUf1ile6ItF6-lh4yR7W4UuY0j4?via=matrix.org&via=gitter.im&via=envs.net (autocmds actually check if it's the last window in the tab before closing and then make a placeholder buffer for that tab)
-  - (x) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
-  - (x) Rename buggy with cmp
-  - (x) Fix my function that does not close last window when it's stuff like Lazy, "messages", dashboard etc.
-  - (x) Make cmp work with commandline/searchline etc. (including Noice)
-  - (x) Noice doesn't keep what is "echo" so I lose fugitive messages when i git push-for !!
-  - (x) Better popup menu code action (telescope shows useless input) (make nui work with relative pos)
-  - (x) Better ways to move windows. (maybe with mouse)
-  - (x) Replace popup menu code action by dressing
-  - (x) Disable <C-p>/<C-n>
-  - (x) Warning if auto save fails because not sudo
-  - (x) Snippets. Install snippets scissors and make Intersec snippets
-  - (x) List of previous copy with yankbank-nvim
-  - (x) Plugin Telescope frecency (not the one named frecency the other one) to see recent files opened
-  - ( ) Fix noice not ignoring anymore when undoing
-  - ( ) Import things from /srv/tools/../vim like colors for .iop colors
-  - ( ) Telescope smart-open should use local scope and cwd
+  - ( ) Snippet fix
   - ( ) Multiline search but easier than weird live grep with args syntax.
-  - ( ) See function graph (what function call what function)
-  - ( ) Improve treesitter textobjects keymap
-  -- ( ) (do o instead of a like for native motions ?)
-  -- ( ) Delete empty line automatically
-  -- ( ) cit for types is stupid
+  - ( ) Treesitter textobjects delete empty line automatically
+  - ( ) Git fugitive open smaller height or floating window
+* Somewhat important
+  - ( ) Telescope undo for directory
+  - ( ) Revert change to session
+  - ( ) Import things from /srv/tools/../vim like colors for .iop colors
   - ( ) Use quickfix (cannot make it work because of bug #14638)
   -- ( ) Possibly make it automatic when calling waf with a fish wrapper or something (see "Plugins creation ideas")
   -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
-  - ( ) Git fugitive open smaller height or floating window
-  - ( ) Telescope undo for directory
-  - ( ) Revert change to session
-* Somewhat important
+  - ( ) See function graph (what function call what function)
+  - ( ) Telescope smart-open should use local scope and cwd
   - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit
   - ( ) Telescope equivalent of Trouble (see both LSP errors and todo list)
   - ( ) Pick a tab via name
