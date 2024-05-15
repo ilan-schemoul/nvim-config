@@ -15,6 +15,7 @@
   - (x) Better ways to move windows. (maybe with mouse)
   - (x) Replace popup menu code action by dressing
   - (!) Disable <C-p>/<C-n>
+  - (!) Warning if auto save fails because not sudo
   - (x) Snippets. Install snippets scissors and make Intersec snippets
   - (x) List of previous copy with yankbank-nvim
   - (x) Plugin Telescope frecency (not the one named frecency the other one) to see recent files opened
@@ -31,6 +32,8 @@
   -- ( ) Possibly make it automatic when calling waf with a fish wrapper or something (see "Plugins creation ideas")
   -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
   - ( ) Git fugitive open smaller height or floating window
+  - ( ) Telescope undo for directory
+  - ( ) Revert change to session
 * Somewhat important
   - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit
   - ( ) Telescope equivalent of Trouble (see both LSP errors and todo list)
@@ -53,6 +56,7 @@
   - ( ) Rename tab auto based on (pwd)
   - (x) Zen mode
   - ( ) Plugin to find mnemonic for new keymap
+  - ( ) Treesitter syntax for .iop
 * Not urgent at all
   - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
