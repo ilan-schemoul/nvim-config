@@ -14,8 +14,8 @@
   - (x) Better popup menu code action (telescope shows useless input) (make nui work with relative pos)
   - (x) Better ways to move windows. (maybe with mouse)
   - (x) Replace popup menu code action by dressing
-  - (!) Disable <C-p>/<C-n>
-  - (!) Warning if auto save fails because not sudo
+  - (x) Disable <C-p>/<C-n>
+  - (x) Warning if auto save fails because not sudo
   - (x) Snippets. Install snippets scissors and make Intersec snippets
   - (x) List of previous copy with yankbank-nvim
   - (x) Plugin Telescope frecency (not the one named frecency the other one) to see recent files opened
