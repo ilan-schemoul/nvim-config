@@ -10,6 +10,19 @@ set visualbell
 set termguicolors
 
 colorscheme catppuccin-macchiato
+
+lua << EOF
+vim.api.nvim_create_autocmd({"InsertLeave"}, {
+  callback = function(args)
+    buf = vim.api.nvim_win_get_buf(0)
+
+    if vim.bo[buf].readonly then
+      vim.notify("Cannot save. Use :TeeSave.", "warn")
+    end
+  end,
+})
+EOF
+
 " More bright than default one
 highlight DiffChange guibg=#2b3148
 " Less bright than default one
