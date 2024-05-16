@@ -3,6 +3,10 @@
   - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Treesitter textobjects delete empty line automatically
   - ( ) Git fugitive open smaller height or floating window
+  - (-) Tabline
+  -- ( ) Fix time (tabrename with same name ?)
+  -- (x) Change workspaces and text files positions
+  -- ( ) Add notifications
 * Somewhat important
   - ( ) Telescope undo for directory
   - ( ) Revert change to session
@@ -15,11 +19,6 @@
   - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit
   - ( ) Telescope equivalent of Trouble (see both LSP errors and todo list)
   - ( ) Pick a tab via name
-  - ( ) Tabline
-  -- ( ) Fix time
-  -- ( ) Change workspaces and text files positions
-  -- ( ) Add warning if Settings git not synced
-  -- ( ) Add notifications
   - ( ) Better quickfix with nvim-bqf
   - ( ) Improve refactoring plugin
   - ( ) Refactor all my mappings so they make more sense, remove useless etc.
@@ -34,6 +33,7 @@
   - (x) Zen mode
   - ( ) Plugin to find mnemonic for new keymap
   - ( ) Treesitter syntax for .iop
+  - ( ) Add warning if Settings git not synced
 * Not urgent at all
   - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
@@ -90,3 +90,5 @@
   - Warn if options passed to lazy does not exist (setup instead of config etc.)
   - Make lazy detect automatically commands and keys
   - Show buffers local to scope only (already exist as a plugin)
+  - Ctrl-i/Ctrl-o but inside same file
+  - Github code search
