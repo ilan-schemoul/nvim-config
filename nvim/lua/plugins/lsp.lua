@@ -22,22 +22,14 @@ return {
         },
       })
 
-      local custom_bashls = false
-      if vim.fn.filereadable("node-16") then
-        custom_bashls = true
-        require("lspconfig").bashls.setup({
-          capabilities = capabilities,
-          cmd = { "node-16", "/home/ilan/.local/share/nvim/mason/bin/bash-language-server", "start" },
-        })
-      end
-
       -- Whether servers that are set up (via lspconfig) should be automatically
       -- installed if they're not already installed.
       require("mason").setup({ automatic_installation = true })
       require("mason-lspconfig").setup()
       require("mason-lspconfig").setup_handlers({
         function(server_name) -- default handler (optional)
-          if server_name ~= "lua_ls" and not (server_name == "bashls" and custom_bashls) then
+        -- TODO: stop using "if" but use as intended put lua_ls below
+          if server_name ~= "lua_ls" then
             require("lspconfig")[server_name].setup({
               capabilities = capabilities,
             })
