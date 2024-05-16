@@ -1,3 +1,4 @@
+let $PATH = '/home/ilan/.bin/node-v20.13.1-linux-x64/bin:' . $PATH
 lua vim.filetype.add({ extension = { blk = 'c' } }) 
 autocmd BufNewFile,BufRead wscript_build set filetype=python
 
