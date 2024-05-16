@@ -70,6 +70,7 @@
   - ( ) (fish, not vim) poetry in subfolder
 
 * Plugins creation ideas/contributions
+  - Plugin for Intersec logs. Syntax highlighting, diff with last log, folding.
   - Search multilines (with grep args or taking last live_grep output for the next one)
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
   - See linux notifications/slack/teams ? (if not exist)
