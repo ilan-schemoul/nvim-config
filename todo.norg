@@ -2,11 +2,9 @@
   - (!) Snippet fix
   - (!) Fix noice completion
   - ( ) Multiline search but easier than weird live grep with args syntax.
-  - (x) Treesitter textobjects delete empty line automatically
   - ( ) Git fugitive open smaller height or floating window
   - (-) Tabline
   -- ( ) Fix time (tabrename with same name ?)
-  -- (x) Change workspaces and text files positions
   -- ( ) Add notifications
 * Somewhat important
   - ( ) Telescope undo for directory
@@ -25,25 +23,19 @@
   - ( ) Improve refactoring plugin
   - ( ) Refactor all my mappings so they make more sense, remove useless etc.
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
-  - (x) https://github.com/debugloop/telescope-undo.nvim
   - ( ) send a breakpoint to runnin gdb (or other workaround)
   - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
   - ( ) Shortcut to focus on terminal and type "!!<cr>"
   - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
   - ( ) Generate programmatically in lua key mapping
   - ( ) Rename tab auto based on (pwd)
-  - (x) Zen mode
   - ( ) Plugin to find mnemonic for new keymap
-  - (-) Treesitter syntax for .iop
-  -- (x) grammar
-  -- ( ) query for textobjects
   - ( ) Add warning if Settings git not synced
 * Not urgent at all
   - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
   - ( ) Refactor everything to glorious Lua
-  - (x) Refactor move every plugins to plugins/
   - ( ) Nvim-spectre
   - ( ) Hide prompt telescope theme cursor (for code action)
 
@@ -77,7 +69,7 @@
   - (!) !! plugin to show the diff between the code NOW and last moment where code compiled/tests passed
   - ( ) Problem: I WASTE SO MANY TIMES BECAUSE I THINK I MODIFY BINARY BUT IT DOESNT (!!) Solution: bind a file with a binary and warn if binary never changes. Solution2: automatically open terminal with program to compile SOLUTION3: use make program argument (which also use fixlist)
   - Plugin for Intersec logs. Syntax highlighting, diff with last log, folding.
-  - Search multilines (with grep args or taking last live_grep output for the next one)
+  - Search for examples : give two strings and says maximum number of lines between two strings (function foo() then max 10 lines then bar()). Sort : by minimum number of lines in the function and in the file (first file with 100 lines then 1000 lines), most recent, proximity of folder with current folder. Ability so specify type of arguments (e.g: search all functions whose arguments are sb_t). Ability to search synonyms (e.g: delete also search remove etc.). Preference towards folder "test"/"examples"
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
   - See linux notifications/slack/teams ? (if not exist)
   - A plugin to take screenshots that doesnt require installing 1GB of dependencies
