@@ -87,3 +87,5 @@ autocmd BufReadPost *
 set sessionoptions=buffers,curdir,folds,globals,help,tabpages,terminal,winsize
 
 set nofoldenable
+
+autocmd BufNewFile,BufRead *.iop set ft=iop

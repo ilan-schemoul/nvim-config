@@ -10,6 +10,7 @@
   -- ( ) Add notifications
 * Somewhat important
   - ( ) Telescope undo for directory
+  - ( ) Telescope open split with hjkl
   - ( ) Revert change to session
   - ( ) Import things from /srv/tools/../vim like colors for .iop colors
   - ( ) Use quickfix (cannot make it work because of bug #14638)
@@ -33,7 +34,9 @@
   - ( ) Rename tab auto based on (pwd)
   - (x) Zen mode
   - ( ) Plugin to find mnemonic for new keymap
-  - ( ) Treesitter syntax for .iop
+  - (-) Treesitter syntax for .iop
+  -- (x) grammar
+  -- ( ) query for textobjects
   - ( ) Add warning if Settings git not synced
 * Not urgent at all
   - ( ) Make gdb work with vim
@@ -71,6 +74,8 @@
   - ( ) (fish, not vim) poetry in subfolder
 
 * Plugins creation ideas/contributions
+  - (!) !! plugin to show the diff between the code NOW and last moment where code compiled/tests passed
+  - ( ) Problem: I WASTE SO MANY TIMES BECAUSE I THINK I MODIFY BINARY BUT IT DOESNT (!!) Solution: bind a file with a binary and warn if binary never changes. Solution2: automatically open terminal with program to compile SOLUTION3: use make program argument (which also use fixlist)
   - Plugin for Intersec logs. Syntax highlighting, diff with last log, folding.
   - Search multilines (with grep args or taking last live_grep output for the next one)
   - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
@@ -93,3 +98,7 @@
   - Show buffers local to scope only (already exist as a plugin)
   - Ctrl-i/Ctrl-o but inside same file
   - Github code search
+  - struct abc {
+    int a;
+    };
+    "va{" select everything between "{" => how to select everything including "struct abc"

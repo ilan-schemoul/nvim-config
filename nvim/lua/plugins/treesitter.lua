@@ -57,11 +57,11 @@ return {
           enable = true,
           swap_next = {
             ["<space>sl"] = "@parameter.inner", -- swap parameters/argument with next
-            ["<space>sj"] = "@function.outer", -- swap function with next
+            ["<space>sj"] = "@block.outer", -- swap function with next
           },
           swap_previous = {
             ["<space>sh"] = "@parameter.inner", -- swap parameters/argument with next
-            ["<space>sk"] = "@function.outer", -- swap function with previous
+            ["<space>sk"] = "@block.outer", -- swap function with previous
           },
         },
         move = {
@@ -98,16 +98,17 @@ return {
       vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 
       if type(opts.ensure_installed) == "table" then
-        ---@type table<string, boolean>
-        local added = {}
-        opts.ensure_installed = vim.tbl_filter(function(lang)
-          if added[lang] then
-            return false
-          end
-          added[lang] = true
-          return true
-        end, opts.ensure_installed)
+          ---@type table<string, boolean>
+          local added = {}
+          opts.ensure_installed = vim.tbl_filter(function(lang)
+              if added[lang] then
+                  return false
+              end
+              added[lang] = true
+              return true
+          end, opts.ensure_installed)
       end
+
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
