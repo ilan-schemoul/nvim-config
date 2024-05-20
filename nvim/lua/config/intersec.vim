@@ -1,7 +1,19 @@
 let $PATH = '/home/ilan/.bin/node-v20.13.1-linux-x64/bin:' . $PATH
+
 lua vim.filetype.add({ extension = { blk = 'c' } }) 
+
 autocmd BufNewFile,BufRead wscript_build set filetype=python
+
 autocmd BufNewFile,BufRead behave_logs,behave_steps_output set filetype=log
+autocmd BufNewFile,BufRead behave_logs,behave_steps_output set autoread
+
+fun! s:reload_logs(_)
+    if expand('%:t') == "behave_logs" || expand('%:t') == "behave_steps_output"
+        exec("edit")
+    endif
+endfun
+
+call timer_start(1000, function('s:reload_logs'), {'repeat': -1})
 
 " Compilation
 set makeprg=LC_ALL=C\ make\ MONOCHROME=1
