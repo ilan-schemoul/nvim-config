@@ -1,6 +1,5 @@
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
   keys = {
     { "<leader><BS>", "<cmd>Noice dismiss<cr>" },
   },
