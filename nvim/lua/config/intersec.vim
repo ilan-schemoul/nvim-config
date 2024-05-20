@@ -1,6 +1,7 @@
 let $PATH = '/home/ilan/.bin/node-v20.13.1-linux-x64/bin:' . $PATH
 lua vim.filetype.add({ extension = { blk = 'c' } }) 
 autocmd BufNewFile,BufRead wscript_build set filetype=python
+autocmd BufNewFile,BufRead behave_logs,behave_steps_output set filetype=log
 
 " Compilation
 set makeprg=LC_ALL=C\ make\ MONOCHROME=1
