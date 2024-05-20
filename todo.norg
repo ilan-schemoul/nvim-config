@@ -1,13 +1,11 @@
 * Urgent
-  - (!) Snippet fix
-  - (!) Fix noice completion
-  - ( ) Improve logs: plugin for AsciiColor, plugin for syntax coloring, autoreload, auto set type, only see differences
+  - ( ) Improve logs: autoreload, only see differences
   - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Git fugitive open smaller height or floating window
+* Somewhat important
   - (-) Tabline
   -- ( ) Fix time (tabrename with same name ?)
   -- ( ) Add notifications
-* Somewhat important
   - ( ) Telescope undo for directory
   - ( ) Telescope open split with hjkl
   - ( ) Revert change to session
@@ -41,8 +39,7 @@
   - ( ) Hide prompt telescope theme cursor (for code action)
 
 * 0.10 (May 7th)
-  - ( ) Remove comment.vim
-  - ( ) Enable dropbar (and remove ChadTree)
+  - (x) Enable dropbar (and remove ChadTree)
   - ( ) Osc52
   - ( ) Can use quickfix lists
 
