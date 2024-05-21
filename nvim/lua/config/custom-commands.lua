@@ -8,21 +8,6 @@ vim.api.nvim_create_autocmd({"InsertLeave"}, {
   end,
 })
 
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  callback = function(args)
-    buf = vim.api.nvim_win_get_buf(0)
-
-    -- buftype == "" when it is a normal buffer
-    if vim.bo[buf].readonly and vim.bo[buf].buftype == "" then
-      vim.cmd("highlight Normal guifg=red")
-    else
-      local macchiato = require("catppuccin.palettes").get_palette "macchiato"
-      vim.cmd("highlight Normal guifg=" .. macchiato.text)
-    end
-
-  end,
-})
-
 vim.api.nvim_create_user_command("AddPlugin", function(args)
   local full_name = args.fargs[1]
 
