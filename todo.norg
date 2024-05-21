@@ -1,5 +1,10 @@
 * Urgent
+  - (!) Snippet fix
+  - (!) Fix noice completion
   - ( ) Improve logs: autoreload, only see differences
+  -- ( ) FIX COLOR
+  -- ( ) Command to execute behave
+  -- ( ) Command to go to next step
   - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Git fugitive open smaller height or floating window
 * Somewhat important
