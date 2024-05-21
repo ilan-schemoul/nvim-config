@@ -14,6 +14,7 @@ fun! s:reload_logs(_)
 endfun
 
 call timer_start(1000, function('s:reload_logs'), {'repeat': -1})
+autocmd BufNewFile,BufRead behave_steps_output set ft=cucumber
 
 " Compilation
 set makeprg=LC_ALL=C\ make\ MONOCHROME=1
@@ -80,4 +81,4 @@ let g:localvimrc_sandbox = 0
 " Whitelist ~/dev, which must contains all our repositories
 let g:localvimrc_whitelist = $HOME.'/dev/'
 
-map <Leader>gf :G push-for f/master/ilan<cr>
+map <Leader>gf :G push-for<cr>
