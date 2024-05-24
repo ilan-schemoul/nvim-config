@@ -5,12 +5,14 @@
   -- ( ) FIX COLOR
   -- ( ) Command to execute behave
   -- ( ) Command to go to next step
+  -- ( ) Show the then/when as "context"
   - ( ) Multiline search but easier than weird live grep with args syntax.
   - ( ) Git fugitive open smaller height or floating window
 * Somewhat important
   - (-) Tabline
   -- ( ) Fix time (tabrename with same name ?)
   -- ( ) Add notifications
+  -- ( ) Change color if GIT REBASE
   - ( ) Telescope undo for directory
   - ( ) Telescope open split with hjkl
   - ( ) Revert change to session

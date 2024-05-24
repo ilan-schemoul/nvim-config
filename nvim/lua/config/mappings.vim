@@ -150,7 +150,7 @@ map <leader>pj :belowright split \| term<cr>
 map <leader>pk :topleft split \| term<cr>
 map <leader>pl :botright vs \| term<cr>
 
-map <Leader>gl :G log -1000<cr>
+map <Leader>gl :G log -50<cr>
 map <Leader>gp :G push<cr>
 map <Leader>gu :G pull<cr>
 map <Leader>go :G<cr>
