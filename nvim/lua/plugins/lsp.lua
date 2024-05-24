@@ -19,6 +19,15 @@ return {
             capabilities = capabilities,
           })
         end,
+        ["clangd"] = function(_)
+          require("lspconfig").clangd.setup({
+            capabilities = capabilities,
+            cmd = {
+                "clangd",
+                "--header-insertion=never"
+            }
+          })
+        end,
         ["lua_ls"] = function(_)
           require("lspconfig").lua_ls.setup({
             capabilities = capabilities,

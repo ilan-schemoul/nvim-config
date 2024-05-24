@@ -13,7 +13,7 @@ fun! s:reload_logs(_)
     endif
 endfun
 
-call timer_start(1000, function('s:reload_logs'), {'repeat': -1})
+" call timer_start(1000, function('s:reload_logs'), {'repeat': -1})
 autocmd BufNewFile,BufRead behave_steps_output set ft=cucumber
 
 " Compilation
