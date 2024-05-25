@@ -4,4 +4,5 @@ return {
   opts = {
     -- local_directory = "~/code/tree-sitter-iop/",
   },
+  build = ":TSUpdate",
 }
