@@ -61,7 +61,7 @@
   "telescope-undo.nvim": { "branch": "main", "commit": "95b61c01ea3a4c9e8747731148e905bbcf0ccaee" },
   "telescope.nvim": { "branch": "master", "commit": "fac83a556e7b710dc31433dec727361ca062dbe9" },
   "todo-comments.nvim": { "branch": "main", "commit": "a7e39ae9e74f2c8c6dc4eea6d40c3971ae84752d" },
-  "tree-sitter-iop": { "branch": "master", "commit": "3ebad7eef31d12fea95717feee3a7b2b758ba023" },
+  "tree-sitter-iop": { "branch": "master", "commit": "211b12014cb13516847e70f975708b1c8e5f3048" },
   "true-zen.nvim": { "branch": "main", "commit": "2b9e210e0d1a735e1fa85ec22190115dffd963aa" },
   "ts-node-action": { "branch": "master", "commit": "6d3b60754fd87963d70eadaa2f77873b447eac26" },
   "vim-cool": { "branch": "master", "commit": "662e7b11064cbeedad17c45d2fe926e78d3cd0b6" },
