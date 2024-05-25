@@ -1,8 +1,8 @@
 * Urgent
-  - (!) Snippet fix
-  - (!) Fix noice completion
-  - ( ) Improve logs: autoreload, only see differences
-  -- ( ) FIX COLOR
+  - (x) Snippet fix
+  - (x) Fix noice completion
+  - (-) Improve logs: autoreload, only see differences
+  -- (x) FIX COLOR
   -- ( ) Command to execute behave
   -- ( ) Command to go to next step
   -- ( ) Show the then/when as "context"
