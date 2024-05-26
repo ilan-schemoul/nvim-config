@@ -1,6 +1,5 @@
 return {
   "folke/noice.nvim",
-  enabled = false,
   priority = 100,
   keys = {
     { "<leader><BS>", "<cmd>Noice dismiss<cr>" },
