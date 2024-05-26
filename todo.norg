@@ -36,6 +36,9 @@
   - ( ) Rename tab auto based on (pwd)
   - ( ) Plugin to find mnemonic for new keymap
   - ( ) Add warning if Settings git not synced
+  - ( ) gx should open in regex101 when I underline regex
+  - ( ) Add motion to select between regex /abc/
+  - ( ) Change git to something else than fugitive (slow, features limited, not lua)
 * Not urgent at all
   - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
