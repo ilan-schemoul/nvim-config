@@ -6,13 +6,19 @@ autocmd BufNewFile,BufRead wscript_build set filetype=python
 
 au BufRead,BufNewFile behave_logs set filetype=behave_log
 au BufRead,BufNewFile behave.log set filetype=behave_log
-autocmd FileType behave_log set autoread
 
-fun! s:reload_logs(_)
-    if expand('%:t') == "behave_logs" || expand('%:t') == "behave_steps_output"
-        exec("edit")
-    endif
-endfun
+function! ReloadFilesAutomatically() abort
+    if &ft=='behave_log'
+        let l:winview = winsaveview()
+        checktime
+        call winrestview(l:winview)
+    end
+endfunction
+
+augroup reload
+    autocmd!
+    autocmd CursorHold,FocusGained,BufEnter * call ReloadFilesAutomatically()
+augroup END
 
 " call timer_start(1000, function('s:reload_logs'), {'repeat': -1})
 autocmd BufNewFile,BufRead behave_steps_output set ft=cucumber
