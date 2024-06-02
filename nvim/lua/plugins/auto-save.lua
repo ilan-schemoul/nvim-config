@@ -7,7 +7,7 @@ return {
     conditions = {
       exists = false,
       modifiable = true,
-      filename_is_not = { "behave_logs" },
+      filetype_is_not = { "behave_log" },
     },
     write_all_buffers = false,
     debounce_delay = 135,

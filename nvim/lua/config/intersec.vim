@@ -4,8 +4,9 @@ lua vim.filetype.add({ extension = { blk = 'c' } })
 
 autocmd BufNewFile,BufRead wscript_build set filetype=python
 
-autocmd BufNewFile,BufRead behave_logs set filetype=behave_log
-autocmd BufNewFile,BufRead behave_logs set autoread
+au BufRead,BufNewFile behave_logs set filetype=behave_log
+au BufRead,BufNewFile behave.log set filetype=behave_log
+autocmd FileType behave_log set autoread
 
 fun! s:reload_logs(_)
     if expand('%:t') == "behave_logs" || expand('%:t') == "behave_steps_output"
