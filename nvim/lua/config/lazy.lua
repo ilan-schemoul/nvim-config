@@ -71,9 +71,15 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufWritePre" }, {
   end,
 })
 
+local lock_file = "lazy-lock-default.json"
+if os.getenv("IS_INTERSEC") == "true" then
+  lock_file = "lazy-lock-intersec.json"
+end
+
 require("lazy").setup("plugins", {
   change_detection = {
     enabled = true,
     notify = false,
   },
+  lockfile = vim.fn.stdpath("config") .. lock_file
 })
