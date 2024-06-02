@@ -13,6 +13,25 @@ return {
       fill = { bg = "transparent" },
     }
 
+    local function get_tab_folder(tab_nr)
+        local success, full_path = pcall(vim.fn.getcwd, -1, tab_nr)
+
+        if not success then
+            return tostring(tab_nr)
+        end
+
+        if full_path == vim.fn.expand('$HOME') then
+            return "~"
+        end
+
+        local _, _, folder = string.find(full_path, ".*/(.*)")
+
+        -- Uppercase first letter
+        folder = (folder:gsub("^%l", string.upper))
+
+        return folder
+    end
+
     local function update_tab()
         require("tabby.tabline").set(function(line)
             return {
@@ -36,7 +55,7 @@ return {
                     local hl = tab.is_current() and theme.current or theme.not_current
                     return {
                         line.sep(" ", hl, theme.fill),
-                        tab.name(),
+                        get_tab_folder(line.api.get_tab_number(tab.id)),
                         line.sep(" ", hl, theme.fill),
                         hl = hl,
                     }
@@ -44,7 +63,13 @@ return {
 
                 hl = theme.fill,
             }
-        end)
+        end, {
+        tab_name = {
+            name_fallback = function(tabid)
+                return get_tab_folder(tabid)
+            end
+        }
+    })
     end
 
     local timer = vim.uv.new_timer()
