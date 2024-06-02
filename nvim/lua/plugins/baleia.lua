@@ -40,11 +40,10 @@ return {
 
         vim.api.nvim_create_autocmd(
             {
-                "BufNewFile",
-                "BufRead",
+                "FileType",
             },
             {
-                pattern = "behave_logs",
+                pattern = "behave_log",
                 callback = function()
                     local bufnr = vim.api.nvim_get_current_buf()
                     baleia.once(bufnr)
