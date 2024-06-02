@@ -1,45 +1,35 @@
 * Urgent
-  - (-) Improve logs: autoreload, only see differences
-  -- (x) FIX COLOR
-  -- (_) Command to execute behave
-  -- ( ) Command to go to next step
-  -- ( ) Folding
-  -- ( ) Show the then/when as "context"
-  - ( ) Multiline search but easier than weird live grep with args syntax.
-  - ( ) Git fugitive open smaller height or floating window
-* Somewhat important
-  - (-) Tabline
-  -- ( ) Fix time (tabrename with same name ?)
+  - ( ) Pick a tab via name
+  - ( ) Rename tab auto based on (pwd)
+  - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
+  - ( ) Shortcut to focus on terminal and type "!!<cr>"
+  - ( ) Tabline
   -- ( ) Add notifications
   -- ( ) Change color if GIT REBASE
+* Somewhat important
+  - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) Telescope undo for directory
-  - ( ) Telescope open split with hjkl
   - ( ) Revert change to session
   - ( ) Import things from /srv/tools/../vim like colors for .iop colors
   - ( ) Use quickfix (cannot make it work because of bug #14638)
   -- ( ) Possibly make it automatic when calling waf with a fish wrapper or something (see "Plugins creation ideas")
   -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
+  -- ( ) Gerrit review
   - ( ) See function graph (what function call what function)
-  - ( ) Telescope smart-open should use local scope and cwd
   - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit, plugin/jumpfile.vim
-  - ( ) Telescope equivalent of Trouble (see both LSP errors and todo list)
-  - ( ) Pick a tab via name
   - ( ) Better quickfix with nvim-bqf
-  - ( ) Improve refactoring plugin
   - ( ) Refactor all my mappings so they make more sense, remove useless etc.
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
-  - ( ) send a breakpoint to runnin gdb (or other workaround)
-  - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
-  - ( ) Shortcut to focus on terminal and type "!!<cr>"
-  - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
   - ( ) Generate programmatically in lua key mapping
-  - ( ) Rename tab auto based on (pwd)
-  - ( ) Plugin to find mnemonic for new keymap
   - ( ) Add warning if Settings git not synced
   - ( ) gx should open in regex101 when I underline regex
   - ( ) Add motion to select between regex /abc/
   - ( ) Change git to something else than fugitive (slow, features limited, not lua)
 * Not urgent at all
+  - ( ) send a breakpoint to runnin gdb (or other workaround)
+  - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
+  - ( ) Plugin to find mnemonic for new keymap
+  - ( ) Improve refactoring plugin
   - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
