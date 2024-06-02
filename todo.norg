@@ -1,6 +1,5 @@
 * Urgent
   - ( ) Pick a tab via name
-  - ( ) Rename tab auto based on (pwd)
   - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
   - ( ) Shortcut to focus on terminal and type "!!<cr>"
   - ( ) Tabline
