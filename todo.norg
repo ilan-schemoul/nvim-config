@@ -62,6 +62,7 @@
   - ( ) (fish, not vim) poetry in subfolder
 
 * Plugins creation ideas/contributions
+  - ( ) automatic contextual bookmark (most modified code = bookmark C, most modified test = bookmark T etc.)
   - (!) !! plugin to show the diff between the code NOW and last moment where code compiled/tests passed
   - ( ) Problem: I WASTE SO MANY TIMES BECAUSE I THINK I MODIFY BINARY BUT IT DOESNT (!!) Solution: bind a file with a binary and warn if binary never changes. Solution2: automatically open terminal with program to compile SOLUTION3: use make program argument (which also use fixlist)
   - Plugin for Intersec logs. Syntax highlighting, diff with last log, folding.
@@ -90,3 +91,4 @@
     int a;
     };
     "va{" select everything between "{" => how to select everything including "struct abc"
+  - <C-o>/<C-i> for list of files, for list of where you inserted etc.
