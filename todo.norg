@@ -35,11 +35,6 @@
   - ( ) Nvim-spectre
   - ( ) Hide prompt telescope theme cursor (for code action)
 
-* 0.10 (May 7th)
-  - (x) Enable dropbar (and remove ChadTree)
-  - ( ) Osc52
-  - ( ) Can use quickfix lists
-
 * Lsp/formating
   - ( ) Fix wscript_build lsp errors
   - ( ) Fix define in libs when openeed neovim
