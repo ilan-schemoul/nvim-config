@@ -217,6 +217,7 @@ map <leader>t5 :tabn 5<cr>
 map <leader>t6 :tabn 6<cr>
 map <leader>t7 :tabn 7<cr>
 
+map <Leader>tg :lua require('telescope-tabs').list_tabs()<cr>
 map <Leader>tn :tabnew<cr>
 map <Leader>tx :tabclose<cr>
 map <Leader>tl :tabnext<cr>
