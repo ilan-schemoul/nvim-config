@@ -1,11 +1,11 @@
 * Urgent
-  - ( ) Pick a tab via name
-  - ( ) Fix terminal ctrl-h etc. already used (conflict with vim motions)
   - ( ) Shortcut to focus on terminal and type "!!<cr>"
+  - ( ) Refactor all my mappings so they make more sense, remove useless etc.
   - ( ) Tabline
   -- ( ) Add notifications
   -- ( ) Change color if GIT REBASE
 * Somewhat important
+  - ( ) Pick a tab via name
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) Telescope undo for directory
   - ( ) Revert change to session
@@ -17,7 +17,6 @@
   - ( ) See function graph (what function call what function)
   - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit, plugin/jumpfile.vim
   - ( ) Better quickfix with nvim-bqf
-  - ( ) Refactor all my mappings so they make more sense, remove useless etc.
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Generate programmatically in lua key mapping
   - ( ) Add warning if Settings git not synced
