@@ -1,10 +1,8 @@
 * Urgent
-  - ( ) Shortcut to focus on terminal and type "!!<cr>"
   - ( ) Refactor all my mappings so they make more sense, remove useless etc.
-  - ( ) Tabline
-  -- ( ) Add notifications
-  -- ( ) Change color if GIT REBASE
+  - ( ) Tabline : change color if GIT REBASE
 * Somewhat important
+  - ( ) Tabline notifications
   - ( ) Pick a tab via name
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) Telescope undo for directory

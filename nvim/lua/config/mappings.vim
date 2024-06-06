@@ -149,6 +149,8 @@ map <leader>ph :vsplit \| term<cr>
 map <leader>pj :belowright split \| term<cr>
 map <leader>pk :topleft split \| term<cr>
 map <leader>pl :botright vs \| term<cr>
+map <silent> <leader>pr :SendToTerm !!<cr>
+map <silent> <leader>ps :SendToTerm<cr>
 
 map <Leader>gl :G log -50<cr>
 map <Leader>gp :G push<cr>
