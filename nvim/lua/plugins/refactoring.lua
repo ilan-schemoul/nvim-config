@@ -1,9 +1,5 @@
 return {
   "ThePrimeagen/refactoring.nvim",
-  requires = {
-    { "nvim-lua/plenary.nvim" },
-    { "nvim-treesitter/nvim-treesitter" },
-  },
   keys = {
     -- extract functions
     { "<leader>ref", "<cmd>Refactor extract <cr>", mode = "x" },

@@ -1,5 +1,4 @@
 * Urgent
-  - ( ) Refactor all my mappings so they make more sense, remove useless etc.
   - ( ) Tabline : change color if GIT REBASE
 * Somewhat important
   - ( ) Tabline notifications
@@ -13,7 +12,7 @@
   -- ( ) Fix in vim core that you need line position (so instead of a.c:12:2 you can have a.c:12)
   -- ( ) Gerrit review
   - ( ) See function graph (what function call what function)
-  - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit, plugin/jumpfile.vim
+  - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit, plugin/jumpfile.vim, https://www.reddit.com/r/neovim/comments/10h01dw/termeditnvim_making_vim_key_bindings_work_in/
   - ( ) Better quickfix with nvim-bqf
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Generate programmatically in lua key mapping
@@ -21,6 +20,7 @@
   - ( ) gx should open in regex101 when I underline regex
   - ( ) Add motion to select between regex /abc/
   - ( ) Change git to something else than fugitive (slow, features limited, not lua)
+  - ( ) TS Textobject do not eat whitespace for internal only for external (e.g: caa)
 * Not urgent at all
   - ( ) send a breakpoint to runnin gdb (or other workaround)
   - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
