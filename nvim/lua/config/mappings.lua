@@ -46,6 +46,10 @@ add_keymap({ "n" }, "tg", "<cmd>Telescope live_grep<cr>")
 add_keymap({ "n" }, "tr", "<cmd>Telescope resume<cr>")
 add_keymap({ "n" }, "tz", "<cmd>Telescope buffers<cr>")
 add_keymap({ "n" }, "tq", "<cmd>Telescope quickfix<cr>")
+add_keymap({ "n" }, "tq", function() require("telescope.builtin").quickfix({
+  trim_text = true,
+  path_display = { "smart" }
+}) end)
 
 add_keymap({ "n" }, "pn", "<cmd>term<cr>")
 add_keymap({ "n" }, "ph", "<cmd>vsplit | term<cr>")
@@ -95,6 +99,8 @@ add_keymap({ "n" }, "gl", "<cmd>G log -50<cr>")
 add_keymap({ "n" }, "gp", "<cmd>G push<cr>")
 add_keymap({ "n" }, "gg", "<cmd>G pull<cr>")
 add_keymap({ "n" }, "go", "<cmd>10split | 0Git<cr>")
+add_keymap({ "n" }, "go", "<cmd>10split | 0Git<cr>")
+add_keymap({ "n" }, "gq", require("config/gerrit-quickfix").load_interactive_input)
 
 for _, key in ipairs({ "h", "j", "k", "l" }) do
   vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
