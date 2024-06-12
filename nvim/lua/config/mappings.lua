@@ -45,6 +45,7 @@ add_keymap({ "n" }, "tt", "<cmd>Telescope<cr>")
 add_keymap({ "n" }, "tg", "<cmd>Telescope live_grep<cr>")
 add_keymap({ "n" }, "tr", "<cmd>Telescope resume<cr>")
 add_keymap({ "n" }, "tz", "<cmd>Telescope buffers<cr>")
+add_keymap({ "n" }, "tq", "<cmd>Telescope quickfix<cr>")
 
 add_keymap({ "n" }, "pn", "<cmd>term<cr>")
 add_keymap({ "n" }, "ph", "<cmd>vsplit | term<cr>")
