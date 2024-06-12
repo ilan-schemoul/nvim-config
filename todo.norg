@@ -1,11 +1,11 @@
+Prioritize very important (I actually really need it) and easy to do.
+
 * Very important
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
 * Somewhat important
   - ( ) Quickfix for waf
-  - ( ) Fix folding (but is it useful IDK)
   - ( ) Tabline notifications
-  - ( ) Pick a tab via name
   - ( ) Telescope undo for directory
   - ( ) Revert change to session
   -- ( ) Gerrit review
@@ -19,6 +19,7 @@
   - ( ) Change git to something else than fugitive (slow, features limited, not lua)
   - ( ) TS Textobject do not eat whitespace for internal only for external (e.g: caa)
 * Not urgent at all
+  - ( ) Fix folding (but is it useful IDK)
   - ( ) send a breakpoint to runnin gdb (or other workaround)
   - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
   - ( ) Plugin to find mnemonic for new keymap
