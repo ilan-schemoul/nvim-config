@@ -1,3 +1,5 @@
+local get_tab_folder = require("config/utils").get_tab_folder
+
 local function add_keymap(modes, keys, cmd)
   for _, mode in ipairs(modes) do
     if mode == "t" then
@@ -46,6 +48,19 @@ add_keymap({ "n" }, "tg", "<cmd>Telescope live_grep<cr>")
 add_keymap({ "n" }, "tr", "<cmd>Telescope resume<cr>")
 add_keymap({ "n" }, "tz", "<cmd>Telescope buffers<cr>")
 add_keymap({ "n" }, "tq", "<cmd>Telescope quickfix<cr>")
+
+add_keymap({ "n" }, "tw", function()
+  require("telescope-tabs").list_tabs({
+    entry_formatter = function(tab_id, _, _, _, _)
+      return get_tab_folder(tab_id)
+    end,
+    entry_ordinal = function(tab_id, _, _, _, _)
+      return get_tab_folder(tab_id)
+    end,
+  })
+end)
+add_keymap({ "n" }, "t-", require("telescope-tabs").go_to_previous)
+
 add_keymap({ "n" }, "tq", function() require("telescope.builtin").quickfix({
   trim_text = true,
   path_display = { "smart" }
@@ -93,6 +108,7 @@ add_keymap({ "n" }, "sl", "<cmd>CustomTelescopeSpellSuggest<cr>")
 add_keymap({ "n" }, "sr", "<cmd>spellr<cr>")
 add_keymap({ "n" }, "sg", "zg")
 add_keymap({ "n" }, "sw", "zw")
+add_keymap({ "n" }, "sb", "zw")
 
 -- See also ../plugins/gitsigns.lua
 add_keymap({ "n" }, "gl", "<cmd>G log -50<cr>")

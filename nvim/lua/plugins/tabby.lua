@@ -19,25 +19,6 @@ return {
       fill = { bg = "transparent" },
     }
 
-    local function get_tab_folder(tab_nr)
-        local success, full_path = pcall(vim.fn.getcwd, -1, tab_nr)
-
-        if not success then
-            return tostring(tab_nr)
-        end
-
-        if full_path == vim.fn.expand('$HOME') then
-            return "~"
-        end
-
-        local _, _, folder = string.find(full_path, ".*/(.*)")
-
-        -- Uppercase first letter
-        folder = (folder:gsub("^%l", string.upper))
-
-        return folder
-    end
-
     local function check_file_exist(folder, line, check)
         Job:new({
             command = "test",
@@ -85,6 +66,8 @@ return {
         }):start()
         return true
     end
+
+    local get_tab_folder = require("config/utils").get_tab_folder
 
     local function update_tab()
         require("tabby.tabline").set(function(line)
