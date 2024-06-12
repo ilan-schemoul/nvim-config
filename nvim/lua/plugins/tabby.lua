@@ -140,6 +140,6 @@ return {
 
     local timer = vim.uv.new_timer()
     local ms = 1
-    timer:start(0, 300 * ms, vim.schedule_wrap(update_tab))
+    timer:start(0, 10000 * ms, vim.schedule_wrap(update_tab))
 end,
 }
