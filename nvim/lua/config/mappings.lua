@@ -15,7 +15,7 @@ end
 add_keymap({ "n" }, "[d", vim.diagnostic.goto_prev)
 add_keymap({ "n" }, "]d", vim.diagnostic.goto_next)
 
-add_keymap({ "n" }, "lf", vim.diagnostic.open_float)
+add_keymap({ "n" }, "lD", vim.diagnostic.open_float)
 add_keymap({ "n" }, "lh", vim.lsp.buf.hover)
 add_keymap({ "n" }, "li", "<cmd>Telescope lsp_references<cr>")
 add_keymap({ "n" }, "ld", "<cmd>Telescope lsp_definitions<cr>")
@@ -44,6 +44,7 @@ add_keymap({ "n" }, "u", "<cmd>Telescope undo<cr>")
 add_keymap({ "n" }, "tt", "<cmd>Telescope<cr>")
 add_keymap({ "n" }, "tg", "<cmd>Telescope live_grep<cr>")
 add_keymap({ "n" }, "tr", "<cmd>Telescope resume<cr>")
+add_keymap({ "n" }, "tz", "<cmd>Telescope buffers<cr>")
 
 add_keymap({ "n" }, "pn", "<cmd>term<cr>")
 add_keymap({ "n" }, "ph", "<cmd>vsplit | term<cr>")
@@ -83,6 +84,7 @@ add_keymap({ "n" }, "nn", _G.create_org_file)
 
 add_keymap({ "n" }, "sc", "1z=")
 add_keymap({ "n" }, "s=", "<cmd>CustomTelescopeSpellSuggest<cr>")
+add_keymap({ "n" }, "sl", "<cmd>CustomTelescopeSpellSuggest<cr>")
 add_keymap({ "n" }, "sr", "<cmd>spellr<cr>")
 add_keymap({ "n" }, "sg", "zg")
 add_keymap({ "n" }, "sw", "zw")
@@ -105,13 +107,16 @@ if os.getenv("KEYBOARD_FR") then
   local fr = { "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 
   for i = 1, 9 do
-    vim.keymap.set("n", fr[i], tostring(i))
-    vim.keymap.set("n", tostring(i), fr[i])
+    -- WORKAROUND: use noremap instead of vim.keymap.set as otherwise motions
+    -- such as d"j (d3j) does not work
+    vim.cmd("noremap <silent> " .. fr[i] .. " " .. tostring(i))
+    vim.cmd("noremap <silent> " .. tostring(i) .. fr[i])
+    -- vim.keymap.set("n", fr[i], tostring(i), { remap = false, silent = true })
+    -- vim.keymap.set("n", tostring(i), fr[i], { remap = false })
   end
-
-  vim.keymap.set("n", "à", "0")
-  vim.keymap.set("n", "0", "à")
 end
+
+vim.keymap.set("t", "<C-x>", "<c-\\><c-n><cmd>set scrollback=0 | sleep 100m | set scrollback=10000<cr>")
 
 vim.cmd([[
   " Custom env variable
@@ -119,6 +124,7 @@ vim.cmd([[
     nmap <silent> ù `
   endif
 
+  noremap <C--> <C-^>
   tmap <C-^> <C-\><C-N><C-^>
 
   inoremap <C-k> <Up>
