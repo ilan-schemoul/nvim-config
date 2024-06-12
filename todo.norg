@@ -1,7 +1,6 @@
 * Very important
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
-  - ( ) Create plugin quickfix for gerrit : https://gerrit-review.googlesource.com/Documentation/rest-api-changes.html#list-change-comments load into a file (plenary job) > JQ/grep > cfile > telescope (errorformat set errorformat=%f:%l\ %m)
 * Somewhat important
   - ( ) Quickfix for waf
   - ( ) Fix folding (but is it useful IDK)
