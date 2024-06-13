@@ -3,20 +3,19 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
+  - ( ) Change git to something else than fugitive (slow, features limited, not lua)
+  - ( ) Cool plugins tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit, plugin/jumpfile.vim, https://www.reddit.com/r/neovim/comments/10h01dw/termeditnvim_making_vim_key_bindings_work_in/
 * Somewhat important
   - ( ) Quickfix for waf
   - ( ) Tabline notifications
   - ( ) Telescope undo for directory
   - ( ) Revert change to session
-  -- ( ) Gerrit review
   - ( ) See function graph (what function call what function)
-  - ( ) Cool plugins smartcolumn (hide colorcolumn when not needed), tip.nvim, treesitter textsubjects (to select with TS based on context), align.nvim,  projections.nvim (project + sessions management), mason-bridge.nvim (register linters formatters in mason), mini.ai (extend create a/i textobjects), telescope rooter (use .git root when use telescope), nvim-numbertoggle (absolute number when not focus), nvim early retirement, term-edit,trailblazer, ccc, nvim-spider, tshjkl, improved ft, diffview, telescope git file history, flit, plugin/jumpfile.vim, https://www.reddit.com/r/neovim/comments/10h01dw/termeditnvim_making_vim_key_bindings_work_in/
   - ( ) Better quickfix with nvim-bqf
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Add warning if Settings git not synced
   - ( ) gx should open in regex101 when I underline regex
   - ( ) Add motion to select between regex /abc/
-  - ( ) Change git to something else than fugitive (slow, features limited, not lua)
   - ( ) TS Textobject do not eat whitespace for internal only for external (e.g: caa)
 * Not urgent at all
   - ( ) Fix folding (but is it useful IDK)

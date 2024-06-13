@@ -81,7 +81,7 @@ vim.api.nvim_create_user_command("AddPlugin", function(args)
   vim.api.nvim_buf_set_lines(id, 0, 0, false, lines)
   vim.cmd("write")
   vim.api.nvim_win_set_cursor(0, {3,10})
-  vim.cmd("Lazy")
+  -- vim.cmd("Lazy")
 end, { nargs = 1 })
 
 -- Close window is it is a floating window or if it not the last opened window in the current tab
