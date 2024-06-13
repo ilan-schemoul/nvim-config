@@ -1,5 +1,8 @@
 return {
   "stevearc/conform.nvim",
+  dependencies = {
+    "frostplexx/mason-bridge.nvim",
+  },
   keys = {
     {
       "<leader>f",
@@ -7,9 +10,15 @@ return {
       mode = { "n", "v" },
     },
   },
-  opts = {
-    formatters_by_ft = {
-      lua = { "stylua" },
-    },
-  },
+  config = function()
+    require("conform").setup({
+      formatters_by_ft = require("mason-bridge").get_formatters({
+        overrides = {
+          linters = {
+            lua = { "stylua" },
+          },
+        },
+      }),
+    })
+  end,
 }
