@@ -1,5 +1,7 @@
 local get_tab_folder = require("config/utils").get_tab_folder
 
+local fr = { "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
+
 local function add_keymap(modes, keys, cmd)
   for _, mode in ipairs(modes) do
     if mode == "t" then
@@ -60,6 +62,14 @@ add_keymap({ "n" }, "tw", function()
   })
 end)
 add_keymap({ "n" }, "t-", require("telescope-tabs").go_to_previous)
+
+for i = 1, 9 do
+  if os.getenv("KEYBOARD_FR") then
+    add_keymap({ "n" }, "t" .. fr[i], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
+  end
+
+  add_keymap({ "n" }, "t" .. tostring(i), "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
+end
 
 add_keymap({ "n" }, "tq", function() require("telescope.builtin").quickfix({
   trim_text = true,
@@ -127,8 +137,6 @@ for _, key in ipairs({ "h", "j", "k", "l" }) do
 end
 
 if os.getenv("KEYBOARD_FR") then
-  local fr = { "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
-
   for i = 1, 9 do
     -- WORKAROUND: use noremap instead of vim.keymap.set as otherwise motions
     -- such as d"j (d3j) does not work
