@@ -140,8 +140,8 @@ if os.getenv("KEYBOARD_FR") then
   for i = 1, 9 do
     -- WORKAROUND: use noremap instead of vim.keymap.set as otherwise motions
     -- such as d"j (d3j) does not work
-    vim.cmd("noremap <silent> " .. fr[i] .. " " .. tostring(i))
-    vim.cmd("noremap <silent> " .. tostring(i) .. fr[i])
+    vim.cmd("nnoremap <silent> " .. fr[i] .. " " .. tostring(i))
+    vim.cmd("noremap <silent> " .. tostring(i) .. " " .. fr[i])
     -- vim.keymap.set("n", fr[i], tostring(i), { remap = false, silent = true })
     -- vim.keymap.set("n", tostring(i), fr[i], { remap = false })
   end
