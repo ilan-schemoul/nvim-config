@@ -112,9 +112,10 @@ add_keymap({ "n" }, "nl", "<cmd>Telescope find_files search_dirs={'~/notes'} fol
 add_keymap({ "n" }, "ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
 add_keymap({ "n" }, "nn", _G.create_org_file)
 
+-- ../plugins/treesitter.lua
 add_keymap({ "n" }, "sc", "1z=")
+-- Can't use <leader>sl as it is used by for TS swapping
 add_keymap({ "n" }, "s=", "<cmd>CustomTelescopeSpellSuggest<cr>")
-add_keymap({ "n" }, "sl", "<cmd>CustomTelescopeSpellSuggest<cr>")
 add_keymap({ "n" }, "sr", "<cmd>spellr<cr>")
 add_keymap({ "n" }, "sg", "zg")
 add_keymap({ "n" }, "sw", "zw")
