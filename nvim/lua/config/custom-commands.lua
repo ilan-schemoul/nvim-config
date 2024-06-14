@@ -66,8 +66,9 @@ vim.api.nvim_create_user_command("AddPlugin", function(args)
   local full_name = args.fargs[1]
 
   local _, _, _, file_name = string.find(full_name, "(.*)/(.*)")
-  vim.cmd("edit ~/.config/nvim/lua/plugins/" .. file_name .. ".lua")
+  file_name = file_name:gsub('.nvim', '')
 
+  vim.cmd("edit ~/.config/nvim/lua/plugins/" .. file_name .. ".lua")
 
   local lines = {
     "return {",
