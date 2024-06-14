@@ -4,9 +4,9 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) Change git to something else than fugitive (slow, features limited, not lua)
-  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), mini.ai (extend create a/i textobjects), trailblazer, diffview, telescope git file history
   - ( ) Shortcut to go to file recent with first letter extension (e.g: shortcut + b => opens a file whose extension starts with b (.blk) most frecency (freq+recency used)
 * Somewhat important
+  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), mini.ai (extend create a/i textobjects), trailblazer, diffview, telescope git file history
   - ( ) Quickfix for waf
   - ( ) Tabline notifications
   - ( ) Telescope undo for directory
