@@ -40,6 +40,7 @@ nnoremap X "_X
 
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * setlocal scrollback=10000
+autocmd TermOpen * setlocal nospell
 autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* startinsert
 
 set spelllang=en_us,programming,fr
