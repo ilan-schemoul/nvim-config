@@ -29,6 +29,11 @@ add_keymap({ "n" }, "lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
 add_keymap({ "n" }, "ln", vim.lsp.buf.rename)
 add_keymap({ "n" }, "la", vim.lsp.buf.code_action)
 add_keymap({ "n" }, "lt", require("lsp_lines").toggle)
+add_keymap({ "n" }, "ll", "<cmd>Telescope smart_open<cr>")
+
+add_keymap({ "n" }, "o", _G.OpenFile)
+add_keymap({ "n" }, ";", _G.OpenFileWithExtension)
+add_keymap({ "n" }, ".", _G.OpenFileWithExtension)
 
 add_keymap({ "i" }, "<C-s>", vim.lsp.buf.signature_help)
 
