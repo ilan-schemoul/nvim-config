@@ -1,6 +1,6 @@
 vim.cmd("command TeeSave :w !sudo tee %")
 
-vim.api.nvim_create_autocmd({"InsertLeave"}, {
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   callback = function(args)
     buf = vim.api.nvim_win_get_buf(0)
 
@@ -81,7 +81,7 @@ vim.api.nvim_create_user_command("AddPlugin", function(args)
 
   vim.api.nvim_buf_set_lines(id, 0, 0, false, lines)
   vim.cmd("write")
-  vim.api.nvim_win_set_cursor(0, {3,10})
+  vim.api.nvim_win_set_cursor(0, { 3, 10 })
   -- vim.cmd("Lazy")
 end, { nargs = 1 })
 
@@ -111,7 +111,53 @@ function _G.create_org_file()
   local file = vim.fn.input("File : ", "", "file")
 
   dirman.create_file(file, "notes", {
-      no_open  = false, -- open file after creation?
-      force    = false, -- overwrite file if exists
+    no_open = false,    -- open file after creation?
+    force   = false,    -- overwrite file if exists
   })
+end
+
+local history = require("telescope._extensions.smart_open.history")
+
+local function open_file(is_extension)
+  local history_result, max_score = history:get_all()
+  local matched_history = {}
+  local letter = vim.fn.getcharstr()
+
+  if is_extension then
+    letter = "%." .. letter
+  else
+    letter = "^" .. letter
+  end
+
+  for _, v in ipairs(history_result) do
+    if v.exists then
+      local frecency = v.score / max_score
+      local regex =  ".*/(.*)"
+      -- If it is not extension then we want first letter
+
+      regex = "^" .. regex
+
+      local _, _, file = string.find(v.path, regex)
+
+      if string.find(file, letter) then
+        table.insert(matched_history, { path = v.path, frecency = frecency })
+      end
+    end
+  end
+
+  table.sort(matched_history, function(a, b)
+    return a.frecency < b.frecency
+  end)
+
+  if matched_history and #matched_history ~= 0 then
+    vim.cmd("e " .. matched_history[#matched_history].path)
+  end
+end
+
+function _G.OpenFileWithExtension()
+  open_file(true)
+end
+
+function _G.OpenFile()
+  open_file(false)
 end
