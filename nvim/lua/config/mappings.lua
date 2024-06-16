@@ -130,8 +130,7 @@ add_keymap({ "n" }, "sb", "zw")
 add_keymap({ "n" }, "gl", "<cmd>G log -50<cr>")
 add_keymap({ "n" }, "gp", "<cmd>G push<cr>")
 add_keymap({ "n" }, "gg", "<cmd>G pull<cr>")
-add_keymap({ "n" }, "go", "<cmd>10split | 0Git<cr>")
-add_keymap({ "n" }, "go", "<cmd>10split | 0Git<cr>")
+add_keymap({ "n" }, "go", function() require('FTerm').run("lazygit") end)
 add_keymap({ "n" }, "gq", require("config/gerrit-quickfix").load_interactive_input)
 
 for _, key in ipairs({ "h", "j", "k", "l" }) do
