@@ -108,9 +108,6 @@ add_keymap({ "n" }, "vl", "<cmd>Telescope find_files search_dirs=~/.config/nvim<
 add_keymap({ "n" }, "vt", "<cmd>e ~/nvim-main/todo.norg<cr>")
 add_keymap({ "n" }, "vv", "<cmd>mapclear | source ~/.config/nvim/init.lua<cr>")
 
-add_keymap({ "i" }, "jk", "<esc>")
-vim.keymap.set({ "t" }, "jk", "<C-\\><C-N>", { silent = true })
-
 add_keymap({ "n" }, "nm", "<cmd>e ~/notes/memory.norg<cr>")
 add_keymap({ "n" }, "nM", "<cmd>botright 30vnew ~/notes/memory.norg | set invrelativenumber | set invnumber<cr>")
 add_keymap({ "n" }, "nl", "<cmd>Telescope find_files search_dirs={'~/notes'} follow=true<cr>")
@@ -130,7 +127,26 @@ add_keymap({ "n" }, "sb", "zw")
 add_keymap({ "n" }, "gl", "<cmd>G log -50<cr>")
 add_keymap({ "n" }, "gp", "<cmd>G push<cr>")
 add_keymap({ "n" }, "gg", "<cmd>G pull<cr>")
-add_keymap({ "n" }, "go", function() require('FTerm').run("lazygit") end)
+
+-- We also disable jk (houdini) for lazygit
+add_keymap({ "n" }, "go", function()
+  require('FTerm').scratch({
+    ft = "lazygit",
+    cmd = "lazygit",
+    dimensions = {
+      height = 0.95,
+      width = 0.95,
+    },
+  })
+end)
+
+vim.api.nvim_create_autocmd({ "Filetype" }, {
+  pattern = "lazygit",
+  callback = function()
+    vim.keymap.set("t", "q", "<cmd>q!<cr>", { buffer = true })
+  end,
+})
+
 add_keymap({ "n" }, "gq", require("config/gerrit-quickfix").load_interactive_input)
 
 for _, key in ipairs({ "h", "j", "k", "l" }) do
