@@ -1,5 +1,10 @@
 return {
   "numToStr/FTerm.nvim",
-  opts = {},
+  opts = {
+    dimensions  = {
+        height = 0.9,
+        width = 0.9,
+    },
+  },
 }
 
