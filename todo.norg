@@ -4,7 +4,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
 * Somewhat important
-  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), mini.ai (extend create a/i textobjects), trailblazer, diffview, telescope git file history, nvim-bqf, nvim-various-textobjects, venn.nvim
+  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), mini.ai (extend create a/i textobjects), trailblazer, diffview, telescope git file history, nvim-bqf, nvim-various-textobjects, venn.nvim, windwp/nvim-autopairs
   - ( ) Quickfix for waf
   - ( ) Tabline notifications
   - ( ) Telescope undo for directory
@@ -19,7 +19,6 @@ Prioritize very important (I actually really need it) and easy to do.
 * Not urgent at all
   - ( ) Fix folding (but is it useful IDK)
   - ( ) send a breakpoint to runnin gdb (or other workaround)
-  - ( ) Add Treesitter to end ( with ) etc. https://dotfyle.com/plugins/windwp/nvim-autopairs
   - ( ) Plugin to find mnemonic for new keymap
   - ( ) Improve refactoring plugin
   - ( ) Make gdb work with vim
