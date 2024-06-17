@@ -19,4 +19,12 @@ M.get_tab_folder = function(tab_nr)
   return folder
 end
 
+M.is_intersec = function()
+  return os.getenv("IS_INTERSEC") == "true"
+end
+
+M.is_not_intersec = function()
+  return not M.is_intersec()
+end
+
 return M
