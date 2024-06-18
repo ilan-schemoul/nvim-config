@@ -9,25 +9,19 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
   - ( ) Tabline notifications
-  - ( ) Telescope undo for directory
-  - ( ) Revert change to session
   - ( ) See function graph (what function call what function)
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
-  - ( ) Add warning if Settings git not synced
-  - ( ) gx should open in regex101 when I underline regex
   - ( ) Add motion to select between regex /abc/
   - ( ) TS Textobject do not eat whitespace for internal only for external (e.g: caa)
 * Not urgent at all
+  - ( ) gx should open in regex101 when I underline regex
   - ( ) Fix folding (but is it useful IDK)
   - ( ) send a breakpoint to runnin gdb (or other workaround)
   - ( ) Plugin to find mnemonic for new keymap
   - ( ) Improve refactoring plugin
   - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
-  - ( ) Gerrit (create plugin to see code review's comments with virtual text ? Prolly overkill) OR at least Gerrit CLI ?
-  - ( ) Refactor everything to glorious Lua
   - ( ) Nvim-spectre
-  - ( ) Hide prompt telescope theme cursor (for code action)
 
 * Lsp/formating
   - ( ) Fix wscript_build lsp errors
