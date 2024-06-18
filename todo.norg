@@ -5,7 +5,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) Fix ctrl-n/ctrl-p in fish doing fish shortcut instead of moving between files
 * Somewhat important
-  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history, venn.nvim, windwp/nvim-autopairs
+  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history, venn.nvim
   - ( ) Quickfix for waf
   - ( ) Tabline notifications
   - ( ) Telescope undo for directory
