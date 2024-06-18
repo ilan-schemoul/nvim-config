@@ -130,6 +130,9 @@ add_keymap({ "n" }, "gl", "<cmd>G log -50<cr>")
 add_keymap({ "n" }, "gp", "<cmd>G push<cr>")
 add_keymap({ "n" }, "gg", "<cmd>G pull<cr>")
 
+-- ../plugins/venn.lua
+add_keymap({ "n" }, "vd", ":lua Toggle_venn()<cr>")
+
 -- We also disable jk (houdini) for lazygit
 add_keymap({ "n" }, "go", function()
   require('FTerm').scratch({

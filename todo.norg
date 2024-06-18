@@ -4,6 +4,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) Fix ctrl-n/ctrl-p in fish doing fish shortcut instead of moving between files
+  - ( ) gerrit quickfix connect to git.corp
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history, venn.nvim
   - ( ) Quickfix for waf
@@ -11,7 +12,6 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Telescope undo for directory
   - ( ) Revert change to session
   - ( ) See function graph (what function call what function)
-  - ( ) Better quickfix with nvim-bqf
   - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Add warning if Settings git not synced
   - ( ) gx should open in regex101 when I underline regex
