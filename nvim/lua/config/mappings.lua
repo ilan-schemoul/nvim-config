@@ -1,3 +1,5 @@
+-- https://github.com/chrisgrieser/nvim-various-textobjs?tab=readme-ov-file#list-of-text-objects
+
 local get_tab_folder = require("config/utils").get_tab_folder
 
 local fr = { "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
