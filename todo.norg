@@ -3,6 +3,7 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
+  - ( ) Fix ctrl-n/ctrl-p in fish doing fish shortcut instead of moving between files
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), mini.ai (extend create a/i textobjects), trailblazer, diffview, telescope git file history, nvim-bqf, nvim-various-textobjects, venn.nvim, windwp/nvim-autopairs
   - ( ) Quickfix for waf
