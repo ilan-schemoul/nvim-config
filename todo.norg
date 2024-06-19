@@ -5,12 +5,12 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) Fix ctrl-n/ctrl-p in fish doing fish shortcut instead of moving between files
   - ( ) gerrit quickfix connect to git.corp
+  - ( ) FTerm/lazygit use cwd of current buffer
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
   - ( ) Tabline notifications
   - ( ) See function graph (what function call what function)
-  - ( ) https://dotfyle.com/plugins/nvim-focus/focus.nvim or equivalent to open in a direction (open if exists/create if doesn't)
   - ( ) Add motion to select between regex /abc/
   - ( ) TS Textobject do not eat whitespace for internal only for external (e.g: caa)
 * Not urgent at all
