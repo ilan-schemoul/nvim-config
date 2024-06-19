@@ -2,7 +2,7 @@
 
 local get_tab_folder = require("config/utils").get_tab_folder
 
-local fr = { "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
+local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 
 local function add_keymap(modes, keys, cmd)
   for _, mode in ipairs(modes) do
@@ -70,9 +70,9 @@ add_keymap({ "n" }, "tw", function()
 end)
 add_keymap({ "n" }, "t-", require("telescope-tabs").go_to_previous)
 
-for i = 1, 9 do
+for i = 0, 9 do
   if os.getenv("KEYBOARD_FR") then
-    add_keymap({ "n" }, "t" .. fr[i], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
+    add_keymap({ "n" }, "t" .. fr[i + 1], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
   end
 
   add_keymap({ "n" }, "t" .. tostring(i), "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
@@ -156,11 +156,11 @@ for _, key in ipairs({ "h", "j", "k", "l" }) do
 end
 
 if os.getenv("KEYBOARD_FR") then
-  for i = 1, 9 do
+  for i = 0, 9 do
     -- WORKAROUND: use noremap instead of vim.keymap.set as otherwise motions
     -- such as d"j (d3j) does not work
-    vim.cmd("noremap <silent> " .. fr[i] .. " " .. tostring(i))
-    vim.cmd("noremap <silent> " .. tostring(i) .. " " .. fr[i])
+    vim.cmd("noremap <silent> " .. fr[i + 1] .. " " .. tostring(i))
+    vim.cmd("noremap <silent> " .. tostring(i) .. " " .. fr[i + 1])
     -- vim.keymap.set("n", fr[i], tostring(i), { remap = false, silent = true })
     -- vim.keymap.set("n", tostring(i), fr[i], { remap = false })
   end
