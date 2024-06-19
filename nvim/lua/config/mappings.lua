@@ -166,7 +166,7 @@ if os.getenv("KEYBOARD_FR") then
   end
 end
 
-vim.keymap.set("t", "<C-x>", "<c-\\><c-n><cmd>set scrollback=1 | sleep 100m | set scrollback=10000<cr>")
+vim.keymap.set("t", "<C-q>", "<c-\\><c-n><cmd>set scrollback=1 | sleep 100m | set scrollback=10000<cr>")
 
 vim.cmd([[
   " Custom env variable
