@@ -19,7 +19,6 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) send a breakpoint to runnin gdb (or other workaround)
   - ( ) Plugin to find mnemonic for new keymap
   - ( ) Improve refactoring plugin
-  - ( ) Make gdb work with vim
   - ( ) Hide tab name (not buffer name) when only one tab
   - ( ) Nvim-spectre
 
@@ -44,33 +43,23 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) (fish, not vim) poetry in subfolder
 
 * Plugins creation ideas/contributions
-  - ( ) automatic contextual bookmark (most modified code = bookmark C, most modified test = bookmark T etc.)
   - (!) !! plugin to show the diff between the code NOW and last moment where code compiled/tests passed
-  - ( ) Problem: I WASTE SO MANY TIMES BECAUSE I THINK I MODIFY BINARY BUT IT DOESNT (!!) Solution: bind a file with a binary and warn if binary never changes. Solution2: automatically open terminal with program to compile SOLUTION3: use make program argument (which also use fixlist)
-  - Plugin for Intersec logs. Syntax highlighting, diff with last log, folding.
   - Search for examples : give two strings and says maximum number of lines between two strings (function foo() then max 10 lines then bar()). Sort : by minimum number of lines in the function and in the file (first file with 100 lines then 1000 lines), most recent, proximity of folder with current folder. Ability so specify type of arguments (e.g: search all functions whose arguments are sb_t). Ability to search synonyms (e.g: delete also search remove etc.). Preference towards folder "test"/"examples"
-  - Tabs as workspaces (don't close tabs when close windows see in mappings what I did)
   - See linux notifications/slack/teams ? (if not exist)
-  - A plugin to take screenshots that doesnt require installing 1GB of dependencies
-  - Make coq engine work with cmp (cmp used as a frontend)
-  - Plugin to constantly reload quickfix list when typing command output (add a :0 if lacking in a.c:3)
+  - Plugin to constantly reload quickfix list when typing command output
   - Writing guidelines for how to write configs with advices and bits of config. What to use : Lazy, cmp vs coq etc. File structure.
-  - Load all suggestions of code review in quickfix list
   - (maybe in core) check if keymap exists natively
   - (core) fix download spelling not work
   - Experiment: mark something in undo list with a mark so if experiment fail you can go back to that time
     when experiment is over
   - Good LSP graph call
-  - Noisekun (noisli like) as plugin
   - Plugin to use Telescope to browse source of truths SO, Github code, Slack, Google, Docs, AI etc. Shortcut to open in browser, scratch buffer. Detect code blocks to paste them.
-  - Update to the core to have a permission system so plugins can only have network  access if granted
+  - Update to the core to have a permission system so plugins can only have network access if granted
   - Warn if options passed to lazy does not exist (setup instead of config etc.)
   - Make lazy detect automatically commands and keys
-  - Show buffers local to scope only (already exist as a plugin)
   - Ctrl-i/Ctrl-o but inside same file
   - Github code search
   - struct abc {
     int a;
     };
     "va{" select everything between "{" => how to select everything including "struct abc"
-  - <C-o>/<C-i> for list of files, for list of where you inserted etc.
