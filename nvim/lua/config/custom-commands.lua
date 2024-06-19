@@ -161,3 +161,12 @@ end
 function _G.OpenFile()
   open_file(false)
 end
+
+function _G.StartInsertIfBottom()
+  local total_number_of_lines = vim.fn.line("$")
+  local current_line = vim.fn.line(".")
+
+  if total_number_of_lines - current_line < 50 then
+    vim.cmd("startinsert")
+  end
+end
