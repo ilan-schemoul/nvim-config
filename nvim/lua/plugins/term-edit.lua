@@ -4,5 +4,12 @@ return {
   version = '1.*',
   opts = {
     prompt_end = '> ',
+    mapping = {
+      n = {
+        p = false,
+        P = false,
+        ["\"+p"] = false,
+      }
+    },
   }
 }
