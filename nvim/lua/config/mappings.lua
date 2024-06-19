@@ -148,7 +148,9 @@ end)
 add_keymap({ "n" }, "gq", require("config/gerrit-quickfix").load_interactive_input)
 
 for _, key in ipairs({ "h", "j", "k", "l" }) do
-  vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
+  vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", function()
+    require('focus').split_command(key)
+  end)
 
   -- Move window
   local upper = string.upper(key)
