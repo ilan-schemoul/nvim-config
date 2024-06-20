@@ -135,9 +135,11 @@ add_keymap({ "n" }, "vd", ":lua Toggle_venn()<cr>")
 
 -- We also disable jk (houdini) for lazygit
 add_keymap({ "n" }, "go", function()
+  local path = vim.fn.expand('%:h')
+
   require('FTerm').scratch({
     ft = "lazygit",
-    cmd = "lazygit",
+    cmd = "cd " .. path .. " && lazygit",
     dimensions = {
       height = 0.95,
       width = 0.95,
