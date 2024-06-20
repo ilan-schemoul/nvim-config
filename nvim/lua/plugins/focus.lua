@@ -4,5 +4,8 @@ return {
     autoresize = {
       enable = false
     },
+    ui = {
+      signcolumn = false,
+    },
   },
 }
