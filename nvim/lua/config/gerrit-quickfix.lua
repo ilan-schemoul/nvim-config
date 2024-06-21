@@ -5,6 +5,7 @@ local M = {}
 M.load_url = function(url)
    -- example url: "https://gerrit.onap.org/r/changes/135045/comments"
     curl.get(url, {
+      raw = { "--cookie", os.getenv("GERRIT_COOKIES") },
       callback = function(res)
         vim.schedule(function()
           vim.cmd("cexpr []")
@@ -17,16 +18,23 @@ M.load_url = function(url)
           local files = vim.json.decode(json)
           for filename, patch_sets in pairs(files) do
             for _, comment in ipairs(patch_sets) do
-              local error = filename .. ":" .. comment.line .. " " .. comment.message
-              -- Escape multiline string for vim
-              error = error:gsub("\n", "\n\\ ")
+              if comment.line then
+                local error = filename .. ":" .. comment.line .. " " .. comment.message
+                -- Escape multiline string for vim
+                error = error:gsub("\n", "\n\\ ")
+                error = error:gsub("'", " ")
 
-              vim.cmd("caddexpr '" .. error .. "'")
+                vim.cmd("caddexpr '" .. error .. "'")
+              end
             end
           end
         end)
       end,
     })
+end
+
+M.load_git_corp = function(id)
+  M.load_url("https://git.corp/r/changes/" .. tostring(id) .. "/comments")
 end
 
 M.load_interactive_input = function()
@@ -36,5 +44,6 @@ M.load_interactive_input = function()
     M.load_url("https://git.corp/r/changes/" .. tostring(id) .. "/comments")
   end)
 end
+
 
 return M
