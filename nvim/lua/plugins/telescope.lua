@@ -4,6 +4,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    -- Original repo is worst code I've ever seen.
     "ilan-schemoul/telescope-insert-path.nvim",
     "debugloop/telescope-undo.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",

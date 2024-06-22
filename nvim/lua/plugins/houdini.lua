@@ -1,4 +1,5 @@
 return {
+  -- TODO: Revert to TheBlob42/houdini.nvim when https://github.com/TheBlob42/houdini.nvim/pull/13 is merged
   "ilan-schemoul/houdini.nvim",
   opts = {
     excluded_filetypes = { "lazygit" },
