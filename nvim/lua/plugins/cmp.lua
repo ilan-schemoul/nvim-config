@@ -10,7 +10,7 @@ return {
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-cmdline",
     "petertriho/cmp-git",
-    "ilan-schemoul/friendly-snippets",
+    "rafamadriz/friendly-snippets",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     {
       "L3MON4D3/LuaSnip",
