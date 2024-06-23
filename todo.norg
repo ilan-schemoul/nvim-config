@@ -3,9 +3,9 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
-  - ( ) gerrit quickfix connect to git.corp
-  - ( ) Use block comments Comment.nvim for "o" (newline etc.) "a"
-  - ( ) Add git push-for lazygit
+  - (-) Use block comments Comment.nvim for "o" (newline etc.) "a" (https://github.com/numToStr/Comment.nvim/issues/471)
+  - ( ) Lazygit open in nvim
+  - ( ) Lazygit jk alternative (so I can copy paste)
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
