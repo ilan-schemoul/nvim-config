@@ -75,7 +75,6 @@ local lock_file = "/lazy-lock-default.json"
 if os.getenv("IS_INTERSEC") == "true" then
   lock_file = "/lazy-lock-intersec.json"
 end
-print(vim.fn.stdpath("config") .. lock_file)
 
 require("lazy").setup("plugins", {
   change_detection = {
