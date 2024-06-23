@@ -41,6 +41,17 @@ add_keymap({ "i" }, "<C-s>", vim.lsp.buf.signature_help)
 
 add_keymap({ "n" }, "A", "<cmd>NodeAction<cr>")
 
+add_keymap({ "n" }, "bn", "<cmd>FocusSplitNicely<cr>")
+add_keymap({ "n" }, "bg", function()
+  vim.cmd("FocusSplitNicely")
+  vim.cmd("Telescope live_grep")
+end)
+add_keymap({ "n" }, "bl", function()
+  vim.cmd("FocusSplitNicely")
+  vim.cmd("Telescope smart_open")
+end)
+add_keymap({ "n" }, "bx", _G.CloseBuffer)
+
 add_keymap({ "n" }, "N", "<cmd>set invrelativenumber | set invnumber<cr>")
 
 add_keymap({ "n" }, "q", _G.CloseWindowIfNotLast)
@@ -150,9 +161,7 @@ end)
 add_keymap({ "n" }, "gq", require("config/gerrit-quickfix").load_interactive_input)
 
 for _, key in ipairs({ "h", "j", "k", "l" }) do
-  vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", function()
-    require('focus').split_command(key)
-  end)
+  vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
 
   -- Move window
   local upper = string.upper(key)

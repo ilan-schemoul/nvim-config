@@ -4,7 +4,6 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - ( ) gerrit quickfix connect to git.corp
-  - ( ) Focus annoys me
   - ( ) Use block comments Comment.nvim for "o" (newline etc.) "a"
   - ( ) Add git push-for lazygit
 * Somewhat important
