@@ -170,3 +170,13 @@ function _G.StartInsertIfBottom()
     vim.cmd("startinsert")
   end
 end
+
+function _G.CloseBuffer()
+  if vim.startswith(vim.fn.expand("%"), "term://") then
+    -- Closing buffer without closing window
+    vim.cmd("bp|sp|bn|bd!")
+  else
+    -- Closing buffer without closing window
+    vim.cmd("bp|sp|bn|bd")
+  end
+end
