@@ -180,3 +180,14 @@ function _G.CloseBuffer()
     vim.cmd("bp|sp|bn|bd")
   end
 end
+
+vim.api.nvim_create_autocmd('TermClose', {
+  pattern = '*',
+  callback = function()
+    vim.schedule(function()
+      if (vim.bo.buftype == 'terminal' or vim.bo.filetype == "lua") and vim.v.shell_error == 0 then
+        vim.cmd('bdelete! ' .. vim.fn.expand('<abuf>'))
+      end
+    end)
+  end,
+})
