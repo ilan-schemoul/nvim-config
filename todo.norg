@@ -6,6 +6,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - (-) Use block comments Comment.nvim for "o" (newline etc.) "a" (https://github.com/numToStr/Comment.nvim/issues/471)
   - ( ) Lazygit jk alternative (so I can copy paste)
   - ( ) Lua handle to see why slow much
+  - ( ) Change nvim current dir with a fish cmd (tcd ?)
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
