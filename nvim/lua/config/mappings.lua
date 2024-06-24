@@ -158,6 +158,20 @@ add_keymap({ "n" }, "go", function()
   })
 end)
 
+vim.api.nvim_create_autocmd({
+    "FileType",
+  },
+  {
+    pattern = "lazygit",
+    callback = function()
+      vim.keymap.set("t", "^^", function()
+        vim.cmd("stopinsert")
+        vim.fn.feedkeys("gg")
+        vim.fn.feedkeys("^")
+      end, { buffer = true })
+    end
+  })
+
 add_keymap({ "n" }, "gq", require("config/gerrit-quickfix").load_interactive_input)
 
 for _, key in ipairs({ "h", "j", "k", "l" }) do
