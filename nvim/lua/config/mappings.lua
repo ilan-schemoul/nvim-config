@@ -148,6 +148,10 @@ add_keymap({ "n" }, "vd", ":lua Toggle_venn()<cr>")
 add_keymap({ "n" }, "go", function()
   local path = vim.fn.expand('%:h')
 
+  if path:find("term://") or not vim.fn.filereadable(path) then
+    path = vim.fn.getcwd()
+  end
+
   require('FTerm').scratch({
     ft = "lazygit",
     cmd = "cd " .. path .. " && lazygit",
