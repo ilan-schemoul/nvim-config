@@ -6,6 +6,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - (-) Use block comments Comment.nvim for "o" (newline etc.) "a" (https://github.com/numToStr/Comment.nvim/issues/471)
   - ( ) Lua handle to see why slow much
   - ( ) Shorcut open term reuse terminal not currently used
+  - ( ) Improve image (disable if no package, fix for windows terminal)
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
