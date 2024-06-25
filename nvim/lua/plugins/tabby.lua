@@ -139,5 +139,21 @@ return {
     -- Tabby already rerenders frequently the tab. But if there's no activity
     -- it doesn't do anything. So we make sure AT LEAST every 10s it's refreshed.
     timer:start(0, 10000 * ms, vim.schedule_wrap(update_tab))
+
+    timer = vim.uv.new_timer()
+    timer:start(0, 400 * ms, vim.schedule_wrap(function()
+      local windows = vim.tbl_filter(function(win)
+        local buftype = vim.bo[vim.api.nvim_win_get_buf(win)].buftype
+        -- normal
+        return buftype == "" or buftype == "terminal"
+      end, vim.api.nvim_list_wins())
+      -- If there is only one window then only show tab when there are multiple tabs
+      if #windows == 1 then
+        vim.o.showtabline=1
+      -- If there are multiple windows then show tabline even if there is only one tab
+      else
+        vim.o.showtabline=2
+      end
+    end))
   end,
 }
