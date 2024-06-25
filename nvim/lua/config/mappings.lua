@@ -94,11 +94,16 @@ add_keymap({ "n" }, "tq", function() require("telescope.builtin").quickfix({
   path_display = { "smart" }
 }) end)
 
-add_keymap({ "n" }, "pn", "<cmd>term<cr>")
-add_keymap({ "n" }, "ph", "<cmd>vsplit | term<cr>")
-add_keymap({ "n" }, "pj", "<cmd>belowright split | term<cr>")
-add_keymap({ "n" }, "pk", "<cmd>topleft split | term<cr>")
-add_keymap({ "n" }, "pl", "<cmd>botright vs | term<cr>")
+add_keymap({ "n" }, "pn", _G.OpenUnusedTermOrCreate)
+add_keymap({ "n" }, "pN", "<cmd>term<cr>")
+add_keymap({ "n" }, "ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>")
+add_keymap({ "n" }, "pj", "<cmd>belowright split | lua _G.OpenUnusedTermOrCreate()<cr>")
+add_keymap({ "n" }, "pk", "<cmd>topleft split | lua _G.OpenUnusedTermOrCreate()<cr>")
+add_keymap({ "n" }, "pl", "<cmd>botright vs | lua _G.OpenUnusedTermOrCreate()<cr>")
+add_keymap({ "n" }, "pH", "<cmd>vsplit | term <cr>")
+add_keymap({ "n" }, "pJ", "<cmd>belowright split | term <cr>")
+add_keymap({ "n" }, "pK", "<cmd>topleft split | term <cr>")
+add_keymap({ "n" }, "pL", "<cmd>botright vs | term <cr>")
 add_keymap({ "n" }, "pr", "<cmd>SendToTerm !!<cr>")
 add_keymap({ "n" }, "ps", "<cmd>SendToTerm<cr>")
 
