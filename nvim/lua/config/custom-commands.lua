@@ -191,3 +191,24 @@ vim.api.nvim_create_autocmd('TermClose', {
     end)
   end,
 })
+
+function _G.OpenUnusedTermOrCreate()
+  -- Get local buffers ? How
+  local buffers = vim.api.nvim_list_bufs()
+
+  for _, buffer in ipairs(buffers) do
+    local opened = vim.fn.bufwinnr(buffer) ~= -1
+    local is_terminal = vim.bo[buffer].buftype == "terminal"
+    -- NOTE: Fish set the term title to the current directory
+    -- If it not the current directory then it is probably not fish
+    local is_running = is_terminal and vim.fn.isdirectory(vim.fn.expand(vim.b[buffer].term_title)) == 0
+
+    -- If we find a terminal not currently visible in the current tab reuse it
+    if is_terminal and not opened and not is_running then
+      vim.cmd(":buffer " .. buffer)
+      return
+    end
+  end
+
+  vim.cmd(":term")
+end
