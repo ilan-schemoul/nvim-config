@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  priority = 0,
   dependencies = {
     "frostplexx/mason-bridge.nvim",
   },
