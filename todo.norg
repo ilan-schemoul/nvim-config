@@ -11,6 +11,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half, a newline \n is inserted but then I cannot search, select word etc.)
   - ( ) Fix bug numbers shown in term mode
   - ( ) Open empty/duplicated buffer in direction
+  - ( ) Fix disable diagram when leaving norg file
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
