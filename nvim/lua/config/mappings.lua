@@ -3,6 +3,7 @@
 local get_tab_folder = require("config/utils").get_tab_folder
 
 local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
+local hjkl = { "h", "j", "k", "l" }
 
 local function set(keys, cmd)
   vim.keymap.set("n", "<leader>" .. keys, cmd)
@@ -33,15 +34,11 @@ vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
 
 set("A", "<cmd>NodeAction<cr>")
 
+set("bh", "<cmd>vsplit<cr>")
+set("bj", "<cmd>belowright split<cr>")
+set("bk", "<cmd>topleft split<cr>")
+set("bl", "<cmd>botright vs<cr>")
 set("bn", "<cmd>FocusSplitNicely<cr>")
-set("bg", function()
-  vim.cmd("FocusSplitNicely")
-  vim.cmd("Telescope live_grep")
-end)
-set("bl", function()
-  vim.cmd("FocusSplitNicely")
-  vim.cmd("Telescope smart_open")
-end)
 set("bx", _G.CloseBuffer)
 
 set("N", "<cmd>set invrelativenumber | set invnumber<cr>")
@@ -174,7 +171,7 @@ vim.api.nvim_create_autocmd({
 
 set("gq", require("config/gerrit-quickfix").load_interactive_input)
 
-for _, key in ipairs({ "h", "j", "k", "l" }) do
+for _, key in ipairs(hjkl) do
   vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
 
   -- Move window

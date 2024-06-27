@@ -4,6 +4,9 @@ return {
     autoresize = {
       enable = false,
     },
+    split = {
+      bufnew = true,
+    },
     ui = {
       signcolumn = false,
       hybridnumber = true,

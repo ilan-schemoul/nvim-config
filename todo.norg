@@ -8,8 +8,8 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Shorcut open term reuse terminal not currently used
   - ( ) Improve image (disable if no package, fix for windows terminal)
   - ( ) Fix pylint
-  - ( ) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half, a newline \n is inserted but then I cannot search, select word etc.)
-  - ( ) Open empty/duplicated buffer in direction
+  - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
+        a newline \n is inserted but then I cannot search, select word etc.) https://github.com/neovim/neovim/issues/29503
   - ( ) Fix disable diagram when leaving norg file
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
