@@ -131,6 +131,8 @@ add_keymap({ "n" }, "nM", "<cmd>botright 30vnew ~/notes/memory.norg | set invrel
 add_keymap({ "n" }, "nl", "<cmd>Telescope find_files search_dirs={'~/notes'} follow=true<cr>")
 add_keymap({ "n" }, "ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
 add_keymap({ "n" }, "nn", _G.create_org_file)
+-- ../plugins/venn.lua
+add_keymap({ "n" }, "nd", ":lua Toggle_venn()<cr>")
 
 -- ../plugins/treesitter.lua
 add_keymap({ "n" }, "sc", "1z=")
@@ -145,9 +147,6 @@ add_keymap({ "n" }, "sb", "zw")
 add_keymap({ "n" }, "gl", "<cmd>G log -50<cr>")
 add_keymap({ "n" }, "gp", "<cmd>G push<cr>")
 add_keymap({ "n" }, "gg", "<cmd>G pull<cr>")
-
--- ../plugins/venn.lua
-add_keymap({ "n" }, "vd", ":lua Toggle_venn()<cr>")
 
 -- We also disable jk (houdini) for lazygit
 add_keymap({ "n" }, "go", function()
