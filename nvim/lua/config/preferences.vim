@@ -39,6 +39,8 @@ nnoremap x "_x
 nnoremap X "_X
 
 autocmd TermOpen * setlocal nonumber norelativenumber
+" Focus opens column line number which we don't want for terminals
+autocmd TermOpen * lua vim.b.focus_disable = true
 autocmd TermOpen * setlocal scrollback=10000
 autocmd TermOpen * setlocal nospell
 autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua _G.StartInsertIfBottom()
