@@ -9,6 +9,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Improve image (disable if no package, fix for windows terminal)
   - ( ) Fix pylint
   - ( ) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half, a newline \n is inserted but then I cannot search, select word etc.)
+  - ( ) Fix bug numbers shown in term mode
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
