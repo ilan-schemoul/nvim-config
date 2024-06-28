@@ -1,14 +1,24 @@
 return {
   "nvim-neorg/neorg",
-  tag = "v7.0.0",
-  build = ":Neorg sync-parsers",
   ft = "norg", -- lazy load on file type
   cmd = "Neorg", -- lazy load on command
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = { "nvim-lua/plenary.nvim", "luarocks.nvim" },
   config = function()
     require("neorg").setup({
       load = {
-        ["core.defaults"] = {},
+        ["core.defaults"] = {
+          config = {
+            disable = {
+              "core.esupports.indent",
+            },
+          },
+        },
+        ["core.esupports.indent"] = {
+          config = {
+            format_on_enter = false,
+            format_on_escape = false,
+          },
+        },
         ["core.concealer"] = {},
         ["core.dirman"] = {
           config = {

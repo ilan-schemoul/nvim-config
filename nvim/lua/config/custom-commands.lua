@@ -213,19 +213,25 @@ function _G.OpenUnusedTermOrCreate()
   vim.cmd(":term")
 end
 
+local function enable_venn_silent()
+  vim.cmd[[setlocal ve=all]]
+  vim.cmd[[setlocal noai]]
+
+  -- draw a line on HJKL keystokes
+  vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
+  vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
+  vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
+  vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
+  -- draw a box by pressing "f" with visual selection
+  vim.api.nvim_buf_set_keymap(0, "v", "b", ":VBox<CR>", { noremap = true })
+
+  vim.b.venn_enabled = true
+end
+
 local function enable_venn()
   vim.notify("Enabled")
 
-  vim.b.venn_enabled = true
-  vim.cmd[[setlocal ve=all]]
-  vim.cmd[[setlocal noai]]
-  -- draw a line on HJKL keystokes
-  vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
-  vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
-  vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
-  vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
-  -- draw a box by pressing "f" with visual selection
-  vim.api.nvim_buf_set_keymap(0, "v", "b", ":VBox<CR>", {noremap = true})
+  enable_venn_silent()
 end
 
 local function disable_venn()
@@ -238,6 +244,7 @@ local function disable_venn()
   vim.api.nvim_buf_del_keymap(0, "n", "L")
   vim.api.nvim_buf_del_keymap(0, "n", "H")
   vim.api.nvim_buf_del_keymap(0, "v", "b")
+
   vim.b.venn_enabled = nil
 end
 
@@ -251,13 +258,10 @@ function _G.Toggle_venn()
   end
 end
 
-vim.api.nvim_create_autocmd({
-    "FileType",
-  },
-  {
-    pattern = "norg",
-    callback = enable_venn,
-})
+-- vim.api.nvim_create_autocmd({ "FileType", }, {
+--     pattern = "norg",
+    -- callback = enable_venn_silent,
+-- })
 
 vim.api.nvim_create_user_command("CopyPath", function()
   vim.cmd("let @+ = expand('%')")
