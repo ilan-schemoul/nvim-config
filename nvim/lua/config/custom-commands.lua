@@ -255,3 +255,6 @@ vim.api.nvim_create_autocmd({
     callback = enable_venn,
 })
 
+vim.api.nvim_create_user_command("CopyPath", function()
+  vim.cmd("let @+ = expand('%')")
+end, { nargs = 0 })
