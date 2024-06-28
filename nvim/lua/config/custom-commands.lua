@@ -228,22 +228,26 @@ local function enable_venn()
   vim.api.nvim_buf_set_keymap(0, "v", "b", ":VBox<CR>", {noremap = true})
 end
 
+local function disable_venn()
+  vim.notify("Disabled")
+
+  vim.cmd[[setlocal ve=]]
+  vim.cmd[[setlocal nopaste]]
+  vim.api.nvim_buf_del_keymap(0, "n", "J")
+  vim.api.nvim_buf_del_keymap(0, "n", "K")
+  vim.api.nvim_buf_del_keymap(0, "n", "L")
+  vim.api.nvim_buf_del_keymap(0, "n", "H")
+  vim.api.nvim_buf_del_keymap(0, "v", "b")
+  vim.b.venn_enabled = nil
+end
+
 function _G.Toggle_venn()
   local venn_enabled = vim.inspect(vim.b.venn_enabled)
 
   if venn_enabled == "nil" then
     enable_venn()
   else
-    vim.notify("Disabled")
-
-    vim.cmd[[setlocal ve=]]
-    vim.cmd[[setlocal nopaste]]
-    vim.api.nvim_buf_del_keymap(0, "n", "J")
-    vim.api.nvim_buf_del_keymap(0, "n", "K")
-    vim.api.nvim_buf_del_keymap(0, "n", "L")
-    vim.api.nvim_buf_del_keymap(0, "n", "H")
-    vim.api.nvim_buf_del_keymap(0, "v", "b")
-    vim.b.venn_enabled = nil
+    disable_venn()
   end
 end
 
