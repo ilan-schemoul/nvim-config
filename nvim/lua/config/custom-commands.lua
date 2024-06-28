@@ -218,7 +218,7 @@ local function enable_venn()
 
   vim.b.venn_enabled = true
   vim.cmd[[setlocal ve=all]]
-  vim.cmd[[setlocal paste]]
+  vim.cmd[[setlocal noai]]
   -- draw a line on HJKL keystokes
   vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
   vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
@@ -232,7 +232,7 @@ local function disable_venn()
   vim.notify("Disabled")
 
   vim.cmd[[setlocal ve=]]
-  vim.cmd[[setlocal nopaste]]
+  vim.cmd[[setlocal ai]]
   vim.api.nvim_buf_del_keymap(0, "n", "J")
   vim.api.nvim_buf_del_keymap(0, "n", "K")
   vim.api.nvim_buf_del_keymap(0, "n", "L")
