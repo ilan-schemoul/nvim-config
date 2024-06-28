@@ -13,6 +13,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Make telescope recency works related to current commit/branch ?
+  - ( ) Shortcut fish open most frequent project
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf
@@ -70,8 +71,3 @@ Prioritize very important (I actually really need it) and easy to do.
     int a;
     };
     "va{" select everything between "{" => how to select everything including "struct abc"
-
-	eze ze
-	eed e ze
-	zedzed
-
