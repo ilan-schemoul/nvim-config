@@ -10,7 +10,7 @@ Prioritize very important (I actually really need it) and easy to do.
         a newline \(x) n is inserted but then I cannot search, select word etc.) https://github.com/neovim/neovim/issues/29503
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) Make telescope recency works related to current commit/branch ?
-  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), telescope git file history, nwm, automkdiir
+  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), telescope git file history
 * Somewhat important
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Quickfix for waf
