@@ -21,7 +21,7 @@ return {
 
     { "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>" },
 
-    { "<leader>gD", "<cmd>Gitsigns diffthis<cr>" },
+    { "<leader>gD", "<cmd>DiffviewOpen<cr>" },
 
     { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", mode = "n" },
 
