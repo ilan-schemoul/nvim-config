@@ -1,6 +1,7 @@
 return {
   -- "FabijanZulj/blame.nvim",
-  dir = "~/code/forks/blame.nvim/",
+  --https://github.com/FabijanZulj/blame.nvim/pull/46
+  "ilan-schemoul/blame.nvim",
   opts = {},
 }
 
