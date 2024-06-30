@@ -1,5 +1,13 @@
 M = {}
 
+M.check_libXfixes = function()
+  if vim.fn.file_readable("/usr/include/X11/extensions/Xfixes.h") == 0 then
+    return false
+  end
+
+  return true
+end
+
 M.get_tab_folder = function(tab_nr)
   local success, full_path = pcall(vim.fn.getcwd, -1, tab_nr)
 
