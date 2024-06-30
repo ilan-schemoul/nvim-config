@@ -11,7 +11,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Make telescope recency works related to current commit/branch ?
-  - ( ) Shortcut fish open most frequent project
+  - ( ) DONT use spider when replacing words (e.g: a.bcde() I want to replace bcde)
 * Somewhat important
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), diffview, telescope git file history
   - ( ) Quickfix for waf

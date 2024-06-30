@@ -266,3 +266,11 @@ end
 vim.api.nvim_create_user_command("CopyPath", function()
   vim.cmd("let @+ = expand('%')")
 end, { nargs = 0 })
+
+vim.api.nvim_create_user_command("OpenSession", function()
+  if vim.fn.file_readable("./Session.vim") then
+    vim.cmd("source ./Session.vim")
+  else
+    vim.cmd("source ~/Session.vim")
+  end
+end, { nargs = 0 })
