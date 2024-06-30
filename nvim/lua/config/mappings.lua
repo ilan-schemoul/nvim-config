@@ -100,6 +100,7 @@ set("pp", "<cmd>put<cr>")
 set("pP", "<cmd>put!<cr>")
 
 set("tf", "<cmd>lua require('telescope-tabs').list_tabs()<cr>")
+set("tc", "<cmd>Telescope neoclip<cr>")
 set("tn", "<cmd>tabnew<cr>")
 set("tx", "<cmd>tabclose<cr>")
 set("tl", "<cmd>tabnext<cr>")
@@ -132,11 +133,6 @@ set("sg", "zg")
 set("sw", "zw")
 set("sb", "zw")
 
--- See also ../plugins/gitsigns.lua
-set("gl", "<cmd>G log -50<cr>")
-set("gp", "<cmd>G push<cr>")
-set("gg", "<cmd>G pull<cr>")
-
 -- We also disable jk (houdini) for lazygit
 set("go", function()
   local path = vim.fn.expand('%:h')
@@ -154,7 +150,6 @@ set("go", function()
     },
   })
 end)
-
 vim.api.nvim_create_autocmd({
     "FileType",
   },
@@ -168,8 +163,8 @@ vim.api.nvim_create_autocmd({
       end, { buffer = true })
     end
   })
-
 set("gq", require("config/gerrit-quickfix").load_interactive_input)
+set("gb", ":BlameToggle<cr>")
 
 for _, key in ipairs(hjkl) do
   vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
