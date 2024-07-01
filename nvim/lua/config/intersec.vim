@@ -38,6 +38,8 @@ set textwidth=0
 set shiftwidth=4
 
 set colorcolumn=78
+" Enables breaking new lines automatically
+autocmd FileType c,python,asciidoc set textwidth=78
 
 set cinoptions=
 set cinoptions+=L1s            " Align labels on previous indent level
