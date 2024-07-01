@@ -55,7 +55,6 @@
   "nvim-treesitter-textobjects": { "branch": "lookbehind-local-keymap-setting", "commit": "3abfc72a3fdb1884515ef2a411b43802cd4afec0" },
   "nvim-various-textobjs": { "branch": "main", "commit": "bde0481460bfaf0833bd5df7213e6bddcf9b0d8e" },
   "nvim-web-devicons": { "branch": "master", "commit": "c0cfc1738361b5da1cd0a962dd6f774cc444f856" },
-  "nwm": { "branch": "x11", "commit": "fcaef3ec9a595ae5ded78afc97f6181c4f502d49" },
   "oil.nvim": { "branch": "master", "commit": "65c53dbe4f2140236590a7568a5f22a77d16be39" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "5c9660801ce345cd3835e1947c12b54290ab7e71" },
