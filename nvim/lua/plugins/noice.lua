@@ -58,18 +58,6 @@ return {
 
     routes = require("utils/noice-routes"),
   },
-  config = function(_, opts)
-    vim.cmd([[
-        let output = system("cd $(readlink ~/.config/nvim) && git status --porcelain")
-        let g:seed = srand()
-
-        if output != ""
-            lua require("notify")("The nvim git repository is out of sync (must commit/push or pull)", "warn")
-        endif
-    ]])
-
-    require("noice").setup(opts)
-  end,
   dependencies = {
     "MunifTanjim/nui.nvim",
     {
