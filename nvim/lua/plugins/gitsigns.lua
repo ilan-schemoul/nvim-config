@@ -1,7 +1,7 @@
 return {
   "lewis6991/gitsigns.nvim",
   cmd = "Gitsigns",
-  lazy = false,
+  event = "VimEnter",
   opts = {
     signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
     numhl = true,

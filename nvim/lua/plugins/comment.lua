@@ -1,6 +1,7 @@
 -- TODO: With 0.10 comes native comment support
 return {
     "numToStr/Comment.nvim",
+    event = "VimEnter",
     opts = {
         padding = true,
         sticky = true,
