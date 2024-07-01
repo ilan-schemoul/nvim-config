@@ -34,9 +34,9 @@ highlight GitSignsChange guifg=#9c9d0d
 " White instead of Yellow
 highlight DashboardFooter cterm=italic gui=italic guifg=#6e738d
 
-vnoremap p "_dP " nocopy when asting
-nnoremap x "_x
-nnoremap X "_X
+" nocopy when pasting
+xnoremap <expr> p 'pgv"' . v:register . 'y'
+xnoremap <expr> x 'xgv"' . v:register . 'y'
 
 autocmd TermOpen * setlocal nonumber norelativenumber
 " Focus opens column line number which we don't want for terminals
