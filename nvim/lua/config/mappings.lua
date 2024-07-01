@@ -160,10 +160,16 @@ vim.api.nvim_create_autocmd({
   {
     pattern = "lazygit",
     callback = function()
+      vim.keymap.set("t", "^", function()
+        vim.cmd("stopinsert")
+        vim.fn.feedkeys("gg")
+        vim.fn.feedkeys("^") -- beginning of the sentence
+      end, { buffer = true })
+
       vim.keymap.set("t", "^^", function()
         vim.cmd("stopinsert")
         vim.fn.feedkeys("gg")
-        vim.fn.feedkeys("^")
+        vim.fn.feedkeys("^") -- beginning of the sentence
       end, { buffer = true })
     end
   })
