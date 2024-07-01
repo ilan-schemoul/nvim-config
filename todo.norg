@@ -13,6 +13,8 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) Make telescope recency works related to current commit/branch ?
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), telescope git file history
+  - ( ) The "edit" when I leave lazygit is kinda buggy and seems to disable
+        syntax highlighting for some reasons
 * Somewhat important
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Quickfix for waf
@@ -35,7 +37,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Clang-format
   -- ( ) Detect single line comments (forbidden)
   -- ( ) || end of line if "if" multiple lines
-  @code 
+  @code
   if (test1 && test2 &&
   (test3 || test4 ||
   test5))
