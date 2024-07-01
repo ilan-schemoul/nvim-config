@@ -4,8 +4,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    -- Original repo is worst code I've ever seen.
-    "ilan-schemoul/telescope-insert-path.nvim",
     "debugloop/telescope-undo.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
   },
@@ -16,8 +14,6 @@ return {
     local actions = require("telescope.actions")
     local lga_actions = require("telescope-live-grep-args.actions")
 
-    local path_actions = require("telescope_insert_path")
-
     require("telescope").setup({
       pickers = {},
       defaults = {
@@ -26,10 +22,6 @@ return {
             ["<C-v>"] = "file_vsplit",
             ["<C-s>"] = "file_split",
             ["<C-x>"] = actions.delete_buffer,
-            ["<C-f>r"] = path_actions.insert_path("buf", true),
-            ["<C-f>a"] = path_actions.insert_path("abs", true),
-            ["<C-f>g"] = path_actions.insert_path("git", true),
-            ["<C-f>s"] = path_actions.insert_path("source", true),
           },
         },
         layout_strategy = "vertical",
