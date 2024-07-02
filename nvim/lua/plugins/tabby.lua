@@ -6,11 +6,10 @@ return {
     vim.o.showtabline = 2
   end,
   config = function()
-    local git_state = "none"
     local Job = require("plenary.job")
     local rebase_merge = false
     local rebase_apply = false
-    local last_updated_ns = 0
+    local current_tab_nr = -1
 
     local theme = {
       current = { fg = "#cad3f5", bg = "transparent", style = "bold" },
@@ -35,17 +34,12 @@ return {
       }):start()
     end
 
-    local function update_git_state_async(tab_nr)
-      local current_ns = vim.loop.hrtime()
-      local one_second = 1000 * 1000 * 1000
-
-      if last_updated_ns - current_ns > one_second / 10 then
+    local function update_git_state_async()
+      if current_tab_nr == -1 then
         return
       end
 
-      last_updated_ns = current_ns
-
-      local folder = vim.fn.getcwd(-1, tab_nr)
+      local folder = vim.fn.getcwd(-1, current_tab_nr)
 
       Job:new({
         command = "git",
@@ -85,7 +79,7 @@ return {
     local get_tab_folder = require("config/utils").get_tab_folder
     local tabby = require("tabby.tabline")
 
-    local function update_tab()
+    local function init_tab()
       tabby.set(function(line)
         return {
           {
@@ -108,8 +102,7 @@ return {
             local hl
 
             if tab.is_current() then
-              local tab_nr = line.api.get_tab_number(tab.id)
-              update_git_state_async(tab_nr)
+              current_tab_nr = line.api.get_tab_number(tab.id)
 
               if rebase_merge or rebase_apply then
                 hl = theme.rebase
@@ -133,18 +126,23 @@ return {
       end)
     end
 
-    vim.api.nvim_create_user_command("TabbyUpdate", update_tab, { nargs = 0 })
+    vim.api.nvim_create_user_command("TabbyUpdate", require('tabby').update, { nargs = 0 })
+
+    init_tab()
 
     local timer = vim.uv.new_timer()
     local ms = 1
+    local s = 1000 * ms
     -- Tabby already rerenders frequently the tab. But if there's no activity
     -- it doesn't do anything. So we make sure AT LEAST every 10s it's refreshed.
-    -- TODO: might cause slowness. Patch upstream so I can properly update.
-    -- timer:start(0, 10000 * ms, vim.schedule_wrap(update_tab))
-    update_tab()
+    timer = vim.uv.new_timer()
+    timer:start(0, 10 * s, vim.schedule_wrap(require("tabby").update))
 
     timer = vim.uv.new_timer()
-    timer:start(0, 1000 * ms, vim.schedule_wrap(function()
+    timer:start(0, 300 * ms, vim.schedule_wrap(update_git_state_async))
+
+    timer = vim.uv.new_timer()
+    timer:start(0, 1 * s, vim.schedule_wrap(function()
       local windows = vim.tbl_filter(function(win)
         local buftype = vim.bo[vim.api.nvim_win_get_buf(win)].buftype
         -- normal
