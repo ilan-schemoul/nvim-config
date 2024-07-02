@@ -149,7 +149,6 @@ set("go", function()
       width = 0.95,
     },
     on_exit = function()
-      -- FIXME
       vim.cmd("Gitsigns refresh")
       vim.cmd("windo e")
     end
