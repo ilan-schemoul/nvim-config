@@ -16,6 +16,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) The "edit" when I leave lazygit is kinda buggy and seems to disable
         syntax highlighting for some reasons
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
+  - ( ) Fix lazygit reload all buffers because it's horribly annoying
 * Somewhat important
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Quickfix for waf
