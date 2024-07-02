@@ -3,18 +3,16 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
-  - (!) OPTIMIZE FURTHER vim (urgent) StartProfile/EndProfile
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - (-) Use block comments Comment.nvim for "o" (newline etc.) "a" (https://github.com/numToStr/Comment.nvim/issues/471)
   - ( ) Lua handle to see why slow much
-  - ( ) Fix pylint
   - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
         a newline \(x) n is inserted but then I cannot search, select word etc.) https://github.com/neovim/neovim/issues/29503
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) Make telescope recency works related to current commit/branch ?
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), telescope git file history
-  - ( ) The "edit" when I leave lazygit is kinda buggy and seems to disable
+  - (-) The "edit" when I leave lazygit is kinda buggy and seems to disable
         syntax highlighting for some reasons
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
 * Somewhat important
