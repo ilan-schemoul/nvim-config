@@ -26,6 +26,8 @@ set("la", vim.lsp.buf.code_action)
 set("lt", require("lsp_lines").toggle)
 set("ll", "<cmd>Telescope smart_open<cr>")
 
+set("L", "<cmd>Lazy<cr>")
+
 set("o", _G.OpenFile)
 set(";", _G.OpenFileWithExtension)
 set(".", _G.OpenFileWithExtension)
@@ -123,6 +125,7 @@ set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
 set("nn", _G.create_org_file)
 -- ../plugins/venn.lua
 set("nd", ":lua Toggle_venn()<cr>")
+set("no", "<cmd>Noice<cr>")
 
 -- ../plugins/treesitter.lua
 set("sc", "1z=")
