@@ -83,9 +83,10 @@ return {
     end
 
     local get_tab_folder = require("config/utils").get_tab_folder
+    local tabby = require("tabby.tabline")
 
     local function update_tab()
-      require("tabby.tabline").set(function(line)
+      tabby.set(function(line)
         return {
           {
             vim.fn.strftime("%H:%M"),
@@ -138,10 +139,12 @@ return {
     local ms = 1
     -- Tabby already rerenders frequently the tab. But if there's no activity
     -- it doesn't do anything. So we make sure AT LEAST every 10s it's refreshed.
-    timer:start(0, 10000 * ms, vim.schedule_wrap(update_tab))
+    -- TODO: might cause slowness. Patch upstream so I can properly update.
+    -- timer:start(0, 10000 * ms, vim.schedule_wrap(update_tab))
+    update_tab()
 
     timer = vim.uv.new_timer()
-    timer:start(0, 400 * ms, vim.schedule_wrap(function()
+    timer:start(0, 1000 * ms, vim.schedule_wrap(function()
       local windows = vim.tbl_filter(function(win)
         local buftype = vim.bo[vim.api.nvim_win_get_buf(win)].buftype
         -- normal
