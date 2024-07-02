@@ -274,3 +274,18 @@ vim.api.nvim_create_user_command("OpenSession", function()
     vim.cmd("source ~/Session.vim")
   end
 end, { nargs = 0 })
+
+vim.api.nvim_create_user_command("StartProfile", function()
+  vim.cmd([[
+    profile start profile.log
+    profile func *
+    profile file *
+  ]])
+end, { nargs = 0 })
+
+vim.api.nvim_create_user_command("StopProfile", function()
+  vim.cmd([[
+    profile pause
+    noautocmd qall!
+  ]])
+end, { nargs = 0 })
