@@ -149,8 +149,9 @@ set("go", function()
       width = 0.95,
     },
     on_exit = function()
-      vim.cmd("Gitsigns refresh")
-      vim.cmd("bufdo e")
+      -- FIXME
+      -- vim.cmd("Gitsigns refresh")
+      -- vim.cmd("bufdo e")
     end
   })
 end)
