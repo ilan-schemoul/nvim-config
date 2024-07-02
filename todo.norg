@@ -18,7 +18,6 @@ Prioritize very important (I actually really need it) and easy to do.
         syntax highlighting for some reasons
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
   - ( ) Fix lazygit reload all buffers because it's horribly annoying
-  - ( ) Start vim with negative nice if possible
 * Somewhat important
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Quickfix for waf
