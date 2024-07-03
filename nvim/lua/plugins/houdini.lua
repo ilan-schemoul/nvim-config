@@ -8,7 +8,7 @@ return {
         ['ix']   = '<BS><BS><ESC>',
 
         ['t'] = '<BS><BS><C-\\><C-n>', -- terminal mode
-        ['c'] = '<BS><BS><C-c>',       -- command line mode
+        ['c'] = '',       -- command line mode
 
         ['R']    = '', -- replace mode
         ['Rc']   = '',
