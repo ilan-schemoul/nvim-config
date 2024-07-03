@@ -50,6 +50,9 @@ local function send_to_term(cmd_text)
   end
 
   send_to_terminal(terminal, cmd_text)
+  -- TODO: set cursor (first I need to find the window of the terminal buffer)
+  -- win = vim.api.nvim_win_get_buf(buffer)
+  -- vim.api.nvim_win_set_cursor(terminal, {0, -1})
 end
 
 vim.api.nvim_create_user_command("SendToTerm", function(args)

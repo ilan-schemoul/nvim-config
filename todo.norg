@@ -4,6 +4,8 @@ Prioritize very important (I actually really need it) and easy to do.
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
   - ( ) Import things from /srv/tools/../vim fold and others
+  - ( ) Move cursor when terminal repeat (see
+        nvim/lua/config/custom-commands.lua:53)
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - (-) Use block comments Comment.nvim for "o" (newline etc.) "a" (https://github.com/numToStr/Comment.nvim/issues/471)
   - ( ) Lua handle to see why slow much
