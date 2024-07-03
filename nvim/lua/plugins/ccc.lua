@@ -1,6 +1,11 @@
 return {
   "uga-rosa/ccc.nvim",
   event = "VimEnter",
-  opts = {},
+  opts = {
+    highlighter = {
+      auto_enable = true,
+      lsp = true,
+    }
+  },
 }
 
