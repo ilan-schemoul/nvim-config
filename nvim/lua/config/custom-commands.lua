@@ -10,6 +10,19 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   end,
 })
 
+local function scroll_to_the_end(buffer)
+  if not vim.api.nvim_buf_is_valid(buffer) then
+    return
+  end
+
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == buffer then
+      local nr_lines = vim.api.nvim_buf_line_count(buffer)
+      vim.api.nvim_win_set_cursor(win, { nr_lines, 0 })
+    end
+  end
+end
+
 local function send_to_term(cmd_text)
   if not cmd_text then
     return
@@ -35,33 +48,33 @@ local function send_to_term(cmd_text)
       return left["buffer"] < right["buffer"]
     end)
 
-    return terminal_chans[1]["id"]
+    return terminal_chans[1]["id"], terminal_chans[1]["buffer"]
   end
 
   local send_to_terminal = function(terminal_chan, term_cmd_text)
     vim.api.nvim_chan_send(terminal_chan, term_cmd_text .. "\n")
   end
 
-  local terminal = get_first_terminal()
+  local terminal_chan, terminal_buffer = get_first_terminal()
 
-  if not terminal then
+  if not terminal_chan then
     vim.cmd("term")
-    terminal = get_first_terminal()
+    terminal_chan = get_first_terminal()
   end
 
-  send_to_terminal(terminal, cmd_text)
-  -- TODO: set cursor (first I need to find the window of the terminal buffer)
-  -- win = vim.api.nvim_win_get_buf(buffer)
-  -- vim.api.nvim_win_set_cursor(terminal, {0, -1})
+  send_to_terminal(terminal_chan, cmd_text)
+
+  -- scroll to the end of the terminal
+  scroll_to_the_end(terminal_buffer)
 end
 
 vim.api.nvim_create_user_command("SendToTerm", function(args)
   if #args.args ~= 0 then
-    send_to_term(args.args)
+    vim.schedule(function() send_to_term(args.args) end)
   else
     vim.ui.input({
-      prompt = "SendToTerm"
-    }, send_to_term)
+      prompt = "SendToTerm",
+    }, vim.schedule(send_to_term))
   end
 end, { nargs = "?" })
 
@@ -69,13 +82,13 @@ vim.api.nvim_create_user_command("AddPlugin", function(args)
   local full_name = args.fargs[1]
 
   local _, _, _, file_name = string.find(full_name, "(.*)/(.*)")
-  file_name = file_name:gsub('.nvim', '')
+  file_name = file_name:gsub(".nvim", "")
 
   vim.cmd("edit ~/.config/nvim/lua/plugins/" .. file_name .. ".lua")
 
   local lines = {
     "return {",
-    "  \"" .. full_name .. "\",",
+    '  "' .. full_name .. '",',
     "  opts = {},",
     "}",
   }
@@ -90,7 +103,7 @@ end, { nargs = 1 })
 
 -- Close window is it is a floating window or if it not the last opened window in the current tab
 function _G.CloseWindowIfNotLast()
-  local current_win_is_floating = vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= ''
+  local current_win_is_floating = vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= ""
 
   if current_win_is_floating then
     vim.cmd("q")
@@ -99,7 +112,7 @@ function _G.CloseWindowIfNotLast()
       local is_valid = vim.api.nvim_win_is_valid(win)
       local buf = vim.api.nvim_win_get_buf(win)
       local loaded = vim.api.nvim_buf_is_loaded(buf)
-      local win_is_floating = vim.api.nvim_win_get_config(win).relative ~= ''
+      local win_is_floating = vim.api.nvim_win_get_config(win).relative ~= ""
       return is_valid and buf and loaded and not win_is_floating
     end, vim.api.nvim_tabpage_list_wins(0))
 
@@ -110,12 +123,12 @@ function _G.CloseWindowIfNotLast()
 end
 
 function _G.create_org_file()
-  local dirman = require('neorg').modules.get_module("core.dirman")
+  local dirman = require("neorg").modules.get_module("core.dirman")
   local file = vim.fn.input("File : ", "", "file")
 
   dirman.create_file(file, "notes", {
-    no_open = false,    -- open file after creation?
-    force   = false,    -- overwrite file if exists
+    no_open = false, -- open file after creation?
+    force = false, -- overwrite file if exists
   })
 end
 
@@ -135,7 +148,7 @@ local function open_file(is_extension)
   for _, v in ipairs(history_result) do
     if v.exists then
       local frecency = v.score / max_score
-      local regex =  ".*/(.*)"
+      local regex = ".*/(.*)"
       -- If it is not extension then we want first letter
 
       regex = "^" .. regex
@@ -184,12 +197,12 @@ function _G.CloseBuffer()
   end
 end
 
-vim.api.nvim_create_autocmd('TermClose', {
-  pattern = '*',
+vim.api.nvim_create_autocmd("TermClose", {
+  pattern = "*",
   callback = function()
     vim.schedule(function()
-      if (vim.bo.buftype == 'terminal' or vim.bo.filetype == "lua") and vim.v.shell_error == 0 then
-        vim.cmd('bdelete! ' .. vim.fn.expand('<abuf>'))
+      if (vim.bo.buftype == "terminal" or vim.bo.filetype == "lua") and vim.v.shell_error == 0 then
+        vim.cmd("bdelete! " .. vim.fn.expand("<abuf>"))
       end
     end)
   end,
@@ -217,8 +230,8 @@ function _G.OpenUnusedTermOrCreate()
 end
 
 local function enable_venn_silent()
-  vim.cmd[[setlocal ve=all]]
-  vim.cmd[[setlocal noai]]
+  vim.cmd([[setlocal ve=all]])
+  vim.cmd([[setlocal noai]])
 
   -- draw a line on HJKL keystokes
   vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
@@ -240,8 +253,8 @@ end
 local function disable_venn()
   vim.notify("Disabled")
 
-  vim.cmd[[setlocal ve=]]
-  vim.cmd[[setlocal ai]]
+  vim.cmd([[setlocal ve=]])
+  vim.cmd([[setlocal ai]])
   vim.api.nvim_buf_del_keymap(0, "n", "J")
   vim.api.nvim_buf_del_keymap(0, "n", "K")
   vim.api.nvim_buf_del_keymap(0, "n", "L")
@@ -263,7 +276,7 @@ end
 
 -- vim.api.nvim_create_autocmd({ "FileType", }, {
 --     pattern = "norg",
-    -- callback = enable_venn_silent,
+-- callback = enable_venn_silent,
 -- })
 
 vim.api.nvim_create_user_command("CopyPath", function()
@@ -293,11 +306,9 @@ vim.api.nvim_create_user_command("StopProfile", function()
   ]])
 end, { nargs = 0 })
 
-vim.api.nvim_create_autocmd(
-  { "BufRead", "BufNewFile" },
-  {
-    pattern = { "*.jpg", "*.png" },
-    callback = function()
-      vim.cmd("setfiletype img")
-    end
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.jpg", "*.png" },
+  callback = function()
+    vim.cmd("setfiletype img")
+  end,
 })
