@@ -289,3 +289,12 @@ vim.api.nvim_create_user_command("StopProfile", function()
     noautocmd qall!
   ]])
 end, { nargs = 0 })
+
+vim.api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  {
+    pattern = { "*.jpg", "*.png" },
+    callback = function()
+      vim.cmd("setfiletype img")
+    end
+})

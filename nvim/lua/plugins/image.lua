@@ -7,7 +7,7 @@ return {
 
     return enabled
   end,
-  -- FT ??
+  ft = { "norg", "img" },
   dependencies = {
     "leafo/magick",
     "vhyrro/luarocks.nvim",
