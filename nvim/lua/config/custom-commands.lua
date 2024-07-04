@@ -132,9 +132,8 @@ function _G.create_org_file()
   })
 end
 
-local history = require("telescope._extensions.smart_open.history")
-
 local function open_file(is_extension)
+  local history = require("telescope._extensions.smart_open.history")
   local history_result, max_score = history:get_all()
   local matched_history = {}
   local letter = vim.fn.getcharstr()

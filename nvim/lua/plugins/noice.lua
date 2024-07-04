@@ -4,9 +4,6 @@ return {
   keys = {
     { "<leader><BS>", "<cmd>Noice dismiss<cr>" },
   },
-  init = function()
-    require("telescope").load_extension("noice")
-  end,
   opts = {
     lsp = {
       progress = {
