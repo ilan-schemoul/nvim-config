@@ -1,9 +1,6 @@
 return {
   "folke/noice.nvim",
-  priority = 100,
-  keys = {
-    { "<leader><BS>", "<cmd>Noice dismiss<cr>" },
-  },
+  event = "VimEnter",
   opts = {
     lsp = {
       progress = {

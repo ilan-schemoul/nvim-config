@@ -114,6 +114,9 @@ set("nn", _G.create_org_file)
 set("nd", ":lua Toggle_venn()<cr>")
 set("no", "<cmd>Noice<cr>")
 
+-- <space><backspace>
+set("<BS>", "<cmd>Noice dismiss<cr>")
+
 -- ../plugins/treesitter.lua
 set("sc", "1z=")
 -- Can't use <leader>sl as it is used by for TS swapping
