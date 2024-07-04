@@ -312,3 +312,19 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.cmd("setfiletype img")
   end,
 })
+
+vim.api.nvim_create_user_command("FromFTToTab", function(args)
+  local name = args.fargs[1]
+
+  if name then
+    local line = 1
+
+    if #args.fargs == 2 then
+      line = args.fargs[2]
+    end
+
+    vim.cmd("q")
+    vim.cmd("e +" .. line .. " " .. name)
+  end
+end, { nargs = '+' })
+
