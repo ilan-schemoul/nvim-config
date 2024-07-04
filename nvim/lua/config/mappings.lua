@@ -24,7 +24,7 @@ set("lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
 set("ln", vim.lsp.buf.rename)
 set("la", vim.lsp.buf.code_action)
 set("lt", require("lsp_lines").toggle)
-set("ll", "<cmd>Telescope smart_open<cr>")
+-- ll set by ../plugins/smart-open.lua
 
 set("L", "<cmd>Lazy<cr>")
 
@@ -60,18 +60,6 @@ set("tr", "<cmd>Telescope resume<cr>")
 set("tz", "<cmd>Telescope buffers<cr>")
 set("tq", "<cmd>Telescope quickfix<cr>")
 
-set("tw", function()
-  require("telescope-tabs").list_tabs({
-    entry_formatter = function(tab_id, _, _, _, _)
-      return get_tab_folder(tab_id)
-    end,
-    entry_ordinal = function(tab_id, _, _, _, _)
-      return get_tab_folder(tab_id)
-    end,
-  })
-end)
-set("t-", require("telescope-tabs").go_to_previous)
-
 for i = 0, 9 do
   if os.getenv("KEYBOARD_FR") then
     set("t" .. fr[i + 1], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
@@ -101,8 +89,7 @@ set("ps", "<cmd>SendToTerm<cr>")
 set("pp", "<cmd>put<cr>")
 set("pP", "<cmd>put!<cr>")
 
-set("tf", "<cmd>lua require('telescope-tabs').list_tabs()<cr>")
-set("tc", "<cmd>Telescope neoclip<cr>")
+-- tc is set by ../plugins/scope.lua
 set("tn", "<cmd>tabnew<cr>")
 set("tx", "<cmd>tabclose<cr>")
 set("tl", "<cmd>tabnext<cr>")
