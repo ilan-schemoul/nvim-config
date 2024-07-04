@@ -17,6 +17,8 @@ return {
       mode = "v",
     },
 
+    { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>" },
+
     { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", mode = "n" },
 
     { "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>" },
