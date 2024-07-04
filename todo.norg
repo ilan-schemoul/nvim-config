@@ -19,6 +19,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
   - ( ) Command reload (exit nvim and restart. Maybe check exit code in config.fish to know if I want restart)
   - ( ) Fish remove spaces around "·" if low width screen
+  - ( ) Telescope when slow at least select first element
 * Somewhat important
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Quickfix for waf
