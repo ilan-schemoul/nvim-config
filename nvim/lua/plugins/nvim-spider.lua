@@ -1,16 +1,12 @@
 return {
   "chrisgrieser/nvim-spider",
-  config = function()
-    for _, key in ipairs({ "b", "w", "e" }) do
-      vim.keymap.set({ "n", "o", "x" }, key, "<cmd>lua require('spider').motion('" .. key .. "')<CR>", {})
-    end
-
-    require("spider").setup({
+  keys = {
+      { "b", "<cmd>lua require('spider').motion('b')<cr>", mode = { "n", "o", "x" } },
+      { "w", "<cmd>lua require('spider').motion('w')<cr>", mode = { "n", "o", "x" } },
+      { "e", "<cmd>lua require('spider').motion('e')<cr>", mode = { "n", "o", "x" } },
+      { "cw", "ce", mode = { "n", "o", "x" }, remap = true },
+  },
+  opts = {
       subwordMovement = false,
-    })
-
-    -- So cw stays the same as before
-    vim.keymap.set("n", "cw", "ce", { remap = true })
-  end,
+  },
 }
-
