@@ -185,7 +185,7 @@ vim.api.nvim_create_autocmd({
     end
   })
 set("gq", require("config/gerrit-quickfix").load_interactive_input)
-set("gb", ":BlameToggle<cr>")
+-- gb set by ../plugins/blame.lua
 
 for _, key in ipairs(hjkl) do
   vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
