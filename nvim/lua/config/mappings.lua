@@ -9,6 +9,10 @@ local function set(keys, cmd)
   vim.keymap.set("n", "<leader>" .. keys, cmd)
 end
 
+local function setv(keys, cmd)
+  vim.keymap.set("v", "<leader>" .. keys, cmd)
+end
+
 -- Many mappings defined inside plugins (grep "keys =" to find those)
 
 set("[d", vim.diagnostic.goto_prev)
@@ -56,9 +60,23 @@ set("u", "<cmd>Telescope undo<cr>")
 
 set("tt", "<cmd>Telescope<cr>")
 set("tg", "<cmd>Telescope live_grep<cr>")
+setv("tg", function()
+  local selection_text = _G.getVisualSelection()
+  require('telescope.builtin').live_grep({ default_text = selection_text })
+end)
+set("tG", "<cmd>Telescope grep_string<cr>")
 set("tr", "<cmd>Telescope resume<cr>")
 set("tz", "<cmd>Telescope buffers<cr>")
 set("tq", "<cmd>Telescope quickfix<cr>")
+set("tf", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+setv("tf", function()
+  local selection_text = _G.getVisualSelection()
+  require('telescope.builtin').current_buffer_fuzzy_find({ default_text = selection_text })
+end)
+set("tF", function()
+  local word = vim.fn.expand('<cword>')
+  require('telescope.builtin').current_buffer_fuzzy_find({ default_text = word })
+end)
 
 for i = 0, 9 do
   if os.getenv("KEYBOARD_FR") then
