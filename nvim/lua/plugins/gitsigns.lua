@@ -29,6 +29,9 @@ return {
 
     { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>" },
 
+    { "<leader>gh", "<cmd>Gitsigns change_base<cr>" },
+    { "<leader>gp", "<cmd>Gitsigns change_base HEAD~<cr>" },
+
     {
       "<leader>gr",
       function()
