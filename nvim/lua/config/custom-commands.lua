@@ -322,7 +322,10 @@ vim.api.nvim_create_user_command("FromFTToTab", function(args)
       line = args.fargs[2]
     end
 
-    vim.cmd("q")
+    if vim.bo.filetype == "lazygit" then
+      vim.cmd("q")
+    end
+
     vim.cmd("e +" .. line .. " " .. name)
   end
 end, { nargs = '+' })
