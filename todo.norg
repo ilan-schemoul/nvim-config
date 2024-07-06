@@ -19,6 +19,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
   - ( ) Command reload (exit nvim and restart. Maybe check exit code in config.fish to know if I want restart)
   - ( ) Telescope when slow at least select first element
+  - ( ) Git blame "<cr>" doesn't open if pwd is not set to where the git repo is. I want to use git repo of the file.
 * Somewhat important
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Quickfix for waf
