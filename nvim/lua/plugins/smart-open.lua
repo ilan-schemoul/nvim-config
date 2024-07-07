@@ -1,5 +1,8 @@
 return {
-  "danielfalk/smart-open.nvim",
+  -- "danielfalk/smart-open.nvim",
+  -- NOTE: https://github.com/danielfalk/smart-open.nvim/pull/80/files
+  "ilan-schemoul/smart-open.nvim",
+  -- dir = "~/code/forks/smart-open.nvim",
   dependencies = {
     "kkharji/sqlite.lua",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
