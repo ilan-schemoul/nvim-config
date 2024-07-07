@@ -305,6 +305,11 @@ vim.api.nvim_create_user_command("StopProfile", function()
   ]])
 end, { nargs = 0 })
 
+vim.api.nvim_create_user_command("Restart", function()
+  local restart_exit_code = 22
+  vim.cmd("cquit " .. restart_exit_code)
+end, { nargs = 0 })
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.jpg", "*.png" },
   callback = function()
