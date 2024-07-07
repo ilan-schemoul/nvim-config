@@ -4,23 +4,16 @@ Prioritize very important (I actually really need it) and easy to do.
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
   - ( ) Import things from /srv/tools/../vim fold and others
-  - ( ) Move cursor when terminal repeat (see
-        nvim/lua/config/custom-commands.lua:53)
   - ( ) Multiline search but easier than weird live grep with args syntax. (shortcut to live-greps then plugin)
   - (-) Use block comments Comment.nvim for "o" (newline etc.) "a" (https://github.com/numToStr/Comment.nvim/issues/471)
-  - ( ) Lua handle to see why slow much
-  - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
-        a newline \(x) n is inserted but then I cannot search, select word etc.) https://github.com/neovim/neovim/issues/29503
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) Make telescope recency works related to current commit/branch ?
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), telescope git file history
-  - (-) The "edit" when I leave lazygit is kinda buggy and seems to disable
-        syntax highlighting for some reasons
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
-  - ( ) Command reload (exit nvim and restart. Maybe check exit code in config.fish to know if I want restart)
-  - ( ) Telescope when slow at least select first element
   - ( ) Git blame "<cr>" doesn't open if pwd is not set to where the git repo is. I want to use git repo of the file.
 * Somewhat important
+  - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
+        a newline \(x) n is inserted but then I cannot search, select word etc.) https://github.com/neovim/neovim/issues/29503
   - ( ) J should merge lines in norg if not close to a | - -> etc.
   - ( ) Quickfix for waf
   - ( ) Tabline notifications
