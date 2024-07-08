@@ -1,3 +1,5 @@
+local utils = require("config/utils")
+
 vim.cmd("command TeeSave :w !sudo tee %")
 
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
@@ -44,12 +46,7 @@ local function send_to_term(cmd_text)
       local hidden = vim.fn.getbufinfo(chan["buffer"])[1].hidden
       local buffer = vim.fn.getbufinfo(chan["buffer"])[1].bufnr
 
-      local windows = vim.api.nvim_tabpage_list_wins(0)
-      local is_in_tab = vim.tbl_contains(windows, function(win)
-        return vim.api.nvim_win_get_buf(win) == buffer
-      end, { predicate = true })
-
-      return hidden == 0 and is_in_tab
+      return hidden == 0 and utils.buffer_is_in_tab(buffer)
     end, terminal_chans)
 
     table.sort(terminal_chans, function(left, right)
@@ -231,9 +228,14 @@ function _G.OpenUnusedTermOrCreate()
     -- NOTE: Fish set the term title to the current directory
     -- If it not the current directory then it is probably not fish
     local is_running = is_terminal and vim.fn.isdirectory(vim.fn.expand(vim.b[buffer].term_title)) == 0
+    local is_in_tab = utils.buffer_is_in_tab(buffer)
+
+    if is_terminal and not opened and not is_running then
+      vim.print("IS:", is_in_tab)
+    end
 
     -- If we find a terminal not currently visible in the current tab reuse it
-    if is_terminal and not opened and not is_running then
+    if is_terminal and not opened and not is_running and is_in_tab then
       vim.cmd(":buffer " .. buffer)
       return
     end

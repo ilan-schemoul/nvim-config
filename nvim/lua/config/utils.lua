@@ -1,5 +1,13 @@
 M = {}
 
+M.buffer_is_in_tab = function(buffer_to_find)
+  local is_in_tab = vim.tbl_contains(vim.api.nvim_list_bufs(), function(buffer)
+    return buffer_to_find == buffer and vim.bo[buffer].buflisted
+  end, { predicate = true })
+
+  return is_in_tab
+end
+
 M.check_libXfixes = function()
   if vim.fn.file_readable("/usr/include/X11/extensions/Xfixes.h") == 0 then
     return false
