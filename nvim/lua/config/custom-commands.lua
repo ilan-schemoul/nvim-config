@@ -41,14 +41,26 @@ local function send_to_term(cmd_text)
     end
 
     terminal_chans = vim.tbl_filter(function(chan)
-      return vim.fn.getbufinfo(chan["buffer"])[1].hidden == 0
+      local hidden = vim.fn.getbufinfo(chan["buffer"])[1].hidden
+      local buffer = vim.fn.getbufinfo(chan["buffer"])[1].bufnr
+
+      local windows = vim.api.nvim_tabpage_list_wins(0)
+      local is_in_tab = vim.tbl_contains(windows, function(win)
+        return vim.api.nvim_win_get_buf(win) == buffer
+      end, { predicate = true })
+
+      return hidden == 0 and is_in_tab
     end, terminal_chans)
 
     table.sort(terminal_chans, function(left, right)
       return left["buffer"] < right["buffer"]
     end)
 
-    return terminal_chans[1]["id"], terminal_chans[1]["buffer"]
+    if terminal_chans and terminal_chans[1] then
+      return terminal_chans[1]["id"], terminal_chans[1]["buffer"]
+    else
+      vim.notify("Did not find any terminal")
+    end
   end
 
   local send_to_terminal = function(terminal_chan, term_cmd_text)
@@ -62,10 +74,12 @@ local function send_to_term(cmd_text)
     terminal_chan = get_first_terminal()
   end
 
-  send_to_terminal(terminal_chan, cmd_text)
+  if terminal_chan then
+    send_to_terminal(terminal_chan, cmd_text)
 
-  -- scroll to the end of the terminal
-  scroll_to_the_end(terminal_buffer)
+    -- scroll to the end of the terminal
+    scroll_to_the_end(terminal_buffer)
+  end
 end
 
 vim.api.nvim_create_user_command("SendToTerm", function(args)
