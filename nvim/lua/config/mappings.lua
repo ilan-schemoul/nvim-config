@@ -51,6 +51,7 @@ set("N", "<cmd>set invrelativenumber | set invnumber<cr>")
 
 set("q", _G.CloseWindowIfNotLast)
 set("Q", "<cmd>qa!<cr>")
+set("R", "<cmd>Restart<cr>")
 
 set("m", "<cmd>Mason<cr>")
 
