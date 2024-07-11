@@ -230,10 +230,6 @@ function _G.OpenUnusedTermOrCreate()
     local is_running = is_terminal and vim.fn.isdirectory(vim.fn.expand(vim.b[buffer].term_title)) == 0
     local is_in_tab = utils.buffer_is_in_tab(buffer)
 
-    if is_terminal and not opened and not is_running then
-      vim.print("IS:", is_in_tab)
-    end
-
     -- If we find a terminal not currently visible in the current tab reuse it
     if is_terminal and not opened and not is_running and is_in_tab then
       vim.cmd(":buffer " .. buffer)
