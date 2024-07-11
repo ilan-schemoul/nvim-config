@@ -1,6 +1,7 @@
+source /srv/tools/share/dotfiles/vim/syntax/c.vim
 let $PATH = '/home/ilan/.bin/node-v20.13.1-linux-x64/bin:' . $PATH
 
-lua vim.filetype.add({ extension = { blk = 'c' } }) 
+lua vim.filetype.add({ extension = { blk = 'c' } })
 
 autocmd BufNewFile,BufRead wscript_build set filetype=python
 
@@ -73,8 +74,10 @@ function! AsciidocLevel()
     endif
     return "="
 endfunction
+set foldmethod=marker " {{{/}}}
 au BufRead,BufNewFile *.adoc setlocal foldexpr=AsciidocLevel()
 au BufRead,BufNewFile *.adoc setlocal foldmethod=expr
+set foldlevel=99
 
 " }}}
 " {{{ Local vimrc
