@@ -29,6 +29,8 @@ set("ln", vim.lsp.buf.rename)
 set("la", vim.lsp.buf.code_action)
 set("lt", require("lsp_lines").toggle)
 -- ll set by ../plugins/smart-open.lua
+set("lc", "<cmd>Easypick changed_files<cr>")
+set("lx", "<cmd>Easypick conflicts<cr>")
 
 set("L", "<cmd>Lazy<cr>")
 
@@ -59,6 +61,7 @@ set("F", "<cmd>echo @%<cr>")
 
 set("u", "<cmd>Telescope undo<cr>")
 
+-- set("ty") by neoclip.lua
 set("tt", "<cmd>Telescope<cr>")
 set("tg", "<cmd>Telescope live_grep<cr>")
 setv("tg", function()
