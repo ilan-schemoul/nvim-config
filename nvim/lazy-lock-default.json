@@ -5,7 +5,7 @@
   "automkdir.nvim": { "branch": "main", "commit": "beeb2dd76f1c3ac776d901c43217a774f1f045de" },
   "autosave.nvim": { "branch": "main", "commit": "feaf2d220f6a01a8f794c596145dfb2739a00203" },
   "baleia.nvim": { "branch": "linebreaks", "commit": "504c442b21936b48c36c803ffc03a48ebe6b7073" },
-  "blame.nvim": { "branch": "main", "commit": "ccdf1bf8b0e892f2c6cc9cb01680ff5a491cce6d" },
+  "blame.nvim": { "branch": "master", "commit": "82309c53a4252ad87a4276d7d05168aaa77d1aa6" },
   "bufjump.nvim": { "branch": "master", "commit": "ae2728a77defbd27e9e5ef64c854fb0813ffba01" },
   "catppuccin": { "branch": "main", "commit": "31fcfb02c47952d5c75aec893b93b2878abe5fbb" },
   "ccc.nvim": { "branch": "main", "commit": "4fb5abaef2f2e0540fe22d4d74a9841205fff9e4" },
