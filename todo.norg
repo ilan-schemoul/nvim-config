@@ -11,7 +11,6 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), align.nvim, projections.nvim (project + sessions management), telescope git file history
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
   - ( ) Git blame "<cr>" doesn't open if pwd is not set to where the git repo is. I want to use git repo of the file.
-  - ( ) Fix first terminal of the tab not registered by scope as part of the tab
 * Somewhat important
   - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
         a newline \(x) n is inserted but then I cannot search, select word etc.) https://github.com/neovim/neovim/issues/29503
