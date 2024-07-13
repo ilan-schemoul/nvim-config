@@ -1,6 +1,7 @@
 return {
   "TheBlob42/houdini.nvim",
   opts = {
+    mappings = { "hj" },
     excluded_filetypes = { "lazygit" },
     escape_sequences = {
         ['i']    = '<BS><BS><ESC>',        -- insert mode
