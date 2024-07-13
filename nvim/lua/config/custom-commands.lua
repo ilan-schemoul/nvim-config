@@ -294,13 +294,17 @@ vim.api.nvim_create_user_command("CopyPath", function()
   vim.cmd("let @+ = expand('%')")
 end, { nargs = 0 })
 
-vim.api.nvim_create_user_command("OpenSession", function()
-  if vim.fn.file_readable("./Session.vim") then
-    vim.cmd("source ./Session.vim")
+vim.api.nvim_create_user_command("OpenSession", function(args)
+  if #args.fargs == 1 then
+    vim.cmd("source " .. args.fargs[1])
   else
-    vim.cmd("source ~/Session.vim")
+    if vim.fn.file_readable("./Session.vim") then
+      vim.cmd("source ./Session.vim")
+    else
+      vim.cmd("source ~/Session.vim")
+    end
   end
-end, { nargs = 0 })
+end, { nargs = '?' })
 
 vim.api.nvim_create_user_command("StartProfile", function()
   vim.cmd([[
