@@ -139,7 +139,7 @@ return {
     timer:start(0, 10 * s, vim.schedule_wrap(require("tabby").update))
 
     timer = vim.uv.new_timer()
-    timer:start(0, 300 * ms, vim.schedule_wrap(update_git_state_async))
+    timer:start(0, 400 * ms, vim.schedule_wrap(update_git_state_async))
 
     timer = vim.uv.new_timer()
     timer:start(0, 1 * s, vim.schedule_wrap(function()

@@ -20,17 +20,20 @@ M.get_tab_folder = function(tab_nr)
   local success, full_path = pcall(vim.fn.getcwd, -1, tab_nr)
 
   if not success then
+    vim.notify("Fail to get folder of tab " .. tab_nr, vim.log.levels.ERROR)
     return tostring(tab_nr)
   end
 
+  local folder
+
   if full_path == vim.fn.expand('$HOME') then
-    return "~"
+    folder = "~"
+  else
+    _, _, folder = string.find(full_path, ".*/(.*)")
+
+    -- Uppercase first letter
+    folder = (folder:gsub("^%l", string.upper))
   end
-
-  local _, _, folder = string.find(full_path, ".*/(.*)")
-
-  -- Uppercase first letter
-  folder = (folder:gsub("^%l", string.upper))
 
   return folder
 end
