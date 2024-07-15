@@ -1,5 +1,8 @@
 return {
-  "nanozuki/tabby.nvim",
+  -- "nanozuki/tabby.nvim",
+  -- https://github.com/nanozuki/tabby.nvim/pull/146
+  "ilan-schemoul/tabby.nvim",
+  -- dir = "~/code/forks/tabby.nvim/",
   event = "VimEnter",
   dependencies = "nvim-tree/nvim-web-devicons",
   init = function()
@@ -123,7 +126,9 @@ return {
 
           hl = theme.fill,
         }
-      end)
+      end, {
+        max_refresh_ms = 200,
+    })
     end
 
     vim.api.nvim_create_user_command("TabbyUpdate", require('tabby').update, { nargs = 0 })
