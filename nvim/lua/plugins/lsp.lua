@@ -10,10 +10,14 @@ return {
     config = function(_, _)
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      local path = "/home/ilan/.nvm/versions/node/v16.20.2/bin"
+      local cmd_env = { PATH = path .. ":" .. vim.env.PATH }
+
       require("mason-lspconfig").setup()
       require("mason-lspconfig").setup_handlers({
         function(server_name)
           require("lspconfig")[server_name].setup({
+            cmd_env = cmd_env,
             capabilities = capabilities,
           })
         end,
@@ -40,6 +44,7 @@ return {
         end,
         ["pyright"] = function(_)
           require("lspconfig").pyright.setup({
+            cmd_env = cmd_env,
             capabilities = capabilities,
             settings = {
               python = {

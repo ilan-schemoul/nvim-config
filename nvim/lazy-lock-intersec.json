@@ -39,6 +39,7 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "a4caa0d083aab56f6cd5acf2d42331b74614a585" },
   "mason-update-all": { "branch": "main", "commit": "007a4085fe5e830b9139313652e1553bf1a9b857" },
   "mason.nvim": { "branch": "main", "commit": "49ff59aded1047a773670651cfa40e76e63c6377" },
+  "mini.align": { "branch": "main", "commit": "b54d88b16bfac62ca6b3d699566135639a3ca4fa" },
   "neorg": { "branch": "main", "commit": "4cbedbbdd4ccb6f45a2045477f5658a1311dffa3" },
   "noice.nvim": { "branch": "main", "commit": "f119045f38792ad5311e5f9be7a879e4c1a95fe0" },
   "nui.nvim": { "branch": "main", "commit": "b1b3dcd6ed8f355c78bad3d395ff645be5f8b6ae" },
