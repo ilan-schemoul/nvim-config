@@ -1,5 +1,7 @@
 source /srv/tools/share/dotfiles/vim/syntax/c.vim
-let $PATH = '/home/ilan/.bin/node-v20.13.1-linux-x64/bin:' . $PATH
+" Appending to path means letting priority to what is already in other
+" folders of the path.
+let $PATH = $PATH . '/home/ilan/.bin/node-v20.13.1-linux-x64/bin'
 
 lua vim.filetype.add({ extension = { blk = 'c' } })
 
