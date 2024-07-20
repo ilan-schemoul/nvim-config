@@ -1,10 +1,11 @@
 -- TODO: With 0.10 comes native comment support
 return {
-    "numToStr/Comment.nvim",
+    "ilan-schemoul/Comment.nvim",
     event = "VimEnter",
     opts = {
         padding = true,
         sticky = true,
+        always_use_block = true,
         toggler = {
             line = "<leader>cc",
             block = "<leader>CC",
