@@ -96,6 +96,8 @@ set("tq", function() require("telescope.builtin").quickfix({
   path_display = { "smart" }
 }) end)
 
+set("tm", require("config/multiline-rg").open)
+
 set("pn", _G.OpenUnusedTermOrCreate)
 set("pN", "<cmd>term<cr>")
 set("ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>")
