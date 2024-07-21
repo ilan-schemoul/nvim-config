@@ -8,7 +8,6 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), projections.nvim (project + sessions management), telescope git file history
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
-  - ( ) Comment block always_use_block only for certain filetypes
 * Somewhat important
   - ( ) Make telescope recency works related to current commit/branch ?
   - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
