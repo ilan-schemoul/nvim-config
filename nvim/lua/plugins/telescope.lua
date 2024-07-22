@@ -15,16 +15,36 @@ return {
     require("telescope").load_extension("undo")
 
     local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
     local lga_actions = require("telescope-live-grep-args.actions")
 
     require("telescope").setup({
-      pickers = {},
       defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--multiline",
+        },
         mappings = {
           i = {
             ["<C-v>"] = "file_vsplit",
             ["<C-s>"] = "file_split",
             ["<C-x>"] = actions.delete_buffer,
+            ["<C-i>"] = function(bufnr)
+              local picker = action_state.get_current_picker(bufnr)
+              local prompt = picker:_get_prompt()
+
+              if prompt:match("\\n") then
+                picker:set_prompt("}.*", false)
+              else
+                picker:set_prompt("(.*\\n){0,", false)
+              end
+            end,
           },
         },
         layout_strategy = "vertical",
