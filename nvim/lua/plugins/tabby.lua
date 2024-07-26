@@ -153,12 +153,15 @@ return {
         -- normal
         return buftype == "" or buftype == "terminal"
       end, vim.api.nvim_list_wins())
-      -- If there is only one window then only show tab when there are multiple tabs
-      if #windows == 1 then
-        vim.o.showtabline=1
-      -- If there are multiple windows then show tabline even if there is only one tab
-      else
-        vim.o.showtabline=2
+
+      if not require("true-zen.ataraxis").running then
+        -- If there is only one window then only show tab when there are multiple tabs
+        if #windows == 1 then
+          vim.o.showtabline=1
+          -- If there are multiple windows then show tabline even if there is only one tab
+        else
+          vim.o.showtabline=2
+        end
       end
     end))
   end,
