@@ -2,7 +2,6 @@ return {
   "nvim-neorg/neorg",
   ft = "norg", -- lazy load on file type
   cmd = "Neorg", -- lazy load on command
-  dependencies = { "nvim-lua/plenary.nvim", "luarocks.nvim" },
   config = function()
     require("neorg").setup({
       load = {
