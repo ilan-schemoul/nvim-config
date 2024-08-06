@@ -1,8 +1,15 @@
 return {
   "nvim-neorg/neorg",
+  version = "v7.0.0",
   ft = "norg", -- lazy load on file type
   cmd = "Neorg", -- lazy load on command
   config = function()
+    vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'norg',
+	callback = function (_)
+      vim.g.maplocalleader = "g"
+	end,
+})
     require("neorg").setup({
       load = {
         ["core.defaults"] = {
