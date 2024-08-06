@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-vim.cmd("map , <Space>")
 vim.g.maplocalleader = ","
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
