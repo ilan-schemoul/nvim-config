@@ -6,6 +6,9 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
+  - ( ) FIX ctrl-b of neorg (why NEORG always breaks everything. Grrrrr.)
+  - ( ) remove vim-iop (both on my setup and on doc) as it does crazy
+        abbreviations.
 * Somewhat important
   - ( ) Refactoring : remove all useless code/plugins
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), projections.nvim (project + sessions management), telescope git file history
