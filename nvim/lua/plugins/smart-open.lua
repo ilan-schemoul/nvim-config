@@ -10,6 +10,11 @@ return {
   lazy = true,
   keys = {
     { "<leader>ll", "<cmd>Telescope smart_open<cr>" },
+    { "<leader>lL", function()
+      require('telescope').extensions.smart_open.smart_open {
+        cwd_only = true,
+      }
+    end },
   },
   opts = {
     match_algorithm = "fzf",
