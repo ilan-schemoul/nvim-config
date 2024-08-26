@@ -11,6 +11,10 @@ return {
     timer:start(0, 0, vim.schedule_wrap(function()
       require("lint").linters_by_ft = require("mason-bridge").get_linters()
       require("lint").linters_by_ft.python = { "pylint" }
+      -- Why it doesn't work, how to debug ?
+      -- local pylint = require("lint").linters.pylint
+      -- pylint.args = { "--rcfile", "~/dev/mmsx/pylintrc" }
+      -- pylint.cmd = "/home/ilan/.cache/pypoetry/virtualenvs/mmsx-cjFlvnf_-py3.10/bin/pylint"
     end))
     -- require("lint").linters_by_ft = {
     --   python = { "pylint" },
