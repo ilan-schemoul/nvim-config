@@ -5,11 +5,11 @@ return {
   cmd = "Neorg", -- lazy load on command
   config = function()
     vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'norg',
-	callback = function (_)
-      vim.g.maplocalleader = "g"
-	end,
-})
+      pattern = 'norg',
+      callback = function (_)
+        vim.g.maplocalleader = "g"
+      end,
+    })
     require("neorg").setup({
       load = {
         ["core.defaults"] = {
@@ -37,15 +37,15 @@ return {
         ["core.keybinds"] = {
           config = {
             default_keybinds = true,
-            neorg_leader = "g",
-            hook = function(keybinds)
-              -- keybinds.remap_event("norg", "i", "<C-n>", "core.itero.next-iteration<CR>")
-              keybinds.remap_key("norg", "i", "<M-CR>", "<C-b>")
-              -- keybinds.remap_key("norg", "n", "<M-CR>", "<C-CR>")
-            end,
           },
         },
       },
+    })
+    vim.api.nvim_create_autocmd("Filetype", {
+      pattern = "norg",
+      callback = function()
+        vim.keymap.set("i", "<C-b>", "<Plug>(neorg.itero.next-iteration)", { buffer = true })
+      end,
     })
 
     vim.wo.foldlevel = 99
