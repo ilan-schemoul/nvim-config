@@ -4,7 +4,6 @@ return {
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },
-  cmd = { "EasyPick" },
   config = function()
     local easypick = require("easypick")
 
