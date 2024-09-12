@@ -69,3 +69,5 @@ retro-compatibility
 MCMS
 #honenumber
 phonenumber/!
+pylint
+UTF-8
