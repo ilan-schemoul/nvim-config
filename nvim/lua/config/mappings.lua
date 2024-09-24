@@ -15,8 +15,16 @@ end
 
 -- Many mappings defined inside plugins (grep "keys =" to find those)
 
-set("[d", vim.diagnostic.goto_prev)
-set("]d", vim.diagnostic.goto_next)
+set("[d", function()
+  vim.diagnostic.goto_prev({
+   severity = vim.diagnostic.severity.ERROR,
+ })
+end)
+set("]d", function()
+  vim.diagnostic.goto_next({
+   severity = vim.diagnostic.severity.ERROR,
+ })
+end)
 
 set("lD", vim.diagnostic.open_float)
 set("lh", vim.lsp.buf.hover)
