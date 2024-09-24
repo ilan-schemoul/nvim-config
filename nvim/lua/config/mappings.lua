@@ -156,6 +156,11 @@ set("sg", "zg")
 set("sw", "zw")
 set("sb", "zw")
 
+set("io", "<cmd>copen<cr>")
+-- TODO: add load buffer (possibly with better formatting text)
+set("ij", "<cmd>cnext<cr>")
+set("ik", "<cmd>cprev<cr>")
+
 -- We also disable jk (houdini) for lazygit
 set("go", function()
   local path = vim.fn.expand('%:h')
