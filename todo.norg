@@ -3,6 +3,7 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
+  - ( ) CopyPath with line
   - ( ) Import things from /srv/tools/../vim fold and others
   - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
@@ -12,6 +13,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) How enable linter like in vim in fr_FR.utf8.po
   - ( ) pylint nvim/lua/plugins/lint.lua
 * Somewhat important
+  - ( ) NOT VIM: https://github.com/tummychow/git-absorb
   - ( ) Refactoring : remove all useless code/plugins
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), projections.nvim (project + sessions management), telescope git file history
   - ( ) Make telescope recency works related to current commit/branch ?
