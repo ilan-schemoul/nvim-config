@@ -294,6 +294,10 @@ vim.api.nvim_create_user_command("CopyPath", function()
   vim.cmd("let @+ = expand('%')")
 end, { nargs = 0 })
 
+vim.api.nvim_create_user_command("CopyPathWithLine", function()
+  vim.cmd("let @+ = expand('%') .. ':' .. line('.')")
+end, { nargs = 0 })
+
 vim.api.nvim_create_user_command("OpenSession", function(args)
   if #args.fargs == 1 then
     vim.cmd("source " .. args.fargs[1])
