@@ -3,15 +3,14 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
-  - ( ) CopyPath with line
-  - ( ) Import things from /srv/tools/../vim fold and others
-  - ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
+  - (!) Intersec related
+  -- ( ) Import things from /srv/tools/../vim fold and others
+  -- ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
+  -- ( ) remove vim-iop (both on my setup and on doc) as it does crazy
+         abbreviations.
+  -- ( ) How enable linter like in vim in fr_FR.utf8.po
+  -- ( ) pylint nvim/lua/plugins/lint.lua
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
-  - ( ) FIX ctrl-b of neorg (why NEORG always breaks everything. Grrrrr.)
-  - ( ) remove vim-iop (both on my setup and on doc) as it does crazy
-        abbreviations.
-  - ( ) How enable linter like in vim in fr_FR.utf8.po
-  - ( ) pylint nvim/lua/plugins/lint.lua
 * Somewhat important
   - ( ) NOT VIM: https://github.com/tummychow/git-absorb
   - ( ) Refactoring : remove all useless code/plugins
