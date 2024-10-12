@@ -89,6 +89,7 @@ set("tF", function()
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = word })
 end)
 set("ts", "<cmd>Telescope git_status<cr>")
+set("tb", require("telescope").extensions.git_file_history.git_file_history)
 
 for i = 0, 9 do
   if os.getenv("KEYBOARD_FR") then
