@@ -3,6 +3,11 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
+  - ( ) bug <leader>F doesn't print anything
+  - ( ) noice staying stuck on screen
+  - ( ) Norg being almost only white randomly (super annoying and ugly)
+  - ( ) crash related to buffer id (I forgot the exact error)
+  - ( ) slow as hell terminal scrollback 10K lines (https://github.com/neovim/neovim/issues/11090)
   - (!) Intersec related
   -- ( ) Import things from /srv/tools/../vim fold and others
   -- ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
@@ -14,7 +19,7 @@ Prioritize very important (I actually really need it) and easy to do.
 * Somewhat important
   - ( ) NOT VIM: https://github.com/tummychow/git-absorb
   - ( ) Refactoring : remove all useless code/plugins
-  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), projections.nvim (project + sessions management), telescope git file history
+  - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), projections.nvim (project + sessions management)
   - ( ) Make telescope recency works related to current commit/branch ?
   - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
         a newline \(x) n is inserted but then I cannot search, select word etc.) https://github.com/neovim/neovim/issues/29503
