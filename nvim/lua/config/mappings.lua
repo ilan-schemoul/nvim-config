@@ -38,6 +38,7 @@ set("la", vim.lsp.buf.code_action)
 set("lt", require("lsp_lines").toggle)
 -- ll set by ../plugins/smart-open.lua
 set("lc", "<cmd>Easypick changed_files<cr>")
+set("lC", "<cmd>Easypick changed_files_previous_commit<cr>")
 set("lx", "<cmd>Easypick conflicts<cr>")
 
 set("L", "<cmd>Lazy<cr>")

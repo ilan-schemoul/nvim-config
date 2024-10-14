@@ -71,3 +71,5 @@ MCMS
 phonenumber/!
 pylint
 UTF-8
+Parsers
+as-is
