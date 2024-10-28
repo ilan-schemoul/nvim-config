@@ -1,6 +1,6 @@
 M = {}
 
-M.max_treesitter_filesize = 70 * 1024 -- 100 KB
+M.max_treesitter_filesize = 100 * 1024 -- 100 KB
 
 M.buffer_is_in_tab = function(buffer_to_find)
   local is_in_tab = vim.tbl_contains(vim.api.nvim_list_bufs(), function(buffer)
