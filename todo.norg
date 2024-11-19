@@ -3,6 +3,7 @@ Prioritize very important (I actually really need it) and easy to do.
 * Very important
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
+  - ( ) check correct worktree opened (symbolic link to current vim tab)
   - ( ) make git color of fish prompt purple is there is a stash
   - ( ) bug <leader>F doesn't print anything
   - ( ) noice staying stuck on screen
