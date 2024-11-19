@@ -1,8 +1,5 @@
 return {
-  -- "nanozuki/tabby.nvim",
-  -- https://github.com/nanozuki/tabby.nvim/pull/146
-  "ilan-schemoul/tabby.nvim",
-  -- dir = "~/code/forks/tabby.nvim/",
+  "nanozuki/tabby.nvim",
   event = "VimEnter",
   dependencies = "nvim-tree/nvim-web-devicons",
   init = function()
