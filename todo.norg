@@ -5,9 +5,6 @@ Prioritize very important (I actually really need it) and easy to do.
 
   - ( ) check correct worktree opened (symbolic link to current vim tab)
   - ( ) make git color of fish prompt purple is there is a stash
-  - ( ) bug <leader>F doesn't print anything
-  - ( ) noice staying stuck on screen
-  - ( ) Norg being almost only white randomly (super annoying and ugly)
   - ( ) crash related to buffer id (I forgot the exact error)
   - ( ) slow as hell terminal scrollback 10K lines (https://github.com/neovim/neovim/issues/11090)
   - (!) Intersec related
@@ -19,6 +16,8 @@ Prioritize very important (I actually really need it) and easy to do.
   -- ( ) pylint nvim/lua/plugins/lint.lua
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
 * Somewhat important
+  - ( ) notify new release ?
+  - ( ) Norg being almost only white randomly (super annoying and ugly)
   - ( ) NOT VIM: https://github.com/tummychow/git-absorb
   - ( ) Refactoring : remove all useless code/plugins
   - ( ) Cool plugins treesitter textsubjects (to select with TS based on context), projections.nvim (project + sessions management)
@@ -31,6 +30,7 @@ Prioritize very important (I actually really need it) and easy to do.
   - ( ) See function graph (what function call what function)
   - ( ) Add motion to select between regex /abc/
   - ( ) TS Textobject do not eat whitespace for internal only for external (e.g: caa)
+  - ( ) Bug my terminal randomly get a lot of ^[[D
 * Not urgent at all
   - ( ) gx should open in regex101 when I underline regex
   - ( ) Fix folding (but is it useful IDK)

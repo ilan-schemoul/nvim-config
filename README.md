@@ -21,3 +21,10 @@ Therefore it is better to compile in release mode.
 Coq faster
 Cmp UI much better, compatible with non proprietary snippets (so compatible with vscode snippets etc. which also means scissors (to edit snipppets) are compatible), compatible with noice (https://github.com/folke/noice.nvim/issues/758)
 kind of a shame coq is faster thanks to a ton of optimizations but close to unusable because bad UI, not compatible with snippets or Noice completion
+
+# Performance debug
+  - For startup time `Lazy profile` (not perfect but good enough)
+  - For runtime:
+    - [plenary.profile](https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file) (wrapper around lua profiler)
+    - profile.nvim (self described pile of hack)
+    - perfanno to open the resulting trace file
