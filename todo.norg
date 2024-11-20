@@ -4,19 +4,13 @@ Prioritize very important (I actually really need it) and easy to do.
   Also check {:/home/ilan/notes/technical_todo:} if at work
 
   - ( ) check correct worktree opened (symbolic link to current vim tab)
-  - ( ) make git color of fish prompt purple is there is a stash
-  - ( ) crash related to buffer id (I forgot the exact error)
-  - ( ) slow as hell terminal scrollback 10K lines (https://github.com/neovim/neovim/issues/11090)
   - (!) Intersec related
   -- ( ) Import things from /srv/tools/../vim fold and others
-  -- ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different etc.
-  -- ( ) remove vim-iop (both on my setup and on doc) as it does crazy
-         abbreviations.
+  -- ( ) Automate (with b ?) detection of forgot to waf configured, lib-common different, wrong symbolic link etc.
   -- ( ) How enable linter like in vim in fr_FR.utf8.po
   -- ( ) pylint nvim/lua/plugins/lint.lua
-  - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
 * Somewhat important
-  - ( ) notify new release ?
+  - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
   - ( ) Norg being almost only white randomly (super annoying and ugly)
   - ( ) NOT VIM: https://github.com/tummychow/git-absorb
   - ( ) Refactoring : remove all useless code/plugins
