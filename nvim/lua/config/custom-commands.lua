@@ -1,13 +1,11 @@
 local utils = require("config/utils")
 
-vim.cmd("command TeeSave :w !sudo tee %")
-
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   callback = function(args)
     buf = vim.api.nvim_win_get_buf(0)
 
     if vim.bo[buf].readonly then
-      vim.notify("Cannot save. Use :TeeSave.", "warn")
+      vim.notify("Cannot save this file. Try :SudaWrite", vim.log.levels.ERROR)
     end
   end,
 })
