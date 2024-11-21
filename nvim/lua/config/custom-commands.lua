@@ -53,6 +53,7 @@ local function open_file(is_extension)
     letter = "^" .. letter
   end
 
+  -- TODO: read how smart_open does it to search faster than a manual loop + regex
   for _, v in ipairs(history_result) do
     if v.exists then
       local frecency = v.score / max_score
@@ -86,11 +87,15 @@ function _G.OpenFile()
   open_file(false)
 end
 
+-- Start insert mode when I focus on a terminal if we are "close"
+-- to the bottom. The reason I do that is that often I want to be in insert
+-- mode except if my cursor is "far" from the end of the buffer. Because in
+-- that case I purposefully scrolled to a specific line.
 function _G.StartInsertIfBottom()
   local total_number_of_lines = vim.fn.line("$")
   local current_line = vim.fn.line(".")
 
-  if total_number_of_lines - current_line < 50 then
+  if total_number_of_lines - current_line < 20 then
     vim.cmd("startinsert")
   end
 end
