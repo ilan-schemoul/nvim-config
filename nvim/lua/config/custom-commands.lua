@@ -10,29 +10,6 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   end,
 })
 
-vim.api.nvim_create_user_command("AddPlugin", function(args)
-  local full_name = args.fargs[1]
-
-  local _, _, _, file_name = string.find(full_name, "(.*)/(.*)")
-  file_name = file_name:gsub(".nvim", "")
-
-  vim.cmd("edit ~/.config/nvim/lua/plugins/" .. file_name .. ".lua")
-
-  local lines = {
-    "return {",
-    '  "' .. full_name .. '",',
-    "  opts = {},",
-    "}",
-  }
-
-  local id = vim.api.nvim_get_current_buf()
-
-  vim.api.nvim_buf_set_lines(id, 0, 0, false, lines)
-  vim.cmd("write")
-  vim.api.nvim_win_set_cursor(0, { 3, 10 })
-  -- vim.cmd("Lazy")
-end, { nargs = 1 })
-
 -- Close window is it is a floating window or if it not the last opened window in the current tab
 function _G.CloseWindowIfNotLast()
   local current_win_is_floating = vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= ""
