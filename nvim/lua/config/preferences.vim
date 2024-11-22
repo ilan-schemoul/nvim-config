@@ -31,7 +31,7 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * lua vim.b.focus_disable = true
 autocmd TermOpen * setlocal scrollback=10000
 autocmd TermOpen * setlocal nospell
-autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua _G.StartInsertIfBottom()
+autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua require("config/custom-commands").start_insert_if_bottom()
 
 set spelllang=en_us,programming,fr
 set spellcapcheck=no

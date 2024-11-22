@@ -1,6 +1,6 @@
 -- https://github.com/chrisgrieser/nvim-various-textobjs?tab=readme-ov-file#list-of-text-objects
 
-local get_tab_folder = require("config/utils").get_tab_folder
+local custom_commands = require("config/custom-commands")
 
 local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 local hjkl = { "h", "j", "k", "l" }
@@ -43,9 +43,9 @@ set("lx", "<cmd>Easypick conflicts<cr>")
 
 set("L", "<cmd>Lazy<cr>")
 
-set("o", _G.OpenFile)
-set(";", _G.OpenFileWithExtension)
-set(".", _G.OpenFileWithExtension)
+set("o", custom_commands.open_file)
+set(";", custom_commands.open_file_with_extension)
+set(".", custom_commands.open_file_with_extension)
 
 vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
 
@@ -56,11 +56,11 @@ set("bj", "<cmd>belowright split<cr>")
 set("bk", "<cmd>topleft split<cr>")
 set("bl", "<cmd>botright vs<cr>")
 set("bn", "<cmd>FocusSplitNicely<cr>")
-set("bx", _G.CloseBuffer)
+set("bx", custom_commands.close_buffer)
 
 set("N", "<cmd>set invrelativenumber | set invnumber<cr>")
 
-set("q", _G.CloseWindowIfNotLast)
+set("q", custom_commands.close_window_if_not_last)
 set("Q", "<cmd>qa!<cr>")
 set("R", "<cmd>Restart<cr>")
 
@@ -74,7 +74,7 @@ set("u", "<cmd>Telescope undo<cr>")
 set("tt", "<cmd>Telescope<cr>")
 set("tg", "<cmd>Telescope live_grep<cr>")
 setv("tg", function()
-  local selection_text = _G.getVisualSelection()
+  local selection_text = custom_commands.get_visual_selection()
   require('telescope.builtin').live_grep({ default_text = selection_text })
 end)
 set("tG", "<cmd>Telescope grep_string<cr>")
@@ -82,7 +82,7 @@ set("tr", "<cmd>Telescope resume<cr>")
 set("tz", "<cmd>Telescope buffers<cr>")
 set("tf", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 setv("tf", function()
-  local selection_text = _G.getVisualSelection()
+  local selection_text = custom_commands.get_visual_selection()
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = selection_text })
 end)
 set("tF", function()
@@ -105,7 +105,7 @@ set("tq", function() require("telescope.builtin").quickfix({
   path_display = { "smart" }
 }) end)
 
-set("pn", _G.OpenUnusedTermOrCreate)
+set("pn", custom_commands.open_unused_term_or_create)
 set("pN", "<cmd>term<cr>")
 set("ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pj", "<cmd>belowright split | lua _G.OpenUnusedTermOrCreate()<cr>")
@@ -141,9 +141,9 @@ set("nm", "<cmd>e ~/notes/memory.norg<cr>")
 set("nM", "<cmd>botright 30vnew ~/notes/memory.norg | set invrelativenumber | set invnumber<cr>")
 set("nl", "<cmd>Telescope find_files search_dirs={'~/notes'} follow=true<cr>")
 set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
-set("nn", _G.create_org_file)
+set("nn", custom_commands.create_org_file)
 -- ../plugins/venn.lua
-set("nd", ":lua Toggle_venn()<cr>")
+set("nd", custom_commands.toggle_venn)
 set("no", "<cmd>Noice<cr>")
 
 -- <space><backspace>
