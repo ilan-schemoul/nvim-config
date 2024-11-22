@@ -35,7 +35,6 @@ set("ls", "<cmd>Telescope lsp_workspace_symbols<cr>")
 set("lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
 set("ln", vim.lsp.buf.rename)
 set("la", vim.lsp.buf.code_action)
-set("lt", require("lsp_lines").toggle)
 -- ll set by ../plugins/smart-open.lua
 set("lc", "<cmd>Easypick changed_files<cr>")
 set("lC", "<cmd>Easypick changed_files_previous_commit<cr>")
