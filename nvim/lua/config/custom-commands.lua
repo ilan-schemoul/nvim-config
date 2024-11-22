@@ -132,6 +132,7 @@ M.open_unused_term_or_create = function()
   for _, buffer in ipairs(buffers) do
     local opened = vim.fn.bufwinnr(buffer) ~= -1
     local is_terminal = vim.bo[buffer].buftype == "terminal"
+    -- FIXME: Doesn't work anymore https://github.com/neovim/neovim/issues/31313
     -- NOTE: Fish set the term title to the current directory
     -- If it not the current directory then it is probably not fish
     local is_running = is_terminal and vim.fn.isdirectory(vim.fn.expand(vim.b[buffer].term_title)) == 0
@@ -219,21 +220,6 @@ vim.api.nvim_create_user_command("OpenSession", function(args)
   end
 end, { nargs = '?' })
 
-vim.api.nvim_create_user_command("StartProfile", function()
-  vim.cmd([[
-    profile start profile.log
-    profile func *
-    profile file *
-  ]])
-end, { nargs = 0 })
-
-vim.api.nvim_create_user_command("StopProfile", function()
-  vim.cmd([[
-    profile pause
-    noautocmd qall!
-  ]])
-end, { nargs = 0 })
-
 vim.api.nvim_create_user_command("Restart", function()
   local restart_exit_code = 22
   vim.cmd("cquit " .. restart_exit_code)
@@ -246,6 +232,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- Used by lazygit
 vim.api.nvim_create_user_command("FromFTToTab", function(args)
   local name = args.fargs[1]
 
@@ -256,10 +243,12 @@ vim.api.nvim_create_user_command("FromFTToTab", function(args)
       line = args.fargs[2]
     end
 
+    -- Close the popup with lazygit so I can see the opened file
     if vim.bo.filetype == "lazygit" then
       vim.cmd("q")
     end
 
+    -- Once the popup is closed "e" will open the file outside the popup
     vim.cmd("e +" .. line .. " " .. name)
   end
 end, { nargs = '+' })
