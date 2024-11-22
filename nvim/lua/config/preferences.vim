@@ -90,11 +90,5 @@ autocmd BufReadPost *
 
 set sessionoptions=buffers,curdir,folds,globals,help,tabpages,terminal,winsize
 
-set nofoldenable
-
-autocmd BufNewFile,BufRead *.iop set ft=iop
-
-autocmd FileType behave_log setlocal foldmethod=expr
-autocmd FileType behave_log setlocal foldexpr=getline(v:lnum)=~'.*When\\\|Then\\\|Given.*'?'>1':1
-" FIXME: currently disabled while fold is buggy
-" autocmd FileType behave_log setlocal foldenable
+set nofoldenable " By default open all folds
+set foldmethod=marker " {{{/}}}
