@@ -51,21 +51,24 @@ vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
 
 set("A", "<cmd>NodeAction<cr>")
 
+-- Open a new window with same file as current buffer
 set("bh", "<cmd>vsplit<cr>")
 set("bj", "<cmd>belowright split<cr>")
 set("bk", "<cmd>topleft split<cr>")
 set("bl", "<cmd>botright vs<cr>")
-set("bn", "<cmd>FocusSplitNicely<cr>")
 set("bx", custom_commands.close_buffer)
 
 set("N", "<cmd>set invrelativenumber | set invnumber<cr>")
 
+-- Close current buffer
 set("q", custom_commands.close_window_if_not_last)
+-- Close neovim
 set("Q", "<cmd>qa!<cr>")
 set("R", "<cmd>Restart<cr>")
 
 set("m", "<cmd>Mason<cr>")
 
+-- Echo current file
 set("F", "<cmd>echo @%<cr>")
 
 set("u", "<cmd>Telescope undo<cr>")
@@ -78,6 +81,7 @@ setv("tg", function()
   require('telescope.builtin').live_grep({ default_text = selection_text })
 end)
 set("tG", "<cmd>Telescope grep_string<cr>")
+-- Reopen last search (so useful)
 set("tr", "<cmd>Telescope resume<cr>")
 set("tz", "<cmd>Telescope buffers<cr>")
 set("tf", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
@@ -89,9 +93,9 @@ set("tF", function()
   local word = vim.fn.expand('<cword>')
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = word })
 end)
-set("ts", "<cmd>Telescope git_status<cr>")
 set("tb", require("telescope").extensions.git_file_history.git_file_history)
 
+-- Switch to tab 4 with <leader>t4
 for i = 0, 9 do
   if os.getenv("KEYBOARD_FR") then
     set("t" .. fr[i + 1], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
@@ -106,22 +110,24 @@ set("tq", function() require("telescope.builtin").quickfix({
 }) end)
 
 set("pn", custom_commands.open_unused_term_or_create)
-set("pN", "<cmd>term<cr>")
 set("ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pj", "<cmd>belowright split | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pk", "<cmd>topleft split | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pl", "<cmd>botright vs | lua _G.OpenUnusedTermOrCreate()<cr>")
-set("pH", "<cmd>vsplit | term <cr>")
-set("pJ", "<cmd>belowright split | term <cr>")
-set("pK", "<cmd>topleft split | term <cr>")
-set("pL", "<cmd>botright vs | term <cr>")
+
+-- Repeat last command (very useful)
 set("pr", "<cmd>SendToTerm !!<cr>")
 set("ps", "<cmd>SendToTerm<cr>")
 
+-- If you juste do "p" and the text in the clipboard has no newline
+-- then it will paste it in the middle of the current line.
+-- With these keymaps it will always paste on a new line.
+--
+-- Paste in the line after the current line
 set("pp", "<cmd>put<cr>")
+-- Paste in the line before current line
 set("pP", "<cmd>put!<cr>")
 
--- tc is set by ../plugins/scope.lua
 set("tn", "<cmd>tabnew<cr>")
 set("tx", "<cmd>tabclose<cr>")
 set("tl", "<cmd>tabnext<cr>")
@@ -129,7 +135,6 @@ set("th", "<cmd>tabprevious<cr>")
 set("tL", "<cmd>+tabmove<cr>")
 set("tH", "<cmd>-tabmove<cr>")
 
-set("vc", "<cmd>next ~/.config/nvim/init.lua<cr>")
 set("vp", "<cmd>next ~/.config/nvim/lua/plugins<cr>")
 set("vm", "<cmd>next ~/.config/nvim/lua/config/mappings.lua<cr>")
 set("vg", "<cmd>Telescope live_grep search_dirs=~/.config/nvim<cr>")
@@ -142,7 +147,7 @@ set("nM", "<cmd>botright 30vnew ~/notes/memory.norg | set invrelativenumber | se
 set("nl", "<cmd>Telescope find_files search_dirs={'~/notes'} follow=true<cr>")
 set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
 set("nn", custom_commands.create_org_file)
--- ../plugins/venn.lua
+-- ../plugins/venn.lua (draw diagram in ASCII)
 set("nd", custom_commands.toggle_venn)
 set("no", "<cmd>Noice<cr>")
 
@@ -153,16 +158,20 @@ set("<BS>", "<cmd>Noice dismiss<cr>")
 set("sc", "1z=")
 -- Can't use <leader>sl as it is used by for TS swapping
 set("s=", "<cmd>CustomTelescopeSpellSuggest<cr>")
+-- Repeat last correction (<leader>sc)
 set("sr", "<cmd>spellr<cr>")
+-- Good, add to dict
 set("sg", "zg")
+-- Wrong word, remove from dict
 set("sw", "zw")
 set("sb", "zw")
 
+-- Open the extremely useful quickfix list (enhanced via bqf btw)
 set("io", "<cmd>copen<cr>")
--- TODO: add load buffer (possibly with better formatting text)
 set("ij", "<cmd>cnext<cr>")
 set("ik", "<cmd>cprev<cr>")
 
+-- Lazygit (incredibly good)
 -- We also disable jk (houdini) for lazygit
 set("go", function()
   local path = vim.fn.expand('%:h')
@@ -184,6 +193,8 @@ set("go", function()
     end
   })
 end)
+-- Add ^ to escape Lazygit (hj is used for navigation so I disabled it in lazygit)
+-- NOTE: on some azerty ^ is a dead key so you gotta press it twice
 vim.api.nvim_create_autocmd({
     "FileType",
   },
@@ -195,18 +206,13 @@ vim.api.nvim_create_autocmd({
         vim.fn.feedkeys("gg")
         vim.fn.feedkeys("^") -- beginning of the sentence
       end, { buffer = true })
-
-      vim.keymap.set("t", "^^", function()
-        vim.cmd("stopinsert")
-        vim.fn.feedkeys("gg")
-        vim.fn.feedkeys("^") -- beginning of the sentence
-      end, { buffer = true })
     end
   })
 set("gq", require("config/gerrit-quickfix").load_interactive_input)
 -- gb set by ../plugins/blame.lua
 
 for _, key in ipairs(hjkl) do
+  -- Focus window (e.g: <A-l> focus right window)
   vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
 
   -- Move window
@@ -216,17 +222,24 @@ end
 
 if os.getenv("KEYBOARD_FR") then
   for i = 0, 9 do
-    -- WORKAROUND: use noremap instead of vim.keymap.set as otherwise motions
+    -- HACK: use noremap instead of vim.keymap.set as otherwise motions
     -- such as d"j (d3j) does not work
     vim.cmd("noremap <silent> " .. fr[i + 1] .. " " .. tostring(i))
     vim.cmd("noremap <silent> " .. tostring(i) .. " " .. fr[i + 1])
-    -- vim.keymap.set("n", fr[i], tostring(i), { remap = false, silent = true })
-    -- vim.keymap.set("n", tostring(i), fr[i], { remap = false })
   end
 end
 
+-- HACK: ugly hack to clear the terminal (can help with lag)
 vim.keymap.set("t", "<C-q>", "<c-\\><c-n><cmd>set scrollback=1 | sleep 100m | set scrollback=10000<cr>")
 
+-- Move in insert mode with <C-hjkl> (very useful)
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-l>", "<Right>")
+vim.keymap.set("i", "<C-j>", "<Down>")
+
+-- Azerty keyboard support being what it is I need these to have
+-- similar experience to qwerty
 vim.cmd([[
   " Custom env variable
   if !empty($KEYBOARD_FR)
@@ -234,10 +247,6 @@ vim.cmd([[
   endif
 
   noremap <C--> <C-^>
+  " Does not work with every azerty keyboards for some reason
   tmap <C-^> <C-\><C-N><C-^>
-
-  inoremap <C-k> <Up>
-  inoremap <C-h> <Left>
-  inoremap <C-l> <Right>
-  inoremap <C-j> <Down>
 ]])
