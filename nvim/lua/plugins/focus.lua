@@ -1,3 +1,4 @@
+-- Show absolute number if not focused. Relative otherwise.
 return {
   "nvim-focus/focus.nvim",
   opts = {
