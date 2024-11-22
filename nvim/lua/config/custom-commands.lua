@@ -1,4 +1,5 @@
 local utils = require("config/utils")
+local M = {}
 
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   callback = function(args)
@@ -11,7 +12,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 })
 
 -- Close window is it is a floating window or if it not the last opened window in the current tab
-function _G.CloseWindowIfNotLast()
+M.close_window_if_not_last = function()
   local current_win_is_floating = vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= ""
 
   if current_win_is_floating then
@@ -31,7 +32,7 @@ function _G.CloseWindowIfNotLast()
   end
 end
 
-function _G.create_org_file()
+M.create_org_file = function()
   local dirman = require("neorg").modules.get_module("core.dirman")
   local file = vim.fn.input("File : ", "", "file")
 
@@ -41,6 +42,7 @@ function _G.create_org_file()
   })
 end
 
+-- TODO: make a pull request to the extension
 local function open_file(is_extension)
   local history = require("telescope._extensions.smart_open.history")
   local history_result, max_score = history:get_all()
@@ -79,11 +81,11 @@ local function open_file(is_extension)
   end
 end
 
-function _G.OpenFileWithExtension()
+M.open_file_with_extension = function()
   open_file(true)
 end
 
-function _G.OpenFile()
+M.open_file = function()
   open_file(false)
 end
 
@@ -91,7 +93,7 @@ end
 -- to the bottom. The reason I do that is that often I want to be in insert
 -- mode except if my cursor is "far" from the end of the buffer. Because in
 -- that case I purposefully scrolled to a specific line.
-function _G.StartInsertIfBottom()
+M.start_insert_if_bottom = function()
   local total_number_of_lines = vim.fn.line("$")
   local current_line = vim.fn.line(".")
 
@@ -100,7 +102,7 @@ function _G.StartInsertIfBottom()
   end
 end
 
-function _G.CloseBuffer()
+M.close_buffer = function()
   if vim.startswith(vim.fn.expand("%"), "term://") then
     -- Closing buffer without closing window
     vim.cmd("bp|sp|bn|bd!")
@@ -121,7 +123,7 @@ vim.api.nvim_create_autocmd("TermClose", {
   end,
 })
 
-function _G.OpenUnusedTermOrCreate()
+M.open_unused_term_or_create = function()
   -- Get local buffers ? How
   local buffers = vim.api.nvim_list_bufs()
 
@@ -142,6 +144,8 @@ function _G.OpenUnusedTermOrCreate()
 
   vim.cmd(":term")
 end
+
+_G.OpenUnusedTermOrCreate = M.open_unused_term_or_create
 
 local function enable_venn_silent()
   vim.cmd([[setlocal ve=all]])
@@ -178,7 +182,7 @@ local function disable_venn()
   vim.b.venn_enabled = nil
 end
 
-function _G.Toggle_venn()
+M.toggle_venn = function()
   local venn_enabled = vim.inspect(vim.b.venn_enabled)
 
   if venn_enabled == "nil" then
@@ -258,7 +262,7 @@ vim.api.nvim_create_user_command("FromFTToTab", function(args)
   end
 end, { nargs = '+' })
 
-function _G.getVisualSelection()
+M.get_visual_selection = function()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg('v')
   vim.fn.setreg('v', {})
@@ -270,3 +274,5 @@ function _G.getVisualSelection()
     return ''
   end
 end
+
+return M
