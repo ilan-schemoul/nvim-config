@@ -1,30 +1,18 @@
 source /srv/tools/share/dotfiles/vim/syntax/c.vim
+
 " Appending to path means letting priority to what is already in other
 " folders of the path.
+" We want the node already in path (what is sourced by the virtual
+" environnement) takes precedence over node 20. But then otherwise I want
+" modern node for LSP etc.
 let $PATH = $PATH . '/home/ilan/.bin/node-v20.13.1-linux-x64/bin'
 
 lua vim.filetype.add({ extension = { blk = 'c' } })
 
 autocmd BufNewFile,BufRead wscript_build set filetype=python
-
 au BufRead,BufNewFile behave_logs set filetype=behave_log
-au BufRead,BufNewFile behave.log set filetype=behave_log
 
-function! ReloadFilesAutomatically() abort
-    if &ft=='behave_log'
-        let l:winview = winsaveview()
-        checktime
-        call winrestview(l:winview)
-    end
-endfunction
-
-augroup reload
-    autocmd!
-    autocmd CursorHold,FocusGained,BufEnter * call ReloadFilesAutomatically()
-augroup END
-
-" call timer_start(1000, function('s:reload_logs'), {'repeat': -1})
-autocmd BufNewFile,BufRead behave_steps_output set ft=cucumber
+autocmd BufNewFile,BufRead *.iop set ft=iop
 
 " Compilation
 set makeprg=LC_ALL=C\ make\ MONOCHROME=1
@@ -39,7 +27,6 @@ set softtabstop=4
 set expandtab
 set textwidth=0
 set shiftwidth=4
-
 set colorcolumn=78
 " Enables breaking new lines automatically
 autocmd FileType c,python,asciidoc set textwidth=78
@@ -76,7 +63,6 @@ function! AsciidocLevel()
     endif
     return "="
 endfunction
-set foldmethod=marker " {{{/}}}
 au BufRead,BufNewFile *.adoc setlocal foldexpr=AsciidocLevel()
 au BufRead,BufNewFile *.adoc setlocal foldmethod=expr
 set foldlevel=99
@@ -94,5 +80,3 @@ let g:localvimrc_sandbox = 0
 
 " Whitelist ~/dev, which must contains all our repositories
 let g:localvimrc_whitelist = $HOME.'/dev/'
-
-map <Leader>gf :G push-for<cr>
