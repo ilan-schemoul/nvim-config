@@ -34,9 +34,10 @@ return {
         -- diff current branch with base_branch and show files that changed with respective diffs in preview
         {
           name = "changed_files",
-          command = "git diff --name-only",
+          command = "git diff --name-only HEAD",
           previewer = easypick.previewers.file_diff()
         },
+
 
         {
           name = "changed_files_previous_commit",
