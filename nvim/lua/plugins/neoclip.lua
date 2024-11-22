@@ -6,5 +6,6 @@ return {
   },
   config = function()
     require('telescope').load_extension('neoclip')
+    -- FIXME: neoclip doesn't work
   end,
 }
