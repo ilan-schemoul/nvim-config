@@ -167,7 +167,7 @@ set("ik", "<cmd>cprev<cr>")
 set("go", function()
   local path = vim.fn.expand('%:h')
 
-  if path:find("term://") or not vim.fn.filereadable(path) then
+  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
     path = vim.fn.getcwd()
   end
 
