@@ -11,6 +11,8 @@ Prioritize very important (I actually really need it) and easy to do.
   -- ( ) pylint nvim/lua/plugins/lint.lua
 * Somewhat important
   - ( ) When "abc" NO|PE "bcd" => select bcd not NOPE
+  - ( ) warn when modifying file other window pwd
+  - ( ) notify new release ?
   - ( ) Norg being almost only white randomly (super annoying and ugly)
   - ( ) NOT VIM: https://github.com/tummychow/git-absorb
   - ( ) Refactoring : remove all useless code/plugins
