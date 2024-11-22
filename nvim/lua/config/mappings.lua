@@ -1,4 +1,6 @@
+-- NOTE: nvim-various-textobjs adds many text objects
 -- https://github.com/chrisgrieser/nvim-various-textobjs?tab=readme-ov-file#list-of-text-objects
+-- NOTE: Many mappings defined inside plugins (grep "keys =" to find those)
 
 local custom_commands = require("config/custom-commands")
 
@@ -12,8 +14,6 @@ end
 local function setv(keys, cmd)
   vim.keymap.set("v", "<leader>" .. keys, cmd)
 end
-
--- Many mappings defined inside plugins (grep "keys =" to find those)
 
 set("[d", function()
   vim.diagnostic.goto_prev({
@@ -30,7 +30,7 @@ set("lD", vim.diagnostic.open_float)
 set("lh", vim.lsp.buf.hover)
 set("li", "<cmd>Telescope lsp_references<cr>")
 set("ld", "<cmd>Telescope lsp_definitions<cr>")
-set("lb", "<cmd>Telescope diagnostic<cr>")
+set("lb", "<cmd>Telescope diagnostics<cr>")
 set("ls", "<cmd>Telescope lsp_workspace_symbols<cr>")
 set("lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
 set("ln", vim.lsp.buf.rename)
