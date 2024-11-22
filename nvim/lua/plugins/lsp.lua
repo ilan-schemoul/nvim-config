@@ -5,7 +5,6 @@ return {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "RubixDev/mason-update-all",
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     },
     config = function(_, _)
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
