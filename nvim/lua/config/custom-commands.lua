@@ -110,8 +110,10 @@ M.close_buffer = function()
     -- Closing buffer without closing window
     vim.cmd("bp|sp|bn|bd")
   end
+  -- TODO: close buffer without closing tab
 end
 
+-- Close buffer if the terminal is closed
 vim.api.nvim_create_autocmd("TermClose", {
   pattern = "*",
   callback = function()
