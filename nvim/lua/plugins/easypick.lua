@@ -37,7 +37,11 @@ return {
           command = "git diff --name-only HEAD",
           previewer = easypick.previewers.file_diff()
         },
-
+        {
+          name = "new_files",
+          command = "git ls-files --others --exclude-standard",
+          previewer = easypick.previewers.default()
+        },
 
         {
           name = "changed_files_previous_commit",

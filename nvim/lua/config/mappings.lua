@@ -37,6 +37,7 @@ set("ln", vim.lsp.buf.rename)
 set("la", vim.lsp.buf.code_action)
 -- ll set by ../plugins/smart-open.lua
 set("lc", "<cmd>Easypick changed_files<cr>")
+set("lf", "<cmd>Easypick new_files<cr>")
 set("lC", "<cmd>Easypick changed_files_previous_commit<cr>")
 set("lx", "<cmd>Easypick conflicts<cr>")
 
