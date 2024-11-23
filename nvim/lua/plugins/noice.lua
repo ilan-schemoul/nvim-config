@@ -50,7 +50,7 @@ return {
       filter = { event = "msg_show" },
     },
 
-    routes = require("utils/noice-routes"),
+    routes = require("config/noice-routes"),
   },
   dependencies = {
     "MunifTanjim/nui.nvim",
