@@ -25,7 +25,13 @@ return {
         disable = function(_, buf)
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           local utils = require("config/utils")
-          if ok and stats and stats.size > utils.max_treesitter_filesize then
+
+          if not ok then
+            vim.notify("Cannot get stats for " + vim.api.nvim_buf_get_name(buf), vim.log.levels.DEBUG)
+            return true
+          end
+
+          if stats and stats.size > utils.max_treesitter_filesize then
             return true
           end
         end,
