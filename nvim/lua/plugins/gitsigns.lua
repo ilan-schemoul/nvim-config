@@ -1,11 +1,12 @@
 return {
-  "lewis6991/gitsigns.nvim",
+  "ilan-schemoul/gitsigns.nvim",
   cmd = "Gitsigns",
   event = "VimEnter",
   opts = {
     signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
     numhl = true,
     linehl = false,
+    staged_highlight_derivative_factor = 0.7,
   },
   keys = {
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>" },
