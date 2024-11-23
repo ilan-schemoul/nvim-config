@@ -11,7 +11,7 @@ set termguicolors
 
 colorscheme catppuccin-macchiato
 
-" More bright than default one
+" More bright than the default one
 highlight DiffChange guibg=#2b3148
 " Less bright than default one
 highlight ColorColumn ctermbg=0 guibg=#212337
@@ -19,8 +19,6 @@ highlight CursorLineNr guifg=#aaaaaa
 highlight GitSignsAdd guifg=#4d783f
 highlight GitSignsDelete guifg=#79323d
 highlight GitSignsChange guifg=#9c9d0d
-" White instead of Yellow
-highlight DashboardFooter cterm=italic gui=italic guifg=#6e738d
 
 " nocopy when pasting
 xnoremap <expr> p 'pgv"' . v:register . 'y'
