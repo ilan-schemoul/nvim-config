@@ -10,14 +10,6 @@ M.buffer_is_in_tab = function(buffer_to_find)
   return is_in_tab
 end
 
-M.check_libXfixes = function()
-  if vim.fn.file_readable("/usr/include/X11/extensions/Xfixes.h") == 0 then
-    return false
-  end
-
-  return true
-end
-
 M.get_tab_folder = function(tab_nr)
   local success, full_path = pcall(vim.fn.getcwd, -1, tab_nr)
 
@@ -42,10 +34,6 @@ end
 
 M.is_intersec = function()
   return os.getenv("IS_INTERSEC") == "true"
-end
-
-M.is_not_intersec = function()
-  return not M.is_intersec()
 end
 
 return M
