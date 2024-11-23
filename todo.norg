@@ -5,7 +5,6 @@ Reguarly read this and clean things up.
   Also check {:/home/ilan/notes/technical_todo:} if at work
   Also check other sections (like LSP and Plugins) below
 
-  - ( ) fix open a terminal (justin answered me how to do it)
   - ( ) fish: check correct worktree opened (symbolic link to current vim tab)
   - ( ) Quickfix for waf
   - (!) Intersec related

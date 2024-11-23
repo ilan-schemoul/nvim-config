@@ -125,21 +125,27 @@ vim.api.nvim_create_autocmd("TermClose", {
   end,
 })
 
+-- Solution given by Justin himself !
+local function terminal_is_available(buffer)
+    local is_terminal = vim.bo[buffer].buftype == "terminal"
+    if not is_terminal then
+      return false
+    end
+
+    local channel = vim.bo[buffer].channel
+    local child_process = vim.api.nvim_get_proc_children(vim.fn.jobpid(channel))
+    local child_process_nb = vim.tbl_count(child_process)
+
+    return child_process_nb == 0
+end
+
 M.open_unused_term_or_create = function()
-  -- Get local buffers ? How
   local buffers = vim.api.nvim_list_bufs()
 
   for _, buffer in ipairs(buffers) do
     local opened = vim.fn.bufwinnr(buffer) ~= -1
-    local is_terminal = vim.bo[buffer].buftype == "terminal"
-    -- FIXME: Doesn't work anymore https://github.com/neovim/neovim/issues/31313
-    -- NOTE: Fish set the term title to the current directory
-    -- If it not the current directory then it is probably not fish
-    local is_running = is_terminal and vim.fn.isdirectory(vim.fn.expand(vim.b[buffer].term_title)) == 0
-    local is_in_tab = utils.buffer_is_in_tab(buffer)
 
-    -- If we find a terminal not currently visible in the current tab reuse it
-    if is_terminal and not opened and not is_running and is_in_tab then
+    if not opened and utils.buffer_is_in_tab(buffer) and terminal_is_available(buffer) then
       vim.cmd(":buffer " .. buffer)
       return
     end
