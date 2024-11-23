@@ -115,6 +115,8 @@ return {
 
             return {
               line.sep(" ", hl, theme.fill),
+              -- TODO: make tab name customisable again
+              -- TODO: if worktree show branch name
               get_tab_folder(line.api.get_tab_number(tab.id)),
               line.sep(" ", hl, theme.fill),
               hl = hl,
