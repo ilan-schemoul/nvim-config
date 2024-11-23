@@ -3,14 +3,17 @@ return {
   opts = {
     mappings = { "hj" },
     excluded_filetypes = { "lazygit" },
+    -- A plugin so hj can escape insert as well as terminal mode.
+    -- Unlike some other methods there is no lagging associated to typing h.
     escape_sequences = {
         ['i']    = '<BS><BS><ESC>',        -- insert mode
         ['ic']   = '<BS><BS><ESC>',
         ['ix']   = '<BS><BS><ESC>',
 
         ['t'] = '<BS><BS><C-\\><C-n>', -- terminal mode
-        ['c'] = '',       -- command line mode
 
+        -- NOTE: disable everything else
+        ['c'] = '',       -- command line mode
         ['R']    = '', -- replace mode
         ['Rc']   = '',
         ['Rx']   = '',
@@ -31,8 +34,6 @@ return {
         ['s']  = '',
         ['S']  = '',
         [''] = '',
-
-        -- this is obviously a "hack" and will not work with inputs longer than 100 characters, but it should cover the majority of cases in Ex mode
         ['cv']  = '',
       },
   },

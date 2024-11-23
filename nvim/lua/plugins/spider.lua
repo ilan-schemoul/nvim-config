@@ -1,3 +1,4 @@
+-- Improve w/e/b by skipping punctuation
 return {
   "chrisgrieser/nvim-spider",
   keys = {
@@ -7,6 +8,8 @@ return {
       { "cw", "ce", mode = { "n", "o", "x" }, remap = true },
   },
   opts = {
+      -- subwords is to move inside variables names (greatFriend w will go to F instead
+      -- of next word). I don't want that.
       subwordMovement = false,
   },
 }

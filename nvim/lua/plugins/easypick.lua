@@ -8,10 +8,8 @@ return {
     local easypick = require("easypick")
     local previewers = require "telescope.previewers"
     local putils = require "telescope.previewers.utils"
-    local from_entry = require "telescope.from_entry"
-    local conf = require("telescope.config").values
 
-    local diff_previous_commit = function (opts)
+    local diff_previous_commit = function ()
       return previewers.new_buffer_previewer {
         title = "Git Previous Commit Diff Preview",
         get_buffer_by_name = function(_, entry)

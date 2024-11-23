@@ -1,3 +1,6 @@
+-- This plugin is kinda experimental. It's not reliable and works only on a few platform
+-- and you have to have magic installed.
+-- Works better with Kitty (specific protocol)
 return {
   "3rd/image.nvim",
   -- Also need magic on the system (sudo apt install libmagickwand-dev)

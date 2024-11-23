@@ -27,6 +27,7 @@ set softtabstop=4
 set expandtab
 set textwidth=0
 set shiftwidth=4
+" Also update nvim/lua/plugins/smartcolumn.lua
 set colorcolumn=78
 " Enables breaking new lines automatically
 autocmd FileType c,python,asciidoc set textwidth=78

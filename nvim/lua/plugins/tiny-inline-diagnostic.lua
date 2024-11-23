@@ -1,3 +1,4 @@
+-- Cool plugins to see LSP warnings/errors in the file
 return {
   "rachartier/tiny-inline-diagnostic.nvim",
   event = "VeryLazy",
