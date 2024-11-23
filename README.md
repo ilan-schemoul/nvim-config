@@ -28,3 +28,15 @@ kind of a shame coq is faster thanks to a ton of optimizations but close to unus
     - [plenary.profile](https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file) (wrapper around lua profiler)
     - profile.nvim (self described pile of hack)
     - perfanno to open the resulting trace file
+
+# Treesitter
+
+TS is cool but kinda slow. Async can help when it will land https://github.com/neovim/neovim/pull/22420
+
+Many plugins have poor support. Queries support for C is terrible (I added mine). Every parser
+update can break query. Parser must be compiled manually (WASM support in 0.11 might fix that).
+
+Things like textobjects, swap etc. are really cool but very slow so I can't use it at work (files over 5K lines...).
+
+Basically a cool beta but I'll have to wait at least nvim 0.11 to have TS 1.0 support https://github.com/neovim/neovim/issues/22313
+before it's usable.
