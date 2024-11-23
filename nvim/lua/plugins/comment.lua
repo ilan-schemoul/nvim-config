@@ -1,4 +1,3 @@
--- TODO: With 0.10 comes native comment support
 return {
     "ilan-schemoul/Comment.nvim",
     -- dir = "~/code/forks/Comment.nvim",
@@ -6,6 +5,7 @@ return {
     opts = {
         padding = true,
         sticky = true,
+        -- NOTE: my fork adds this
         only_block_ft = { 'c' },
         toggler = {
             line = "<leader>cc",

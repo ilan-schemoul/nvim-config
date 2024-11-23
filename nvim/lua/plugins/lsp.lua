@@ -9,6 +9,8 @@ return {
     config = function(_, _)
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      -- NOTE: At work we have virtual env with sometimes old node. Old node
+      -- don't work with LSP.
       local path = "/home/ilan/.nvm/versions/node/v16.20.2/bin"
       local cmd_env = { PATH = path .. ":" .. vim.env.PATH }
 

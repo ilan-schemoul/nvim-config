@@ -1,5 +1,6 @@
 return {
   "chrishrb/gx.nvim",
+  -- Search on the internet
   keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
   cmd = { "Browse" },
   init = function()

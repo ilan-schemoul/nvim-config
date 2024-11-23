@@ -6,6 +6,8 @@ return {
     signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
     numhl = true,
     linehl = false,
+    -- NOTE: my fork adds this. The (rude) owner of the plugin refuses
+    -- features so I have a gh action to sync my fork with his repo.
     staged_highlight_derivative_factor = 0.7,
   },
   keys = {

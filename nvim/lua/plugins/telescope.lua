@@ -28,6 +28,7 @@ return {
           "--line-number",
           "--column",
           "--smart-case",
+          -- NOTE: this is what I added compared to Telescope defaults
           "--multiline",
         },
         mappings = {
@@ -35,6 +36,10 @@ return {
             ["<C-v>"] = "file_vsplit",
             ["<C-s>"] = "file_split",
             ["<C-x>"] = actions.delete_buffer,
+            -- NOTE: this a extremely useful thing I made to search over
+            -- multiples lines. If you wanna search where in the code you can
+            -- find ABC and then a few lines after (10 maximum) XYZ:
+            -- Type ABC then <C-i> then type 10 then <C-i> then tpye ABC.
             ["<C-i>"] = function(bufnr)
               local picker = action_state.get_current_picker(bufnr)
               local prompt = picker:_get_prompt()
