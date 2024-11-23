@@ -208,7 +208,6 @@ vim.api.nvim_create_autocmd({
       end, { buffer = true })
     end
   })
-set("gq", require("config/gerrit-quickfix").load_interactive_input)
 -- gb set by ../plugins/blame.lua
 
 for _, key in ipairs(hjkl) do
