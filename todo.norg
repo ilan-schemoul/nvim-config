@@ -11,10 +11,8 @@ Reguarly read this and clean things up.
   -- ( ) Import things from /srv/tools/../vim fold and others
   -- ( ) How enable linter like in vim in fr_FR.utf8.po
 * Somewhat important
-  - ( ) Optimize the treesitter move thing
   - ( ) Fix define in libs when openeed neovim
   - ( ) Add shortcut to open code in gerrit
-  - ( ) warn when modifying file other window pwd
   - ( ) Norg bug colors https://github.com/nvim-neorg/neorg/issues/1608
   - ( ) Not vim: try https://github.com/tummychow/git-absorb
   - (-) Fix buffer terminal appearing as multiple lines (if a word/line is cut in half,
