@@ -1,3 +1,89 @@
+local Job = require("plenary.job")
+local rebase_merge = false
+local rebase_apply = false
+local current_tab_nr = -1
+
+local function hide_tabs_when_possible()
+    local windows = vim.tbl_filter(function(win)
+      local buftype = vim.bo[vim.api.nvim_win_get_buf(win)].buftype
+      -- normal
+      return buftype == "" or buftype == "terminal"
+    end, vim.api.nvim_list_wins())
+
+    if not require("true-zen.ataraxis").running then
+      -- If there is only one window then only show tab when there are multiple tabs
+      if #windows == 1 then
+        vim.o.showtabline=1
+        -- If there are multiple windows then show tabline even if there is only one tab
+      else
+        vim.o.showtabline=2
+      end
+    end
+end
+
+local function check_file_exist(folder, line, check)
+  Job:new({
+    command = "test",
+    args = { "-d", line },
+    cwd = folder,
+    on_exit = function(_, code)
+      if check == "rebase-merge" then
+        rebase_merge = code == 0
+      elseif check == "rebase-apply" then
+        rebase_apply = code == 0
+      end
+    end,
+  }):start()
+end
+
+local function update_git_state_async()
+  if current_tab_nr == -1 then
+    return
+  end
+
+  local folder = vim.fn.getcwd(-1, current_tab_nr)
+
+  Job:new({
+    command = "git",
+    args = { "rev-parse", "--git-path", "rebase-merge" },
+    cwd = folder,
+    on_stdout = function(_, line)
+      if line then
+        check_file_exist(folder, line, "rebase-merge")
+      end
+    end,
+    on_exit = function(_, code)
+      if code ~= 0 then
+        rebase_merge = false
+      end
+    end,
+  }):start()
+
+  Job:new({
+    command = "git",
+    args = { "rev-parse", "--git-path", "rebase-apply" },
+    cwd = folder,
+    on_stdout = function(_, line)
+      if line then
+        check_file_exist(folder, line, "rebase-apply")
+      end
+    end,
+    on_exit = function(_, code)
+      if code ~= 0 then
+        rebase_merge = false
+      end
+    end,
+  }):start()
+
+  return true
+end
+
+local function is_file_outside_pwd()
+  local pwd = vim.fn.getcwd()
+  local path = vim.api.nvim_buf_get_name(0)
+  return vim.bo.buftype == "" and path:find(pwd) == nil
+end
+
 return {
   "nanozuki/tabby.nvim",
   event = "VimEnter",
@@ -6,11 +92,6 @@ return {
     vim.o.showtabline = 2
   end,
   config = function()
-    local Job = require("plenary.job")
-    local rebase_merge = false
-    local rebase_apply = false
-    local current_tab_nr = -1
-
     local theme = {
       current = { fg = "#cad3f5", bg = "transparent", style = "bold" },
       rebase = { fg = "#6f3faf", bg = "transparent" },
@@ -18,63 +99,6 @@ return {
 
       fill = { bg = "transparent" },
     }
-
-    local function check_file_exist(folder, line, check)
-      Job:new({
-        command = "test",
-        args = { "-d", line },
-        cwd = folder,
-        on_exit = function(_, code)
-          if check == "rebase-merge" then
-            rebase_merge = code == 0
-          elseif check == "rebase-apply" then
-            rebase_apply = code == 0
-          end
-        end,
-      }):start()
-    end
-
-    local function update_git_state_async()
-      if current_tab_nr == -1 then
-        return
-      end
-
-      local folder = vim.fn.getcwd(-1, current_tab_nr)
-
-      Job:new({
-        command = "git",
-        args = { "rev-parse", "--git-path", "rebase-merge" },
-        cwd = folder,
-        on_stdout = function(_, line)
-          if line then
-            check_file_exist(folder, line, "rebase-merge")
-          end
-        end,
-        on_exit = function(_, code)
-          if code ~= 0 then
-            rebase_merge = false
-          end
-        end,
-      }):start()
-
-      Job:new({
-        command = "git",
-        args = { "rev-parse", "--git-path", "rebase-apply" },
-        cwd = folder,
-        on_stdout = function(_, line)
-          if line then
-            check_file_exist(folder, line, "rebase-apply")
-          end
-        end,
-        on_exit = function(_, code)
-          if code ~= 0 then
-            rebase_merge = false
-          end
-        end,
-      }):start()
-
-      return true
-    end
 
     local get_tab_folder = require("config/utils").get_tab_folder
     local tabby = require("tabby.tabline")
@@ -89,6 +113,10 @@ return {
           line.spacer(),
           line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
             local hl = win.is_current() and theme.current or theme.not_current
+
+            if win.is_current() and is_file_outside_pwd() then
+              hl = { fg = "red", bg = "transparent" }
+            end
 
             return {
               line.sep(" ", hl, theme.fill),
@@ -138,30 +166,17 @@ return {
     local ms = 1
     local s = 1000 * ms
     -- Tabby already rerenders frequently the tab. But if there's no activity
-    -- it doesn't do anything. So we make sure AT LEAST every 10s it's refreshed.
+    -- it doesn't do anything. So we make sure AT LEAST every x seconds it's refreshed.
     timer = vim.uv.new_timer()
-    timer:start(0, 10 * s, vim.schedule_wrap(require("tabby").update))
+    timer:start(0, 2 * s, vim.schedule_wrap(require("tabby").update))
 
     timer = vim.uv.new_timer()
-    timer:start(0, 400 * ms, vim.schedule_wrap(update_git_state_async))
+    timer:start(0, 300 * ms, vim.schedule_wrap(update_git_state_async))
 
     timer = vim.uv.new_timer()
-    timer:start(0, 1 * s, vim.schedule_wrap(function()
-      local windows = vim.tbl_filter(function(win)
-        local buftype = vim.bo[vim.api.nvim_win_get_buf(win)].buftype
-        -- normal
-        return buftype == "" or buftype == "terminal"
-      end, vim.api.nvim_list_wins())
+    timer:start(0, 300 * ms, vim.schedule_wrap(hide_tabs_when_possible))
 
-      if not require("true-zen.ataraxis").running then
-        -- If there is only one window then only show tab when there are multiple tabs
-        if #windows == 1 then
-          vim.o.showtabline=1
-          -- If there are multiple windows then show tabline even if there is only one tab
-        else
-          vim.o.showtabline=2
-        end
-      end
-    end))
+    timer = vim.uv.new_timer()
+    timer:start(0, 300 * ms, vim.schedule_wrap(is_file_outside_pwd))
   end,
 }
