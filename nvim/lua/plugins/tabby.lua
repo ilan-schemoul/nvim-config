@@ -94,8 +94,9 @@ return {
   config = function()
     local theme = {
       current = { fg = "#cad3f5", bg = "transparent", style = "bold" },
-      rebase = { fg = "#6f3faf", bg = "transparent" },
+      rebase = { fg = "#9f54ec", bg = "transparent" },
       not_current = { fg = "#5b6078", bg = "transparent" },
+      outside_pwd = { fg = "red", bg = "transparent" },
 
       fill = { bg = "transparent" },
     }
@@ -112,10 +113,18 @@ return {
           },
           line.spacer(),
           line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-            local hl = win.is_current() and theme.current or theme.not_current
+            local hl = {}
 
-            if win.is_current() and is_file_outside_pwd() then
-              hl = { fg = "red", bg = "transparent" }
+            if not win.is_current() then
+              hl = theme.not_current
+            elseif is_file_outside_pwd() then
+              hl = theme.outside_pwd
+            elseif rebase_merge or rebase_apply then
+              hl = theme.rebase
+            elseif win.is_current() then
+              hl = theme.current
+            else
+              assert(false)
             end
 
             return {
@@ -164,19 +173,17 @@ return {
 
     local timer = vim.uv.new_timer()
     local ms = 1
-    local s = 1000 * ms
-    -- Tabby already rerenders frequently the tab. But if there's no activity
-    -- it doesn't do anything. So we make sure AT LEAST every x seconds it's refreshed.
+
+    -- Starting everything at different times so everything don't run at the same
+    -- time
     timer = vim.uv.new_timer()
-    timer:start(0, 2 * s, vim.schedule_wrap(require("tabby").update))
+    timer:start(200 * ms, 300 * ms, vim.schedule_wrap(update_git_state_async))
 
     timer = vim.uv.new_timer()
-    timer:start(0, 300 * ms, vim.schedule_wrap(update_git_state_async))
+    timer:start(210 * ms, 300 * ms, vim.schedule_wrap(hide_tabs_when_possible))
 
+    -- Starts later so everything can update
     timer = vim.uv.new_timer()
-    timer:start(0, 300 * ms, vim.schedule_wrap(hide_tabs_when_possible))
-
-    timer = vim.uv.new_timer()
-    timer:start(0, 300 * ms, vim.schedule_wrap(is_file_outside_pwd))
+    timer:start(400 * ms, 300 * ms, vim.schedule_wrap(require("tabby").update))
   end,
 }
