@@ -1,5 +1,10 @@
 return {
   "t-troebst/perfanno.nvim",
+  -- There is much more Perf functions but I'm too lazy to type them all
+  -- But lazy is important because otherwise we have to load the slow Telescope
+  cmd = {
+    "PerfLuaProfileStart",
+  },
   config = function()
     local util = require("perfanno.util")
 
