@@ -1,6 +1,7 @@
 
 return {
   "axkirillov/easypick.nvim",
+  cmd = { "Easypick" },
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },

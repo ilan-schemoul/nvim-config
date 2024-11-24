@@ -96,7 +96,7 @@ return {
       current = { fg = "#cad3f5", bg = "transparent", style = "bold" },
       rebase = { fg = "#9f54ec", bg = "transparent" },
       not_current = { fg = "#5b6078", bg = "transparent" },
-      outside_pwd = { fg = "red", bg = "transparent" },
+      outside_pwd = { fg = "#fd0000", bg = "transparent" },
 
       fill = { bg = "transparent" },
     }
