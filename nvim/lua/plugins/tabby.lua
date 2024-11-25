@@ -79,9 +79,12 @@ local function update_git_state_async()
 end
 
 local function is_file_outside_pwd()
-  local pwd = vim.fn.getcwd()
-  local path = vim.api.nvim_buf_get_name(0)
-  return vim.bo.buftype == "" and path:find(pwd) == nil
+  -- TODO: FIXME
+  return false
+  --
+  -- local pwd = vim.fn.getcwd()
+  -- local path = vim.api.nvim_buf_get_name(0)
+  -- return vim.bo.buftype == "" and path:find(pwd) == nil
 end
 
 return {
