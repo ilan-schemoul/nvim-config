@@ -5,7 +5,7 @@ return {
   cmd = { "GerritLoadComments" },
   enabled = utils.is_intersec(),
   opts = {
-    url = "https://git.corp/r",
+    url = "https://git.corp",
     cookie = os.getenv("GERRIT_COOKIES"),
     debug = true,
   },
