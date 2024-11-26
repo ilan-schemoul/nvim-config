@@ -5,6 +5,9 @@ Reguarly read this and clean things up.
   Also check {:/home/ilan/notes/technical_todo:} if at work
   Also check other sections (like LSP and Plugins) below
 
+  - ( ) early retirement should use function close window if not last window
+        in tab
+  - ( ) add command to decrease nice (renice -19)
   - ( ) red fish is I "cd" into sub folder of mmsx-X
   - ( ) red for no reason tabby
   - ( ) fish: check correct worktree opened (symbolic link to current vim tab)
@@ -13,6 +16,7 @@ Reguarly read this and clean things up.
   -- ( ) Import things from /srv/tools/../vim fold and others
   -- ( ) How enable linter like in vim in fr_FR.utf8.po
 * Somewhat important
+  - ( ) add cache fish async git resolution
   - ( ) Fix define in libs when openeed neovim
   - ( ) Add shortcut to open code in gerrit
   - ( ) Norg bug colors https://github.com/nvim-neorg/neorg/issues/1608
