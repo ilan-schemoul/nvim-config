@@ -97,7 +97,11 @@ M.start_insert_if_bottom = function()
   local total_number_of_lines = vim.fn.line("$")
   local current_line = vim.fn.line(".")
 
-  if total_number_of_lines - current_line < 20 then
+  -- 50 is a typical height on most of my setup. If the terminal buffer is not
+  -- full (terminal recently open) then total_number_of_lines - current_line
+  -- should be less than 50. And if the buffer is not full I usually want to
+  -- be in insert mode.
+  if total_number_of_lines - current_line < 50 then
     vim.cmd("startinsert")
   end
 end
