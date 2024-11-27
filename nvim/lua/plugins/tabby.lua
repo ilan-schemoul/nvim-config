@@ -1,7 +1,11 @@
 local Job = require("plenary.job")
 local rebase_merge = false
 local rebase_apply = false
-local current_tab_nr = -1
+-- Tabby loads this list. Then update_branch_async asynchronously for each id
+-- of this list update the dict branches which is then used by tabby.
+local tab_ids = {}
+local branches = {}
+local ms = 1
 
 local function hide_tabs_when_possible()
     local windows = vim.tbl_filter(function(win)
@@ -21,6 +25,36 @@ local function hide_tabs_when_possible()
     end
 end
 
+local function update_branch_async(pattern_replace_branch)
+  for _, tab_id in pairs(tab_ids) do
+    local tab_nr = vim.api.nvim_tabpage_get_number(tab_id)
+    local folder = vim.fn.getcwd(-1, tab_nr)
+
+    if folder:find(pattern_replace_branch) ~= nil then
+      Job:new({
+        command = "git",
+        args = { "rev-parse", "--abbrev-ref", "HEAD" },
+        cwd = folder,
+        on_exit = function(response, branch_code)
+          if branch_code == 0 then
+            local output = response:result()
+            if #output >= 0 then
+              local branch_name = output[1]
+              if branch_name ~= "HEAD" then
+                -- No need to delete old values of branches because each
+                -- tab id is, I believe, unique. Totally unlike tab number.
+                -- XXX: do not do branches = {} because it creates a lot of
+                -- crazy race condition. Because the variable is global.
+                branches[tab_id] = branch_name
+              end
+            end
+          end
+        end,
+      }):start()
+    end
+  end
+end
+
 local function check_file_exist(folder, line, check)
   Job:new({
     command = "test",
@@ -37,19 +71,15 @@ local function check_file_exist(folder, line, check)
 end
 
 local function update_git_state_async()
-  if current_tab_nr == -1 then
-    return
-  end
-
-  local folder = vim.fn.getcwd(-1, current_tab_nr)
+  local cwd = vim.fn.getcwd()
 
   Job:new({
     command = "git",
     args = { "rev-parse", "--git-path", "rebase-merge" },
-    cwd = folder,
+    cwd = cwd,
     on_stdout = function(_, line)
       if line then
-        check_file_exist(folder, line, "rebase-merge")
+        check_file_exist(cwd, line, "rebase-merge")
       end
     end,
     on_exit = function(_, code)
@@ -62,10 +92,10 @@ local function update_git_state_async()
   Job:new({
     command = "git",
     args = { "rev-parse", "--git-path", "rebase-apply" },
-    cwd = folder,
+    cwd = cwd,
     on_stdout = function(_, line)
       if line then
-        check_file_exist(folder, line, "rebase-apply")
+        check_file_exist(cwd, line, "rebase-apply")
       end
     end,
     on_exit = function(_, code)
@@ -94,6 +124,8 @@ return {
     vim.o.showtabline = 2
   end,
   config = function()
+    local pattern_replace_branch = "mmsx\\-.*"
+
     local theme = {
       current = { fg = "#cad3f5", bg = "transparent", style = "bold" },
       rebase = { fg = "#9f54ec", bg = "transparent" },
@@ -108,6 +140,16 @@ return {
 
     local function init_tab()
       tabby.set(function(line)
+        -- WARN: I could do tab_ids = {} but I think it's sometimes not safe if it's a
+        -- global variable
+        -- WARN: Only use pairs because we us tab_ids not as array but as hashmap
+        for k in pairs (tab_ids) do
+          tab_ids[k] = nil
+        end
+        line.tabs().foreach(function(tab)
+          table.insert(tab_ids, tab.id)
+        end)
+
         return {
           {
             vim.fn.strftime("%H:%M"),
@@ -139,10 +181,7 @@ return {
           line.spacer(),
           line.tabs().foreach(function(tab)
             local hl
-
             if tab.is_current() then
-              current_tab_nr = line.api.get_tab_number(tab.id)
-
               if rebase_merge or rebase_apply then
                 hl = theme.rebase
               else
@@ -152,11 +191,23 @@ return {
               hl = theme.not_current
             end
 
+            -- Get id instead of tab number
+            local tab_nr = line.api.get_tab_number(tab.id)
+            local tab_name
+
+            -- Branches[id] is only set when the path pattern_replace_branch
+            -- is matched by the cwd of a tab.
+            if branches[tab.id] ~= nil then
+              tab_name = "¤" ..branches[tab.id]
+            else
+              tab_name = get_tab_folder(tab_nr)
+            end
+
             return {
               line.sep(" ", hl, theme.fill),
               -- TODO: make tab name customisable again
               -- TODO: if worktree show branch name
-              get_tab_folder(line.api.get_tab_number(tab.id)),
+              tab_name,
               line.sep(" ", hl, theme.fill),
               hl = hl,
             }
@@ -164,28 +215,29 @@ return {
 
           hl = theme.fill,
         }
-      end, {
-        max_refresh_ms = 200,
-    })
+      end)
     end
 
     vim.api.nvim_create_user_command("TabbyUpdate", require('tabby').update, { nargs = 0 })
 
     init_tab()
 
-    local timer = vim.uv.new_timer()
-    local ms = 1
-
     -- Starting everything at different times so everything don't run at the same
     -- time
-    timer = vim.uv.new_timer()
-    timer:start(200 * ms, 300 * ms, vim.schedule_wrap(update_git_state_async))
+    local timer_1 = vim.uv.new_timer()
+    timer_1:start(0 * ms, 400 * ms, vim.schedule_wrap(update_git_state_async))
 
-    timer = vim.uv.new_timer()
-    timer:start(210 * ms, 300 * ms, vim.schedule_wrap(hide_tabs_when_possible))
+    -- PERF: Heavy as it 0(n) where n in the number of tabs
+    local timer_2 = vim.uv.new_timer()
+    timer_2:start(10 * ms, 1200 * ms, vim.schedule_wrap(function()
+      update_branch_async(pattern_replace_branch)
+    end))
 
-    -- Starts later so everything can update
-    timer = vim.uv.new_timer()
-    timer:start(400 * ms, 300 * ms, vim.schedule_wrap(require("tabby").update))
+    local timer_3 = vim.uv.new_timer()
+    timer_3:start(20 * ms, 400 * ms, vim.schedule_wrap(hide_tabs_when_possible))
+
+    -- Starts later so everything is already up to date when the function runs
+    local timer_4 = vim.uv.new_timer()
+    timer_4:start(200 * ms, 400 * ms, vim.schedule_wrap(require("tabby").update))
   end,
 }

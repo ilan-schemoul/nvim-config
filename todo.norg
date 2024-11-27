@@ -5,7 +5,7 @@ Reguarly read this and clean things up.
   Also check {:/home/ilan/notes/technical_todo:} if at work
   Also check other sections (like LSP and Plugins) below
 
-  - ( ) branch in tabby when worktree
+  - ( ) https://github.com/nanozuki/tabby.nvim?tab=readme-ov-file#jump-mode-for-tabs
   - ( ) early retirement should use function close window if not last window
         in tab
   - ( ) add command to decrease nice (renice -19)
