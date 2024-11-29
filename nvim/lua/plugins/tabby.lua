@@ -28,23 +28,25 @@ local function update_branch_async(pattern_replace_branch)
     local folder = vim.fn.getcwd(-1, tab_nr)
 
     if folder:find(pattern_replace_branch) ~= nil then
-      Job:new({
-        command = "git",
-        args = { "rev-parse", "--abbrev-ref", "HEAD" },
-        cwd = folder,
-        on_stdout = function(_, branch_name)
-          -- Do not do branches = {}.
-          if branch_name ~= "HEAD" then
-            branches[tab_id] = branch_name
+      vim.schedule(function()
+        Job:new({
+          command = "git",
+          args = { "rev-parse", "--abbrev-ref", "HEAD" },
+          cwd = folder,
+          on_stdout = function(_, branch_name)
+            -- Do not do branches = {}.
+            if branch_name ~= "HEAD" then
+              branches[tab_id] = branch_name
+            end
+          end,
+          on_exit = function(_, exit_code)
+            if exit_code ~= 0 then
+              -- X[Y] = nil deletes the element
+              branches[tab_id] = nil
+            end
           end
-        end,
-        on_exit = function(_, exit_code)
-          if exit_code ~= 0 then
-            -- X[Y] = nil deletes the element
-            branches[tab_id] = nil
-          end
-        end
-      }):start()
+        }):start()
+      end)
     else
       branches[tab_id] = nil
     end
