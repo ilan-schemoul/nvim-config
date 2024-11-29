@@ -1,6 +1,7 @@
 return {
   "folke/noice.nvim",
   event = "VimEnter",
+  enabled = false,
   opts = {
     lsp = {
       progress = {
