@@ -42,7 +42,6 @@ local function update_branch_async(pattern_replace_branch)
           end
         end,
         on_exit = function(_, exit_code)
-          print(exit_code)
           if exit_code ~= 0 then
             -- X[Y] = nil deletes the element
             branches[tab_id] = nil
@@ -131,6 +130,7 @@ return {
       rebase = { fg = "#9f54ec", bg = "transparent" },
       not_current = { fg = "#5b6078", bg = "transparent" },
       outside_pwd = { fg = "#fd0000", bg = "transparent" },
+      jump_mode = { fg = "#fd0000", bg = "transparent" },
 
       fill = { bg = "transparent" },
     }
@@ -191,31 +191,34 @@ return {
               hl = theme.not_current
             end
 
-            -- Get id instead of tab number
-            local tab_nr = line.api.get_tab_number(tab.id)
-            local tab_name
-
-            -- Branches[id] is only set when the path pattern_replace_branch
-            -- is matched by the cwd of a tab.
-            if branches[tab.id] ~= nil then
-              tab_name = "¤" ..branches[tab.id]
-            else
-              tab_name = get_tab_folder(tab_nr)
-            end
-
             return {
               line.sep(" ", hl, theme.fill),
-              -- TODO: make tab name customisable again
-              -- TODO: if worktree show branch name
-              tab_name,
+              tab.jump_key(),
+              tab.in_jump_mode() and " " or "",
+              branches[tab.id] and "󰘬" or "",
+              tab.name(),
               line.sep(" ", hl, theme.fill),
+
               hl = hl,
             }
           end),
 
           hl = theme.fill,
         }
-      end)
+      end, {
+      tab_name = {
+        override = function(tab_id)
+          -- Branches[id] is only set when the path pattern_replace_branch
+          -- is matched by the cwd of a tab.
+          if branches[tab_id] ~= nil then
+            return branches[tab_id]
+          else
+            local tab_nr = vim.api.nvim_tabpage_get_number(tab_id)
+            return get_tab_folder(tab_nr)
+          end
+        end
+      }
+    })
     end
 
     vim.api.nvim_create_user_command("TabbyUpdate", require('tabby').update, { nargs = 0 })

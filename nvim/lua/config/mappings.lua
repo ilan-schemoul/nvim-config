@@ -94,6 +94,7 @@ set("tF", function()
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = word })
 end)
 set("tb", require("telescope").extensions.git_file_history.git_file_history)
+set("ts", "<cmd>Tabby jump_to_tab<cr>")
 
 -- Switch to tab 4 with <leader>t4
 for i = 0, 9 do
