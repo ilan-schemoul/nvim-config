@@ -8,21 +8,18 @@ local branches = {}
 local ms = 1
 
 local function hide_tabs_when_possible()
-    local windows = vim.tbl_filter(function(win)
-      local buftype = vim.bo[vim.api.nvim_win_get_buf(win)].buftype
-      -- normal
-      return buftype == "" or buftype == "terminal"
-    end, vim.api.nvim_list_wins())
+  local windows = vim.tbl_filter(function(win)
+    local buftype = vim.bo[vim.api.nvim_win_get_buf(win)].buftype
+    -- normal
+    return buftype == "" or buftype == "terminal"
+  end, vim.api.nvim_list_wins())
 
-    if not require("true-zen.ataraxis").running then
-      -- If there is only one window then only show tab when there are multiple tabs
-      if #windows == 1 then
-        vim.o.showtabline=1
-        -- If there are multiple windows then show tabline even if there is only one tab
-      else
-        vim.o.showtabline=2
-      end
-    end
+  if #windows == 1 then
+    vim.o.showtabline=1
+    -- If there are multiple windows then show tabline even if there is only one tab
+  else
+    vim.o.showtabline=2
+  end
 end
 
 local function update_branch_async(pattern_replace_branch)
