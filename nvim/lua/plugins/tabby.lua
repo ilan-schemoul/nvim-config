@@ -35,22 +35,22 @@ local function update_branch_async(pattern_replace_branch)
         command = "git",
         args = { "rev-parse", "--abbrev-ref", "HEAD" },
         cwd = folder,
-        on_exit = function(response, branch_code)
-          if branch_code == 0 then
-            local output = response:result()
-            if #output >= 0 then
-              local branch_name = output[1]
-              if branch_name ~= "HEAD" then
-                -- No need to delete old values of branches because each
-                -- tab id is, I believe, unique. Totally unlike tab number.
-                -- XXX: do not do branches = {} because it creates a lot of
-                -- crazy race condition. Because the variable is global.
-                branches[tab_id] = branch_name
-              end
-            end
+        on_stdout = function(_, branch_name)
+          -- Do not do branches = {}.
+          if branch_name ~= "HEAD" then
+            branches[tab_id] = branch_name
           end
         end,
+        on_exit = function(_, exit_code)
+          print(exit_code)
+          if exit_code ~= 0 then
+            -- X[Y] = nil deletes the element
+            branches[tab_id] = nil
+          end
+        end
       }):start()
+    else
+      branches[tab_id] = nil
     end
   end
 end
