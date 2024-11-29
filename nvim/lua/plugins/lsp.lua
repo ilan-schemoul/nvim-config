@@ -14,6 +14,8 @@ return {
       local path = "/home/ilan/.nvm/versions/node/v16.20.2/bin"
       local cmd_env = { PATH = path .. ":" .. vim.env.PATH }
 
+      require'lspconfig'.fish_lsp.setup{}
+
       require("mason-lspconfig").setup()
       require("mason-lspconfig").setup_handlers({
         function(server_name)
