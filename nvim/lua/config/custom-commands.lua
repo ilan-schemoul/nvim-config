@@ -242,6 +242,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+vim.api.nvim_create_user_command("H", function(args)
+  local arg = args.fargs[1]
+  vim.cmd("helpg " .. arg)
+  require("telescope.builtin").quickfix()
+end, { nargs = '+' })
+
 -- Used by lazygit
 vim.api.nvim_create_user_command("FromFTToTab", function(args)
   local name = args.fargs[1]
