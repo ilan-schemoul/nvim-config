@@ -115,7 +115,9 @@ local function is_file_outside_pwd()
 end
 
 return {
-  "nanozuki/tabby.nvim",
+  "ilan-schemoul/tabby.nvim",
+  -- https://github.com/nanozuki/tabby.nvim/pull/167
+  branch = "fix-buf-name",
   event = "VimEnter",
   dependencies = "nvim-tree/nvim-web-devicons",
   init = function()
