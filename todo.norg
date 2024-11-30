@@ -5,9 +5,7 @@ Reguarly read this and clean things up.
   Also check {:/home/ilan/notes/technical_todo:} if at work
   Also check other sections (like LSP and Plugins) below
 
-  - ( ) gerrit without manually writing cookies every day
-  - ( ) early retirement should use function close window if not last window
-        in tab
+  - ( ) early retirement should use function close window if not last window in tab
   - ( ) Quickfix for waf
   - (!) Intersec related
   -- ( ) Import things from /srv/tools/../vim fold and others
