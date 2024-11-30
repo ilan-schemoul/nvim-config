@@ -58,7 +58,15 @@ set("bk", "<cmd>topleft split<cr>")
 set("bl", "<cmd>botright vs<cr>")
 set("bx", custom_commands.close_buffer)
 
-set("N", "<cmd>set invrelativenumber | set invnumber<cr>")
+set("N", function()
+  if vim.wo[0].relativenumber or vim.wo[0].number then
+    vim.wo[0].number = false
+    vim.wo[0].relativenumber = false
+  else
+    vim.wo[0].number = true
+    vim.wo[0].relativenumber = true
+  end
+end)
 
 -- Close current buffer
 set("q", custom_commands.close_window_if_not_last)
@@ -166,6 +174,9 @@ set("sg", "zg")
 -- Wrong word, remove from dict
 set("sw", "zw")
 set("sb", "zw")
+
+set("zz", require("config/center-window").focus)
+set("zc", require("config/center-window").close)
 
 -- Open the extremely useful quickfix list (enhanced via bqf btw)
 set("io", "<cmd>copen<cr>")
