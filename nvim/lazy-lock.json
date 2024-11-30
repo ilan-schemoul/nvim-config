@@ -47,7 +47,7 @@
   "nvim-bqf": { "branch": "main", "commit": "1b24dc6050c34e8cd377b6b4cd6abe40509e0187" },
   "nvim-cmp": { "branch": "main", "commit": "ed31156aa2cc14e3bc066c59357cc91536a2bc01" },
   "nvim-early-retirement": { "branch": "main", "commit": "9b26b65187008dca1e423122eb06f7cfba75cb25" },
-  "nvim-gerrit": { "branch": "master", "commit": "da4f3488bcbaabec2461e4df001f552126b89e99" },
+  "nvim-gerrit": { "branch": "master", "commit": "0f40241b1609de70194f4df8d108331711f47b55" },
   "nvim-lint": { "branch": "master", "commit": "6b46370d02cd001509a765591a3ffc481b538794" },
   "nvim-lspconfig": { "branch": "master", "commit": "27008519562f16453813c19dcc6ee97f505e0b1c" },
   "nvim-neoclip.lua": { "branch": "main", "commit": "32e05f2d23dc5b6a284a688c0535a83d1bfc633f" },
