@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   callback = function(args)
-    buf = vim.api.nvim_win_get_buf(0)
+    local buf = vim.api.nvim_win_get_buf(0)
 
     if vim.bo[buf].readonly then
       vim.notify("Cannot save this file. Try :SudaWrite", vim.log.levels.ERROR)
@@ -32,8 +32,9 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 })
 
 -- Close window is it is a floating window or if it not the last opened window in the current tab
-M.close_window_if_not_last = function()
-  local current_win_is_floating = vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= ""
+M.close_window_if_not_last = function(window)
+  window = window or vim.api.nvim_get_current_win()
+  local current_win_is_floating = vim.api.nvim_win_get_config(window).relative ~= ""
 
   if current_win_is_floating then
     vim.cmd("q")
@@ -49,6 +50,22 @@ M.close_window_if_not_last = function()
     if #windows_in_tab > 1 then
       vim.cmd("q")
     end
+  end
+end
+
+M.close_buffer_if_not_last = function(buffer)
+  -- TODO: refactor with win_findbuf
+  local window = -1
+
+  for _, win in pairs(vim.api.nvim_list_wins()) do
+    local win_buffer = vim.api.nvim_win_get_buf(win)
+    if win_buffer == buffer then
+      window = win
+    end
+  end
+
+  if window ~= -1 then
+    M.close_window_if_not_last(window)
   end
 end
 
