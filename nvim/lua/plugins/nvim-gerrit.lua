@@ -13,7 +13,7 @@ return {
       digest_authentication = false,
       username = os.getenv("GERRIT_USERNAME"),
       password = os.getenv("GERRIT_PASSWORD"),
-      debug = true,
+      debug = false,
     }
 
     local intersec_opts = {
