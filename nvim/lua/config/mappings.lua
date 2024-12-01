@@ -158,7 +158,7 @@ set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
 set("nn", custom_commands.create_org_file)
 -- ../plugins/venn.lua (draw diagram in ASCII)
 set("nd", custom_commands.toggle_venn)
-set("no", "<cmd>Noice<cr>")
+set("no", "<cmd>Bmessages<cr>")
 
 -- <space><backspace>
 set("<BS>", "<cmd>Noice dismiss<cr>")
