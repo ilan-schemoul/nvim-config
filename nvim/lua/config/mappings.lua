@@ -175,8 +175,9 @@ set("sg", "zg")
 set("sw", "zw")
 set("sb", "zw")
 
-set("zz", require("config/center-window").focus)
+set("zz", require("config/center-window").center)
 set("zc", require("config/center-window").close)
+set("zx", require("config/center-window").close)
 
 -- Open the extremely useful quickfix list (enhanced via bqf btw)
 set("io", "<cmd>copen<cr>")
