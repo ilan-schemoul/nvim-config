@@ -9,6 +9,8 @@ set clipboard+=unnamedplus
 set visualbell
 set termguicolors
 
+set colorcolumn=80
+
 colorscheme catppuccin-macchiato
 
 " More bright than the default one
