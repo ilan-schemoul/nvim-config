@@ -206,6 +206,9 @@ set("go", function()
     end
   })
 end)
+
+set("gl", require("nvim-gerrit").list_changes)
+
 -- Add ^ to escape Lazygit (hj is used for navigation so I disabled it in lazygit)
 -- NOTE: on some azerty ^ is a dead key so you gotta press it twice
 vim.api.nvim_create_autocmd({
