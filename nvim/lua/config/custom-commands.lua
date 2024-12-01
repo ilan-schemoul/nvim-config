@@ -4,11 +4,9 @@ local M = {}
 -- Absolute number if not focus
 vim.api.nvim_create_autocmd({ "WinEnter" }, {
   callback = function()
-    local buf = vim.api.nvim_win_get_buf(0)
-
     -- Normal buffer (not terminal etc.)
     if vim.wo[0].number then
-      vim.wo[0].relativenumber = false
+      vim.wo[0].relativenumber = true
     end
   end,
 })
@@ -16,11 +14,9 @@ vim.api.nvim_create_autocmd({ "WinEnter" }, {
 -- Absolute number if not focus
 vim.api.nvim_create_autocmd({ "WinLeave" }, {
   callback = function()
-    local buf = vim.api.nvim_win_get_buf(0)
-
     -- Normal buffer (not terminal etc.)
     if vim.wo[0].number then
-      vim.wo[0].relativenumber = true
+      vim.wo[0].relativenumber = false
     end
   end,
 })
