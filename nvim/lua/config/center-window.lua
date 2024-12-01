@@ -2,6 +2,7 @@ local function center(left_buffer, right_buffer)
   left_buffer = left_buffer or "term"
   right_buffer = right_buffer or "~/notes/memory.norg"
 
+  local r, c = unpack(vim.api.nvim_win_get_cursor(0))
   local width = vim.fn.winwidth(0)
   local split_width = width / 4
 
@@ -27,6 +28,8 @@ local function center(left_buffer, right_buffer)
   vim.cmd("highlight CursorLine guifg=NONE guibg=NONE")
 
   vim.api.nvim_set_current_win(window)
+  vim.cmd("stopinsert")
+  vim.api.nvim_win_set_cursor(0, { r, c })
 end
 
 local function close()
@@ -36,6 +39,5 @@ end
 
 return {
   center = center,
-  center_with_memory = center_with_memory,
   close = close,
 }
