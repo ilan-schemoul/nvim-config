@@ -1,8 +1,12 @@
 return {
   "folke/noice.nvim",
   event = "VimEnter",
-  enabled = false,
   opts = {
+    -- Not stable
+    popupmenu = {
+      enabled = false,
+    },
+
     lsp = {
       progress = {
         enabled = false,
@@ -26,10 +30,10 @@ return {
         timeout = 8000,
       },
     },
-    popupmenu = {
-      enabled = true,
-      backend = "nui",
-    },
+    -- popupmenu = {
+    --   enabled = true,
+    --   backend = "nui",
+    -- },
     commands = {
       history = {
         -- options for the message history that you get with `:Noice`
