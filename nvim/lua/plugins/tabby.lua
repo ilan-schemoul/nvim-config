@@ -229,11 +229,11 @@ return {
     -- Starting everything at different times so everything don't run at the same
     -- time
     local timer_1 = vim.uv.new_timer()
-    timer_1:start(0 * ms, 400 * ms, vim.schedule_wrap(update_git_state_async))
+    timer_1:start(0 * ms, 1000 * ms, vim.schedule_wrap(update_git_state_async))
 
     -- PERF: Heavy as it 0(n) where n in the number of tabs
     local timer_2 = vim.uv.new_timer()
-    timer_2:start(10 * ms, 1200 * ms, vim.schedule_wrap(function()
+    timer_2:start(10 * ms, 3000 * ms, vim.schedule_wrap(function()
       update_branch_async(pattern_replace_branch)
     end))
 
@@ -242,6 +242,6 @@ return {
 
     -- Starts later so everything is already up to date when the function runs
     local timer_4 = vim.uv.new_timer()
-    timer_4:start(200 * ms, 400 * ms, vim.schedule_wrap(require("tabby").update))
+    timer_4:start(200 * ms, 1000 * ms, vim.schedule_wrap(require("tabby").update))
   end,
 }
