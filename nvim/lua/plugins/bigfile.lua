@@ -1,5 +1,7 @@
 return {
   "LunarVim/bigfile.nvim",
-  opts = {},
+  opts = {
+    filesize = 1, -- size of the file in MiB
+  },
 }
 
