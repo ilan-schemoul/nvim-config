@@ -161,7 +161,9 @@ set("nd", custom_commands.toggle_venn)
 set("no", "<cmd>Bmessages<cr>")
 
 -- <space><backspace>
-set("<BS>", "<cmd>Noice dismiss<cr>")
+set("<BS>", function()
+  require("notify").dismiss({pending = true, silent = true})
+end)
 
 -- ../plugins/treesitter.lua
 set("sc", "1z=")
