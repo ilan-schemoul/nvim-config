@@ -1,12 +1,8 @@
 return {
   "folke/noice.nvim",
   event = "VimEnter",
+  enabled = false,
   opts = {
-    -- Not stable
-    popupmenu = {
-      enabled = false,
-    },
-
     lsp = {
       progress = {
         enabled = false,
