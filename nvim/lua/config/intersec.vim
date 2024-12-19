@@ -81,3 +81,5 @@ let g:localvimrc_sandbox = 0
 
 " Whitelist ~/dev, which must contains all our repositories
 let g:localvimrc_whitelist = $HOME.'/dev/'
+
+lua require("config/intersec")
