@@ -83,3 +83,4 @@ let g:localvimrc_sandbox = 0
 let g:localvimrc_whitelist = $HOME.'/dev/'
 
 lua require("config/intersec")
+set spelllang=en_gb,programming,fr
