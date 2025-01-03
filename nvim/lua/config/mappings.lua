@@ -15,12 +15,10 @@ local function setv(keys, cmd)
   vim.keymap.set("v", "<leader>" .. keys, cmd)
 end
 
-set("[d", function()
-  vim.diagnostic.goto_prev({
-   severity = vim.diagnostic.severity.ERROR,
- })
+vim.keymap.set("n", "[d", function()
+  vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR, })
 end)
-set("]d", function()
+vim.keymap.set("n", "]d", function()
   vim.diagnostic.goto_next({
    severity = vim.diagnostic.severity.ERROR,
  })
