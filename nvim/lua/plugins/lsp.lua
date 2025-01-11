@@ -58,6 +58,16 @@ return {
             },
           })
         end,
+        ["pylsp"] = function(_)
+          require("lspconfig").pyright.setup({
+            plugins = {
+              pylint = {
+                enabled = true,
+                executable = 'pylint',
+              },
+            }
+          })
+        end
     })
     end,
   },
