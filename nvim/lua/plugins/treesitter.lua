@@ -3,7 +3,7 @@ local function disable(buf)
   local utils = require("config/utils")
 
   if not ok or not stats then
-    vim.notify("Cannot get stats for " + vim.api.nvim_buf_get_name(buf), vim.log.levels.DEBUG)
+    vim.notify("Cannot get stats for " .. vim.api.nvim_buf_get_name(buf), vim.log.levels.DEBUG)
     return true
   end
 
