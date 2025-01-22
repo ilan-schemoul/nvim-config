@@ -233,7 +233,7 @@ return {
 
     -- PERF: Heavy as it 0(n) where n in the number of tabs
     local timer_2 = vim.uv.new_timer()
-    timer_2:start(10 * ms, 3000 * ms, vim.schedule_wrap(function()
+    timer_2:start(10 * ms, 5000 * ms, vim.schedule_wrap(function()
       update_branch_async(pattern_replace_branch)
     end))
 
