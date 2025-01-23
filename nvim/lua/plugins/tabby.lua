@@ -34,8 +34,9 @@ local function update_branch_async(pattern_replace_branch)
           args = { "rev-parse", "--abbrev-ref", "HEAD" },
           cwd = folder,
           on_stdout = function(_, branch_name)
+            -- print("set", branch_name, tab_id, type(tab_id))
             -- Do not do branches = {}.
-            if branch_name ~= "HEAD" then
+            if branch_name and branch_name ~= "HEAD" then
               branches[tab_id] = branch_name
             end
           end,
