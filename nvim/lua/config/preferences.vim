@@ -92,3 +92,7 @@ set sessionoptions=buffers,curdir,folds,globals,help,tabpages,terminal,winsize
 
 set nofoldenable " By default open all folds
 set foldmethod=marker " {{{/}}}
+
+" make a copy of the file and overwrite the original one
+" necessary for parcel
+set backupcopy=yes
