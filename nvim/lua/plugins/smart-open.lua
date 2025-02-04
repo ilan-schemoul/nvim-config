@@ -9,17 +9,23 @@ return {
   },
   lazy = true,
   keys = {
-    { "<leader>ll", "<cmd>Telescope smart_open<cr>" },
-    { "<leader>lL", function()
+    { "<leader>ll", function()
       require('telescope').extensions.smart_open.smart_open {
         cwd_only = true,
       }
     end },
+    { "<leader>lL", "<cmd>Telescope smart_open<cr>" },
   },
-  opts = {
-    match_algorithm = "fzf",
-  },
-  config = function(_, opts)
+  config = function(_, _)
+    local cfg = require('telescope._extensions.smart_open.default_config').ignore_patterns
+    local ignore_patterns_without_build = vim.tbl_filter(function(f)
+      return f ~= "*build/*"
+    end, cfg)
+
+    local opts = {
+      match_algorithm = "fzf",
+      ignore_patterns = ignore_patterns_without_build,
+    }
     require("smart-open").setup(opts)
     require("telescope").load_extension("smart_open")
   end,
