@@ -1,6 +1,7 @@
 -- To edit a command in the terminal in normal mode (ciw etc. works most of the time)
 return {
   'chomosuke/term-edit.nvim',
+  enabled = false,
   -- NOTE: extremely buggy if it is lazy loaded (when you start a terminal everything is weird)
   lazy = false,
   version = '1.*',
