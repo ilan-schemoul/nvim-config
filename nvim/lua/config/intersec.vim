@@ -13,6 +13,7 @@ autocmd BufNewFile,BufRead wscript_build set filetype=python
 au BufRead,BufNewFile behave_logs set filetype=behave_log
 
 autocmd BufNewFile,BufRead *.iop set ft=iop
+autocmd BufNewFile,BufRead *.cap set ft=xml
 
 " Compilation
 set makeprg=LC_ALL=C\ make\ MONOCHROME=1
@@ -30,7 +31,7 @@ set shiftwidth=4
 " Also update nvim/lua/plugins/smartcolumn.lua
 set colorcolumn=78
 " Enables breaking new lines automatically
-autocmd FileType c,python,asciidoc set textwidth=78
+autocmd FileType c,python,asciidoc,iop set textwidth=78
 
 set cinoptions=
 set cinoptions+=L1s            " Align labels on previous indent level
