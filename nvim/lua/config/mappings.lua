@@ -256,6 +256,46 @@ vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 vim.keymap.set("i", "<C-j>", "<Down>")
 
+local function random_word()
+    local words = {
+    "beautiful", "witty", "wicked", "confusing", "rich", "new", "strange",
+    "rocky", "circular", "helpful", "competent", "smelly", "stable", "grumpy",
+    "devoted", "smart", "muscular", "graceful", "scary", "safe", "wooden", "sleepy",
+    "tardy", "hungry", "strange", "hopeful", "proud", "new", "dainty", "royal",
+    "arrogant", "round", "efficient", "youthful", "cumbersome", "fickle",
+    "mild", "expensive", "small", "rude", "generous", "courageous",
+    "zany", "thin", "round", "oval", "dark", "hot", "modern", "petite",
+    "weary",
+    }
+    return words[math.random(1, #words)]
+end
+
+local function random_emojis()
+    local words = {
+      '🐵', '🐒', '🦍', '🦧', '🐶', '🐕', '🦮', '🐩', '🐺', '🦊', '🦝', '🐱', '🐈', '🦁', '🐯', '🐅', '🐆', '🐴', '🫎', '🫏', '🐎', '🦄', '🦓', '🦌', '🦬', '🐮', '🐂', '🐃', '🐄', '🐷', '🐖', '🐗', '🐽', '🐏', '🐑', '🐐', '🐪', '🐫', '🦙', '🦒', '🐘', '🦣', '🦏', '🦛', '🐭', '🐁', '🐀', '🐹', '🐰', '🐇', '🐿️', '🦫', '🦔', '🦇', '🐻', '🐨', '🐼', '🦥', '🦦', '🦨', '🦘', '🦡', '🐾', '🦃', '🐔', '🐓', '🐣', '🐤', '🐥', '🐦', '🐧', '🕊️', '🦅', '🦆', '🦢', '🦉', '🦤', '🪶', '🦩', '🦚', '🦜', '🪽', '🪿', '🪹', '🪺', '🐸', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🐳', '🐋', '🐬', '🦭', '🐟', '🐠', '🐡', '🦈', '🐙', '🐚', '🪸', '🪼', '🦀', '🦞', '🦐', '🦑', '🦪', '🐌', '🦋', '🐛', '🐜', '🐝', '🪲', '🐞', '🦗', '🪳', '🕷️', '🕸️', '🦂', '🦟', '🪰', '🪱', '🦠', '💐', '🌸', '💮', '🪷', '🏵️', '🌹', '🥀', '🌺', '🌻', '🌼', '🌷', '🪻', '🌱', '🪴', '🌲', '🌳', '🌴', '🌵', '🌾', '🌿', '☘️', '🍀', '🍁', '🍂', '🍃', '🍄', '🪨'
+  }
+    return words[math.random(1, #words)]
+end
+
+local insert_log = function(above)
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    if above then
+      row = row - 1
+    end
+    local payload = random_emojis() .. ' ' .. random_word() .. ' DEBUG_ME_BOY ' .. random_emojis()
+    local log = 'logger_error(&_G.logger, "' .. payload .. '");'
+    vim.api.nvim_buf_set_lines(0, row, row, false, { log })
+    if above then
+      vim.fn.feedkeys("k")
+    else
+      vim.fn.feedkeys("j")
+    end
+    vim.fn.feedkeys("==")
+end
+
+set("wj", function() insert_log(false) end)
+set("wk", function() insert_log(true) end)
+
 -- Azerty keyboard support being what it is I need these to have
 -- similar experience to qwerty
 vim.cmd([[
