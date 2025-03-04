@@ -256,6 +256,11 @@ vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 vim.keymap.set("i", "<C-j>", "<Down>")
 
+local smelly_sunflower = require('config/smelly_sunflower')
+set("wj", smelly_sunflower.insert_below)
+set("wk", smelly_sunflower.insert_above)
+set("wc", smelly_sunflower.clean)
+
 -- Azerty keyboard support being what it is I need these to have
 -- similar experience to qwerty
 vim.cmd([[
