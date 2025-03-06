@@ -37,7 +37,7 @@ return {
         indent = { enable = true },
 
         disable = function(_, buf)
-          disable(buf)
+          return disable(buf)
         end,
       },
 
