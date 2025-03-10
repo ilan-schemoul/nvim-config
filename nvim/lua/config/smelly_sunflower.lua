@@ -62,4 +62,9 @@ M.clean = function()
   vim.cmd("g/fix_me_now/d")
 end
 
+M.clean_all_buffers = function()
+  vim.cmd("bufdo silent! g/fix_me_now/d")
+  vim.cmd("bufdo silent! w")
+end
+
 return M

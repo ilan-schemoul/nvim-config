@@ -262,6 +262,7 @@ local smelly_sunflower = require('config/smelly_sunflower')
 set("wj", smelly_sunflower.insert_below)
 set("wk", smelly_sunflower.insert_above)
 set("wc", smelly_sunflower.clean)
+set("wC", smelly_sunflower.clean_all_buffers)
 
 -- Azerty keyboard support being what it is I need these to have
 -- similar experience to qwerty
