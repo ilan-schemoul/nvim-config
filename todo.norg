@@ -5,6 +5,7 @@ Reguarly read this and clean things up.
   Also check {:/home/ilan/notes/technical_todo:} if at work
   Also check other sections (like LSP and Plugins) below
 
+  - ( ) super CPU expensive to get name of branch. Maybe just get current branch every 5s. And others every 60s ?
   - ( ) early retirement should use function close window if not last window in tab
   - ( ) Quickfix for waf
   - (!) Intersec related
