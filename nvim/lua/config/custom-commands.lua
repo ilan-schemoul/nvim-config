@@ -319,4 +319,48 @@ M.get_visual_selection = function()
   end
 end
 
+-- {{{ https://github.com/tiagovla/scope.nvim/blob/main/lua/telescope/_extensions/scope.lua
+local function extend_without_duplicates(l0, l1)
+    local result = {}
+    for _, v in ipairs(l0) do
+        table.insert(result, v)
+    end
+    for _, v in ipairs(l1) do
+        if not vim.tbl_contains(result, v) then
+            table.insert(result, v)
+        end
+    end
+    return result
+end
+
+local function get_all_scope_buffers()
+    local scope_core = require("scope.core")
+    local scope_buffs = {}
+    for _, bufs in pairs(scope_core.cache) do
+        for _, buf in pairs(bufs) do
+            table.insert(scope_buffs, buf)
+        end
+    end
+    return scope_buffs
+end
+
+local function get_tab_buffers()
+  return extend_without_duplicates(
+    vim.tbl_filter(function(b)
+      return vim.fn.buflisted(b) == 1
+    end, vim.api.nvim_list_bufs()),
+    get_all_scope_buffers()
+  )
+end
+
+M.close_other_tab_buffers = function()
+  local buffers = get_tab_buffers()
+  for _, buffer in ipairs(buffers) do
+    if vim.fn.getbufinfo(buffer)[1].hidden == 1 then
+      vim.api.nvim_buf_delete(buffer, { force=true })
+    end
+  end
+end
+-- }}}
+
 return M
