@@ -58,6 +58,8 @@ set("bj", "<cmd>belowright split<cr>")
 set("bk", "<cmd>topleft split<cr>")
 set("bl", "<cmd>botright vs<cr>")
 set("bx", custom_commands.close_buffer)
+-- Close all buffers but one
+set("bX", custom_commands.close_other_tab_buffers)
 
 set("N", function()
   if vim.wo[0].relativenumber or vim.wo[0].number then
