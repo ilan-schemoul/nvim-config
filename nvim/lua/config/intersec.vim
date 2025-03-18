@@ -85,3 +85,7 @@ let g:localvimrc_whitelist = $HOME.'/dev/'
 
 lua require("config/intersec")
 set spelllang=en_gb,programming,fr
+
+se stl=- fcs=stl:-,stlnc:-,vert:\|
+highlight StatusLine guibg=transparent guifg=#494d65
+highlight StatusLineNC guibg=transparent
