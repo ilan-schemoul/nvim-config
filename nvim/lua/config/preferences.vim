@@ -96,3 +96,7 @@ set foldmethod=marker " {{{/}}}
 " make a copy of the file and overwrite the original one
 " necessary for parcel
 set backupcopy=yes
+
+" https://vi.stackexchange.com/questions/5128/matchpairs-makes-vim-slow/5318#5318
+let g:matchparen_timeout = 2
+let g:matchparen_insert_timeout = 2
