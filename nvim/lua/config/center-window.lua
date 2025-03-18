@@ -1,10 +1,10 @@
 local function center(left_buffer, right_buffer)
-  left_buffer = left_buffer or "term"
-  right_buffer = right_buffer or "~/notes/memory.norg"
+  left_buffer = left_buffer or "new"
+  right_buffer = right_buffer or "new"
 
   local r, c = unpack(vim.api.nvim_win_get_cursor(0))
   local width = vim.fn.winwidth(0)
-  local split_width = width / 4
+  local split_width = width / 2.5
 
   -- New tab
   vim.cmd("tabedit %")
