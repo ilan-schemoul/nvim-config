@@ -1,5 +1,6 @@
 return {
   "petertriho/nvim-scrollbar",
+  enabled = false,
   event = "VimEnter",
   config = function()
     require("gitsigns").setup()

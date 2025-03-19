@@ -3,6 +3,7 @@
 -- NOTE: Many mappings defined inside plugins (grep "keys =" to find those)
 
 local custom_commands = require("config/custom-commands")
+local utils = require("config/utils")
 
 local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 local hjkl = { "h", "j", "k", "l" }
@@ -72,7 +73,20 @@ set("N", function()
   end
 end)
 set("S", function()
-  vim.wo[0].statuscolumn = "·"
+  if vim.wo[0].statuscolumn == "·" then
+    vim.wo[0].statuscolumn = "%l"
+    vim.wo[0].number = false
+    vim.wo[0].relativenumber = false
+  else
+    vim.wo[0].statuscolumn = "·"
+  end
+end)
+set("T", function()
+  if vim.o.showtabline >= 1 then
+    utils.set_hide_tab(true)
+  else
+    utils.set_hide_tab(false)
+  end
 end)
 
 -- Close current buffer

@@ -107,3 +107,4 @@ se stl=- fcs=stl:-,stlnc:-,vert:\|
 highlight StatusLine guibg=transparent guifg=#494d65
 highlight StatusLineNC guibg=transparent
 highlight WinSeparator guifg=#24273b
+highlight TabLineFill guibg=transparent

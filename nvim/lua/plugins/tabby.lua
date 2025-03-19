@@ -1,4 +1,5 @@
 local Job = require("plenary.job")
+local utils = require("config/utils")
 local rebase_merge = false
 local rebase_apply = false
 -- Tabby loads this list. Then update_branch_async asynchronously for each id
@@ -13,6 +14,11 @@ local function hide_tabs_when_possible()
     -- normal
     return buftype == "" or buftype == "terminal"
   end, vim.api.nvim_list_wins())
+
+  if utils.get_hide_tab() then
+    vim.o.showtabline=0
+    return
+  end
 
   if #windows == 1 then
     vim.o.showtabline=1
