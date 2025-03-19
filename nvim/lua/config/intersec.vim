@@ -31,7 +31,8 @@ set shiftwidth=4
 " Also update nvim/lua/plugins/smartcolumn.lua
 set colorcolumn=78
 " Enables breaking new lines automatically
-autocmd FileType c,python,asciidoc,iop set textwidth=78
+autocmd FileType c,python,asciidoc,iop setl textwidth=78
+autocmd FileType feature setl colorcolumn=0
 
 set cinoptions=
 set cinoptions+=L1s            " Align labels on previous indent level
@@ -86,6 +87,3 @@ let g:localvimrc_whitelist = $HOME.'/dev/'
 lua require("config/intersec")
 set spelllang=en_gb,programming,fr
 
-se stl=- fcs=stl:-,stlnc:-,vert:\|
-highlight StatusLine guibg=transparent guifg=#494d65
-highlight StatusLineNC guibg=transparent
