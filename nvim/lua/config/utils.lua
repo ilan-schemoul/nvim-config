@@ -36,4 +36,14 @@ M.is_intersec = function()
   return os.getenv("IS_INTERSEC") == "true"
 end
 
+local hide_tab = false
+
+M.set_hide_tab = function(h)
+  hide_tab = h
+end
+
+M.get_hide_tab = function()
+  return hide_tab
+end
+
 return M
