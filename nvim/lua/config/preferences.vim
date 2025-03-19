@@ -18,9 +18,9 @@ highlight DiffChange guibg=#2b3148
 " Less bright than default one
 highlight ColorColumn ctermbg=0 guibg=#212337
 highlight CursorLineNr guifg=#aaaaaa
-highlight GitSignsAdd guifg=#4aaf1b
-highlight GitSignsDelete guifg=#902e3e
-highlight GitSignsChange guifg=#c5d50b
+highlight GitSignsAdd guifg=#4d783f
+highlight GitSignsDelete guifg=#79323d
+highlight GitSignsChange guifg=#9c9d0d
 
 " nocopy when pasting
 xnoremap <expr> p 'pgv"' . v:register . 'y'
@@ -102,9 +102,11 @@ set backupcopy=yes
 let g:matchparen_timeout = 2
 let g:matchparen_insert_timeout = 2
 
-set statuscolumn=·
+set statuscolumn=\|
 se stl=- fcs=stl:-,stlnc:-,vert:\|
-highlight StatusLine guibg=transparent guifg=#494d65
+highlight StatusLine guibg=transparent guifg=#acaeb5
 highlight StatusLineNC guibg=transparent
-highlight WinSeparator guifg=#24273b
+highlight WinSeparator guifg=#383c51
 highlight TabLineFill guibg=transparent
+hi Normal guibg=#24273b
+hi NormalNC guibg=#1e2132 guifg=#9ca8c3

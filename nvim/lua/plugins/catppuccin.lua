@@ -5,5 +5,8 @@ return {
   lazy = true,
   opts = {
     default_integrations = true,
+    dim_inactive = {
+      enabled = true,
+    },
   },
 }
