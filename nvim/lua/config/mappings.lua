@@ -62,6 +62,7 @@ set("bx", custom_commands.close_buffer)
 set("bX", custom_commands.close_other_tab_buffers)
 
 set("N", function()
+  vim.wo[0].statuscolumn = "%l"
   if vim.wo[0].relativenumber or vim.wo[0].number then
     vim.wo[0].number = false
     vim.wo[0].relativenumber = false
@@ -69,6 +70,9 @@ set("N", function()
     vim.wo[0].number = true
     vim.wo[0].relativenumber = true
   end
+end)
+set("S", function()
+  vim.wo[0].statuscolumn = "·"
 end)
 
 -- Close current buffer

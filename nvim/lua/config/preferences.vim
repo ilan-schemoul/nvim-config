@@ -18,14 +18,15 @@ highlight DiffChange guibg=#2b3148
 " Less bright than default one
 highlight ColorColumn ctermbg=0 guibg=#212337
 highlight CursorLineNr guifg=#aaaaaa
-highlight GitSignsAdd guifg=#4d783f
-highlight GitSignsDelete guifg=#79323d
-highlight GitSignsChange guifg=#9c9d0d
+highlight GitSignsAdd guifg=#4aaf1b
+highlight GitSignsDelete guifg=#902e3e
+highlight GitSignsChange guifg=#c5d50b
 
 " nocopy when pasting
 xnoremap <expr> p 'pgv"' . v:register . 'y'
 xnoremap <expr> x 'xgv"' . v:register . 'y'
 
+autocmd TermOpen * setlocal statuscolumn=""
 autocmd TermOpen * setlocal nonumber norelativenumber
 " Focus opens column line number which we don't want for terminals
 autocmd TermOpen * lua vim.b.focus_disable = true
@@ -100,3 +101,9 @@ set backupcopy=yes
 " https://vi.stackexchange.com/questions/5128/matchpairs-makes-vim-slow/5318#5318
 let g:matchparen_timeout = 2
 let g:matchparen_insert_timeout = 2
+
+set statuscolumn=·
+se stl=- fcs=stl:-,stlnc:-,vert:\|
+highlight StatusLine guibg=transparent guifg=#494d65
+highlight StatusLineNC guibg=transparent
+highlight WinSeparator guifg=#24273b
