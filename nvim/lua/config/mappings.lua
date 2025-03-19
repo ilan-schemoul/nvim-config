@@ -207,6 +207,8 @@ set("io", "<cmd>copen<cr>")
 set("ij", "<cmd>cnext<cr>")
 set("ik", "<cmd>cprev<cr>")
 
+set("cp", "<cmd>CccPick<cr>")
+
 -- Lazygit (incredibly good)
 -- We also disable jk (houdini) for lazygit
 set("go", function()
