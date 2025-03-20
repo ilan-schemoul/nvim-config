@@ -73,12 +73,12 @@ set("N", function()
   end
 end)
 set("S", function()
-  if vim.wo[0].statuscolumn == "|" then
+  if vim.wo[0].statuscolumn == "￤" then
     vim.wo[0].statuscolumn = "%l"
     vim.wo[0].number = false
     vim.wo[0].relativenumber = false
   else
-    vim.wo[0].statuscolumn = "|"
+    vim.wo[0].statuscolumn = "￤"
   end
 end)
 set("T", function()
@@ -232,7 +232,7 @@ set("go", function()
   })
 end)
 
-set("gl", require("nvim-gerrit").list_changes)
+set("gl", function() require("nvim-gerrit").list_changes() end)
 
 -- Add ^ to escape Lazygit (hj is used for navigation so I disabled it in lazygit)
 -- NOTE: on some azerty ^ is a dead key so you gotta press it twice
