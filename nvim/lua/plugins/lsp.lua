@@ -14,6 +14,11 @@ return
     local path = "/home/ilan/.nvm/versions/node/v16.20.2/bin"
     local cmd_env = { PATH = path .. ":" .. vim.env.PATH }
 
+    vim.lsp.handlers["textDocument/publishDiagnostics"] =
+     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+       update_in_insert = false
+     })
+
     require'lspconfig'.fish_lsp.setup{}
 
     require("mason-lspconfig").setup()
@@ -22,6 +27,7 @@ return
         require("lspconfig")[server_name].setup({
           cmd_env = cmd_env,
           capabilities = capabilities,
+          flags = { debounce_text_changes = 200 },
         })
       end,
       ["clangd"] = function(_)
