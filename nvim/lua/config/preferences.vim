@@ -111,9 +111,9 @@ let g:matchparen_insert_timeout = 2
 " set nonumber
 " set norelativenumber
 
-set laststatus=3
-set fillchars=vert:│
-set statuscolumn=│
+lua require("config/utils").setup_separators()
+set fillchars=vert:\ ,vertleft:─,vertright:\ ,stl:─,stlnc:─
+set statusline=─
 highlight StatusLine guibg=transparent guifg=#acaeb5
 highlight StatusLineNC guibg=transparent
 highlight WinSeparator guifg=#383c51

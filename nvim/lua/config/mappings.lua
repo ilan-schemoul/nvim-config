@@ -73,12 +73,12 @@ set("N", function()
   end
 end)
 set("S", function()
-  if vim.wo[0].statuscolumn == "│ " then
-    vim.wo[0].statuscolumn = "%l"
+  if vim.wo[0].statuscolumn == utils.separator_char then
+    vim.wo[0].statuscolumn = ""
     vim.wo[0].number = false
     vim.wo[0].relativenumber = false
   else
-    vim.wo[0].statuscolumn = "│ "
+    vim.wo[0].statuscolumn = utils.separator_char
   end
 end)
 set("T", function()
@@ -97,7 +97,7 @@ set("R", "<cmd>Restart<cr>")
 
 set("m", "<cmd>Mason<cr>")
 
--- Echo current file
+-- Echo current filede
 set("F", "<cmd>echo @%<cr>")
 
 set("u", "<cmd>Telescope undo<cr>")
