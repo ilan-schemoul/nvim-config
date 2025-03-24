@@ -116,4 +116,19 @@ highlight StatusLineNC guibg=transparent
 highlight WinSeparator guifg=#383c51
 highlight TabLineFill guibg=transparent
 hi Normal guibg=#24273b
-hi NormalNC guibg=#1e2132 guifg=#b5bed3
+hi NormalNC guibg=#222538 guifg=#b5bed3
+
+autocmd FileType c,python,asciidoc,iop setl textwidth=78
+" Disable cursorline if not focused
+augroup CursorLine
+    au!
+    au VimEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline
+    au BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+
+    au VimEnter * setlocal colorcolumn=+0
+    au WinEnter * setlocal colorcolumn=+0
+    au BufWinEnter * setlocal colorcolumn=+0
+    au WinLeave * setlocal colorcolumn=""
+augroup END
