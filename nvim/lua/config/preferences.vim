@@ -18,9 +18,9 @@ highlight DiffChange guibg=#2b3148
 " Less bright than default one
 highlight ColorColumn ctermbg=0 guibg=#212337
 highlight CursorLineNr guifg=#aaaaaa
-highlight GitSignsAdd guifg=#3ada05
-highlight GitSignsDelete guifg=#e20b2d
-highlight GitSignsChange guifg=#eff000
+highlight GitSignsAdd guifg=#279403
+highlight GitSignsDelete guifg=#b60e28
+highlight GitSignsChange guifg=#d7d803
 
 " nocopy when pasting
 xnoremap <expr> p 'pgv"' . v:register . 'y'
@@ -28,6 +28,7 @@ xnoremap <expr> x 'xgv"' . v:register . 'y'
 
 autocmd TermOpen * setlocal statuscolumn=""
 autocmd TermOpen * setlocal nonumber norelativenumber
+
 " Focus opens column line number which we don't want for terminals
 autocmd TermOpen * lua vim.b.focus_disable = true
 autocmd TermOpen * setlocal scrollback=20000
@@ -104,13 +105,15 @@ let g:matchparen_insert_timeout = 2
 
 " One straight horizontal line between windows
 " set laststatus=3
+
 " Hidden by default
-set statuscolumn="%l"
-set nonumber
-set norelativenumber
+" set statuscolumn="%l"
+" set nonumber
+" set norelativenumber
 
 set laststatus=3
 set fillchars=vert:│
+set statuscolumn=│
 highlight StatusLine guibg=transparent guifg=#acaeb5
 highlight StatusLineNC guibg=transparent
 highlight WinSeparator guifg=#383c51
@@ -118,7 +121,6 @@ highlight TabLineFill guibg=transparent
 hi Normal guibg=#24273b
 hi NormalNC guibg=#222538 guifg=#b5bed3
 
-autocmd FileType c,python,asciidoc,iop setl textwidth=78
 " Disable cursorline if not focused
 augroup CursorLine
     au!
