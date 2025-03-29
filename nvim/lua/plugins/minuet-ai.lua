@@ -10,6 +10,7 @@ return {
     virtualtext = {
         auto_trigger_ft = { "*" },
         keymap = {
+            -- TODO: stop monopilizing TAB like that
             accept = '<Tab>',
             accept_line = '<A-a>',
             -- accept n lines (prompts for number)
