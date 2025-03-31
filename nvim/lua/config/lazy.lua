@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufWritePre" }, {
 
 require("lazy").setup("plugins", {
   change_detection = {
-    enabled = true,
+    enabled = false,
     notify = false,
   },
 })
