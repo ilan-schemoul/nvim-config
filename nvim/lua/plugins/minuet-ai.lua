@@ -4,7 +4,7 @@ local url = require("config/utils").is_intersec() and cortex or alibaba
 local provider = require("config/utils").is_intersec() and 'openai_fim_compatible' or 'openai_fim_compatible'
 
 return {
-  enabled = true,
+  enabled = os.getenv("NVIM_AI_ENABLE") ~= nil,
   "milanglacier/minuet-ai.nvim",
   event = "InsertEnter",
   dependencies = {
