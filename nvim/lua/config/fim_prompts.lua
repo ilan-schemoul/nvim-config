@@ -1,5 +1,6 @@
 local M = {}
 local last_edits = require("config/last_edits")
+-- TODO: REMOVE
 last_edits.auto()
 
 local function prequire(m)
@@ -19,52 +20,25 @@ local get_cache = function()
   return nil
 end
 
-
-M.qwen_cacher_template = {
+M.qwen_template = {
     prompt = function(pref, suff)
-      local prompt_message = ''
+      local prompt_message = ""
 
       local cache = get_cache()
       if cache then
         for _, file in ipairs(cache) do
-          prompt_message = prompt_message .. '<|file_sep|>' .. file.path .. '\n' .. file.document
+          prompt_message = prompt_message .. "<|file_sep|>" .. file.path .. "\n" .. file.document
         end
       end
 
-      -- prompt_message = prompt_message .. require("config/last_edits").get_qwen_last_edits()
-
-      local prompt = prompt_message .. '<|fim_prefix|>' .. pref .. '<|fim_suffix|>' .. suff .. '<|fim_middle|>'
-      return prompt
+      return prompt_message
+        .. "<|fim_prefix|>"
+        .. pref
+        .. "<|fim_suffix|>"
+        .. suff
+        .. "<|fim_middle|>"
     end,
     suffix = false,
-}
-
-M.codestral_template = {
-  prompt = function(pref, suff)
-    -- TODO: bring back Content that follows [USER EDITS] are lines inserted by user recently. Make use of them if necessary.
-     local prompt_message = ("Perform fill in the middle completion in the language %s based on the following content. "):gsub("%%s", vim.bo.filetype)
-
-    -- local edits = last_edits.get_last_edits()
-    -- if #edits > 0 then
-    --   prompt_message = "Content that follows [USER_EDIT] is a modification made by the user recently. Make use of them if necessary. " .. prompt_message
-    --   prompt_message = prompt_message .. edits
-    -- end
-
-    local cache_result = get_cache()
-    if cache_result and #cache_result > 0 then
-      prompt_message = "Content that follows `[CONTEXT]` is a file in the repository that may be useful. Make use of them where necessary. " .. prompt_message
-      for _, file in ipairs(cache_result) do
-        prompt_message = prompt_message .. "[CONTEXT]" .. file.path .. "\n" .. file.document
-      end
-    end
-
-    local prompt =  prompt_message
-                  .. " [PREFIX] " .. pref
-                  .. " [SUFFIX] " .. suff
-                  .. " [MIDDLE]"
-    return prompt
-  end,
-  suffix = false,
 }
 
 M.gemini_template = {
