@@ -1,17 +1,17 @@
-local cloud = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1'
+local alibaba = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1'
 local cortex = ''
-local url = require("config/utils").is_intersec() and cortex or cloud
-local provider = require("config/utils").is_intersec() and 'openai_fim_compatible' or 'codestral'
+local url = require("config/utils").is_intersec() and cortex or alibaba
+local provider = require("config/utils").is_intersec() and 'openai_fim_compatible' or 'openai_fim_compatible'
 
-local opts = {
-  enabled = os.getenv("NVIM_AI_ENABLE"),
+return {
+  enabled = true,
   "milanglacier/minuet-ai.nvim",
   event = "InsertEnter",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
   opts = {
-    debounce = 200,
+    debounce = 600,
     throttle = 1000,
     virtualtext = {
       auto_trigger_ft = { "*" },
@@ -29,29 +29,49 @@ local opts = {
       },
       show_on_completion_menu = true,
     },
-    n_completions = 3,
-    context_window = 16000,
+    n_completions = 2,
+    context_window = 512,
     provider = provider,
-    provider_options = {
+    provider_options  = {
       codestral = {
         end_point = 'https://api.mistral.ai/v1/fim/completions',
         template = require("config/fim_prompts").codestral_template,
       },
       gemini = require("config/fim_prompts").gemini_template,
+      openai_fim_compatible = {
+        api_key = 'ALIBABA_API_KEY',
+        end_point = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1/completions',
+        model = 'qwen2.5-coder:7b',
+        optional = {
+          max_tokens = 56,
+          top_p = 0.9,
+        },
+        -- template = {
+        --   prompt = function(context_before_cursor, context_after_cursor)
+        --     return '<|fim_prefix|>'
+        --     .. context_before_cursor
+        --     .. '<|fim_suffix|>'
+        --     .. context_after_cursor
+        --     .. '<|fim_middle|>'
+        --   end,
+        --   optional = {
+        --     max_tokens = 256,
+        --     stop = { '\n\n' },
+        --   },
+        --   suffix = false,
+        -- },
+      },
+      -- openai_fim_compatible  = {
+      --   name = "qwen",
+      --   api_key = "ALIBABA_API_KEY",
+      --   -- template = require("config/fim_prompts").qwen_cacher_template,
+      --   end_point = url,
+      --   model = 'qwen2.5-coder:7b',
+      --   -- optional = {
+      --   --   max_tokens = 256,
+      --   --   stop = { '\n\n' },
+      --   -- },
+      -- },
     }
   },
 }
-
-if require("config/utils").is_intersec() then
-  opts.opts.provider_options.openai_fim_compatible = {
-    template = require("config/fim_prompts").qwen_cacher_template,
-    end_point = url,
-    model = 'qwen2.5-coder:7b',
-    optional = {
-      max_tokens = 256,
-      stop = { '\n\n' },
-    },
-  }
-end
-
-return opts
