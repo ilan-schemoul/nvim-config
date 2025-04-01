@@ -1,5 +1,7 @@
 return {
-  "hrsh7th/nvim-cmp",
+  -- Fork to set cmp above
+  "llllvvuu/nvim-cmp",
+  branch = "feat/above",
   version = false, -- last release is way too old
   event = "InsertEnter",
   dependencies = {
@@ -45,6 +47,11 @@ return {
       }, {
         { name = "buffer" },
       }),
+      view = {
+        entries = {
+          vertical_positioning = 'above',
+        },
+      },
       mapping = cmp.mapping.preset.insert({
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
