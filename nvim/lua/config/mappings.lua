@@ -16,14 +16,20 @@ local function setv(keys, cmd)
   vim.keymap.set("v", "<leader>" .. keys, cmd)
 end
 
-vim.keymap.set("n", "[d", function()
-  vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR, })
-end)
-vim.keymap.set("n", "]d", function()
-  vim.diagnostic.goto_next({
-   severity = vim.diagnostic.severity.ERROR,
- })
-end)
+local map = vim.keymap.set
+local diagnostic_goto = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 set("lD", vim.diagnostic.open_float)
 set("lh", vim.lsp.buf.hover)
@@ -124,7 +130,6 @@ set("tF", function()
   local word = vim.fn.expand('<cword>')
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = word })
 end)
-set("tb", require("telescope").extensions.git_file_history.git_file_history)
 set("ts", "<cmd>Tabby jump_to_tab<cr>")
 
 -- Switch to tab 4 with <leader>t4
@@ -235,6 +240,7 @@ set("go", function()
 end)
 
 set("gl", function() require("nvim-gerrit").list_changes() end)
+set("gb", "<cmd>Telescope git_bcommits<cr>")
 
 -- Add ^ to escape Lazygit (hj is used for navigation so I disabled it in lazygit)
 -- NOTE: on some azerty ^ is a dead key so you gotta press it twice
