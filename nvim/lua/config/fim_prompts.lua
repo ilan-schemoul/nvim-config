@@ -1,4 +1,6 @@
 local M = {}
+local last_edits = require("config/last_edits")
+last_edits.auto()
 
 local function prequire(m)
   local ok, err = pcall(require, m)
@@ -24,12 +26,13 @@ M.qwen_cacher_template = {
 
       local cache = get_cache()
       if cache then
-        for _, file in ipairs(cache.query_from_cache(0)) do
+        for _, file in ipairs(cache) do
           prompt_message = prompt_message .. '<|file_sep|>' .. file.path .. '\n' .. file.document
         end
       end
 
-      prompt_message = prompt_message .. require("config/last_edits").get_qwen_last_edits()
+      -- prompt_message = prompt_message .. require("config/last_edits").get_qwen_last_edits()
+
       local prompt = prompt_message .. '<|fim_prefix|>' .. pref .. '<|fim_suffix|>' .. suff .. '<|fim_middle|>'
       return prompt
     end,
@@ -39,12 +42,13 @@ M.qwen_cacher_template = {
 M.codestral_template = {
   prompt = function(pref, suff)
     -- TODO: bring back Content that follows [USER EDITS] are lines inserted by user recently. Make use of them if necessary.
-     local prompt_message = ("Perform fill in the middle completion in the language %s based on the following content.\n"):gsub("%%s", vim.bo.filetype)
-    local edits = require("config/last_edits").get_last_edits()
-    if #edits > 0 then
-      prompt_message = "Content that follows [USER_EDIT] is a modification made by the user recently. Make use of them if necessary. " .. prompt_message
-      prompt_message = prompt_message .. require("config/last_edits").get_last_edits()
-    end
+     local prompt_message = ("Perform fill in the middle completion in the language %s based on the following content. "):gsub("%%s", vim.bo.filetype)
+
+    -- local edits = last_edits.get_last_edits()
+    -- if #edits > 0 then
+    --   prompt_message = "Content that follows [USER_EDIT] is a modification made by the user recently. Make use of them if necessary. " .. prompt_message
+    --   prompt_message = prompt_message .. edits
+    -- end
 
     local cache_result = get_cache()
     if cache_result and #cache_result > 0 then
@@ -71,7 +75,7 @@ M.gemini_template = {
   chat_input = {
     template = '{{{last_edits}}}\n{{{repo_context}}}\n{{{language}}}\n{{{tab}}}\n<contextBeforeCursor>\n{{{context_before_cursor}}}<cursorPosition>\n<contextAfterCursor>\n{{{context_after_cursor}}}',
     last_edits = function(_, _)
-      return '<last_edits>\n' .. require("config/last_edits").get_last_edits() .. '\n</last_edits>'
+      return '<last_edits>\n' .. last_edits.get_last_edits() .. '\n</last_edits>'
     end,
     repo_context = function(_, _, _)
       local cache_result = get_cache()
