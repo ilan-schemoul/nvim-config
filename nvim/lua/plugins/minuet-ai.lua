@@ -20,13 +20,13 @@ local cloud_qwen = {
 local cortex_qwen = {
   api_key = 'TERM',
   -- FIXME:
-  end_point = fim_endpoint('cortex.corp'),
+  end_point = 'http://cortex.corp:11434/v1/completions',
   -- FIXME:
-  model = 'qwen2.5-coder:7b',
+  model = 'qwen2.5-coder:3b',
 
   name = 'Cortex qwen',
   optional = {
-    max_tokens = 56,
+    max_tokens = 40,
     top_p = 0.9,
   },
 }
@@ -38,7 +38,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   opts = {
-    throttle = 800,
+    throttle = 1000,
     debounce = 250,
     virtualtext = {
       auto_trigger_ft = { "*" },
@@ -58,7 +58,7 @@ return {
     },
     provider = is_intersec and 'openai_fim_compatible' or local_provider,
     n_completions = is_intersec and 2 or 3,
-    context_window = is_intersec and 4092 or 14000,
+    context_window = is_intersec and 500 or 14000,
     provider_options = {
       codestral = {
         end_point = 'https://api.mistral.ai/v1/fim/completions',
