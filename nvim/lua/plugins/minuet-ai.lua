@@ -1,4 +1,6 @@
 local is_intersec = require("config/utils").is_intersec()
+local allow_cortex_use = true
+local use_cortex = is_intersec and allow_cortex_use
 local local_provider = 'codestral'
 
 local fim_endpoint = function(url)
@@ -19,15 +21,14 @@ local cloud_qwen = {
 
 local cortex_qwen = {
   api_key = 'TERM',
-  -- FIXME:
   end_point = 'http://cortex.corp:11434/v1/completions',
-  -- FIXME:
-  model = 'qwen2.5-coder:3b',
+  model = 'qwen2.5-coder:7b',
 
   name = 'Cortex qwen',
   optional = {
-    max_tokens = 40,
-    top_p = 0.9,
+    max_tokens = 70,
+    top_p = 0.8,
+    min_p = 0.1,
   },
 }
 
@@ -56,15 +57,19 @@ return {
       },
       show_on_completion_menu = true,
     },
-    provider = is_intersec and 'openai_fim_compatible' or local_provider,
-    n_completions = is_intersec and 2 or 3,
-    context_window = is_intersec and 500 or 14000,
+    provider = use_cortex and 'openai_fim_compatible' or local_provider,
+    n_completions = use_cortex and 2 or 3,
+    context_window = use_cortex and 9000 or 16000,
     provider_options = {
       codestral = {
+        -- Two endpoints. API and codestral. Codestral requires subscription
+        -- (which I don't want). So I use API (pay per tokens, but no
+        -- subscription)
         end_point = 'https://api.mistral.ai/v1/fim/completions',
+        api_key = 'CODESTRAL_API_KEY',
       },
 
-      openai_fim_compatible = is_intersec and cortex_qwen or cloud_qwen,
+      openai_fim_compatible = use_cortex and cortex_qwen or cloud_qwen,
     },
   }
 }
