@@ -12,6 +12,7 @@ Reguarly read this and clean things up.
   -- ( ) Import things from /srv/tools/../vim fold and others
   -- ( ) How enable linter like in vim in fr_FR.utf8.po
   - ( ) find something less shitty than Obsession which keeps not saving my tabs
+  - ( ) Create a YAML config system for neovim
 * Somewhat important
   - ( ) Norg bug colors https://github.com/nvim-neorg/neorg/issues/1608
   - ( ) Norg fix link https://github.com/nvim-neorg/neorg/issues/1564
