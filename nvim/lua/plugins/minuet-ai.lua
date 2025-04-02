@@ -1,4 +1,5 @@
 local is_intersec = require("config/utils").is_intersec()
+local local_provider = 'codestral'
 
 local fim_endpoint = function(url)
   return 'https://' .. url .. '/v1/completions'
@@ -55,7 +56,7 @@ return {
       },
       show_on_completion_menu = true,
     },
-    provider = is_intersec and 'openai_fim_compatible' or 'codestral',
+    provider = is_intersec and 'openai_fim_compatible' or local_provider,
     n_completions = is_intersec and 2 or 3,
     context_window = is_intersec and 4092 or 14000,
     provider_options = {
