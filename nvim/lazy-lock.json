@@ -44,7 +44,7 @@
   "mcphub.nvim": { "branch": "main", "commit": "0755da600727746f1a315d81f16f73f4203862b0" },
   "mini.align": { "branch": "main", "commit": "e715137aece7d05734403d793b8b6b64486bc812" },
   "minuet-ai.nvim": { "branch": "main", "commit": "e2fa84aee0c2e6c22a6f85af7e4ebfe51ed82502" },
-  "neorg": { "branch": "main", "commit": "81ee90cb2d72ac43bfadb7dd276646f34c8f85be" },
+  "neorg": { "branch": "main", "commit": "e206c9642f4a115cd836e76c98ef785623d335bc" },
   "noice.nvim": { "branch": "main", "commit": "5af819a250f6b73727e10bab09df61673e5db7f2" },
   "nui.nvim": { "branch": "main", "commit": "53e907ffe5eedebdca1cd503b00aa8692068ca46" },
   "nvim-add-lazy-plugin": { "branch": "master", "commit": "6a7769be8ed2576d9d915921a0ca033597bb7338" },
