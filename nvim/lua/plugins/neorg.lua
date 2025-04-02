@@ -4,17 +4,11 @@ return {
   config = function()
     require("neorg").setup({
       load = {
-        ["core.defaults"] = {
-          config = {
-            disable = {
-              "core.esupports.indent",
-            },
-          },
-        },
+        ["core.defaults"] = {},
         ["core.esupports.indent"] = {
           config = {
-            format_on_enter = false,
-            format_on_escape = false,
+            format_on_enter = true,
+            format_on_escape = true,
           },
         },
         ["core.concealer"] = {},
