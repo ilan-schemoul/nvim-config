@@ -2,12 +2,20 @@
   - ( ) Prio 1
   -- (x) https://github.com/milanglacier/minuet-ai.nvim
   -- ( ) Codecompanion
+  --- ( ) Configure tool
+  --- ( ) Investigate LLMs (Deepseek r1, Gemma3, etc.)
+  --- ( ) Create a codecompanion workspace file (or auto generate it partly)
+  --- ( ) Create actions
+  --- ( ) Create workflows (and tests if Agent mode is relevant)
   - ( ) Prio 2
   -- ( ) MCP
-  --- ( ) Redmine (most important)
-  --- ( ) Slack (second most important)
-  --- ( ) CodeVector (third most important)
-  --- ( ) Gerrit (fourth most important)
+  --- ( ) Redmine
+  --- ( ) CodeVector
+  --- ( ) Slack
+  --- ( ) Gerrit
+  --- ( ) Perplexity
+  --- ( ) Create one to interact with the product (ctl commands, start/stop server, get logs, set logs etc.)
+  --- ( ) Browser MCP
   -- ( ) Aider
   -- ( ) Improve my perxplexity wrapper
   --- ( ) Choose context (history and prompt)
