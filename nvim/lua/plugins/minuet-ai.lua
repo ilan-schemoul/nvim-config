@@ -59,7 +59,7 @@ return {
     },
     provider = use_cortex and 'openai_fim_compatible' or local_provider,
     n_completions = use_cortex and 2 or 3,
-    context_window = use_cortex and 9000 or 16000,
+    context_window = use_cortex and 10000 or 16000,
     provider_options = {
       codestral = {
         -- Two endpoints. API and codestral. Codestral requires subscription
