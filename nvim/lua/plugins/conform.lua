@@ -6,7 +6,7 @@ return {
   },
   keys = {
     {
-      "<leader>f",
+      "<leader>ff",
       "<cmd>lua require('conform').format({ async = true, lsp_fallback = true })<cr>",
       mode = { "n", "v" },
     },
