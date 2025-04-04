@@ -24,10 +24,13 @@ return {
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd" }, -- Command to open the companion window
   keys = {
     { "<leader>fc", ":CodeCompanionChat toggle<CR>" },
+    { "<leader>fc", ":CodeCompanionChat toggle<CR>" },
     { "<leader>fC", ":CodeCompanionChat<CR>" },
-    { "<leader>fp", "'<,'>CodeCompanion<CR>" },
-    { "<leader>fa", "'<,'>CodeCompanionActions<CR>" },
-    { "<leader>f/", "'<,'>CodeCompanionCmd<CR>" },
+    { "<leader>fp", ":CodeCompanion<CR>" },
+    { "<leader>fp", ":'<,'>CodeCompanion<CR>", mode = "v" },
+    { "<leader>fa", ":CodeCompanionActions<CR>" },
+    { "<leader>fa", ":'<,'>CodeCompanionActions<CR>", mode = "v" },
+    { "<leader>f/", ":'<,'>CodeCompanionCmd<CR>", mode = "v" },
   },
   opts = {
     strategies = {
