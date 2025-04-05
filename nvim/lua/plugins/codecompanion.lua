@@ -19,6 +19,31 @@ local cortex = {
   },
 }
 
+local chat = {
+  adapter = adapter,
+  slash_commands = {
+    ["file"] = {
+      -- Location to the slash command in CodeCompanion
+      callback = "strategies.chat.slash_commands.file",
+      description = "Select a file using Telescope",
+      opts = {
+        provider = "telescope", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
+        contains_code = true,
+      },
+    },
+  },
+  keymaps = {
+    stop = {
+      modes = {
+        n = "Q",
+      },
+      index = 5,
+      callback = "keymaps.stop",
+      description = "Stop Request",
+    },
+  },
+}
+
 return {
   "olimorris/codecompanion.nvim",
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd" }, -- Command to open the companion window
@@ -30,24 +55,11 @@ return {
     { "<leader>fp", ":'<,'>CodeCompanion<CR>", mode = "v" },
     { "<leader>fa", ":CodeCompanionActions<CR>" },
     { "<leader>fa", ":'<,'>CodeCompanionActions<CR>", mode = "v" },
-    { "<leader>f/", ":'<,'>CodeCompanionCmd<CR>", mode = "v" },
+    { "<leader>f/", ":'CodeCompanionCmd<CR>" },
   },
   opts = {
     strategies = {
-      chat = {
-        adapter = adapter,
-        slash_commands = {
-          ["file"] = {
-            -- Location to the slash command in CodeCompanion
-            callback = "strategies.chat.slash_commands.file",
-            description = "Select a file using Telescope",
-            opts = {
-              provider = "telescope", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
-              contains_code = true,
-            },
-          },
-        },
-      },
+      chat = chat,
       inline = {
         adapter = adapter,
       },
