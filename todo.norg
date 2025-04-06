@@ -2,11 +2,22 @@
   - ( ) Prio 1
   -- (x) https://github.com/milanglacier/minuet-ai.nvim
   -- ( ) Codecompanion
-  --- ( ) Configure tool
-  --- ( ) Investigate LLMs (Deepseek r1, Gemma3, etc.)
+  --- ( ) Configure mini.diff
+  --- (x) Configure tool
+  --- (x) LLM for autocompletion => codestral
+  --- ( ) LLM for inline ? (deepseek v3)
+  --- ( ) LLM for chat ? (deepseek r1 ?)
   --- ( ) Create a codecompanion workspace file (or auto generate it partly)
-  --- ( ) Create actions
-  --- ( ) Create workflows (and tests if Agent mode is relevant)
+  --- ( ) Create actions/workflow
+  ---- ( ) Doc
+  ----- ( ) Give context files
+  ----- ( ) Initial prompt
+  ----- ( ) Generate doc action (@editor)
+  ----- ( ) Proofread it
+  ----- ( ) Compile the doc
+  ----- ( ) If it fails fix it
+  ----- ( ) Make a merge commit
+  ---- ( ) Test/edit workflow (with behave)
   - ( ) Prio 2
   -- ( ) MCP
   --- ( ) Redmine
