@@ -49,6 +49,8 @@ set cmdheight=0 " hide command line when not used
 
 set backspace=indent,eol,start " allows backspacing over everything in insert mode
 
+" Show the modification of text that are not visible in a split buffer
+set inccommand=split
 set incsearch " jumps to search word as you type
 set wildignore=*.o,*.obj,*.bak,*.ex
 
