@@ -38,6 +38,7 @@
   "lua-utils.nvim": { "branch": "main", "commit": "e565749421f4bbb5d2e85e37c3cef9d56553d8bd" },
   "luarocks.nvim": { "branch": "main", "commit": "1db9093915eb16ba2473cfb8d343ace5ee04130a" },
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
+  "markview.nvim": { "branch": "main", "commit": "4f9ad36efe01c283aa886453ba75bf569c897c84" },
   "mason-bridge.nvim": { "branch": "main", "commit": "19bc564adbb44eaf151e863ffb0a439c4b8c4a79" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "1a31f824b9cd5bc6f342fc29e9a53b60d74af245" },
   "mason-update-all": { "branch": "main", "commit": "007a4085fe5e830b9139313652e1553bf1a9b857" },
