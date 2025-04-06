@@ -1,5 +1,6 @@
 local is_intersec = require("config/utils").is_intersec()
-local adapter = is_intersec and "ollama" or "anthropic"
+local chat_adapter = is_intersec and "ollama" or "anthropic"
+local inline_adapter = is_intersec and "ollama" or "haiku"
 local cortex = {
   schema = {
     model = {
@@ -20,7 +21,7 @@ local cortex = {
 }
 
 local chat = {
-  adapter = adapter,
+  adapter = chat_adapter,
   slash_commands = {
     ["file"] = {
       -- Location to the slash command in CodeCompanion
@@ -43,9 +44,13 @@ local chat = {
     },
   },
 }
+-- New comment added here
 
 return {
   "olimorris/codecompanion.nvim",
+  dependencies = {
+    "j-hui/fidget.nvim"
+  },
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd" }, -- Command to open the companion window
   keys = {
     { "<leader>fc", ":CodeCompanionChat toggle<CR>" },
@@ -56,18 +61,33 @@ return {
     { "<leader>fa", ":CodeCompanionActions<CR>" },
     { "<leader>fa", ":'<,'>CodeCompanionActions<CR>", mode = "v" },
     { "<leader>f/", ":'CodeCompanionCmd<CR>" },
+    { "<leader>fA", ":CodeCompanionChat Add<cr>" },
+    { "<leader>fA", ":'<,'>CodeCompanionChat Add<cr>", mode = "v" }
   },
   opts = {
     strategies = {
       chat = chat,
       inline = {
-        adapter = adapter,
+        adapter = inline_adapter,
       },
     },
     adapters = {
       ollama = function()
         return require("codecompanion.adapters").extend("ollama", cortex)
       end,
+      haiku = function()
+        return require("codecompanion.adapters").extend("anthropic", {
+          schema = {
+            model = {
+              default = "claude-3-5-haiku-latest",
+            },
+          },
+        })
+      end,
     },
   },
+  config = function(_, opts)
+    require("codecompanion").setup(opts)
+    require("3rd/codecompanion-fidget-spinner"):init()
+  end,
 }
