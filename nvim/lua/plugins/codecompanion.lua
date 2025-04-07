@@ -71,7 +71,7 @@ return {
     { "<leader>fa", ":CodeCompanionActions<CR>" },
     { "<leader>fa", ":'<,'>CodeCompanionActions<CR>", mode = "v" },
     { "<leader>f/", ":'CodeCompanionCmd<CR>" },
-    { "<leader>fA", ":CodeCompanionChat Add<cr>" },
+    { "<leader>fA", ":%CodeCompanionChat Add<cr>" },
     { "<leader>fA", ":'<,'>CodeCompanionChat Add<cr>", mode = "v" }
   },
   opts = {

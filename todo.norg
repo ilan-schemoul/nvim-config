@@ -2,6 +2,8 @@
   - ( ) Prio 1
   -- (x) https://github.com/milanglacier/minuet-ai.nvim
   -- ( ) Codecompanion
+  --- ( ) (!) Gemini 2.5 pro (better and free)
+  --- ( ) (!) try quasar alpha (4x faster and better and free !)
   --- ( ) Configure mini.diff
   --- (x) Configure tool
   --- (x) LLM for autocompletion => codestral
