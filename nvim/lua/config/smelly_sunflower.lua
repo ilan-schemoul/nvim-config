@@ -63,8 +63,26 @@ M.clean = function()
 end
 
 M.clean_all_buffers = function()
-  vim.cmd("bufdo silent! g/fix_me_now/d")
-  vim.cmd("bufdo silent! w")
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    local readonly = vim.api.nvim_buf_get_option(bufnr, "readonly")
+
+    if (vim.api.nvim_buf_is_valid(bufnr)
+        and vim.api.nvim_buf_get_option(bufnr, 'modifiable')
+        and not readonly
+        and vim.api.nvim_buf_get_option(bufnr, 'buftype') == '') then
+      local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+      for i, line in ipairs(lines) do
+        if string.match(line, "fix_me_now") then
+          vim.api.nvim_buf_set_lines(bufnr, i-1, i, false, {})
+        end
+      end
+
+      if vim.api.nvim_buf_get_lines(bufnr, 0, -1, true)[1] ~= nil and vim.api.nvim_buf_get_name(bufnr) ~= '' then
+
+        vim.api.nvim_buf_call(bufnr, function() vim.cmd('w') end)
+      end
+    end
+  end
 end
 
 return M
