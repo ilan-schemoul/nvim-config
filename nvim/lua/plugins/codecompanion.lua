@@ -1,6 +1,6 @@
 local is_intersec = require("config/utils").is_intersec()
-local chat_adapter = is_intersec and "ollama" or "anthropic"
-local inline_adapter = is_intersec and "ollama" or "haiku"
+local chat_adapter = is_intersec and "ovh" or "anthropic"
+local inline_adapter = is_intersec and "ovh" or "haiku"
 local cortex = {
   schema = {
     model = {
@@ -10,6 +10,25 @@ local cortex = {
   env = {
     url = 'http://cortex.corp:11434',
     api_key = "NONE",
+  },
+  headers = {
+    ["Content-Type"] = "application/json",
+    ["Authorization"] = "Bearer ${api_key}",
+  },
+  parameters = {
+    sync = true,
+  },
+}
+
+local ovh = {
+  schema = {
+    model = {
+      default = "Qwen2.5-Coder-32B-Instruct",
+    },
+  },
+  env = {
+    url = 'https://oai.endpoints.kepler.ai.cloud.ovh.net',
+    api_key = "OVH_API_KEY",
   },
   headers = {
     ["Content-Type"] = "application/json",
@@ -84,6 +103,9 @@ return {
     adapters = {
       ollama = function()
         return require("codecompanion.adapters").extend("ollama", cortex)
+      end,
+      ovh = function()
+        return require("codecompanion.adapters").extend("openai_compatible", ovh)
       end,
       haiku = function()
         return require("codecompanion.adapters").extend("anthropic", {

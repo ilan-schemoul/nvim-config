@@ -19,16 +19,13 @@ local cloud_qwen = {
   },
 }
 
-local cortex_qwen = {
+local cortex = {
   api_key = 'TERM',
   end_point = 'http://cortex.corp:11434/v1/completions',
-  model = 'qwen2.5-coder:7b',
-
-  name = 'Cortex qwen',
+  model = 'codestral:latest',
+  name = 'Cortex',
   optional = {
     max_tokens = 70,
-    top_p = 0.8,
-    min_p = 0.1,
   },
 }
 
@@ -42,6 +39,7 @@ return {
     throttle = 1000,
     debounce = 250,
     virtualtext = {
+      auto_trigger_ignore_ft = { "TelescopePrompt" },
       auto_trigger_ft = { "*" },
       keymap = {
         accept_line = '<A-d>',
@@ -59,7 +57,7 @@ return {
     },
     provider = use_cortex and 'openai_fim_compatible' or local_provider,
     n_completions = use_cortex and 2 or 3,
-    context_window = use_cortex and 10000 or 25000,
+    context_window = use_cortex and 8000 or 25000,
     provider_options = {
       codestral = {
         -- Two endpoints. API and codestral. Codestral requires subscription
@@ -69,7 +67,7 @@ return {
         api_key = 'CODESTRAL_API_KEY',
       },
 
-      openai_fim_compatible = use_cortex and cortex_qwen or cloud_qwen,
+      openai_fim_compatible = use_cortex and cortex or cloud_qwen,
     },
   }
 }
