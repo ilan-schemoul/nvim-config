@@ -4,7 +4,7 @@ local inline_adapter = is_intersec and "ovh" or "haiku"
 local cortex = {
   schema = {
     model = {
-      default = "deepseek-r1:14b",
+      default = "qwen2.5-coder:32b",
     },
   },
   env = {
@@ -53,6 +53,14 @@ local chat = {
     },
   },
   keymaps = {
+    options = {
+      modes = {
+        n = "g?",
+      },
+      callback = "keymaps.options",
+      description = "Options",
+      hide = true,
+    },
     stop = {
       modes = {
         n = "Q",
@@ -101,7 +109,7 @@ return {
       },
     },
     adapters = {
-      ollama = function()
+      cortex = function()
         return require("codecompanion.adapters").extend("ollama", cortex)
       end,
       ovh = function()
