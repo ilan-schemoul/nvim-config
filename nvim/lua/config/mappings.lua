@@ -96,6 +96,8 @@ set("T", function()
   end
 end)
 
+set("E", "<cmd>:e!<cr>")
+
 -- Close current buffer
 set("q", custom_commands.close_window_if_not_last)
 -- Close neovim
