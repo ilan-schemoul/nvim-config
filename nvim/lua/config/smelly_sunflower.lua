@@ -71,9 +71,12 @@ M.clean_all_buffers = function()
         and not readonly
         and vim.api.nvim_buf_get_option(bufnr, 'buftype') == '') then
       local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+      local deleted_lines = 0
       for i, line in ipairs(lines) do
         if string.match(line, "fix_me_now") then
-          vim.api.nvim_buf_set_lines(bufnr, i-1, i, false, {})
+          local line_to_delete = i - deleted_lines
+          vim.api.nvim_buf_set_lines(bufnr, line_to_delete - 1, line_to_delete, false, {})
+          deleted_lines = deleted_lines + 1
         end
       end
 
