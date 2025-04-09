@@ -80,7 +80,28 @@ local chat = {
     }
   }
 }
--- New comment added here
+
+local prompts = {
+  ["Commit"] = {
+    strategy = "chat",
+    description = "Write commit for me",
+    prompts = {
+      {
+        -- TODO: straight do a system command to get the last 20 commits and the diff
+        role = "user",
+        content = [[You are an excellent software engineer who makes explicit yet succint commit message. You deeply care about being consistent with the commit history. You are seen as the best commiter of your company and you are proud of that.
+        Write a commit for me.
+        Please follow following instructions:
+        - First do a git log of twenty last commits to understand commit formats.
+        - Then do a git diff to understand the changes.
+        - Then write a commit message for me.
+        - Do not add too many details, be explicit but concise.
+        - Do not follow conventional commit convention.
+        Use the tool @cmd_runner to execute git commands]],
+      },
+    },
+  },
+}
 
 return {
   "olimorris/codecompanion.nvim",
@@ -102,6 +123,7 @@ return {
     { "<leader>fA", ":'<,'>CodeCompanionChat Add<cr>", mode = "v" }
   },
   opts = {
+    prompt_library = prompts,
     strategies = {
       chat = chat,
       inline = {
