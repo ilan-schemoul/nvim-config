@@ -30,7 +30,7 @@ return {
         local modified = vim.bo[props.buf].modified and 'bold,italic' or 'bold'
 
         local function get_git_diff()
-          local icons = { removed = "", modified = "", changed = "", added = "" }
+          local icons = { removed = "-", modified = "~", changed = "!=", added = "+" }
           local signs = vim.b[props.buf].gitsigns_status_dict
           local labels = {}
           if signs == nil then return labels end
@@ -52,7 +52,7 @@ return {
               { severity = vim.diagnostic.severity[string.upper(severity)] }
             )
             if n > 0 then
-              table.insert(label, { icon .. n .. " ", group = "DiagnosticSign" .. severity })
+              table.insert(label, { n .. icon .. " ", group = "DiagnosticSign" .. severity })
             end
           end
           if #label > 0 then table.insert(label, { "┊ " }) end
