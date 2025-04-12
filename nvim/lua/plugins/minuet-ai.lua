@@ -31,6 +31,7 @@ local cortex = {
 
 return {
   enabled = os.getenv("NVIM_AI_ENABLE") ~= nil,
+  event = "InsertEnter",
   "milanglacier/minuet-ai.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
