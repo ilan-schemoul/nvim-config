@@ -1,6 +1,7 @@
 return {
   "nvim-neorg/neorg",
   version = "v9.x.x",
+  event = "VeryLazy",
   config = function()
     require("neorg").setup({
       load = {
@@ -27,10 +28,13 @@ return {
         },
       },
     })
+
     vim.api.nvim_create_autocmd("Filetype", {
       pattern = "norg",
       callback = function()
-        vim.keymap.set("i", "<C-b>", "<Plug>(neorg.itero.next-iteration)", { buffer = true })
+        vim.keymap.set("i", "<C-b>", "<Plug>(neorg.itero.next-iteration)", {
+          buffer = true
+        })
       end,
     })
 
