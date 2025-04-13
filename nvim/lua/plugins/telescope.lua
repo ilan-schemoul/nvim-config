@@ -58,6 +58,21 @@ return {
             width = 0.85,
           },
         },
+        preview = {
+          filetype_hook = function(filepath, bufnr, opts)
+            local putils = require("telescope.previewers.utils")
+            local skip = opts.ft == "norg"
+            if skip then
+              putils.set_preview_message(
+                bufnr,
+                opts.winid,
+                string.format("Cannot preview neorg files (it's a workaround)")
+              )
+            end
+
+            return not skip
+          end,
+        }
       },
       extensions = {
         live_grep_args = {
