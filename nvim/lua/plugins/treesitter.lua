@@ -119,6 +119,7 @@ return {
   -- Show context of the current function
   {
     "nvim-treesitter/nvim-treesitter-context",
+    event = "VimEnter",
     enabled = true,
     disable = function(_, buf)
       disable(buf)

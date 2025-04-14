@@ -1,6 +1,7 @@
 return {
     "m00qek/baleia.nvim",
     branch = "linebreaks",
+    ft = "behave_log",
     config = function()
         local baleia = require('baleia').setup({
             colors = {
