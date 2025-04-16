@@ -64,8 +64,8 @@ return {
         -- Two endpoints. API and codestral. Codestral requires subscription
         -- (which I don't want). So I use API (pay per tokens, but no
         -- subscription)
-        end_point = 'https://api.mistral.ai/v1/fim/completions',
-        api_key = 'CODESTRAL_API_KEY',
+        end_point = 'https://codestral.mistral.ai/v1/fim/completions',
+        api_key = 'CODESTRAL_FIM_API_KEY',
       },
 
       openai_fim_compatible = use_cortex and cortex or cloud_qwen,
