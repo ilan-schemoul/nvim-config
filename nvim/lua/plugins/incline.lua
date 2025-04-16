@@ -23,6 +23,10 @@ return {
         vertical = 0,
       },
       padding = 0,
+      placement = {
+        vertical = "bottom",
+        horizontal = "right",
+      },
     },
      render = function(props)
         local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
