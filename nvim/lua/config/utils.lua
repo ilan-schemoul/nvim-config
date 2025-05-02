@@ -46,10 +46,11 @@ M.get_hide_tab = function()
   return hide_tab
 end
 
-M.separator_char = "│"
+local separator_char = "│"
+M.separator_char = separator_char
 
 M.setup_separators = function()
-  vim.cmd("set statuscolumn=" .. M.separator_char)
+  vim.cmd("set statuscolumn=" .. separator_char)
 end
 
 return M

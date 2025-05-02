@@ -1,11 +1,14 @@
 return {
-  "https://github.com/ilan-schemoul/tree-sitter-iop",
-  ft = "iop",
-  -- dir = "~/code/tree-sitter-iop",
+  -- "https://github.com/ilan-schemoul/tree-sitter-iop",
+  build = ":TSUpdate",
+  dir = "~/code/tree-sitter-iop",
   opts = {
     -- local_directory = "~/code/tree-sitter-iop/",
   },
-  config = function()
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+  },
+  config = function(opts)
     vim.api.nvim_create_autocmd("FileType", {
         pattern = "iop",
         callback = function()
@@ -16,6 +19,6 @@ return {
           end
         end
     })
+    require("tree-sitter-iop").setup(opts)
   end,
-  build = ":TSUpdate",
 }
