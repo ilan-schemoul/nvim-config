@@ -1,12 +1,5 @@
 source /srv/tools/share/dotfiles/vim/syntax/c.vim
 
-" Appending to path means letting priority to what is already in other
-" folders of the path.
-" We want the node already in path (what is sourced by the virtual
-" environnement) takes precedence over node 20. But then otherwise I want
-" modern node for LSP etc.
-let $PATH = $PATH . '/home/ilan/.bin/node-v20.13.1-linux-x64/bin'
-
 lua vim.filetype.add({ extension = { blk = 'c' } })
 
 autocmd BufNewFile,BufRead wscript_build set filetype=python
