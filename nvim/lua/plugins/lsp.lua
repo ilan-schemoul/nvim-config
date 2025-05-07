@@ -24,6 +24,34 @@ return
           flags = { debounce_text_changes = 200 },
         })
       end,
+      ["pylsp"] = function(_)
+        require("lspconfig").pylsp.setup({
+          settings = {
+            plugins = {
+              -- Basic things (autocompletion, renaming etc.)
+              jedi = {
+                enabled = true,
+              },
+              pylint = {
+                enabled = true,
+              },
+              -- Disable all other linters
+              autopep8 = {
+                enabled = false,
+              },
+              flake8 = {
+                enabled = false,
+              },
+              pycodestyle = {
+                enabled = false,
+              },
+              mccabe = {
+                enabled = false,
+              },
+            },
+          },
+        })
+      end,
       ["clangd"] = function(_)
         require("lspconfig").clangd.setup({
           capabilities = capabilities,
