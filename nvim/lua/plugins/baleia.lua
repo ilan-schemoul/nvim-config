@@ -36,10 +36,6 @@ return {
             baleia.once(bufnr)
         end, {})
 
-        vim.api.nvim_create_user_command("BaleiaLogs", function()
-            baleia.logger.show()
-        end, {})
-
         vim.api.nvim_create_autocmd(
             {
                 "FileType",
