@@ -26,30 +26,33 @@ return
       end,
       ["pylsp"] = function(_)
         require("lspconfig").pylsp.setup({
+          capabilities = capabilities,
           settings = {
-            plugins = {
-              -- Basic things (autocompletion, renaming etc.)
-              jedi = {
-                enabled = true,
-              },
-              pylint = {
-                enabled = true,
-              },
-              -- Disable all other linters
-              autopep8 = {
-                enabled = false,
-              },
-              flake8 = {
-                enabled = false,
-              },
-              pycodestyle = {
-                enabled = false,
-              },
-              mccabe = {
-                enabled = false,
+            pylsp = {
+              plugins = {
+                -- Basic things (autocompletion, renaming etc.)
+                jedi = {
+                  enabled = true,
+                },
+                pylint = {
+                  enabled = true,
+                },
+                -- Disable all other linters
+                autopep8 = {
+                  enabled = false,
+                },
+                flake8 = {
+                  enabled = false,
+                },
+                pycodestyle = {
+                  enabled = false,
+                },
+                mccabe = {
+                  enabled = false,
+                },
               },
             },
-          },
+          }
         })
       end,
       ["clangd"] = function(_)
