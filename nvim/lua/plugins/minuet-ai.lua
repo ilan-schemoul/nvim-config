@@ -29,6 +29,18 @@ local cortex = {
   },
 }
 
+local codestral = {
+  end_point = 'https://api.mistral.ai/v1/fim/completions',
+  api_key = 'CODESTRAL_API_KEY',
+}
+if not is_intersec then
+  codestral = {
+    end_point = 'https://codestral.mistral.ai/v1/fim/completions',
+    api_key = 'CODESTRAL_FIM_API_KEY',
+  }
+end
+
+
 return {
   enabled = os.getenv("NVIM_AI_ENABLE") ~= nil,
   event = "InsertEnter",
@@ -60,14 +72,7 @@ return {
     n_completions = use_cortex and 2 or 3,
     context_window = use_cortex and 8000 or 25000,
     provider_options = {
-      codestral = {
-        -- Two endpoints. API and codestral. Codestral requires subscription
-        -- (which I don't want). So I use API (pay per tokens, but no
-        -- subscription)
-        end_point = 'https://codestral.mistral.ai/v1/fim/completions',
-        api_key = 'CODESTRAL_FIM_API_KEY',
-      },
-
+      codestral = codestral,
       openai_fim_compatible = use_cortex and cortex or cloud_qwen,
     },
   }
