@@ -41,6 +41,7 @@ return
                 },
                 pylint = {
                   enabled = true,
+                  executable = "pylint",
                 },
                 -- Disable all other linters
                 autopep8 = {
