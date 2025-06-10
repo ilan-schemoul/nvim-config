@@ -3,6 +3,9 @@ return {
   opts = {
     delete_to_trash = true,
     default_file_explorer = true,
+    win_options = {
+      signcolumn = "yes:2",
+    },
   },
   -- Need to disable lazy for default_file_explorer
   lazy = false,
