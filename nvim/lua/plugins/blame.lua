@@ -4,6 +4,8 @@ return {
   keys = {
     { "gb", ":BlameToggle<cr>" },
   },
-  opts = {},
+  opts = {
+    blame_options = { '-C', '-M' },
+  },
 }
 
