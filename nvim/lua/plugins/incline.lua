@@ -29,8 +29,9 @@ return {
       },
     },
      render = function(props)
-        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-        local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+        local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":p")
+
+        local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(path)
         local modified = vim.bo[props.buf].modified and 'bold,italic' or 'bold'
 
         local function get_git_diff()
@@ -73,7 +74,7 @@ return {
           { get_diagnostic_label() },
           { get_git_diff() },
           { (ft_icon or "") .. "", guifg = ft_color, guibg = "none" },
-          { filename .. "", gui = modified },
+          { path .. "", gui = modified },
         }
         return buffer
     end,
