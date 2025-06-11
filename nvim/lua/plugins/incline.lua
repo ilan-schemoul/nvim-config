@@ -29,7 +29,7 @@ return {
       },
     },
      render = function(props)
-        local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":p")
+        local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":.")
 
         local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(path)
         local modified = vim.bo[props.buf].modified and 'bold,italic' or 'bold'
