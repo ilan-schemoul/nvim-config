@@ -30,7 +30,7 @@ return
           -- pylint is slow so it's very important to have a higher than
           -- default debounce otherwise it's struggling a lot.
           flags = {
-            debounce_text_changes = 600,
+            debounce_text_changes = 2000,
           },
           settings = {
             pylsp = {
