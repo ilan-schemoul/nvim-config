@@ -1,10 +1,10 @@
 local is_intersec = require("config/utils").is_intersec()
-local chat_adapter = is_intersec and "ovh" or "anthropic"
-local inline_adapter = is_intersec and "ovh" or "haiku"
+local chat_adapter = is_intersec and "cortex" or "anthropic"
+local inline_adapter = is_intersec and "cortex" or "haiku"
 local cortex = {
   schema = {
     model = {
-      default = "qwen2.5-coder:32b",
+      default = "devstral:24b",
     },
   },
   env = {
