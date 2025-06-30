@@ -22,8 +22,7 @@ return {
       require("nvim-treesitter.query_predicates")
     end,
     dependencies = {
-      -- They can't merge me feature as they wait for TS 1.0 before refactor evrerything
-      { "ilan-schemoul/nvim-treesitter-textobjects", branch = "lookbehind-local-keymap-setting" },
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
       "OXY2DEV/markview.nvim"
     },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
@@ -97,6 +96,10 @@ return {
           },
         },
       },
+    },
+
+    indent = {
+      enable = true,
     },
 
     config = function(_, opts)
