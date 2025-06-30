@@ -9,14 +9,13 @@ local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 local hjkl = { "h", "j", "k", "l" }
 
 local function set(keys, cmd)
-  vim.keymap.set("n", "<leader>" .. keys, cmd)
+  vim.keymap.set("n", "<leader>" .. keys, cmd, { unique = true })
 end
 
 local function setv(keys, cmd)
-  vim.keymap.set("v", "<leader>" .. keys, cmd)
+  vim.keymap.set("v", "<leader>" .. keys, cmd, { unique = true })
 end
 
-local map = vim.keymap.set
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
@@ -24,12 +23,12 @@ local diagnostic_goto = function(next, severity)
     go({ severity = severity })
   end
 end
-map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
-map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
-map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
-map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+set("]d", diagnostic_goto(true))
+set("[d", diagnostic_goto(false))
+set("]e", diagnostic_goto(true, "ERROR"))
+set("[e", diagnostic_goto(false, "ERROR"))
+set("]w", diagnostic_goto(true, "WARN"))
+set("[w", diagnostic_goto(false, "WARN"))
 
 set("lD", vim.diagnostic.open_float)
 set("lh", vim.lsp.buf.hover)
