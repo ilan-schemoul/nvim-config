@@ -70,15 +70,6 @@ local chat = {
       description = "Stop Request",
     },
   },
-  tools = {
-    ["mcp"] = {
-      -- Prevent mcphub from loading before needed
-      callback = function()
-        return require("mcphub.extensions.codecompanion")
-      end,
-      description = "Call tools and resources from the MCP Servers"
-    }
-  }
 }
 
 local prompts = {
@@ -107,7 +98,6 @@ return {
   "olimorris/codecompanion.nvim",
   dependencies = {
     "j-hui/fidget.nvim",
-    "ravitemer/mcphub.nvim",
   },
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd" }, -- Command to open the companion window
   keys = {
