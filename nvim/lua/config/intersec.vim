@@ -24,7 +24,7 @@ set shiftwidth=4
 " Also update nvim/lua/plugins/smartcolumn.lua
 set colorcolumn=78
 " Enables breaking new lines automatically
-autocmd FileType cpp,c,python,asciidoc,iop setl textwidth=78
+autocmd FileType cpp,c,python,asciidoc,iop,typescript,javascript setl textwidth=78
 autocmd FileType cucumber setl colorcolumn=0
 
 set cinoptions=
