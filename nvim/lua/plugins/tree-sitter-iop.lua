@@ -2,6 +2,7 @@ return {
   -- "https://github.com/ilan-schemoul/tree-sitter-iop",
   build = ":TSUpdate",
   dir = "~/code/tree-sitter-iop",
+  ft = "iop",
   opts = {
     -- local_directory = "~/code/tree-sitter-iop/",
   },
