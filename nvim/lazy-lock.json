@@ -99,6 +99,7 @@
   "vim-localvimrc": { "branch": "main", "commit": "b249c5a6bf324b0d5e62ccacfffcd36c6a703d84" },
   "vim-magnum": { "branch": "master", "commit": "7a30761b935d72bada5bbe90162a6afdb77c858d" },
   "vim-obsession": { "branch": "master", "commit": "ed9dfc7c2cc917ace8b24f4f9f80a91e05614b63" },
+  "vim-python-pep8-indent": { "branch": "master", "commit": "60ba5e11a61618c0344e2db190210145083c91f8" },
   "vim-radical": { "branch": "master", "commit": "aca8992a25d317a4c6fa42e263e8506ea3e355d8" },
   "vim-sleuth": { "branch": "master", "commit": "be69bff86754b1aa5adcbb527d7fcd1635a84080" },
   "vim-suda": { "branch": "master", "commit": "9adda7d195222d4e2854efb2a88005a120296c47" },

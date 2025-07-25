@@ -34,11 +34,13 @@ return {
 
       highlight = {
         enable = true,
-        indent = { enable = true },
 
         disable = function(_, buf)
           return disable(buf)
         end,
+
+        -- Buggy with Python indentation otherwise
+        additional_vim_regex_highlighting = true,
       },
 
       textobjects = {
@@ -99,7 +101,7 @@ return {
     },
 
     indent = {
-      enable = true,
+      enable = false,
     },
 
     config = function(_, opts)
