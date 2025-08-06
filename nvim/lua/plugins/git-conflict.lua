@@ -7,7 +7,7 @@ return {
     { "<leader>xb", "<Plug>(git-conflict-both)" },
     { "<leader>xn", "<Plug>(git-conflict-none)" },
     { "<leader>xq", "<Plug>(git-conflict-list-qf)" },
-    { "<leader>xr", "<Plug>(git-conflict-refresh)" },
+    { "<leader>xr", "<cmd>GitConflictRefresh<cr>" },
     { "]x", "<Plug>(git-conflict-next-conflict)" },
     { "[x", "<Plug>(git-conflict-previous-conflict)" },
     { "<leader>xq", "<cmd>GitConflictListQf<cr> " },
