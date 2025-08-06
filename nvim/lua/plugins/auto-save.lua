@@ -4,6 +4,9 @@ return {
   opts = {
     enable = true,
     events = { "InsertLeave", "TextChanged" },
+    prompt = {
+      enable = false,
+    },
     conditions = {
       exists = false,
       modifiable = true,
