@@ -293,6 +293,8 @@ set("wk", smelly_sunflower.insert_above)
 set("wc", smelly_sunflower.clean)
 set("wC", smelly_sunflower.clean_all_buffers)
 
+vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
+
 -- Azerty keyboard support being what it is I need these to have
 -- similar experience to qwerty
 vim.cmd([[
