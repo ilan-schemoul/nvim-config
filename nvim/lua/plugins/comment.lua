@@ -1,6 +1,6 @@
 return {
     -- https://github.com/numToStr/Comment.nvim/pull/478
-    "ilan-schemoul/Comment.nvim",
+    "ilan-schemoul/Comment.nvim", -- tmp fork
     -- dir = "~/code/forks/Comment.nvim",
     event = "VimEnter",
     opts = {
@@ -27,3 +27,6 @@ return {
         },
     }
 }
+
+
+-- dezzde
