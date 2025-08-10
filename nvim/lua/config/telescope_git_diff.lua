@@ -1,8 +1,7 @@
-local gitsigns = require("gitsigns")
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
-
 local function git_modified_files()
+  local gitsigns = require("gitsigns")
+  local actions = require "telescope.actions"
+  local action_state = require "telescope.actions.state"
   local modified_files = gitsigns.get_hunks() -- Fetch hunks (changes) tracked by Git
   local file_list = {}
 
