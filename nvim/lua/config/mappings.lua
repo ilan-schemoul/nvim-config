@@ -279,7 +279,8 @@ if os.getenv("KEYBOARD_FR") then
 end
 
 -- HACK: ugly hack to clear the terminal (can help with lag)
-vim.keymap.set("t", "<C-q>", "<c-\\><c-n><cmd>set scrollback=1 | sleep 100m | set scrollback=10000<cr>")
+-- XXX: change the value in preferences (set scrollback) as well
+vim.keymap.set("t", "<C-q>", "<c-\\><c-n><cmd>set scrollback=1 | sleep 100m | set scrollback=5000<cr>")
 
 -- Move in insert mode with <C-hjkl> (very useful)
 vim.keymap.set("i", "<C-k>", "<Up>")

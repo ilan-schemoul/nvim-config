@@ -31,7 +31,8 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Focus opens column line number which we don't want for terminals
 autocmd TermOpen * lua vim.b.focus_disable = true
-autocmd TermOpen * setlocal scrollback=20000
+" XXX: change the value in mappings <C-q> as well
+autocmd TermOpen * setlocal scrollback=5000
 autocmd TermOpen * setlocal nospell
 autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua require("config/custom-commands").start_insert_if_bottom()
 
