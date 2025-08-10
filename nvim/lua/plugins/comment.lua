@@ -1,4 +1,5 @@
 return {
+    -- https://github.com/numToStr/Comment.nvim/pull/478
     "ilan-schemoul/Comment.nvim",
     -- dir = "~/code/forks/Comment.nvim",
     event = "VimEnter",
