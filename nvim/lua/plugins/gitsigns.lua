@@ -9,7 +9,7 @@ return {
     linehl = false,
     -- NOTE: my fork adds this. The (rude) owner of the plugin refuses
     -- features so I have a gh action to sync my fork with his repo.
-    staged_highlight_derivative_factor = 0.7,
+    staged_highlight_derivative_factor = 0.25
   },
   keys = {
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>" },
