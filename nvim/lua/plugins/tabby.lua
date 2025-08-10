@@ -122,9 +122,7 @@ local function is_file_outside_pwd()
 end
 
 return {
-  "ilan-schemoul/tabby.nvim",
-  -- https://github.com/nanozuki/tabby.nvim/pull/167
-  branch = "fix-buf-name",
+  "nanozuki/tabby.nvim",
   event = "VimEnter",
   dependencies = "nvim-tree/nvim-web-devicons",
   init = function()
@@ -134,13 +132,13 @@ return {
     local pattern_replace_branch = "mmsx\\-.*"
 
     local theme = {
-      current = { fg = "#cad3f5", bg = "transparent", style = "bold" },
-      rebase = { fg = "#9f54ec", bg = "transparent" },
-      not_current = { fg = "#5b6078", bg = "transparent" },
-      outside_pwd = { fg = "#fd0000", bg = "transparent" },
-      jump_mode = { fg = "#fd0000", bg = "transparent" },
+      current = { fg = "#cad3f5", bg = "", style = "bold" },
+      rebase = { fg = "#9f54ec", bg = "" },
+      not_current = { fg = "#5b6078", bg = "" },
+      outside_pwd = { fg = "#fd0000", bg = "" },
+      jump_mode = { fg = "#fd0000", bg = "" },
 
-      fill = { bg = "transparent" },
+      fill = { bg = "" },
     }
 
     local get_tab_folder = require("config/utils").get_tab_folder
