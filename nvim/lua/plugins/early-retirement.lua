@@ -1,7 +1,7 @@
 local custom_commands = require("config/custom-commands")
 
 return {
-    "ilan-schemoul/nvim-early-retirement",
+    "chrisgrieser/nvim-early-retirement",
     opts = {
       -- 1h30
         retirementAgeMins = 90,
