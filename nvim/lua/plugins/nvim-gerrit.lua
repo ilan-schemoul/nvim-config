@@ -1,5 +1,5 @@
 return {
-  "ilan-schemoul/nvim-gerrit",
+  "ilan-schemoul/nvim-gerrit", -- my plugin
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
