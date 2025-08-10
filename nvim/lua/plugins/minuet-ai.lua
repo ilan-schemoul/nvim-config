@@ -33,13 +33,6 @@ local codestral = {
   end_point = 'https://api.mistral.ai/v1/fim/completions',
   api_key = 'CODESTRAL_API_KEY',
 }
-if not is_intersec then
-  codestral = {
-    end_point = 'https://codestral.mistral.ai/v1/fim/completions',
-    api_key = 'CODESTRAL_FIM_API_KEY',
-  }
-end
-
 
 return {
   enabled = os.getenv("NVIM_AI_ENABLE") ~= nil,

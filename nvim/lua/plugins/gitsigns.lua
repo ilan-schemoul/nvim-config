@@ -1,4 +1,5 @@
 return {
+  -- autosync is enabled on my fork because the as
   "ilan-schemoul/gitsigns.nvim",
   cmd = "Gitsigns",
   event = "VimEnter",
