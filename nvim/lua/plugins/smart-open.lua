@@ -1,6 +1,7 @@
 return {
   -- "danielfalk/smart-open.nvim",
   -- NOTE: https://github.com/danielfalk/smart-open.nvim/pull/80/files
+  -- He won't merge as is
   "ilan-schemoul/smart-open.nvim",
   -- dir = "~/code/forks/smart-open.nvim",
   dependencies = {
