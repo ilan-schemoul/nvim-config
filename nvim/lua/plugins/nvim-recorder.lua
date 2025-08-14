@@ -4,6 +4,10 @@ return {
     { "q", desc = " Start Recording" },
     { "Q", desc = " Play Recording" },
   },
-  opts = {},
+  opts = {
+    mapping = {
+      {  addBreakPoint = "à" },
+    }
+  },
 }
 
