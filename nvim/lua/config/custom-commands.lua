@@ -164,19 +164,17 @@ M.open_file = function()
   open_file(false)
 end
 
--- Start insert mode when I focus on a terminal if we are "close"
--- to the bottom. The reason I do that is that often I want to be in insert
--- mode except if my cursor is "far" from the end of the buffer. Because in
--- that case I purposefully scrolled to a specific line.
 M.start_insert_if_bottom = function()
   local total_number_of_lines = vim.fn.line("$")
   local current_line = vim.fn.line(".")
+  local nb_lines_to_bottom_screen = total_number_of_lines - current_line
+  local height = vim.api.nvim_win_get_height(0) + 1
 
-  -- 50 is a typical height on most of my setup. If the terminal buffer is not
-  -- full (terminal recently open) then total_number_of_lines - current_line
-  -- should be less than 50. And if the buffer is not full I usually want to
-  -- be in insert mode.
-  if total_number_of_lines - current_line < 50 then
+  -- total_number_of_lines < height = new terminal => insert mode when focus
+  -- nb_lines_to_bottom_screen < height => cursor close to the bottom => insert mode when focus
+  -- else nb_lines_to_bottom_screen >= height => I put my cursor somewhere specific on purpose
+  -- => I do not want to lose that line by going insert mode (which scroll to the bottom)
+  if total_number_of_lines < height or nb_lines_to_bottom_screen < height then
     vim.cmd("startinsert")
   end
 end
