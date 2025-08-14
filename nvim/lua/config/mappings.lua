@@ -186,6 +186,7 @@ set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
 set("nn", custom_commands.create_org_file)
 -- ../plugins/venn.lua (draw diagram in ASCII)
 set("nd", custom_commands.toggle_venn)
+vim.keymap.set("i", "<A-t>", "<cmd>Minuet virtualtext toggle<cr>")
 set("no", "<cmd>Bmessages<cr>")
 
 -- <space><backspace>
