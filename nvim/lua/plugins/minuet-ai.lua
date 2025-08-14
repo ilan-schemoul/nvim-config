@@ -62,8 +62,8 @@ return {
       show_on_completion_menu = true,
     },
     provider = use_cortex and 'openai_fim_compatible' or local_provider,
-    n_completions = use_cortex and 2 or 3,
-    context_window = use_cortex and 8000 or 25000,
+    n_completions = use_cortex and 2 or 2,
+    context_window = use_cortex and 8000 or 16000,
     provider_options = {
       codestral = codestral,
       openai_fim_compatible = use_cortex and cortex or cloud_qwen,
