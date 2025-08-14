@@ -24,31 +24,37 @@ return
        settings = {
          pylsp = {
            plugins = {
-             -- Basic things (autocompletion, renaming etc.)
-             jedi = {
-               enabled = true,
-             },
-             pylint = {
-               enabled = true,
-               executable = "pylint",
-             },
-             -- Disable all other linters
-             autopep8 = {
-               enabled = false,
-             },
-             flake8 = {
-               enabled = false,
-             },
-             pycodestyle = {
-               enabled = false,
-             },
-             mccabe = {
-               enabled = false,
-             },
+                jedi = {
+                    enabled = true,
+                },
+                pylint = {
+                    enabled = true,
+                },
+                -- Disable all other linters
+                pyflakes = {
+                    enabled = false,
+                },
+                autopep8 = {
+                    enabled = false,
+                },
+                flake8 = {
+                    enabled = false,
+                },
+                pycodestyle = {
+                    enabled = false,
+                },
+                mccabe = {
+                    enabled = false,
+                },
+                yapf = {
+                    enabled = false,
+                },
            },
          },
        }
      })
+     vim.lsp.enable('pylsp')
+     vim.lsp.enable('ruff')
 
     vim.lsp.config('clangd', {
       capabilities = capabilities,
