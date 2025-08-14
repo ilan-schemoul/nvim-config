@@ -1,9 +1,3 @@
-if executable("fish")
-  set shell=/bin/fish
-else
-  set shell=/bin/bash
-endif
-
 set clipboard+=unnamedplus
 
 set visualbell
