@@ -16,10 +16,10 @@ return
 
      vim.lsp.config("pylsp", {
        capabilities = capabilities,
-       -- pylint is slow so it's very important to have a higher than
-       -- default debounce otherwise it's struggling a lot.
+       -- mypy is slow, if we make too much requests at once he will
+       -- be slower to respond
        flags = {
-         debounce_text_changes = 1000,
+         debounce_text_changes = 600,
        },
        settings = {
          pylsp = {
