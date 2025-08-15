@@ -37,6 +37,14 @@ return {
     { "<leader>gp", "<cmd>Gitsigns change_base HEAD~<cr>" },
 
     {
+      'ih',
+      function()
+        require("gitsigns").select_hunk()
+      end,
+      mode = { 'o', 'x' },
+    },
+
+    {
       "<leader>gr",
       function()
         require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
