@@ -3,6 +3,16 @@ return {
   "m4xshen/smartcolumn.nvim",
   enabled = require("config/utils").is_intersec,
   opts = {
-    colorcolumn = "78", -- Only relevant for Intersec
+    custom_colorcolumn = {
+      {
+        cpp = "78",
+        c = "78",
+        python = "78",
+        asciidoc = "78",
+        iop = "78",
+        d = "78",
+        json = "78",
+      },
+    },
   },
 }
