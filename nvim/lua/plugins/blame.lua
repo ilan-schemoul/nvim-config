@@ -5,6 +5,8 @@ return {
     { "gb", ":BlameToggle<cr>" },
   },
   opts = {
+    -- -C follows lines moved/copied from other files modified in the same commit
+    -- -M follows moved or copied lines within a file
     blame_options = { '-C', '-M' },
   },
 }
