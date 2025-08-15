@@ -131,3 +131,5 @@ augroup CursorLine
     au BufWinEnter * setlocal colorcolumn=+0
     au WinLeave * setlocal colorcolumn=""
 augroup END
+
+au BufRead,BufNewFile behave_logs set filetype=behave_log
