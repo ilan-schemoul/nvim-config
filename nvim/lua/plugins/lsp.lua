@@ -9,6 +9,13 @@ return
   config = function(_, _)
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+    -- Some LSP servers don't play well with gq, they ignore the textwidth for some
+    -- reasons. For those, we need to remove the formatexpr they set. Others such
+    -- as bashls, clangd work fine anyway.
+    local restore_gq = function(client, bufnr)
+      vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+    end
+
     vim.lsp.handlers["textDocument/publishDiagnostics"] =
      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
        update_in_insert = false
@@ -21,6 +28,7 @@ return
        flags = {
          debounce_text_changes = 600,
        },
+       on_attach = restore_gq,
        settings = {
          pylsp = {
            plugins = {
@@ -73,7 +81,13 @@ return
           },
         },
       },
+      on_attach = restore_gq,
     })
+
+    vim.lsp.config('bashls', {
+      on_attach = restore_gq,
+    })
+
 
     vim.lsp.config('*', {
       capabilities = capabilities,
