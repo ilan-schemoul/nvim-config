@@ -6,7 +6,7 @@ return {
   },
   opts = {
     mapping = {
-      {  addBreakPoint = "à" },
+      addBreakPoint = "à",
     }
   },
 }
