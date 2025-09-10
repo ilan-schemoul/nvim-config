@@ -368,7 +368,11 @@ M.close_other_tab_buffers = function()
     if vim.api.nvim_buf_is_valid(buffer) and not open then
       -- TODO: close terminal not active
       if vim.bo[buffer].buftype ~= "terminal" and vim.bo[buffer].modified ~= 1 then
-        vim.api.nvim_buf_delete(buffer, {})
+        local _, err = pcall(vim.api.nvim_buf_delete, buffer, {})
+
+        if err then
+          vim.notify(err, vim.log.levels.WARN)
+        end
       end
     end
   end
