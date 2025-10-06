@@ -45,6 +45,7 @@
   "mini.align": { "branch": "main", "commit": "be20e745cfa549009d1867bf55381602810250da" },
   "minuet-ai.nvim": { "branch": "main", "commit": "2083b86ea01cb18dc9e7cb7a68f932ea06e999e8" },
   "neorg": { "branch": "main", "commit": "e206c9642f4a115cd836e76c98ef785623d335bc" },
+  "neovim-tips": { "branch": "master", "commit": "6c2d8e3821c6cb61efeb0e15798697dad9cfad9c" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-add-lazy-plugin": { "branch": "master", "commit": "6a7769be8ed2576d9d915921a0ca033597bb7338" },
