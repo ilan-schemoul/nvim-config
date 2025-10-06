@@ -19,16 +19,17 @@ end
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
+  print(go, severity)
   return function()
     go({ severity = severity })
   end
 end
-set("]d", diagnostic_goto(true))
-set("[d", diagnostic_goto(false))
-set("]e", diagnostic_goto(true, "ERROR"))
-set("[e", diagnostic_goto(false, "ERROR"))
-set("]w", diagnostic_goto(true, "WARN"))
-set("[w", diagnostic_goto(false, "WARN"))
+vim.keymap.set("n", "]d", diagnostic_goto(true))
+vim.keymap.set("n", "[d", diagnostic_goto(false))
+vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"))
+vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"))
+vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"))
+vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"))
 
 set("lD", vim.diagnostic.open_float)
 set("lh", vim.lsp.buf.hover)
