@@ -50,6 +50,8 @@ return {
                 picker:set_prompt("(.*\\n){0,", false)
               end
             end,
+            ["<S-Down>"] = require('telescope.actions').cycle_history_next,
+            ["<S-Up>"] = require('telescope.actions').cycle_history_prev,
           },
         },
         layout_strategy = "vertical",
