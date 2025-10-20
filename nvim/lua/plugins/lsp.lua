@@ -96,7 +96,7 @@ return
 
     require("mason-lspconfig").setup({
       -- I need to install shellcheck too with bashls
-      ensure_installed = { "lua_ls", "bashls", "fish_lsp" }
+      ensure_installed = { "lua_ls", "bashls" }
     })
   end,
 }
