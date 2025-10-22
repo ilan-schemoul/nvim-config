@@ -4,6 +4,7 @@ return {
     "Telescope",
   },
   dependencies = {
+    "Marskey/telescope-sg",
     "nvim-tree/nvim-web-devicons",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -86,6 +87,14 @@ return {
               ["<C-space>"] = actions.to_fuzzy_refine,
             },
           },
+        },
+        ast_grep = {
+            command = {
+                "ast-grep",
+                "--json=stream",
+            },
+            grep_open_files = false, -- search in opened files
+            lang = nil, -- string value, specify language for ast-grep `nil` for default
         },
       },
     })
