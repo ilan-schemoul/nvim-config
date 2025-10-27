@@ -63,6 +63,7 @@ return
      })
      vim.lsp.enable('pylsp')
      vim.lsp.enable('ruff')
+     vim.lsp.enable('ast_grep')
 
     vim.lsp.config('clangd', {
       capabilities = capabilities,
