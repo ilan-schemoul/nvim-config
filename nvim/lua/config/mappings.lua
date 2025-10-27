@@ -241,6 +241,17 @@ set("go", function()
   })
 end)
 
+set("ko", function()
+  require('FTerm').scratch({
+    ft = "lazygit",
+    cmd = "kubie ctx - ",
+    dimensions = {
+      height = 0.95,
+      width = 0.95,
+    },
+  })
+end)
+
 set("gl", require("config/telescope_git_diff"))
 set("gg", function() require("nvim-gerrit").list_changes() end)
 set("gH", require("telescope").extensions.git_file_history.git_file_history)
