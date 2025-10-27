@@ -16,10 +16,6 @@ highlight GitSignsAdd guifg=#279403
 highlight GitSignsDelete guifg=#b60e28
 highlight GitSignsChange guifg=#d7d803
 
-" nocopy when pasting
-xnoremap <expr> p 'pgv"' . v:register . 'y'
-xnoremap <expr> x 'xgv"' . v:register . 'y'
-
 autocmd TermOpen * setlocal statuscolumn=""
 autocmd TermOpen * setlocal nonumber norelativenumber
 
