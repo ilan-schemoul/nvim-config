@@ -22,6 +22,9 @@ highlight GitSignsChange guifg=#d7d803
 let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
 execute 'highlight Hlargs guifg=' . fg_var_color
 
+let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
+execute 'highlight Hlargs guifg=' . fg_var_color
+
 autocmd TermOpen * setlocal statuscolumn=""
 autocmd TermOpen * setlocal nonumber norelativenumber
 
