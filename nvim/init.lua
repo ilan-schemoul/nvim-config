@@ -12,4 +12,5 @@ require("config/clipboard")
 
 if os.getenv("IS_INTERSEC") == "true" then
   vim.cmd("source ~/.config/nvim/lua/config/intersec.vim")
+  require("config/intersec")
 end
