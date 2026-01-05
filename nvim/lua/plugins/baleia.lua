@@ -43,8 +43,10 @@ return {
             {
                 pattern = "behave_log",
                 callback = function()
-                    local bufnr = vim.api.nvim_get_current_buf()
-                    baleia.once(bufnr)
+                    vim.schedule(function()
+                        local bufnr = vim.api.nvim_get_current_buf()
+                        baleia.once(bufnr)
+                    end)
                 end
             }
         )
