@@ -32,8 +32,26 @@ return
        settings = {
          pylsp = {
            plugins = {
-                jedi = {
-                    enabled = true,
+                jedi_completions = {
+                  enabled = false,
+                },
+                jedi_definition = {
+                  enabled = false,
+                },
+                jedi_hover = {
+                  enabled = false,
+                },
+                jedi_references = {
+                  enabled = false,
+                },
+                jedi_signature_help = {
+                  enabled = false,
+                },
+                jedi_type_definition = {
+                  enabled = false,
+                },
+                jedi_symbols = {
+                  enabled = false,
                 },
                 pylint = {
                     enabled = true,
@@ -64,6 +82,13 @@ return
      vim.lsp.enable('pylsp')
      vim.lsp.enable('ruff')
      vim.lsp.enable('ast_grep')
+     vim.lsp.config('ty', {
+       settings = {
+         ty = {
+           diagnosticMode = 'off',
+         },
+       }
+     })
 
     vim.lsp.config('clangd', {
       capabilities = capabilities,
