@@ -328,3 +328,6 @@ vim.cmd([[
   " Does not work with every azerty keyboards for some reason
   tmap <C-^> <C-\><C-N><C-^>
 ]])
+
+-- Don't touch unnamed register when pasting over visual selection
+vim.cmd("xnoremap <expr> p 'pgv\"' . v:register . 'y'")
