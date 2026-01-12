@@ -5,6 +5,7 @@ return {
   opts = {
     custom_colorcolumn = {
       {
+        typescriptreact = { "78", "120" },
         cpp = "78",
         c = "78",
         python = "78",
