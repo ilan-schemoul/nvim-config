@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "stevearc/conform.nvim",
   priority = 0,
   dependencies = {
