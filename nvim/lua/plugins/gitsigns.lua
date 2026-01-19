@@ -26,6 +26,7 @@ return {
     { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", mode = "n" },
 
     { "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>" },
+    { "<leader>gi", "<cmd>Gitsigns preview_hunk_inline<cr>" },
 
     { "<leader>gD", "<cmd>DiffviewOpen<cr>" },
 
