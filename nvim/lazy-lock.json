@@ -1,7 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "939dacc2426c763b40176d8ca127e453f6c472ea" },
   "FTerm.nvim": { "branch": "master", "commit": "d1320892cc2ebab472935242d9d992a2c9570180" },
-  "LuaSnip": { "branch": "master", "commit": "73813308abc2eaeff2bc0d3f2f79270c491be9d7" },
+  "LuaSnip": { "branch": "master", "commit": "3732756842a2f7e0e76a7b0487e9692072857277" },
   "automkdir.nvim": { "branch": "main", "commit": "e36da288764cc41864dc5b4e1234f1425033ce59" },
   "autosave.nvim": { "branch": "main", "commit": "348f72cf0241e3e736e3396c4834def2f8ef8d10" },
   "baleia.nvim": { "branch": "linebreaks", "commit": "504c442b21936b48c36c803ffc03a48ebe6b7073" },
@@ -54,7 +54,7 @@
   "nvim-add-lazy-plugin": { "branch": "master", "commit": "6a7769be8ed2576d9d915921a0ca033597bb7338" },
   "nvim-autopairs": { "branch": "master", "commit": "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4" },
   "nvim-bqf": { "branch": "main", "commit": "ba2b365969d7c2c6301d48e13aeee59568765529" },
-  "nvim-cmp": { "branch": "feat/above", "commit": "965dc82aceae1712f423bed1f9769d57c0ad650e" },
+  "nvim-cmp": { "branch": "main", "commit": "85bbfad83f804f11688d1ab9486b459e699292d6" },
   "nvim-early-retirement": { "branch": "main", "commit": "15080cd0643f4e142300025b9bf12c7762cf2631" },
   "nvim-gerrit": { "branch": "master", "commit": "9e304c75473d8d62ce9c8adfde1fd6b5df69a1e9" },
   "nvim-lint": { "branch": "master", "commit": "1e6b2ac034d1a7588d11b0b8e862a7ad89368376" },

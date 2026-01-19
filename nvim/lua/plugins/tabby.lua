@@ -113,14 +113,6 @@ local function update_git_state_async()
   return true
 end
 
-local function is_file_outside_pwd()
-  local path = vim.api.nvim_buf_get_name(0)
-  local pwd = vim.fn.getcwd()
-  -- Escape special characters from pwd so find doesn't interpret them
-  pwd = pwd:gsub("%W", "%%%0")
-  return vim.bo.buftype == "" and path:find(pwd) == nil
-end
-
 return {
   "nanozuki/tabby.nvim",
   event = "VimEnter",
@@ -167,7 +159,7 @@ return {
 
             if not win.is_current() then
               hl = theme.not_current
-            elseif is_file_outside_pwd() then
+            elseif utils.is_file_outside_pwd() then
               hl = theme.outside_pwd
             elseif rebase_merge or rebase_apply then
               hl = theme.rebase
