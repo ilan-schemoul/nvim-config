@@ -1,8 +1,5 @@
 return {
-  -- Fork to set cmp above
-  "llllvvuu/nvim-cmp",
-  branch = "feat/above",
-  version = false, -- last release is way too old
+  "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
     "neovim/nvim-lspconfig",
@@ -36,8 +33,8 @@ return {
         end,
       },
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({ border = 'rounded' }),
+        documentation = cmp.config.window.bordered({ border = 'rounded' }),
       },
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
