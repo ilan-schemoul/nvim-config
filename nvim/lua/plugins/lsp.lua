@@ -21,65 +21,6 @@ return
        update_in_insert = false
      })
 
-     vim.lsp.config("pylsp", {
-       capabilities = capabilities,
-       -- mypy is slow, if we make too much requests at once he will
-       -- be slower to respond
-       flags = {
-         debounce_text_changes = 600,
-       },
-       on_attach = restore_gq,
-       settings = {
-         pylsp = {
-           plugins = {
-                jedi_completions = {
-                  enabled = false,
-                },
-                jedi_definition = {
-                  enabled = false,
-                },
-                jedi_hover = {
-                  enabled = false,
-                },
-                jedi_references = {
-                  enabled = false,
-                },
-                jedi_signature_help = {
-                  enabled = false,
-                },
-                jedi_type_definition = {
-                  enabled = false,
-                },
-                jedi_symbols = {
-                  enabled = false,
-                },
-                pylint = {
-                    enabled = true,
-                },
-                -- Disable all other linters
-                pyflakes = {
-                    enabled = false,
-                },
-                autopep8 = {
-                    enabled = false,
-                },
-                flake8 = {
-                    enabled = false,
-                },
-                pycodestyle = {
-                    enabled = false,
-                },
-                mccabe = {
-                    enabled = false,
-                },
-                yapf = {
-                    enabled = false,
-                },
-           },
-         },
-       }
-     })
-     vim.lsp.enable('pylsp')
      vim.lsp.enable('ruff')
      vim.lsp.enable('ast_grep')
      vim.lsp.config('ty', {
