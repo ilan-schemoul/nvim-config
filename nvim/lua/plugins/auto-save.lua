@@ -10,7 +10,7 @@ return {
     conditions = {
       exists = false,
       modifiable = true,
-      filetype_is_not = { "behave_log" },
+      filetype_is_not = { "behave_log", "oil" },
     },
     write_all_buffers = false,
     debounce_delay = 135,
