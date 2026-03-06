@@ -379,4 +379,25 @@ M.close_other_tab_buffers = function()
 end
 -- }}}
 
+M.open_help = function(word)
+  local original_iskeyword = vim.bo.iskeyword
+
+  vim.bo.iskeyword = vim.bo.iskeyword .. ',.'
+  word = word or vim.fn.expand("<cword>")
+
+  vim.bo.iskeyword = original_iskeyword
+
+  if vim.bo.ft == "cs" then
+    local url = "https://learn.microsoft.com/fr-fr/search/?scope=.NET&category=Documentation&terms="
+    vim.cmd("!xdg-open " .. url .. word .. " &")
+  elseif vim.bo.ft == "cs" then
+    vim.cmd(string.format('Man %s', word))
+  elseif vim.bo.ft == "lua" or vim.bo.ft == "vim" then
+    vim.cmd(string.format('help %s', word))
+  else
+    -- notify error to user
+    vim.notify("No help available for this filetype", vim.log.levels.ERROR)
+  end
+end
+
 return M

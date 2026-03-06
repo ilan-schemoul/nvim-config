@@ -30,6 +30,7 @@ vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"))
 vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"))
 vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"))
 
+vim.keymap.set("n", "K", custom_commands.open_help)
 set("lD", function() vim.diagnostic.open_float({ source = true }) end)
 set("lh", vim.lsp.buf.hover)
 set("li", "<cmd>Telescope lsp_references<cr>")
