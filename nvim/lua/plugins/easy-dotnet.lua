@@ -1,5 +1,6 @@
 return {
   "GustavEikaas/easy-dotnet.nvim",
+  cmd = { "Dotnet" },
   ft = { "cs" },
   dependencies = {
     "nvim-lua/plenary.nvim",
