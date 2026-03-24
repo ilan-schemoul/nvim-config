@@ -1,46 +1,45 @@
-local is_intersec = require("config/utils").is_intersec()
-local chat_adapter = is_intersec and "cortex" or "anthropic"
-local inline_adapter = is_intersec and "cortex" or "haiku"
-local cortex = {
-  schema = {
-    model = {
-      default = "devstral:24b",
-    },
-  },
-  env = {
-    url = 'http://cortex.corp:11434',
-    api_key = "NONE",
-  },
-  headers = {
-    ["Content-Type"] = "application/json",
-    ["Authorization"] = "Bearer ${api_key}",
-  },
-  parameters = {
-    sync = true,
-  },
-}
-
-local ovh = {
-  schema = {
-    model = {
-      default = "Qwen2.5-Coder-32B-Instruct",
-    },
-  },
-  env = {
-    url = 'https://oai.endpoints.kepler.ai.cloud.ovh.net',
-    api_key = "OVH_API_KEY",
-  },
-  headers = {
-    ["Content-Type"] = "application/json",
-    ["Authorization"] = "Bearer ${api_key}",
-  },
-  parameters = {
-    sync = true,
-  },
-}
+-- local is_intersec = require("config/utils").is_intersec() and false
+-- local chat_adapter = is_intersec and "cortex" or "anthropic"
+-- local inline_adapter = is_intersec and "cortex" or "haiku"
+-- local cortex = {
+--   schema = {
+--     model = {
+--       default = "devstral:24b",
+--     },
+--   },
+--   env = {
+--     url = 'http://cortex.corp:11434',
+--     api_key = "NONE",
+--   },
+--   headers = {
+--     ["Content-Type"] = "application/json",
+--     ["Authorization"] = "Bearer ${api_key}",
+--   },
+--   parameters = {
+--     sync = true,
+--   },
+-- }
+--
+-- local ovh = {
+--   schema = {
+--     model = {
+--       default = "Qwen2.5-Coder-32B-Instruct",
+--     },
+--   },
+--   env = {
+--     url = 'https://oai.endpoints.kepler.ai.cloud.ovh.net',
+--     api_key = "OVH_API_KEY",
+--   },
+--   headers = {
+--     ["Content-Type"] = "application/json",
+--     ["Authorization"] = "Bearer ${api_key}",
+--   },
+--   parameters = {
+--     sync = true,
+--   },
+-- }
 
 local chat = {
-  adapter = chat_adapter,
   slash_commands = {
     ["file"] = {
       -- Location to the slash command in CodeCompanion
@@ -72,27 +71,33 @@ local chat = {
   },
 }
 
-local prompts = {
-  ["Commit"] = {
-    strategy = "chat",
-    description = "Write commit for me",
-    prompts = {
-      {
-        -- TODO: straight do a system command to get the last 20 commits and the diff
-        role = "user",
-        content = [[You are an excellent software engineer who makes explicit yet succint commit message. You deeply care about being consistent with the commit history. You are seen as the best commiter of your company and you are proud of that.
-        Write a commit for me.
-        Please follow following instructions:
-        - First do a git log of twenty last commits to understand commit formats.
-        - Then do a git diff to understand the changes.
-        - Then write a commit message for me.
-        - Do not add too many details, be explicit but concise.
-        - Do not follow conventional commit convention.
-        Use the tool @cmd_runner to execute git commands]],
-      },
-    },
-  },
-}
+local function setup_fidget_hooks()
+  local progress = require("fidget.progress")
+  local handle = nil
+
+  local group = vim.api.nvim_create_augroup("CodeCompanionFidgetHooks", {})
+
+  vim.api.nvim_create_autocmd({ "User" }, {
+    pattern = "CodeCompanionRequest*",
+    group = group,
+    callback = function(request)
+      if request.match == "CodeCompanionRequestStarted" then
+        local adapter_name = "TODO"
+        local model_name = "TODO"
+        handle = progress.handle.create({
+          title = " Requesting assistance",
+          lsp_client = {
+            name = string.format("CodeCompanion (%s - %s)", adapter_name, model_name),
+          },
+        })
+      elseif request.match == "CodeCompanionRequestFinished" then
+        if handle then
+          handle:finish()
+        end
+      end
+    end,
+  })
+end
 
 return {
   "olimorris/codecompanion.nvim",
@@ -113,33 +118,23 @@ return {
     { "<leader>fA", ":'<,'>CodeCompanionChat Add<cr>", mode = "v" }
   },
   opts = {
-    prompt_library = prompts,
-    strategies = {
-      chat = chat,
-      inline = {
-        adapter = inline_adapter,
+    interactions = {
+      chat = {
+        adapter = {
+          name = "anthropic",
+          model = "claude-sonnet-4-6",
+        },
       },
-    },
-    adapters = {
-      cortex = function()
-        return require("codecompanion.adapters").extend("ollama", cortex)
-      end,
-      ovh = function()
-        return require("codecompanion.adapters").extend("openai_compatible", ovh)
-      end,
-      haiku = function()
-        return require("codecompanion.adapters").extend("anthropic", {
-          schema = {
-            model = {
-              default = "claude-3-5-haiku-latest",
-            },
-          },
-        })
-      end,
+      inline = {
+        adapter = {
+          name = "anthropic",
+          model = "claude-haiku-4-5-20251001",
+        },
+      },
     },
   },
   config = function(_, opts)
     require("codecompanion").setup(opts)
-    require("3rd/codecompanion-fidget-spinner"):init()
+    setup_fidget_hooks()
   end,
 }
