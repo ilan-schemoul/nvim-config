@@ -45,7 +45,7 @@ return {
     throttle = 1000,
     debounce = 250,
     virtualtext = {
-      auto_trigger_ignore_ft = { "TelescopePrompt", "oil" },
+      auto_trigger_ignore_ft = { "TelescopePrompt", "oil", "codecompanion" },
       auto_trigger_ft = { "*" },
       keymap = {
         accept_line = '<A-d>',
