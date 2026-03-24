@@ -1,5 +1,6 @@
 * AI exploration
   - ( ) Prio 1
+  -- ( ) Filter references by readonly, modified etc.
   -- (x) https://github.com/milanglacier/minuet-ai.nvim
   -- ( ) Codecompanion
   --- ( ) Configure mini.diff
@@ -85,3 +86,12 @@
      when experiment is over
   -- Warn if options passed to lazy does not exist (setup instead of config etc.)
   - (core) Ctrl-i/Ctrl-o but inside same file
+
+Filter references
+Problem:
+I use lsp references to list references, but I freqeuently only want to see where variable is modified.
+I have go to defintinion, but it only shows the definition which is not what I want.
+It's a very frequent problem in large codebases, if 200 places reads my variable, and 2/3 modifies it it's incredibly tedious to find which is which.
+
+Solution:
+  Use LSP modifier (readonly, modified) etc. to filter results.
