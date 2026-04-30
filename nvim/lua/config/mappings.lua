@@ -240,7 +240,18 @@ set("go", function()
     },
     on_exit = function()
       vim.cmd("Gitsigns refresh")
-      vim.cmd("windo e")
+      local windows = vim.api.nvim_list_wins()
+      for _, win in ipairs(windows) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+        local filename = vim.api.nvim_buf_get_name(buf)
+        local is_normal_type = vim.api.nvim_buf_get_option(buf, 'buftype') == ''
+        if filetype ~= "codecompanion" and is_normal_type and filename ~= "" then
+          vim.api.nvim_win_call(win, function()
+            vim.cmd("edit")
+          end)
+        end
+      end
     end
   })
 end)
