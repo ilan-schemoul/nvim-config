@@ -13,6 +13,6 @@ return {
       "Oil",
   },
   keys = {
-      { "<leader>d", "<cmd>Oil<cr>", silent = true }
+      { "<leader>dd", "<cmd>Oil<cr>", silent = true }
   },
 }

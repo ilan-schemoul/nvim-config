@@ -322,7 +322,10 @@ for _, symbol in ipairs({ "#", "\"", "3" }) do
   set(symbol .. symbol, ":Dotnet<cr>")
   set(symbol .. "r", ":Dotnet run<cr>")
   set(symbol .. "b", ":Dotnet build<cr>")
+  set(symbol .. "d", ":Dotnet debug<cr>")
 end
+
+set("du", require('dapui').toggle)
 
 vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
 
