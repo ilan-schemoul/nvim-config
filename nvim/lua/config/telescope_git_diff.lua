@@ -34,7 +34,7 @@ local function git_modified_files()
     }),
     sorter = require("telescope.config").values.generic_sorter({}),
     previewer = require("telescope.previewers").vim_buffer_cat.new({}),
-    attach_mappings = function(prompt_bufnr, map)
+    attach_mappings = function(prompt_bufnr, _)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
         local entry = action_state.get_selected_entry()
