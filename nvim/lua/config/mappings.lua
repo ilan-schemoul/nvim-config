@@ -9,6 +9,7 @@ local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 local hjkl = { "h", "j", "k", "l" }
 
 local function set(keys, cmd)
+
   vim.keymap.set("n", "<leader>" .. keys, cmd, { unique = true })
 end
 
@@ -284,13 +285,23 @@ vim.api.nvim_create_autocmd({
   })
 -- gb set by ../plugins/blame.lua
 
-for _, key in ipairs(hjkl) do
+for _, key in ipairs({"<A-h>", "<A-j>", "<A-k>", "<A-l>" }) do
   -- Focus window (e.g: <A-l> focus right window)
-  vim.keymap.set({ "t", "n", "i" }, "<A-" .. key .. ">", "<C-\\><C-N><C-w>" .. key)
+  vim.keymap.set({ "t", "n", "i" }, key, "<C-\\><C-N><C-w>" .. key)
 
   -- Move window
   local upper = string.upper(key)
-  vim.keymap.set({ "t", "n", "i" }, "<A-" .. upper .. ">", "<C-\\><C-N><C-w>" .. upper)
+  vim.keymap.set({ "t", "n", "i" }, upper, "<C-\\><C-N><C-w>" .. upper)
+end
+
+for i, key in ipairs({ "Ì", "Ï", "È", "¬" }) do
+  -- Focus window (e.g: <A-l> focus right window)
+  vim.keymap.set({ "t", "n", "i" }, key, "<C-\\><C-N><C-w>" .. hjkl[i])
+end
+
+for i, key in ipairs({ "Î", "Í", "Ë", "|" }) do
+  local sequence = "<C-\\><C-N><C-w>" .. string.upper(hjkl[i])
+  vim.keymap.set({ "t", "n", "i" }, key, sequence)
 end
 
 if os.getenv("KEYBOARD_FR") then
