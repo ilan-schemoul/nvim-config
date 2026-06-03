@@ -11,6 +11,7 @@ return {
     lsp = {
       -- I hate it, it screws up my screen, keeps blinking, it's over popup
       auto_refresh_codelens = false,
+      roslynator_enabled = false,
     },
     debugger = {
       mappings = {
@@ -24,7 +25,7 @@ return {
         peek_stack_trace_from_buffer = { lhs = "<leader>*", desc = "peek stack trace from buffer" },
 
         -- Most useful. Inside buffer
-        debug_test = { lhs = "<leader>\"d", desc = "debug test" },
+        debug_test = { lhs = "<leader>d", desc = "debug test" },
 
         -- Inside testrunner view
         filter_failed_tests = { lhs = "<leader>f", desc = "filter failed tests" },
