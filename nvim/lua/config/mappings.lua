@@ -74,13 +74,14 @@ set("bx", custom_commands.close_buffer)
 set("bX", custom_commands.close_other_tab_buffers)
 
 set("N", function()
-  vim.wo[0].statuscolumn = "%l"
-  if vim.wo[0].relativenumber or vim.wo[0].number then
-    vim.wo[0].number = false
-    vim.wo[0].relativenumber = false
-  else
+  if vim.wo[0].statuscolumn ~= "%l" then
+    vim.wo[0].statuscolumn = "%l"
     vim.wo[0].number = true
     vim.wo[0].relativenumber = true
+  else
+    require("config/utils").setup_separators()
+    vim.wo[0].number = false
+    vim.wo[0].relativenumber = false
   end
 end)
 set("S", function()
