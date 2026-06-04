@@ -61,4 +61,9 @@ M.is_file_outside_pwd = function()
   return vim.bo.buftype == "" and path:find(pwd) == nil
 end
 
+M.is_mac = function()
+  local os = vim.fn.system('uname')
+  return os == "Darwin\n"
+end
+
 return M
