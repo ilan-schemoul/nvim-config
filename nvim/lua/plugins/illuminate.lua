@@ -7,6 +7,7 @@ return {
     require('illuminate').configure({
       -- Disabled after X number of lines
       large_file_cutoff = 5000,
+      providers = { 'lsp', 'regex' },
     })
     end
 }

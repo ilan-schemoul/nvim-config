@@ -5,6 +5,7 @@ return {
   },
   opts = {
     outline_window = {
+      focus_on_open = false,
       position = "left",
       auto_width = {
         enabled = true,
