@@ -32,10 +32,6 @@ M.get_tab_folder = function(tab_nr)
   return folder
 end
 
-M.is_intersec = function()
-  return os.getenv("IS_INTERSEC") == "true"
-end
-
 local hide_tab = false
 
 M.set_hide_tab = function(h)
@@ -59,11 +55,6 @@ M.is_file_outside_pwd = function()
   -- Escape special characters from pwd so find doesn't interpret them
   pwd = pwd:gsub("%W", "%%%0")
   return vim.bo.buftype == "" and path:find(pwd) == nil
-end
-
-M.is_mac = function()
-  local os = vim.fn.system('uname')
-  return os == "Darwin\n"
 end
 
 return M
