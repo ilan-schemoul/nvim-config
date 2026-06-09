@@ -1,3 +1,5 @@
+local config = require('config/config')
+
 return {
   enabled = true,
   event = "InsertEnter",
@@ -7,7 +9,7 @@ return {
   },
   opts = {
     throttle = 1000,
-    debounce = 250,
+    debounce = 300,
     virtualtext = {
       auto_trigger_ignore_ft = { "TelescopePrompt", "oil" },
       auto_trigger_ft = { "*" },
@@ -18,15 +20,15 @@ return {
         -- e.g. "A-z 2 CR" will accept 2 lines
         accept_n_lines = '<A-z>',
         -- Cycle to prev completion item, or manually invoke completion
-        prev = '<A-(>',
+        prev = '<A-' .. (config.keyboard == "fr" and "(" or "[") .. '>',
         -- Cycle to next completion item, or manually invoke completion
-        next = '<A-)>',
+        next = '<A-' .. (config.keyboard == "fr" and ")" or "]") .. '>',
         dismiss = '<A-e>',
       },
       show_on_completion_menu = true,
     },
     provider = 'claude',
-    n_completions = 1,
-    context_window = 4000,
+    n_completions = 2,
+    context_window = 2000,
   }
 }
