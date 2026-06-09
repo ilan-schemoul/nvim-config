@@ -4,6 +4,7 @@
 
 local custom_commands = require("config/custom-commands")
 local utils = require("config/utils")
+local config = require("config/config")
 
 local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 local hjkl = { "h", "j", "k", "l" }
@@ -140,7 +141,7 @@ set("ts", "<cmd>Tabby jump_to_tab<cr>")
 
 -- Switch to tab 4 with <leader>t4
 for i = 0, 9 do
-  if os.getenv("KEYBOARD_FR") then
+  if config.keyboard == "fr" then
     set("t" .. fr[i + 1], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>")
   end
 
@@ -305,7 +306,7 @@ for i, key in ipairs({ "Î", "Í", "Ë", "|" }) do
   vim.keymap.set({ "t", "n", "i" }, key, sequence)
 end
 
-if os.getenv("KEYBOARD_FR") then
+if config.keyboard == "fr" then
   for i = 0, 9 do
     -- HACK: use noremap instead of vim.keymap.set as otherwise motions
     -- such as d"j (d3j) does not work
