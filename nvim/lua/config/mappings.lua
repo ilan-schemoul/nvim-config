@@ -25,12 +25,18 @@ local diagnostic_goto = function(next, severity)
     go({ severity = severity })
   end
 end
-vim.keymap.set("n", "]d", diagnostic_goto(true))
-vim.keymap.set("n", "[d", diagnostic_goto(false))
-vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"))
-vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"))
-vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"))
-vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"))
+
+for _, key in ipairs({ ")", "]" }) do
+  vim.keymap.set("n", key .. "d", diagnostic_goto(true))
+  vim.keymap.set("n", key .. "e", diagnostic_goto(true, "ERROR"))
+  vim.keymap.set("n", key .. "w", diagnostic_goto(true, "WARN"))
+end
+
+for _, key in ipairs({ "(", "[" }) do
+  vim.keymap.set("n", key .. "d", diagnostic_goto(false))
+  vim.keymap.set("n", key .. "e", diagnostic_goto(false, "ERROR"))
+  vim.keymap.set("n", key .. "w", diagnostic_goto(false, "WARN"))
+end
 
 vim.keymap.set("n", "<leader>,", "ggVG")
 
@@ -195,6 +201,7 @@ set("nn", custom_commands.create_org_file)
 -- ../plugins/venn.lua (draw diagram in ASCII)
 set("nd", custom_commands.toggle_venn)
 vim.keymap.set("i", "<A-t>", "<cmd>Minuet virtualtext toggle<cr>")
+
 set("no", "<cmd>Bmessages<cr>")
 
 -- <space><backspace>

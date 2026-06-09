@@ -10,6 +10,8 @@ return {
     { "<leader>xr", "<cmd>GitConflictRefresh<cr>" },
     { ")x", "<Plug>(git-conflict-next-conflict)" },
     { "(x", "<Plug>(git-conflict-previous-conflict)" },
+    { "]x", "<Plug>(git-conflict-next-conflict)" },
+    { "[x", "<Plug>(git-conflict-previous-conflict)" },
     { "<leader>xq", "<cmd>GitConflictListQf<cr> " },
   },
   opts = {
