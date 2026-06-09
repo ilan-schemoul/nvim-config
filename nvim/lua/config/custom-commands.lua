@@ -1,5 +1,4 @@
 local utils = require("config/utils")
-  local fidget = require("fidget")
 local M = {}
 
 local function execute_command(cmds, opts, index)
@@ -28,6 +27,7 @@ end
 
 -- Execute given command async, notify user if error
 M.execute_async_cmd = function(cmds, opts, title)
+  local fidget = require("fidget")
   M._async_spinner = fidget.progress.handle.create({
     title = title,
   })
