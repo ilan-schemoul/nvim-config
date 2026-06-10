@@ -329,6 +329,12 @@ set("wk", smelly_sunflower.insert_above)
 set("wc", smelly_sunflower.clean)
 set("wC", smelly_sunflower.clean_all_buffers)
 
+set("vs", function()
+  local path = vim.api.nvim_buf_get_name(0)
+  local linenumber = vim.api.nvim_win_get_cursor(0)[1]
+  os.execute("code -g " .. path .. ":" .. linenumber)
+end)
+
 for _, symbol in ipairs({ "#", "\"", "3", "c" }) do
   set(symbol .. "a", ":Dotnet<cr>")
   set(symbol .. "r", ":Dotnet run<cr>")
