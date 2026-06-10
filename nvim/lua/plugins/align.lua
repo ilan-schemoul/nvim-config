@@ -2,7 +2,7 @@ return {
   "echasnovski/mini.align",
   opts = {
     mappings = {
-      start = '<leader>a',
+      start = '<leader>al',
     },
   },
 }
