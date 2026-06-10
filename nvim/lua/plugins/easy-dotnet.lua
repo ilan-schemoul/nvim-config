@@ -19,6 +19,7 @@ return {
       },
     },
     test_runner = {
+      viewmode = "split",
       mappings = {
         run_test_from_buffer = { lhs = "<leader>*", desc = "run test from buffer" },
         run_all_tests_from_buffer = { lhs = "<leader>*", desc = "run all tests from buffer" },
