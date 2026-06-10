@@ -303,17 +303,8 @@ for _, key in ipairs({"<A-h>", "<A-j>", "<A-k>", "<A-l>" }) do
   vim.keymap.set({ "t", "n", "i" }, upper, "<C-\\><C-N><C-w>" .. upper)
 end
 
-for i, key in ipairs({ "Ì", "Ï", "È", "¬" }) do
-  -- Focus window (e.g: <A-l> focus right window)
-  vim.keymap.set({ "t", "n", "i" }, key, "<C-\\><C-N><C-w>" .. hjkl[i])
-end
-
-for i, key in ipairs({ "Î", "Í", "Ë", "|" }) do
-  local sequence = "<C-\\><C-N><C-w>" .. string.upper(hjkl[i])
-  vim.keymap.set({ "t", "n", "i" }, key, sequence)
-end
-
 if config.keyboard == "fr" then
+
   for i = 0, 9 do
     -- HACK: use noremap instead of vim.keymap.set as otherwise motions
     -- such as d"j (d3j) does not work
@@ -338,11 +329,12 @@ set("wk", smelly_sunflower.insert_above)
 set("wc", smelly_sunflower.clean)
 set("wC", smelly_sunflower.clean_all_buffers)
 
-for _, symbol in ipairs({ "#", "\"", "3" }) do
-  set(symbol .. symbol, ":Dotnet<cr>")
+for _, symbol in ipairs({ "#", "\"", "3", "c" }) do
+  set(symbol .. "a", ":Dotnet<cr>")
   set(symbol .. "r", ":Dotnet run<cr>")
   set(symbol .. "b", ":Dotnet build<cr>")
   set(symbol .. "d", ":Dotnet debug<cr>")
+  set(symbol .. "t", ":Dotnet testrunner<cr>")
 end
 
 set("du", require('dapui').toggle)
