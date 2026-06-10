@@ -11,6 +11,20 @@ return {
       mode = { "n", "v" },
     },
   },
+  init = function()
+    local function format()
+      require("conform").format({ async = true })
+    end
+
+    local function d_format()
+      vim.defer_fn(format, 2000)
+    end
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*.cs",
+      callback = d_format,
+    })
+  end,
   config = function()
     local formatters = require("mason-bridge").get_formatters()
     formatters.cs = formatters.csharp
