@@ -16,6 +16,7 @@ highlight CursorLineNr guifg=#aaaaaa
 highlight GitSignsAdd guifg=#279403
 highlight GitSignsDelete guifg=#b60e28
 highlight GitSignsChange guifg=#d7d803
+highlight TreesitterContext guibg=#1c1e2e
 
 let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
 execute 'highlight Hlargs guifg=' . fg_var_color

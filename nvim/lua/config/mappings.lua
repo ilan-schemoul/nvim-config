@@ -187,6 +187,7 @@ set("tL", "<cmd>+tabmove<cr>")
 set("tH", "<cmd>-tabmove<cr>")
 
 set("vp", "<cmd>next ~/.config/nvim/lua/plugins<cr>")
+set("vw", "<cmd>tcd ~/.config/nvim<cr>")
 set("vm", "<cmd>next ~/.config/nvim/lua/config/mappings.lua<cr>")
 set("vg", "<cmd>Telescope live_grep search_dirs=~/.config/nvim<cr>")
 set("vl", "<cmd>Telescope find_files search_dirs=~/.config/nvim<cr>")
@@ -346,6 +347,55 @@ end
 set("du", require('dapui').toggle)
 
 vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
+
+vim.keymap.set({ "x", "o" }, "af", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "if", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "aa", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@parameter.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ia", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@parameter.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ab", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@local.scope", "locals")
+end)
+
+vim.keymap.set("n", "<leader>sl", function()
+  require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner"
+end)
+vim.keymap.set("n", "<leader>sh", function()
+  require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.inner"
+end)
+
+vim.keymap.set({ "n", "x", "o" }, "]f", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[f", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]a", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@parameter.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[a", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@parameter.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]b", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@local.scope", "locals")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[b", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@local.scope", "locals")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]z", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@fold", "folds")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[z", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@fold", "folds")
+end)
+
 
 -- Azerty keyboard support being what it is I need these to have
 -- similar experience to qwerty

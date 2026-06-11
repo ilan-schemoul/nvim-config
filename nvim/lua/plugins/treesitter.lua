@@ -13,126 +13,71 @@ local function disable(buf)
 end
 
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    event = { "LazyFile", "VeryLazy" },
-    init = function(plugin)
-      require("lazy.core.loader").add_to_rtp(plugin)
-      require("nvim-treesitter.query_predicates")
-    end,
-    dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
-      "OXY2DEV/markview.nvim"
-    },
-    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    opts = {
-      ensure_installed = { "c", "markdown_inline", "regex", "markdown", "cpp", "rust" },
-      sync_install = false,
-      auto_install = true,
-      ignore_install = { "zig", "asm" },
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  init = function()
+    vim.api.nvim_create_autocmd('FileType', {
+      callback = function()
+        pcall(vim.treesitter.start)
+      end,
+    })
+  end,
 
-      highlight = {
-        enable = true,
-
-        disable = function(_, buf)
-          return disable(buf)
-        end,
-
-        -- Buggy with Python indentation otherwise
-        additional_vim_regex_highlighting = true,
-      },
-
-      textobjects = {
-        select = {
-          include_surrounding_whitespace = true,
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["it"] = { query = "@type" },
-
-            ["in"] = { query = "@assignment.lhs" },
-            ["iv"] = { query = "@assignment.rhs" },
-
-            ["aa"] = { query = "@parameter.outer" },
-            ["ia"] = { query = "@parameter.inner" },
-
-            ["af"] = { query = "@function.outer" },
-            ["if"] = { query = "@function.inner" },
-
-            ["ab"] = { query = "@block.outer" },
-            ["ib"] = { query = "@block.inner" },
-
-            ["ir"] = { query = "@return.inner" },
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<space>sl"] = "@parameter.inner", -- swap parameters/argument with next
-            ["<space>sj"] = "@block.outer", -- swap function with next
-          },
-          swap_previous = {
-            ["<space>sh"] = "@parameter.inner", -- swap parameters/argument with next
-            ["<space>sk"] = "@block.outer", -- swap function with previous
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            [")f"] = "@function.outer",
-            [")b"] = "@block.outer",
-          },
-          goto_next_end = {
-            [")F"] = "@function.outer",
-            [")B"] = "@block.outer",
-          },
-          goto_previous_start = {
-            ["(f"] = "@function.outer",
-            ["(b"] = "@block.outer",
-          },
-          goto_previous_end = {
-            ["(F"] = "@function.outer",
-            ["(B"] = "@block.outer",
-          },
-        },
-      },
-    },
-
-    indent = {
-      enable = false,
-    },
-
-    config = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-          ---@type table<string, boolean>
-          local added = {}
-          opts.ensure_installed = vim.tbl_filter(function(lang)
-              if added[lang] then
-                  return false
-              end
-              added[lang] = true
-              return true
-          end, opts.ensure_installed)
-      end
-
-      require("nvim-treesitter.configs").setup(opts)
-    end,
-  },
-
-  -- Show context of the current function
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "VimEnter",
-    enabled = true,
-    disable = function(_, buf)
-      disable(buf)
-    end,
-    opts = {
-      mode = "cursor",
-      max_lines = 5,
-      min_window_height = 40,
-    },
+  opts = {
+    -- textobjects = {
+    --   select = {
+    --     include_surrounding_whitespace = true,
+    --     enable = true,
+    --     lookahead = true,
+    --     keymaps = {
+    --       ["it"] = { query = "@type" },
+    --
+    --       ["in"] = { query = "@assignment.lhs" },
+    --       ["iv"] = { query = "@assignment.rhs" },
+    --
+    --       ["aa"] = { query = "@parameter.outer" },
+    --       ["ia"] = { query = "@parameter.inner" },
+    --
+    --       ["af"] = { query = "@function.outer" },
+    --       ["if"] = { query = "@function.inner" },
+    --
+    --       ["ab"] = { query = "@block.outer" },
+    --       ["ib"] = { query = "@block.inner" },
+    --
+    --       ["ir"] = { query = "@return.inner" },
+    --     },
+    --   },
+    --   swap = {
+    --     enable = true,
+    --     swap_next = {
+    --       ["<space>sl"] = "@parameter.inner", -- swap parameters/argument with next
+    --       ["<space>sj"] = "@block.outer", -- swap function with next
+    --     },
+    --     swap_previous = {
+    --       ["<space>sh"] = "@parameter.inner", -- swap parameters/argument with next
+    --       ["<space>sk"] = "@block.outer", -- swap function with previous
+    --     },
+    --   },
+    --   move = {
+    --     enable = true,
+    --     set_jumps = true,
+    --     goto_next_start = {
+    --       [")f"] = "@function.outer",
+    --       [")b"] = "@block.outer",
+    --     },
+    --     goto_next_end = {
+    --       [")F"] = "@function.outer",
+    --       [")B"] = "@block.outer",
+    --     },
+    --     goto_previous_start = {
+    --       ["(f"] = "@function.outer",
+    --       ["(b"] = "@block.outer",
+    --     },
+    --     goto_previous_end = {
+    --       ["(F"] = "@function.outer",
+    --       ["(B"] = "@block.outer",
+    --     },
+    --   },
+    -- },
   },
 }
