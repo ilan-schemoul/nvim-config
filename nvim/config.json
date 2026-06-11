@@ -3,5 +3,8 @@
     "completion": true
   },
   "os": "mac",
-  "keyboard": "us"
+  "keyboard": "us",
+  "ui": {
+    "transparent_background": true
+  }
 }
