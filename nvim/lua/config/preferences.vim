@@ -8,8 +8,6 @@ set termguicolors
 
 set colorcolumn=80
 
-colorscheme catppuccin-macchiato
-
 " More bright than the default one
 highlight DiffChange guibg=#2b3148
 " Less bright than default one
@@ -123,8 +121,6 @@ highlight StatusLine guibg=transparent guifg=#acaeb5
 highlight StatusLineNC guibg=transparent
 highlight WinSeparator guifg=#383c51
 highlight TabLineFill guibg=transparent
-hi Normal guibg=#24273b
-hi NormalNC guibg=#222538 guifg=#b5bed3
 
 " Disable cursorline if not focused
 augroup CursorLine
