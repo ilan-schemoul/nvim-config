@@ -2,6 +2,8 @@
 -- https://github.com/chrisgrieser/nvim-various-textobjs?tab=readme-ov-file#list-of-text-objects
 -- NOTE: Many mappings defined inside plugins (grep "keys =" to find those)
 
+-- Available e (only E used), r (only R used), o (only O used), y, k (only ko used), f (only ff used)
+
 local custom_commands = require("config/custom-commands")
 local utils = require("config/utils")
 local config = require("config/config")
