@@ -30,6 +30,14 @@ return {
     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+    { "<leader>as", function()
+      local current_row = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win())[1]
+      local selection_module_ok, selection_module = pcall(require, "claudecode.selection")
+      if selection_module_ok then
+        selection_module.send_at_mention_for_visual_selection(current_row, current_row)
+      end
+
+    end, mode = "n", desc = "Send to Claude" },
     { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
     {
       "<leader>as",
