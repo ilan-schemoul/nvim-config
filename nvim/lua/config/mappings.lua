@@ -65,7 +65,7 @@ set("lx", "<cmd>Easypick conflicts<cr>")
 
 set("L", "<cmd>Lazy<cr>")
 
-set("o", custom_commands.open_file)
+set("O", custom_commands.open_file)
 set(";", custom_commands.open_file_with_extension)
 set(".", custom_commands.open_file_with_extension)
 
@@ -333,7 +333,7 @@ set("wc", smelly_sunflower.clean)
 set("wC", smelly_sunflower.clean_all_buffers)
 
 set("vs", function()
-  local path = vim.api.nvim_buf_get_name(0)
+  local path = vim.fn.expand("%")
   local linenumber = vim.api.nvim_win_get_cursor(0)[1]
   os.execute("code -g " .. path .. ":" .. linenumber)
 end)
@@ -398,6 +398,7 @@ vim.keymap.set({ "n", "x", "o" }, "[z", function()
   require("nvim-treesitter-textobjects.move").goto_previous_start("@fold", "folds")
 end)
 
+set("xx", "<cmd>Trouble diagnostics toggle<cr>")
 
 -- Azerty keyboard support being what it is I need these to have
 -- similar experience to qwerty

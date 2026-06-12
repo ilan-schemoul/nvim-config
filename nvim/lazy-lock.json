@@ -90,6 +90,7 @@
   "todo-comments.nvim": { "branch": "main", "commit": "5acd511af9179211729d21aeef251c2c26a4a226" },
   "tree-sitter-norg": { "branch": "main", "commit": "d7edfaf89198aab652c7a1f0f818196efedaccfb" },
   "tree-sitter-norg-meta": { "branch": "main", "commit": "729d4e54fb881ba0ddf0f925ec78401354c7c6db" },
+  "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
   "ts-node-action": { "branch": "master", "commit": "dda34b5b440a4f1137f8e815756a19cf655b516f" },
   "vim-cool": { "branch": "master", "commit": "9ea940c0d537e55de0de4c0298c04b976960fb12" },
   "vim-dirtytalk": { "branch": "master", "commit": "6d5abdd8430a68d887ee89d3910ecb6082c6118e" },
