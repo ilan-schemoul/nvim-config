@@ -6,5 +6,6 @@
   "keyboard": "qwerty",
   "ui": {
     "transparent_background": false
-  }
+  },
+  "auto_format": false
 }

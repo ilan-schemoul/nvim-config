@@ -1,3 +1,5 @@
+local config = require('config/config')
+
 return {
   "stevearc/conform.nvim",
   priority = 0,
@@ -13,7 +15,9 @@ return {
   },
   init = function()
     local function format()
-      require("conform").format({ async = true })
+      if config.auto_format then
+        require("conform").format({ async = true })
+      end
     end
 
     local function d_format()
