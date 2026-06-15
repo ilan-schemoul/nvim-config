@@ -269,9 +269,7 @@ local function disable_venn()
 end
 
 M.toggle_venn = function()
-  local venn_enabled = vim.inspect(vim.b.venn_enabled)
-
-  if venn_enabled == "nil" then
+  if vim.b.venn_enabled == nil then
     enable_venn()
   else
     disable_venn()

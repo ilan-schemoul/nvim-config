@@ -64,12 +64,12 @@ end
 
 M.clean_all_buffers = function()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-    local readonly = vim.api.nvim_buf_get_option(bufnr, "readonly")
+    local readonly = vim.api.nvim_get_option_value("readonly", { buf = bufnr })
 
     if (vim.api.nvim_buf_is_valid(bufnr)
-        and vim.api.nvim_buf_get_option(bufnr, 'modifiable')
+        and vim.api.nvim_get_option_value("modifiable", { buf = bufnr })
         and not readonly
-        and vim.api.nvim_buf_get_option(bufnr, 'buftype') == '') then
+        and vim.api.nvim_get_option_value("buftype", { buf = bufnr }) == '') then
       local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
       local deleted_lines = 0
       for i, line in ipairs(lines) do

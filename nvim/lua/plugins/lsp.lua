@@ -13,13 +13,10 @@ return
     -- reasons. For those, we need to remove the formatexpr they set. Others such
     -- as bashls, clangd work fine anyway.
     local restore_gq = function(client, bufnr)
-      vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+      vim.bo[bufnr].formatexpr = ""
     end
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] =
-     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-       update_in_insert = false
-     })
+    vim.diagnostic.config({ update_in_insert = false })
 
      vim.lsp.enable('ruff')
      vim.lsp.enable('ast_grep')

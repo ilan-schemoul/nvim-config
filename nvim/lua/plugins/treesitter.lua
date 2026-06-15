@@ -1,17 +1,3 @@
-local function disable(buf)
-  local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-  local utils = require("config/utils")
-
-  if not ok or not stats then
-    vim.notify("Cannot get stats for " .. vim.api.nvim_buf_get_name(buf), vim.log.levels.DEBUG)
-    return true
-  end
-
-  if stats and stats.size > utils.max_treesitter_filesize then
-    return true
-  end
-end
-
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
