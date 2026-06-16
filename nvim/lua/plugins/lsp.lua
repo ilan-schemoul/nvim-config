@@ -19,7 +19,7 @@ return
     vim.diagnostic.config({ update_in_insert = false })
 
      vim.lsp.enable('ruff')
-     vim.lsp.enable('ast_grep')
+     -- vim.lsp.enable('ast_grep')
      vim.lsp.config('ty', {
        settings = {
          ty = {
