@@ -36,6 +36,7 @@ return {
 
     { "<leader>gh", "<cmd>Gitsigns change_base<cr>" },
     { "<leader>gp", "<cmd>Gitsigns change_base HEAD~<cr>" },
+    { "<leader>gP", ":Gitsigns change_base HEAD~" },
 
     {
       'ih',
