@@ -269,6 +269,18 @@ set("ko", function()
   })
 end)
 
+
+set("po", function()
+  require('FTerm').scratch({
+    ft = "lazygit",
+    cmd = 'pgcli postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid',
+    dimensions = {
+      height = 0.95,
+      width = 0.95,
+    },
+  })
+end)
+
 set("gl", require("config/telescope_git_diff"))
 set("gg", function() require("nvim-gerrit").list_changes() end)
 set("gH", require("telescope").extensions.git_file_history.git_file_history)
