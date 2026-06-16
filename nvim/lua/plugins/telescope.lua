@@ -53,6 +53,8 @@ return {
             end,
             ["<S-Down>"] = require('telescope.actions').cycle_history_next,
             ["<S-Up>"] = require('telescope.actions').cycle_history_prev,
+            ["<a-j>"] = require('telescope.actions').cycle_history_next,
+            ["<a-k>"] = require('telescope.actions').cycle_history_prev,
           },
         },
         layout_strategy = "vertical",
