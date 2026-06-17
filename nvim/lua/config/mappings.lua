@@ -458,6 +458,8 @@ vim.keymap.set('n', "gcO", function()
   comment_above_or_below(-1)
 end)
 
+set("rp", ":%s/")
+
 vim.keymap.set('n', "gca", function()
   local l_cms, r_cms = string.match(vim.bo.commentstring, '(.*)%%s(.*)')
   local comment = l_cms .. ' ' .. r_cms
