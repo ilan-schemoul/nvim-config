@@ -4,7 +4,7 @@ return {
   opts = {
     parser = {
       delimiter = {
-        default = ";",
+        default = ",",
         ft = {
           tsv = "\t",
         }
