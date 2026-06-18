@@ -111,6 +111,7 @@ set("T", function()
 end)
 
 set("E", "<cmd>:e!<cr>")
+set("ss", ":mksession! ~/Session.vim<cr>")
 
 -- Close current buffer
 set("q", custom_commands.close_window_if_not_last)
