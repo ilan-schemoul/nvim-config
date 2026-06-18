@@ -249,7 +249,7 @@ set("go", function()
     ft = "lazygit",
     cmd = "cd " .. path .. " && lazygit",
     dimensions = {
-      height = 0.95,
+      height = 0.98,
       width = 0.95,
     },
     on_exit = function()
