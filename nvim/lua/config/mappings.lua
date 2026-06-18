@@ -451,11 +451,11 @@ local function comment_above_or_below(lnum)
   vim.api.nvim_feedkeys('a', 'ni', true)
 end
 
-set("gco", function()
+vim.keymap.set("n", "gco", function()
   comment_above_or_below(0)
 end)
 
-set("gcO", function()
+vim.keymap.set("n", "gcO", function()
   comment_above_or_below(-1)
 end)
 
