@@ -228,7 +228,7 @@ M.open_unused_term_or_create = function()
     end
   end
 
-  vim.cmd(":term")
+  vim.cmd(":term fish")
 end
 
 _G.OpenUnusedTermOrCreate = M.open_unused_term_or_create
