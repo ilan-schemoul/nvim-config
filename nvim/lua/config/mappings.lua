@@ -468,3 +468,8 @@ vim.keymap.set('n', "gca", function()
   vim.api.nvim_set_current_line(line)
   vim.api.nvim_feedkeys('A ', 'ni', true)
 end)
+
+vim.keymap.set("n", "<leader>cc", "gcc", { remap = true })
+vim.keymap.set("n", "<leader>co", "gco", { remap = true })
+vim.keymap.set("n", "<leader>cO", "gcO", { remap = true })
+vim.keymap.set("n", "<leader>ca", "gca", { remap = true })
