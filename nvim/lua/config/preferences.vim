@@ -6,7 +6,12 @@ map gf gF
 set visualbell
 set termguicolors
 
-set colorcolumn=80
+" Metal gear
+set textwidth=80
+autocmd FileType gitcommit set textwidth=80
+autocmd FileType cs set textwidth=140
+
+set colorcolumn=+0
 
 " More bright than the default one
 highlight DiffChange guibg=#2b3148
