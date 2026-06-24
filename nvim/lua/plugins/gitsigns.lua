@@ -1,4 +1,4 @@
-return {
+local spec = {
   -- autosync is enabled on my fork because the as
   "ilan-schemoul/gitsigns.nvim",
   cmd = "Gitsigns",
@@ -35,7 +35,8 @@ return {
     { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>" },
 
     { "<leader>gh", "<cmd>Gitsigns change_base<cr>" },
-    { "<leader>gp", "<cmd>Gitsigns change_base HEAD~<cr>" },
+    { "<leader>gp", "<cmd>Gitsigns change_base HEAD~1<cr>" },
+
     { "<leader>gP", ":Gitsigns change_base HEAD~" },
 
     {
@@ -99,3 +100,12 @@ return {
     },
   },
 }
+
+for i = 1, 9 do
+  table.insert(spec.keys, {
+    "<leader>g" .. i .. "p",
+    function() require("gitsigns").change_base("HEAD~" .. i) end,
+  })
+end
+
+return spec
