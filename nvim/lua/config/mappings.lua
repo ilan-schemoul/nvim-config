@@ -352,11 +352,13 @@ set("vs", function()
 end)
 
 for _, symbol in ipairs({ "#", "\"", "3", "c" }) do
+  set(symbol .. "R", ":Dotnet lsp restart<cr>")
   set(symbol .. "e", ":Dotnet<cr>")
   set(symbol .. "r", ":Dotnet run<cr>")
   set(symbol .. "b", ":Dotnet build<cr>")
   set(symbol .. "d", ":Dotnet debug<cr>")
   set(symbol .. "t", ":Dotnet testrunner<cr>")
+  set(symbol .. "l", ":Dotnet lsp restart<cr>")
 end
 
 set("du", require('dapui').toggle)
