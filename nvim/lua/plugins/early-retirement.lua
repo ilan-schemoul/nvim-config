@@ -1,6 +1,7 @@
 local custom_commands = require("config/custom-commands")
 
 return {
+    enabled = false,
     "chrisgrieser/nvim-early-retirement",
     opts = {
         minimumBufferNum = 5,
