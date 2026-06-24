@@ -118,7 +118,7 @@ return {
   event = "VimEnter",
   dependencies = "nvim-tree/nvim-web-devicons",
   init = function()
-    vim.o.showtabline = 2
+    vim.o.showtabline = 0
   end,
   config = function()
     local pattern_replace_branch = "mmsx\\-.*"
