@@ -1,5 +1,6 @@
 return {
   "folke/trouble.nvim",
+  event = "NormalBufferEnter",
   opts = {
     modes = {
       diagnostics = {

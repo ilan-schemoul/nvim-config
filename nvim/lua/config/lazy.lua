@@ -14,65 +14,47 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Add support for the LazyFile event
-local Event = require("lazy.core.handler.event")
+local event = require("lazy.core.handler.event")
+event.mappings.NormalBufferEnter = {
+  id = "NormalBufferEnter",
+  event = "User",
+  pattern = "NormalBufferEnter",
+}
 
--- We'll handle delayed execution of events ourselves
-Event.mappings.LazyFile = { id = "LazyFile", event = "User", pattern = "LazyFile" }
-Event.mappings["User LazyFile"] = Event.mappings.LazyFile
-
-local events = {} ---@type {event: string, buf: number, data?: any}[]
-
-local done = false
-local function load()
-  if #events == 0 or done then
-    return
-  end
-  done = true
-  vim.api.nvim_del_augroup_by_name("lazy_file")
-
-  ---@type table<string,string[]>
-  local skips = {}
-  for _, event in ipairs(events) do
-    skips[event.event] = skips[event.event] or Event.get_augroups(event.event)
-  end
-
-  vim.api.nvim_exec_autocmds("User", { pattern = "LazyFile", modeline = false })
-  for _, event in ipairs(events) do
-    if vim.api.nvim_buf_is_valid(event.buf) then
-      Event.trigger({
-        event = event.event,
-        exclude = skips[event.event],
-        data = event.data,
-        buf = event.buf,
-      })
-      if vim.bo[event.buf].filetype then
-        Event.trigger({
-          event = "FileType",
-          buf = event.buf,
-        })
-      end
+vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
+  callback = function()
+    local normal_buftype = ''
+    if vim.bo.buftype == normal_buftype and vim.api.nvim_buf_get_name(0) ~= "" then
+      vim.api.nvim_exec_autocmds("User", { pattern = "NormalBufferEnter" })
     end
   end
-  vim.api.nvim_exec_autocmds("CursorMoved", { modeline = false })
-  events = {}
-end
-
--- schedule wrap so that nested autocmds are executed
--- and the UI can continue rendering without blocking
-load = vim.schedule_wrap(load)
-
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufWritePre" }, {
-  group = vim.api.nvim_create_augroup("lazy_file", { clear = true }),
-  callback = function(event)
-    table.insert(events, event)
-    load()
-  end,
 })
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
+  spec = {
+      { import = "plugins" },
+  },
+  import = "plugins",
   change_detection = {
+    -- automatically check for config file changes and reload the ui
     enabled = false,
-    notify = false,
+    notify = false, -- get a notification when changes are found
+  },
+  performance = {
+    rtp = {
+      reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
   },
 })
+

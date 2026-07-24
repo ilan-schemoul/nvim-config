@@ -1,8 +1,7 @@
 local config = require('config/config')
 
 return {
-  enabled = false,
-  event = "InsertEnter",
+  event = "NormalBufferEnter",
   "milanglacier/minuet-ai.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",

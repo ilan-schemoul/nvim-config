@@ -2,7 +2,7 @@ local spec = {
   -- autosync is enabled on my fork because the as
   "ilan-schemoul/gitsigns.nvim",
   cmd = "Gitsigns",
-  event = "VimEnter",
+  event = "NormalBufferEnter",
   opts = {
     signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
     numhl = true,

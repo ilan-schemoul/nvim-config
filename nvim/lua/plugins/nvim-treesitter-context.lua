@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
-  event = "VimEnter",
+  event = { "NormalBufferEnter" },
   opts = {
     mode = "cursor",
     max_lines = 8,

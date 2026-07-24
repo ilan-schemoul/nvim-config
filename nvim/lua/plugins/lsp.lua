@@ -1,7 +1,7 @@
 return
 {
   "neovim/nvim-lspconfig",
-  event = "LazyFile",
+  event = "NormalBufferEnter",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "RubixDev/mason-update-all",

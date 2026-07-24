@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-notify",
+  event = "BufEnter",
   config = function()
     require("notify").setup({
       opts = 2,

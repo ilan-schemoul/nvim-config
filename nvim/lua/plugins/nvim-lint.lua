@@ -1,5 +1,6 @@
 return {
   "mfussenegger/nvim-lint",
+  event = { "NormalBufferEnter" },
   dependencies = {
     "williamboman/mason.nvim",
   },

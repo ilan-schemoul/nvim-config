@@ -1,6 +1,6 @@
 return {
   "0x00-ketsu/autosave.nvim",
-  event = { "InsertLeave", "TextChanged" },
+  event = { "NormalBufferEnter" },
   opts = {
     enable = true,
     events = { "InsertLeave", "TextChanged" },

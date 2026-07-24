@@ -244,8 +244,6 @@ set("io", "<cmd>copen<cr>")
 set("ij", "<cmd>cnext<cr>")
 set("ik", "<cmd>cprev<cr>")
 
-set("cp", "<cmd>CccPick<cr>")
-
 -- Lazygit (incredibly good)
 -- We also disable jk (houdini) for lazygit
 set("go", function()
@@ -311,7 +309,9 @@ set("po", function()
 end)
 
 set("gl", require("config/telescope_git_diff"))
-set("gH", require("telescope").extensions.git_file_history.git_file_history)
+set("gH", function()
+  require("telescope").extensions.git_file_history.git_file_history()
+end)
 set("ga", function()
   local env = {
     GIT_SEQUENCE_EDITOR=":",
@@ -388,8 +388,6 @@ for _, symbol in ipairs({ "#", "\"", "3", "c" }) do
   set(symbol .. "t", ":Dotnet testrunner<cr>")
   set(symbol .. "l", ":Dotnet lsp restart<cr>")
 end
-
-set("du", require('dapui').toggle)
 
 vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
 
