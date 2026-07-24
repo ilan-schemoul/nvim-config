@@ -449,14 +449,11 @@ end)
 
 set("xx", "<cmd>Trouble diagnostics toggle<cr>")
 
--- Azerty keyboard support being what it is I need these to have
--- similar experience to qwerty
-vim.cmd([[
-  " Custom env variable
-  if !empty($KEYBOARD_FR)
-    nmap <silent> ù `
-  endif
+if config.keyboard == "fr" then
+  vim.cmd("nmap <silent> ù `")
+end
 
+vim.cmd([[
   noremap <C--> <C-^>
   " Does not work with every azerty keyboards for some reason
   tmap <C-^> <C-\><C-N><C-^>
@@ -503,3 +500,6 @@ vim.keymap.set("n", "<leader>cc", "gcc", { remap = true })
 vim.keymap.set("n", "<leader>co", "gco", { remap = true })
 vim.keymap.set("n", "<leader>cO", "gcO", { remap = true })
 vim.keymap.set("n", "<leader>ca", "gca", { remap = true })
+
+vim.keymap.set("t", "<C-6>", "<c-\\><c-n><c-6>")
+vim.keymap.set("t", "<C-->", "<c-\\><c-n><c-6>")
