@@ -10,6 +10,7 @@ set termguicolors
 set textwidth=80
 autocmd FileType gitcommit set textwidth=80
 autocmd FileType cs set textwidth=140
+autocmd FileType norg set textwidth=0
 
 set colorcolumn=+0
 
@@ -22,6 +23,7 @@ highlight GitSignsAdd guifg=#279403
 highlight GitSignsDelete guifg=#b60e28
 highlight GitSignsChange guifg=#d7d803
 highlight TreesitterContext guibg=#1c1e2e
+highlight LspSignatureActiveParameter guifg=#ffaa00
 
 let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
 execute 'highlight Hlargs guifg=' . fg_var_color
