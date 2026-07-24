@@ -311,7 +311,6 @@ set("po", function()
 end)
 
 set("gl", require("config/telescope_git_diff"))
-set("gg", function() require("nvim-gerrit").list_changes() end)
 set("gH", require("telescope").extensions.git_file_history.git_file_history)
 set("ga", function()
   local env = {
@@ -320,6 +319,7 @@ set("ga", function()
   local opts = { env = env }
   custom_commands.execute_async_cmd({ { "git", "add", "-u" }, { "git", "absorb", "--and-rebase" } }, opts, "absorbing")
 end)
+set("gc", ":!glab mr checkout ")
 
 -- Add ^ to escape Lazygit (hj is used for navigation so I disabled it in lazygit)
 -- NOTE: on some azerty ^ is a dead key so you gotta press it twice
