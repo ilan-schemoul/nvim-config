@@ -1,7 +1,7 @@
 local config = require('config/config')
 
 return {
-  enabled = true,
+  enabled = false,
   event = "InsertEnter",
   "milanglacier/minuet-ai.nvim",
   dependencies = {
@@ -12,7 +12,7 @@ return {
     debounce = 300,
     virtualtext = {
       auto_trigger_ignore_ft = { "TelescopePrompt", "oil" },
-      auto_trigger_ft = { "*" },
+      -- auto_trigger_ft = { "*" },
       keymap = {
         accept_line = '<A-d>',
         accept = '<A-f>',
@@ -27,8 +27,13 @@ return {
       },
       show_on_completion_menu = true,
     },
+    provider_options = {
+      claude = {
+        model = 'claude-sonnet-5'
+      },
+    },
     provider = 'claude',
     n_completions = 2,
-    context_window = 2000,
+    context_window = 3000,
   }
 }
