@@ -31,11 +31,11 @@ return {
     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
     { "<leader>as", function()
+      local current_buf = vim.api.nvim_get_current_buf()
+      local file_path = vim.api.nvim_buf_get_name(current_buf)
       local current_row = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win())[1]
-      local selection_module_ok, selection_module = pcall(require, "claudecode.selection")
-      if selection_module_ok then
-        selection_module.send_at_mention_for_visual_selection(current_row, current_row)
-      end
+      local claude = require("claudecode")
+      claude.send_at_mention(file_path, current_row, current_row, "ClaudeCodeSend")
 
     end, mode = "n", desc = "Send to Claude" },
     { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
