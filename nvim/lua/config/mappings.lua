@@ -214,7 +214,17 @@ set("<BS>", function()
 end)
 
 -- ../plugins/treesitter.lua
-set("sc", "1z=")
+-- Only correct the word under the cursor if it's actually misspelled
+set("sc", function()
+  local cword = vim.fn.expand("<cword>")
+  local pos = vim.api.nvim_win_get_cursor(0)
+  local bad = vim.fn.spellbadword()
+  if bad[1] ~= "" and bad[1] == cword then
+    vim.cmd("normal! 1z=")
+  else
+    vim.api.nvim_win_set_cursor(0, pos)
+  end
+end)
 -- Can't use <leader>sl as it is used by for TS swapping
 set("s=", "<cmd>CustomTelescopeSpellSuggest<cr>")
 -- Repeat last correction (<leader>sc)
