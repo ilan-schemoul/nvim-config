@@ -269,6 +269,24 @@ set("go", function()
   })
 end)
 
+-- Lazygit (incredibly good)
+-- We also disable jk (houdini) for lazygit
+set("to", function()
+  local path = vim.fn.expand('%:h')
+
+  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
+    path = vim.fn.getcwd()
+  end
+
+  require('FTerm').scratch({
+    cmd = "fish",
+    dimensions = {
+      height = 0.9,
+      width = 0.9,
+    },
+  })
+end)
+
 set("ko", function()
   require('FTerm').scratch({
     ft = "lazygit",
