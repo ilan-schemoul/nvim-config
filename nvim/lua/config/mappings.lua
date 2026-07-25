@@ -4,7 +4,7 @@
 
 -- Available e (only E used), r (only R used), o (only O used), y, k (only ko used), f (only ff used)
 
-local custom_commands = require("config/custom-commands")
+local commands = require("config/custom-commands")
 local utils = require("config/utils")
 local config = require("config/config")
 
@@ -42,7 +42,7 @@ end
 
 vim.keymap.set("n", "<leader>,", "ggVG")
 
-vim.keymap.set("n", "K", custom_commands.open_help)
+vim.keymap.set("n", "K", commands.open_help)
 
 set("lD", function() vim.diagnostic.open_float({ source = true }) end)
 set("lh", vim.lsp.buf.hover)
@@ -65,9 +65,9 @@ set("lx", "<cmd>Easypick conflicts<cr>")
 
 set("L", "<cmd>Lazy<cr>")
 
-set("O", custom_commands.open_file)
-set(";", custom_commands.open_file_with_extension)
-set(".", custom_commands.open_file_with_extension)
+set("O", commands.open_file)
+set(";", commands.open_file_with_extension)
+set(".", commands.open_file_with_extension)
 
 vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
 
@@ -78,9 +78,9 @@ set("bh", "<cmd>vsplit<cr>")
 set("bj", "<cmd>belowright split<cr>")
 set("bk", "<cmd>topleft split<cr>")
 set("bl", "<cmd>botright vs<cr>")
-set("bx", custom_commands.close_buffer)
+set("bx", commands.close_buffer)
 -- Close all buffers but one
-set("bX", custom_commands.close_other_tab_buffers)
+set("bX", commands.close_other_tab_buffers)
 
 set("N", function()
   if vim.wo[0].statuscolumn ~= "%l" then
@@ -114,7 +114,7 @@ set("E", "<cmd>:e!<cr>")
 set("ss", ":mksession! ~/Session.vim<cr>")
 
 -- Close current buffer
-set("q", custom_commands.close_window_if_not_last)
+set("q", commands.close_window_if_not_last)
 -- Close neovim
 set("Q", "<cmd>qa!<cr>")
 set("R", "<cmd>Restart<cr>")
@@ -130,7 +130,7 @@ set("u", "<cmd>Telescope undo<cr>")
 set("tt", "<cmd>Telescope<cr>")
 set("tg", "<cmd>Telescope live_grep<cr>")
 setv("tg", function()
-  local selection_text = custom_commands.get_visual_selection()
+  local selection_text = commands.get_visual_selection()
   require('telescope.builtin').live_grep({ default_text = selection_text })
 end)
 set("tG", "<cmd>Telescope grep_string<cr>")
@@ -139,7 +139,7 @@ set("tr", "<cmd>Telescope resume<cr>")
 set("tz", "<cmd>Telescope buffers<cr>")
 set("tf", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 setv("tf", function()
-  local selection_text = custom_commands.get_visual_selection()
+  local selection_text = commands.get_visual_selection()
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = selection_text })
 end)
 set("tF", function()
@@ -162,8 +162,8 @@ set("tq", function() require("telescope.builtin").quickfix({
   path_display = { "smart" }
 }) end)
 
-set("pn", custom_commands.open_unused_term_or_create)
-set("pN", "<cmd>term<cr>")
+set("pn", commands.open_unused_term_or_create)
+set("pN", "<cmd>term fish<cr>")
 set("ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pj", "<cmd>belowright split | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pk", "<cmd>topleft split | lua _G.OpenUnusedTermOrCreate()<cr>")
@@ -201,9 +201,9 @@ set("nm", "<cmd>e ~/notes/memory.norg<cr>")
 set("nM", "<cmd>botright 30vnew ~/notes/memory.norg | set invrelativenumber | set invnumber<cr>")
 set("nl", "<cmd>Telescope find_files search_dirs={'~/notes'} follow=true<cr>")
 set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
-set("nn", custom_commands.create_org_file)
+set("nn", commands.create_org_file)
 -- ../plugins/venn.lua (draw diagram in ASCII)
-set("nd", custom_commands.toggle_venn)
+set("nd", commands.toggle_venn)
 vim.keymap.set("i", "<A-t>", "<cmd>Minuet virtualtext toggle<cr>")
 
 set("no", "<cmd>Bmessages<cr>")
@@ -244,69 +244,29 @@ set("io", "<cmd>copen<cr>")
 set("ij", "<cmd>cnext<cr>")
 set("ik", "<cmd>cprev<cr>")
 
--- Lazygit (incredibly good)
--- We also disable jk (houdini) for lazygit
-set("go", function()
+-- The scratch terminals
+set("go", commands.open_lazygit)
+
+set("og", commands.open_lazygit)
+
+set("ot", function()
   local path = vim.fn.expand('%:h')
 
   if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
     path = vim.fn.getcwd()
   end
 
-  require('FTerm').scratch({
-    ft = "lazygit",
-    cmd = "cd " .. path .. " && lazygit",
-    dimensions = {
-      height = 0.98,
-      width = 0.95,
-    },
-    on_exit = function()
-      vim.cmd("Gitsigns refresh")
-      vim.cmd("windo e")
-    end
-  })
+  commands.scratch("fish && cd " .. path)
 end)
 
--- Lazygit (incredibly good)
--- We also disable jk (houdini) for lazygit
-set("to", function()
-  local path = vim.fn.expand('%:h')
-
-  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
-    path = vim.fn.getcwd()
-  end
-
-  require('FTerm').scratch({
-    cmd = "fish",
-    dimensions = {
-      height = 0.9,
-      width = 0.9,
-    },
-  })
+set("op", function()
+  commands.scratch("pgcli postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid")
 end)
 
-set("ko", function()
-  require('FTerm').scratch({
-    ft = "lazygit",
-    cmd = "kubie ctx - ",
-    dimensions = {
-      height = 0.95,
-      width = 0.95,
-    },
-  })
-end)
-
-
-set("po", function()
-  require('FTerm').scratch({
-    ft = "lazygit",
-    cmd = 'pgcli postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid',
-    dimensions = {
-      height = 0.95,
-      width = 0.95,
-    },
-  })
-end)
+set("ol", commands.toggle_terminal("alogs", "fish -c 'alogs'"))
+-- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
+set("oa", commands.toggle_terminal("aspire", "aspire run"))
+set("oc", commands.toggle_terminal("calc", "calc"))
 
 set("gl", require("config/telescope_git_diff"))
 set("gH", function()
@@ -317,7 +277,7 @@ set("ga", function()
     GIT_SEQUENCE_EDITOR=":",
   }
   local opts = { env = env }
-  custom_commands.execute_async_cmd({ { "git", "add", "-u" }, { "git", "absorb", "--and-rebase" } }, opts, "absorbing")
+  commands.execute_async_cmd({ { "git", "add", "-u" }, { "git", "absorb", "--and-rebase" } }, opts, "absorbing")
 end)
 set("gc", ":!glab mr checkout ")
 

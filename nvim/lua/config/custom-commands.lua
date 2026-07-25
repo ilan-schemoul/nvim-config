@@ -1,6 +1,8 @@
 local utils = require("config/utils")
 local M = {}
 
+local sticky_terminals = {}
+
 local function execute_command(cmds, opts, index)
   if index > #cmds then
     return
@@ -398,4 +400,69 @@ M.open_help = function(word)
   end
 end
 
+M.scratch = function(cmd, ft, on_exit)
+  ---@diagnostic disable-next-line: missing-fields
+  require('FTerm').scratch({
+    ft = ft,
+    cmd = cmd,
+    ---@diagnostic disable-next-line: missing-fields
+    dimensions = {
+      height = 0.98,
+      width = 0.95,
+    },
+    on_exit = on_exit
+  })
+end
+
+M.open_lazygit = function()
+  local path = vim.fn.expand('%:h')
+
+  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
+    path = vim.fn.getcwd()
+  end
+
+  local on_exit = function()
+    vim.cmd("Gitsigns refresh")
+    vim.cmd("windo e")
+  end
+
+  M.scratch("cd " .. path .. " && lazygit", "lazygit", on_exit)
+end
+
+M.toggle_terminal = function(terminal_type, cmd, not_q)
+  return function()
+    local buffer_terminal
+
+    if sticky_terminals[terminal_type] ~= nil then
+      vim.notify('open')
+      buffer_terminal = sticky_terminals[terminal_type]:toggle()
+    else
+      ---@diagnostic disable-next-line: missing-fields
+      sticky_terminals[terminal_type] = require('FTerm'):new({
+        ft = "logsFTerm",
+        cmd = cmd,
+        ---@diagnostic disable-next-line: missing-fields
+        dimensions = {
+            height = 0.98,
+            width = 0.98
+        },
+      })
+      buffer_terminal = sticky_terminals[terminal_type]:open()
+    end
+
+    if not not_q then
+      vim.keymap.set("t", "q", function()
+        sticky_terminals[terminal_type]:toggle()
+      end, { buf = buffer_terminal.buf })
+    end
+  end
+end
+
+vim.api.nvim_create_user_command("KillStickyTerminal", function (args)
+  -- Not supported yet: https://github.com/numToStr/FTerm.nvim/issues/110
+  -- sticky_terminals[args.fargs[1]]:exit()
+  sticky_terminals[args.fargs[1]] = nil
+end, { nargs = 1 })
+
 return M
+
