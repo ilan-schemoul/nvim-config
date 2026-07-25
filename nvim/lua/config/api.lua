@@ -252,49 +252,46 @@ M.open_help = function(word)
   end
 end
 
-M.open_scratch_floating_terminal = function(cmd, ft, on_exit)
-  ---@diagnostic disable-next-line: missing-fields
-  require('FTerm').scratch({
-    ft = ft,
-    cmd = cmd,
-    ---@diagnostic disable-next-line: missing-fields
-    dimensions = {
-      height = 0.98,
-      width = 0.95,
-    },
-    on_exit = on_exit
-  })
-end
+local last_lazygit_root = nil
 
-M.open_lazygit = function()
-  local path = vim.fn.expand('%:h')
-
-  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
-    path = vim.fn.getcwd()
-  end
-
+M.toggle_lazygit = function(force_new)
   local on_exit = function()
     vim.cmd("Gitsigns refresh")
     vim.cmd("windo e")
   end
 
-  M.open_scratch_floating_terminal("cd " .. path .. " && lazygit", "lazygit", on_exit)
+  local root = M.get_cwd()
+  if root then
+    root = vim.fs.root(root, ".git") or ""
+  else
+    root = ""
+  end
+  vim.print(root)
+
+  if last_lazygit_root ~= root then
+    sticky_terminals["lazygit"] = nil
+    last_lazygit_root = root
+  end
+
+  M.toggle_persistent_floating_terminal("lazygit", "cd " .. root .. " && lazygit", nil, force_new, on_exit)()
 end
 
-local create_new_persistent_floating_terminal = function(terminal_type, cmd)
+local create_new_persistent_floating_terminal = function(terminal_type, cmd, env, on_exit)
   ---@diagnostic disable-next-line: missing-fields
   sticky_terminals[terminal_type] = require('FTerm'):new({
-    ft = "logsFTerm",
+    ft = "ft_" .. terminal_type,
     cmd = cmd,
+    on_exit = on_exit,
+    env = env,
     ---@diagnostic disable-next-line: missing-fields
     dimensions = {
-        height = 0.98,
-        width = 0.98
+        height = 0.95,
+        width = 0.95
     },
   })
 end
 
-M.toggle_persistent_floating_terminal = function(terminal_type, cmd, not_q, force_new)
+M.toggle_persistent_floating_terminal = function(terminal_type, cmd, not_q, force_new, on_exit, env)
   return function()
     local buffer_terminal
 
@@ -303,10 +300,9 @@ M.toggle_persistent_floating_terminal = function(terminal_type, cmd, not_q, forc
     end
 
     if sticky_terminals[terminal_type] ~= nil then
-      vim.notify('open')
       buffer_terminal = sticky_terminals[terminal_type]:toggle()
     else
-      create_new_persistent_floating_terminal(terminal_type, cmd)
+      create_new_persistent_floating_terminal(terminal_type, cmd, env, on_exit)
       buffer_terminal = sticky_terminals[terminal_type]:open()
     end
 

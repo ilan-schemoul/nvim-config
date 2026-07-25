@@ -241,29 +241,32 @@ set("io", "<cmd>copen<cr>")
 set("ij", "<cmd>cnext<cr>")
 set("ik", "<cmd>cprev<cr>")
 
--- The scratch terminals
-set("go", api.open_lazygit)
+-- {{{ Floating terminals
+set("go", api.toggle_lazygit)
 
-set("og", api.open_lazygit)
-
-local pg_cmd = "pgcli postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid"
+local pg_cmd = { "pgcli", "postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid" }
 set("op", api.toggle_persistent_floating_terminal("pgcli", pg_cmd))
 
-set("ol", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'"))
+set("ol", api.toggle_persistent_floating_terminal("alogs", { "fish", "-c", "alogs" }))
 -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
-set("oa", api.toggle_persistent_floating_terminal("aspire", "aspire run"))
-set("oc", api.toggle_persistent_floating_terminal("calc", "calc"))
+set("oa", api.toggle_persistent_floating_terminal("aspire", { "aspire", "run" }))
+set("oc", api.toggle_persistent_floating_terminal("calc", { "calc" }))
 set("ot", function()
-  api.open_scratch_floating_terminal("fish && cd " .. api.get_cwd())()
+    local env = { cwd = api.get_cwd() }
+    api.toggle_persistent_floating_terminal("fish", "cd /tmp && fish", false, false, nil, env)()
 end)
+set("og", api.toggle_lazygit)
 
 set("oP", api.toggle_persistent_floating_terminal("pgcli", pg_cmd, nil, true))
-set("oL", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'", nil, true))
-set("oA", api.toggle_persistent_floating_terminal("aspire", "aspire run", nil, true))
-set("oC", api.toggle_persistent_floating_terminal("calc", "calc", nil, true))
+set("oL", api.toggle_persistent_floating_terminal("alogs", { "fish", "-c", "alogs" }, nil, true))
+set("oA", api.toggle_persistent_floating_terminal("aspire", { "aspire", "run" }, nil, true))
+set("oC", api.toggle_persistent_floating_terminal("calc", { "calc" }, nil, true))
 set("oT", function()
-  api.toggle_persistent_floating_terminal("fish && cd " .. api.get_cwd(), nil, true)()
+  local cmd = "fish && cd " .. api.get_cwd()
+  api.toggle_persistent_floating_terminal(cmd, nil, true)()
 end)
+set("oG", function() api.toggle_lazygit(true) end)
+-- }}}
 
 set("gl", require("config/telescope_git_diff"))
 set("gH", function()
@@ -278,15 +281,15 @@ set("ga", function()
 end)
 set("gc", ":!glab mr checkout ")
 
--- Add ^ to escape Lazygit (hj is used for navigation so I disabled it in lazygit)
--- NOTE: on some azerty ^ is a dead key so you gotta press it twice
+-- Lazygit is weird, if you exit it you shift right so you counter-balance it by
+-- going left
 vim.api.nvim_create_autocmd({
     "FileType",
   },
   {
-    pattern = "lazygit",
+    pattern = "ft_lazygit",
     callback = function()
-      vim.keymap.set("t", "^", function()
+      vim.keymap.set("t", "<A-;>", function()
         vim.cmd("stopinsert")
         vim.fn.feedkeys("gg")
         vim.fn.feedkeys("^") -- beginning of the sentence

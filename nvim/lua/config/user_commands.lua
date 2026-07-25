@@ -43,7 +43,7 @@ vim.api.nvim_create_user_command("FromFTToTab", function(args)
     end
 
     -- Close the popup with lazygit so I can see the opened file
-    if vim.bo.filetype == "lazygit" then
+    if vim.bo.filetype == "ft_lazygit" then
       vim.cmd("q")
     end
 

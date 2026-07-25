@@ -2,7 +2,7 @@ return {
   "TheBlob42/houdini.nvim",
   opts = {
     mappings = { "hj" },
-    excluded_filetypes = { "lazygit" },
+    excluded_filetypes = { "ft_lazygit" },
     -- A plugin so hj can escape insert as well as terminal mode.
     -- Unlike some other methods there is no lagging associated to typing h.
     escape_sequences = {
