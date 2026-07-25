@@ -246,17 +246,13 @@ set("go", api.open_lazygit)
 
 set("og", api.open_lazygit)
 
-set("ot", function()
-  local path = vim.fn.expand('%:h')
-
-  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
-    path = vim.fn.getcwd()
-  end
 
 set("ol", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'"))
 -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
 set("oa", api.toggle_persistent_floating_terminal("aspire", "aspire run"))
 set("oc", api.toggle_persistent_floating_terminal("calc", "calc"))
+set("ot", function()
+  api.open_scratch_floating_terminal("fish && cd " .. api.get_cwd())()
 end)
 
 set("op", function()
@@ -264,6 +260,8 @@ set("op", function()
 set("oL", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'", nil, true))
 set("oA", api.toggle_persistent_floating_terminal("aspire", "aspire run", nil, true))
 set("oC", api.toggle_persistent_floating_terminal("calc", "calc", nil, true))
+set("oT", function()
+  api.toggle_persistent_floating_terminal("fish && cd " .. api.get_cwd(), nil, true)()
 end)
 
 set("gl", require("config/telescope_git_diff"))
