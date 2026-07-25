@@ -3,7 +3,9 @@ vim.env.PATH = '/home/ilan/.bin/nvim-internal-path:' .. vim.env.PATH
 
 require("config/lazy")
 
-require("config/custom-commands")
+require("config/api")
+require("config/user_commands")
+require("config/auto_commands")
 
 vim.cmd("source ~/.config/nvim/lua/config/preferences.vim")
 

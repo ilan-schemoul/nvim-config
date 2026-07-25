@@ -1,4 +1,4 @@
-local custom_commands = require("config/custom-commands")
+local api = require("config/api")
 
 return {
     enabled = false,
@@ -6,7 +6,7 @@ return {
     opts = {
         minimumBufferNum = 5,
         retirementAgeMins = 5,
-        deleteFunction = custom_commands.close_buffer_if_not_last,
+        deleteFunction = api.close_buffer_if_not_last,
     },
     event = "VeryLazy",
 }

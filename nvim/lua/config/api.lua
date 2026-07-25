@@ -41,36 +41,6 @@ M.execute_async_shell_cmd = function(cmd, opts, title)
   M.execute_async_cmd({ { vim.o.shell, vim.o.shellcmdflag, cmd } }, opts, title)
 end
 
--- Absolute number if not focus
-vim.api.nvim_create_autocmd({ "WinEnter" }, {
-  callback = function()
-    -- Normal buffer (not terminal etc.)
-    if vim.wo[0].number then
-      vim.wo[0].relativenumber = true
-    end
-  end,
-})
-
--- Absolute number if not focus
-vim.api.nvim_create_autocmd({ "WinLeave" }, {
-  callback = function()
-    -- Normal buffer (not terminal etc.)
-    if vim.wo[0].number then
-      vim.wo[0].relativenumber = false
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-  callback = function(args)
-    local buf = vim.api.nvim_win_get_buf(0)
-
-    if vim.bo[buf].readonly then
-      vim.notify("Cannot save this file. Try :SudaWrite", vim.log.levels.ERROR)
-    end
-  end,
-})
-
 -- Close window is it is a floating window or if it not the last opened window in the current tab
 M.close_window_if_not_last = function(window)
   window = window or vim.api.nvim_get_current_win()
@@ -192,18 +162,6 @@ M.close_buffer = function()
   -- TODO: close buffer without closing tab
 end
 
--- Close buffer if the terminal is closed
-vim.api.nvim_create_autocmd("TermClose", {
-  pattern = "*",
-  callback = function()
-    vim.schedule(function()
-      if (vim.bo.buftype == "terminal" or vim.bo.filetype == "lua") and vim.v.shell_error == 0 then
-        vim.cmd("bdelete! " .. vim.fn.expand("<abuf>"))
-      end
-    end)
-  end,
-})
-
 -- Solution given by Justin himself !
 local function terminal_is_available(buffer)
     local is_terminal = vim.bo[buffer].buftype == "terminal"
@@ -235,112 +193,6 @@ end
 
 _G.OpenUnusedTermOrCreate = M.open_unused_term_or_create
 
-local function enable_venn_silent()
-  vim.cmd([[setlocal ve=all]])
-  vim.cmd([[setlocal noai]])
-
-  -- draw a line on HJKL keystokes
-  vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
-  vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
-  vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
-  vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
-  -- draw a box by pressing "f" with visual selection
-  vim.api.nvim_buf_set_keymap(0, "v", "b", ":VBox<CR>", { noremap = true })
-
-  vim.b.venn_enabled = true
-end
-
-local function enable_venn()
-  vim.notify("Enabled")
-
-  enable_venn_silent()
-end
-
-local function disable_venn()
-  vim.notify("Disabled")
-
-  vim.cmd([[setlocal ve=]])
-  vim.cmd([[setlocal ai]])
-  vim.api.nvim_buf_del_keymap(0, "n", "J")
-  vim.api.nvim_buf_del_keymap(0, "n", "K")
-  vim.api.nvim_buf_del_keymap(0, "n", "L")
-  vim.api.nvim_buf_del_keymap(0, "n", "H")
-  vim.api.nvim_buf_del_keymap(0, "v", "b")
-
-  vim.b.venn_enabled = nil
-end
-
-M.toggle_venn = function()
-  if vim.b.venn_enabled == nil then
-    enable_venn()
-  else
-    disable_venn()
-  end
-end
-
--- vim.api.nvim_create_autocmd({ "FileType", }, {
---     pattern = "norg",
--- callback = enable_venn_silent,
--- })
-
-vim.api.nvim_create_user_command("CopyPath", function()
-  vim.cmd("let @+ = expand('%')")
-end, { nargs = 0 })
-
-vim.api.nvim_create_user_command("CopyPathWithLine", function()
-  vim.cmd("let @+ = expand('%') .. ':' .. line('.')")
-end, { nargs = 0 })
-
-vim.api.nvim_create_user_command("OpenSession", function(args)
-  if #args.fargs == 1 then
-    vim.cmd("source " .. args.fargs[1])
-  else
-    if vim.fn.file_readable("./Session.vim") then
-      vim.cmd("source ./Session.vim")
-    else
-      vim.cmd("source ~/Session.vim")
-    end
-  end
-end, { nargs = '?' })
-
-vim.api.nvim_create_user_command("Restart", function()
-  local restart_exit_code = 22
-  vim.cmd("cquit " .. restart_exit_code)
-end, { nargs = 0 })
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.jpg", "*.png" },
-  callback = function()
-    vim.cmd("setfiletype img")
-  end,
-})
-
-vim.api.nvim_create_user_command("H", function(args)
-  local arg = args.fargs[1]
-  vim.cmd("helpg " .. arg)
-  require("telescope.builtin").quickfix()
-end, { nargs = '+' })
-
--- Used by lazygit
-vim.api.nvim_create_user_command("FromFTToTab", function(args)
-  local name = args.fargs[1]
-
-  if name then
-    local line = 1
-
-    if #args.fargs == 2 then
-      line = args.fargs[2]
-    end
-
-    -- Close the popup with lazygit so I can see the opened file
-    if vim.bo.filetype == "lazygit" then
-      vim.cmd("q")
-    end
-
-    -- Once the popup is closed "e" will open the file outside the popup
-    vim.cmd("e +" .. line .. " " .. name)
-  end
-end, { nargs = '+' })
 
 M.get_visual_selection = function()
   vim.cmd('noau normal! "vy"')
@@ -400,7 +252,7 @@ M.open_help = function(word)
   end
 end
 
-M.scratch = function(cmd, ft, on_exit)
+M.open_scratch_floating_terminal = function(cmd, ft, on_exit)
   ---@diagnostic disable-next-line: missing-fields
   require('FTerm').scratch({
     ft = ft,
@@ -426,27 +278,35 @@ M.open_lazygit = function()
     vim.cmd("windo e")
   end
 
-  M.scratch("cd " .. path .. " && lazygit", "lazygit", on_exit)
+  M.open_scratch_floating_terminal("cd " .. path .. " && lazygit", "lazygit", on_exit)
 end
 
-M.toggle_terminal = function(terminal_type, cmd, not_q)
+local create_new_persistent_floating_terminal = function(terminal_type, cmd)
+  ---@diagnostic disable-next-line: missing-fields
+  sticky_terminals[terminal_type] = require('FTerm'):new({
+    ft = "logsFTerm",
+    cmd = cmd,
+    ---@diagnostic disable-next-line: missing-fields
+    dimensions = {
+        height = 0.98,
+        width = 0.98
+    },
+  })
+end
+
+M.toggle_persistent_floating_terminal = function(terminal_type, cmd, not_q, force_new)
   return function()
     local buffer_terminal
+
+    if force_new then
+      sticky_terminals[terminal_type] = nil
+    end
 
     if sticky_terminals[terminal_type] ~= nil then
       vim.notify('open')
       buffer_terminal = sticky_terminals[terminal_type]:toggle()
     else
-      ---@diagnostic disable-next-line: missing-fields
-      sticky_terminals[terminal_type] = require('FTerm'):new({
-        ft = "logsFTerm",
-        cmd = cmd,
-        ---@diagnostic disable-next-line: missing-fields
-        dimensions = {
-            height = 0.98,
-            width = 0.98
-        },
-      })
+      create_new_persistent_floating_terminal(terminal_type, cmd)
       buffer_terminal = sticky_terminals[terminal_type]:open()
     end
 
@@ -458,11 +318,21 @@ M.toggle_terminal = function(terminal_type, cmd, not_q)
   end
 end
 
-vim.api.nvim_create_user_command("KillStickyTerminal", function (args)
+M.kill_sticky_terminal = function(terminal_type)
   -- Not supported yet: https://github.com/numToStr/FTerm.nvim/issues/110
-  -- sticky_terminals[args.fargs[1]]:exit()
-  sticky_terminals[args.fargs[1]] = nil
-end, { nargs = 1 })
+  -- sticky_terminals[terminal_type]:exit()
+  sticky_terminals[terminal_type] = nil
+end
+
+M.get_cwd = function()
+  local path = vim.fn.expand('%:h')
+
+  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
+    path = vim.fn.getcwd()
+  end
+
+  return path
+end
 
 return M
 

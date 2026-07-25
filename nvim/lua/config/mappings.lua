@@ -4,12 +4,11 @@
 
 -- Available e (only E used), r (only R used), o (only O used), y, k (only ko used), f (only ff used)
 
-local commands = require("config/custom-commands")
+local api = require("config/api")
 local utils = require("config/utils")
 local config = require("config/config")
 
 local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
-local hjkl = { "h", "j", "k", "l" }
 
 local function set(keys, cmd)
 
@@ -42,7 +41,7 @@ end
 
 vim.keymap.set("n", "<leader>,", "ggVG")
 
-vim.keymap.set("n", "K", commands.open_help)
+vim.keymap.set("n", "K", api.open_help)
 
 set("lD", function() vim.diagnostic.open_float({ source = true }) end)
 set("lh", vim.lsp.buf.hover)
@@ -65,9 +64,9 @@ set("lx", "<cmd>Easypick conflicts<cr>")
 
 set("L", "<cmd>Lazy<cr>")
 
-set("O", commands.open_file)
-set(";", commands.open_file_with_extension)
-set(".", commands.open_file_with_extension)
+set("O", api.open_file)
+set(";", api.open_file_with_extension)
+set(".", api.open_file_with_extension)
 
 vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
 
@@ -78,9 +77,9 @@ set("bh", "<cmd>vsplit<cr>")
 set("bj", "<cmd>belowright split<cr>")
 set("bk", "<cmd>topleft split<cr>")
 set("bl", "<cmd>botright vs<cr>")
-set("bx", commands.close_buffer)
+set("bx", api.close_buffer)
 -- Close all buffers but one
-set("bX", commands.close_other_tab_buffers)
+set("bX", api.close_other_tab_buffers)
 
 set("N", function()
   if vim.wo[0].statuscolumn ~= "%l" then
@@ -114,7 +113,7 @@ set("E", "<cmd>:e!<cr>")
 set("ss", ":mksession! ~/Session.vim<cr>")
 
 -- Close current buffer
-set("q", commands.close_window_if_not_last)
+set("q", api.close_window_if_not_last)
 -- Close neovim
 set("Q", "<cmd>qa!<cr>")
 set("R", "<cmd>Restart<cr>")
@@ -130,7 +129,7 @@ set("u", "<cmd>Telescope undo<cr>")
 set("tt", "<cmd>Telescope<cr>")
 set("tg", "<cmd>Telescope live_grep<cr>")
 setv("tg", function()
-  local selection_text = commands.get_visual_selection()
+  local selection_text = api.get_visual_selection()
   require('telescope.builtin').live_grep({ default_text = selection_text })
 end)
 set("tG", "<cmd>Telescope grep_string<cr>")
@@ -139,7 +138,7 @@ set("tr", "<cmd>Telescope resume<cr>")
 set("tz", "<cmd>Telescope buffers<cr>")
 set("tf", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 setv("tf", function()
-  local selection_text = commands.get_visual_selection()
+  local selection_text = api.get_visual_selection()
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = selection_text })
 end)
 set("tF", function()
@@ -162,7 +161,7 @@ set("tq", function() require("telescope.builtin").quickfix({
   path_display = { "smart" }
 }) end)
 
-set("pn", commands.open_unused_term_or_create)
+set("pn", api.open_unused_term_or_create)
 set("pN", "<cmd>term fish<cr>")
 set("ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pj", "<cmd>belowright split | lua _G.OpenUnusedTermOrCreate()<cr>")
@@ -201,9 +200,7 @@ set("nm", "<cmd>e ~/notes/memory.norg<cr>")
 set("nM", "<cmd>botright 30vnew ~/notes/memory.norg | set invrelativenumber | set invnumber<cr>")
 set("nl", "<cmd>Telescope find_files search_dirs={'~/notes'} follow=true<cr>")
 set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>")
-set("nn", commands.create_org_file)
--- ../plugins/venn.lua (draw diagram in ASCII)
-set("nd", commands.toggle_venn)
+set("nn", api.create_org_file)
 vim.keymap.set("i", "<A-t>", "<cmd>Minuet virtualtext toggle<cr>")
 
 set("no", "<cmd>Bmessages<cr>")
@@ -245,9 +242,9 @@ set("ij", "<cmd>cnext<cr>")
 set("ik", "<cmd>cprev<cr>")
 
 -- The scratch terminals
-set("go", commands.open_lazygit)
+set("go", api.open_lazygit)
 
-set("og", commands.open_lazygit)
+set("og", api.open_lazygit)
 
 set("ot", function()
   local path = vim.fn.expand('%:h')
@@ -256,17 +253,18 @@ set("ot", function()
     path = vim.fn.getcwd()
   end
 
-  commands.scratch("fish && cd " .. path)
+set("ol", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'"))
+-- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
+set("oa", api.toggle_persistent_floating_terminal("aspire", "aspire run"))
+set("oc", api.toggle_persistent_floating_terminal("calc", "calc"))
 end)
 
 set("op", function()
   commands.scratch("pgcli postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid")
+set("oL", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'", nil, true))
+set("oA", api.toggle_persistent_floating_terminal("aspire", "aspire run", nil, true))
+set("oC", api.toggle_persistent_floating_terminal("calc", "calc", nil, true))
 end)
-
-set("ol", commands.toggle_terminal("alogs", "fish -c 'alogs'"))
--- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
-set("oa", commands.toggle_terminal("aspire", "aspire run"))
-set("oc", commands.toggle_terminal("calc", "calc"))
 
 set("gl", require("config/telescope_git_diff"))
 set("gH", function()
@@ -277,7 +275,7 @@ set("ga", function()
     GIT_SEQUENCE_EDITOR=":",
   }
   local opts = { env = env }
-  commands.execute_async_cmd({ { "git", "add", "-u" }, { "git", "absorb", "--and-rebase" } }, opts, "absorbing")
+  api.execute_async_cmd({ { "git", "add", "-u" }, { "git", "absorb", "--and-rebase" } }, opts, "absorbing")
 end)
 set("gc", ":!glab mr checkout ")
 
