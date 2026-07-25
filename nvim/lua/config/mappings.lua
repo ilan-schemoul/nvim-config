@@ -246,6 +246,8 @@ set("go", api.open_lazygit)
 
 set("og", api.open_lazygit)
 
+local pg_cmd = "pgcli postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid"
+set("op", api.toggle_persistent_floating_terminal("pgcli", pg_cmd))
 
 set("ol", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'"))
 -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
@@ -255,8 +257,7 @@ set("ot", function()
   api.open_scratch_floating_terminal("fish && cd " .. api.get_cwd())()
 end)
 
-set("op", function()
-  commands.scratch("pgcli postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid")
+set("oP", api.toggle_persistent_floating_terminal("pgcli", pg_cmd, nil, true))
 set("oL", api.toggle_persistent_floating_terminal("alogs", "fish -c 'alogs'", nil, true))
 set("oA", api.toggle_persistent_floating_terminal("aspire", "aspire run", nil, true))
 set("oC", api.toggle_persistent_floating_terminal("calc", "calc", nil, true))
