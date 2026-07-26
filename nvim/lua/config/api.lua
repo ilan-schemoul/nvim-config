@@ -337,8 +337,16 @@ end
 M.get_cwd = function()
   local path = vim.fn.expand('%:h')
 
-  if path:find("term://") or path:find("oil://") or not vim.fn.filereadable(path) then
+  if not vim.fn.filereadable(path) then
     path = vim.fn.getcwd()
+  end
+
+  -- NOTE: on terminal the path in its name is not updated when you cd, so it's
+  -- rapidly out of date. It would be hard to get the current cwd from a running
+  -- terminal though.
+  if path:find("://") then
+    local _, j = path:find("://")
+    path = path:sub(j + 1, path:len())
   end
 
   return path
