@@ -10,10 +10,12 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "debugloop/telescope-undo.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
+    "jvgrootveld/telescope-zoxide"
   },
   config = function()
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("undo")
+    require("telescope").load_extension("zoxide")
 
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")

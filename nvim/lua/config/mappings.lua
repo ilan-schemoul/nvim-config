@@ -61,6 +61,7 @@ set("lc", "<cmd>Easypick changed_files<cr>")
 set("lf", "<cmd>Easypick new_files<cr>")
 set("lC", "<cmd>Easypick changed_files_previous_commit<cr>")
 set("lx", "<cmd>Easypick conflicts<cr>")
+set("lw", "<cmd>Telescope zoxide list<cr>")
 
 set("L", "<cmd>Lazy<cr>")
 
