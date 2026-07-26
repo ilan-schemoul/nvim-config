@@ -360,6 +360,8 @@ for _, symbol in ipairs({ "#", "\"", "3", "c" }) do
   set(symbol .. "l", ":Dotnet lsp restart<cr>")
 end
 
+set("C", ":Rebuild ")
+
 vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
 
 vim.keymap.set({ "x", "o" }, "af", function()
