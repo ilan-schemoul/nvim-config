@@ -1,10 +1,11 @@
 return {
-  "numToStr/FTerm.nvim",
-  lazy = false,
+  dir = "/Users/ilan/code/fterm",
+  -- "ilan-schemoul/FTerm.nvim",
+  lazy = true,
   opts = {
     dimensions  = {
-        height = 0.9,
-        width = 0.9,
+        height = 0.95,
+        width = 0.95,
     },
   },
 }
