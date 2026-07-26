@@ -1,3 +1,5 @@
+local api = require('config/api')
+
 return {
   "nvim-telescope/telescope.nvim",
   cmd = {
@@ -13,9 +15,26 @@ return {
     "jvgrootveld/telescope-zoxide"
   },
   config = function()
+    local zoxide = {
+      mappings = {
+        ["<C-g>"] = {
+          action = function(selection)
+            api.toggle_lazygit(false, selection.path)
+          end,
+        },
+        ["<C-l>"] = {
+          keepinsert = true,
+          action = function(selection)
+            local builtin = require('telescope.builtin')
+            builtin.find_files({ cwd = selection.path })
+          end,
+        },
+      }
+    }
+
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("undo")
-    require("telescope").load_extension("zoxide")
+    require("telescope").load_extension("undo")
 
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")
@@ -82,6 +101,7 @@ return {
         }
       },
       extensions = {
+        zoxide = zoxide,
         live_grep_args = {
           auto_quoting = true, -- enable/disable auto-quoting
           mappings = { -- extend mappings
