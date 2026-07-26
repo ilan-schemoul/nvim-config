@@ -254,17 +254,27 @@ set("oa", api.toggle_persistent_floating_terminal("aspire", { "aspire", "run" })
 set("oc", api.toggle_persistent_floating_terminal("calc", { "calc" }))
 set("ot", function()
     local env = { cwd = api.get_cwd() }
-    api.toggle_persistent_floating_terminal("fish", "cd /tmp && fish", false, false, nil, env)()
+    api.toggle_persistent_floating_terminal("fish", "cd /tmp && fish", { env = env })()
 end)
 set("og", api.toggle_lazygit)
 
-set("oP", api.toggle_persistent_floating_terminal("pgcli", pg_cmd, nil, true))
-set("oL", api.toggle_persistent_floating_terminal("alogs", { "fish", "-c", "alogs" }, nil, true))
-set("oA", api.toggle_persistent_floating_terminal("aspire", { "aspire", "run" }, nil, true))
-set("oC", api.toggle_persistent_floating_terminal("calc", { "calc" }, nil, true))
+set("oP", api.toggle_persistent_floating_terminal("pgcli", pg_cmd, {
+  force_new = true
+}))
+set("oL", api.toggle_persistent_floating_terminal("alogs", { "fish", "-c", "alogs" }, {
+  force_new = true
+}))
+set("oA", api.toggle_persistent_floating_terminal("aspire", { "aspire", "run" }, {
+  force_new = true
+}))
+set("oC", api.toggle_persistent_floating_terminal("calc", { "calc" }, {
+  force_new = true
+}))
 set("oT", function()
   local cmd = "fish && cd " .. api.get_cwd()
-  api.toggle_persistent_floating_terminal(cmd, nil, true)()
+  api.toggle_persistent_floating_terminal("fish", cmd, {
+    force_new = true
+  })()
 end)
 set("oG", function() api.toggle_lazygit(true) end)
 -- }}}
