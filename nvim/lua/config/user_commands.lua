@@ -28,7 +28,7 @@ end, { nargs = 0 })
 
 local resources = {
   'anvil', 'solid', 'bank-listener', 'block-listener', 'exchange-listener',
-  'block-monitor', 'eva', 'postgres', 'redis'
+  'block-monitor', 'eva', 'postgres', 'redis', 'mock'
 }
 
 local complete_rebuild = function(ArgLead)
