@@ -7,6 +7,7 @@
 local api = require("config/api")
 local utils = require("config/utils")
 local config = require("config/config")
+local ast = require("config/ast")
 
 local fr = { "à", "&", "é", "\"", "'", "(", "-", "è", "_", "ç" }
 
@@ -129,6 +130,17 @@ set("u", "<cmd>Telescope undo<cr>")
 -- set("ty") by neoclip.lua
 set("tt", "<cmd>Telescope<cr>")
 set("tg", "<cmd>Telescope live_grep<cr>")
+
+set("wh", function()
+  ast.set_mode("handler")
+  vim.cmd('Telescope ast_grep')
+end)
+
+set("ws", function()
+  ast.set_mode("sender")
+  vim.cmd('Telescope ast_grep')
+end)
+
 setv("tg", function()
   local selection_text = api.get_visual_selection()
   require('telescope.builtin').live_grep({ default_text = selection_text })

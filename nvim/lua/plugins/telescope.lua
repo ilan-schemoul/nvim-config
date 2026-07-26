@@ -1,4 +1,5 @@
 local api = require('config/api')
+local ast_grep_rules = require('config/ast')
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -6,7 +7,7 @@ return {
     "Telescope",
   },
   dependencies = {
-    "Marskey/telescope-sg",
+    { "ilan-schemoul/telescope-sg", branch="command-function"},
     "nvim-tree/nvim-web-devicons",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -30,6 +31,14 @@ return {
           end,
         },
       }
+    }
+
+    local ast_grep = {
+      cwd = "/Users/ilan/code/liquid-server",
+      command = ast_grep_rules.search_handler, -- must have --json=stream
+      grep_open_files = false,
+      lang = nil,
+      disable_prompt = true,
     }
 
     require("telescope").load_extension("fzf")
@@ -102,6 +111,7 @@ return {
       },
       extensions = {
         zoxide = zoxide,
+        ast_grep = ast_grep,
         live_grep_args = {
           auto_quoting = true, -- enable/disable auto-quoting
           mappings = { -- extend mappings
@@ -111,14 +121,6 @@ return {
               ["<C-space>"] = actions.to_fuzzy_refine,
             },
           },
-        },
-        ast_grep = {
-            command = {
-                "ast-grep",
-                "--json=stream",
-            },
-            grep_open_files = false, -- search in opened files
-            lang = nil, -- string value, specify language for ast-grep `nil` for default
         },
       },
     })
