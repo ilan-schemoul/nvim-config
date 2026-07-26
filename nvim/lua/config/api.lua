@@ -267,16 +267,15 @@ M.toggle_lazygit = function(force_new, cwd)
     force_new = true
   end
 
-  M.toggle_persistent_floating_terminal("lazygit",
+  M.toggle_sticky_term("lazygit",
                                         "cd " .. root .. " && lazygit",
                                         {
                                           force_new = force_new,
                                           on_exit = on_exit,
-                                          not_q = true
                                         })()
 end
 
-local create_new_persistent_floating_terminal = function(terminal_type, cmd, env, on_exit)
+local create_sticky_term = function(terminal_type, cmd, env, on_exit)
   ---@diagnostic disable-next-line: missing-fields
   sticky_terminals[terminal_type] = require('FTerm'):new({
     ft = "ft_" .. terminal_type,
@@ -297,19 +296,17 @@ local toggle = function(terminal_type, cmd, opts)
   if sticky_terminals[terminal_type] ~= nil and not opts.force_new then
     buffer_terminal = sticky_terminals[terminal_type]:toggle()
   else
-    create_new_persistent_floating_terminal(terminal_type, cmd, opts.env, opts.on_exit)
+    create_sticky_term(terminal_type, cmd, opts.env, opts.on_exit)
     buffer_terminal = sticky_terminals[terminal_type]:open()
   end
 
-  if not opts.not_q then
-    vim.keymap.set("t", "q", function()
-      sticky_terminals[terminal_type]:toggle()
-    end, { buf = buffer_terminal.buf })
-  end
+  vim.keymap.set("t", "<A-q>", function()
+    sticky_terminals[terminal_type]:toggle()
+  end, { buf = buffer_terminal.buf })
 end
 
----@param opts? { not_q?: boolean, force_new?: boolean, on_exit?: function, env?: table }
-M.toggle_persistent_floating_terminal = function(terminal_type, cmd, opts)
+---@param opts? { q?: boolean, force_new?: boolean, on_exit?: function, env?: table }
+M.toggle_sticky_term = function(terminal_type, cmd, opts)
   opts = opts or {}
 
   return function()
@@ -323,10 +320,15 @@ M.toggle_persistent_floating_terminal = function(terminal_type, cmd, opts)
       old_term:exit()
     end
 
-    vim.defer_fn(function()
-      toggle(terminal_type, cmd, opts)
-    end, 20)
+    toggle(terminal_type, cmd, opts)
   end
+end
+
+M.force_new_sticky_term = function(terminal_type, cmd, opts)
+  opts = opts or {}
+  opts.force_new = true
+
+  return M.toggle_sticky_term(terminal_type, cmd, opts)
 end
 
 M.kill_sticky_terminal = function(terminal_type)

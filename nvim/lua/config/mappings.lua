@@ -247,35 +247,26 @@ set("ik", "<cmd>cprev<cr>")
 set("go", api.toggle_lazygit)
 
 local pg_cmd = { "pgcli", "postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid" }
-set("op", api.toggle_persistent_floating_terminal("pgcli", pg_cmd))
+set("op", api.toggle_sticky_term("pgcli", pg_cmd))
 
-set("ol", api.toggle_persistent_floating_terminal("alogs", { "fish", "-c", "alogs" }))
+set("ol", api.toggle_sticky_term("alogs", { "fish", "-c", "alogs" }))
 -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
-set("oa", api.toggle_persistent_floating_terminal("aspire", { "aspire", "run" }))
-set("oc", api.toggle_persistent_floating_terminal("calc", { "calc" }))
+set("oa", api.toggle_sticky_term("aspire", { "aspire", "run" }))
+set("oc", api.toggle_sticky_term("calc", { "calc" }))
 set("ot", function()
     local env = { cwd = api.get_cwd() }
-    api.toggle_persistent_floating_terminal("fish", "cd /tmp && fish", { env = env })()
+    api.toggle_sticky_term("fish", "cd /tmp && fish", { env = env })()
 end)
 set("og", api.toggle_lazygit)
 
-set("oP", api.toggle_persistent_floating_terminal("pgcli", pg_cmd, {
-  force_new = true
-}))
-set("oL", api.toggle_persistent_floating_terminal("alogs", { "fish", "-c", "alogs" }, {
-  force_new = true
-}))
-set("oA", api.toggle_persistent_floating_terminal("aspire", { "aspire", "run" }, {
-  force_new = true
-}))
-set("oC", api.toggle_persistent_floating_terminal("calc", { "calc" }, {
-  force_new = true
-}))
+-- new sticky term kills the old term if it exists
+set("oP", api.force_new_sticky_term("pgcli", pg_cmd))
+set("oL", api.force_new_sticky_term("alogs", { "fish", "-c", "alogs" }))
+set("oA", api.force_new_sticky_term("aspire", { "aspire", "run" }))
+set("oC", api.force_new_sticky_term("calc", { "calc" }))
 set("oT", function()
   local cmd = "fish && cd " .. api.get_cwd()
-  api.toggle_persistent_floating_terminal("fish", cmd, {
-    force_new = true
-  })()
+  api.force_new_sticky_term("fish", cmd)()
 end)
 set("oG", function() api.toggle_lazygit(true) end)
 -- }}}
