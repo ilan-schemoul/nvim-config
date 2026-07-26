@@ -1,6 +1,5 @@
 return {
-  dir = "/Users/ilan/code/fterm",
-  -- "ilan-schemoul/FTerm.nvim",
+  "ilan-schemoul/FTerm.nvim",
   lazy = true,
   opts = {
     dimensions  = {
