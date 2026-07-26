@@ -13,7 +13,7 @@ return {
       filetype_is_not = { "behave_log", "oil" },
     },
     write_all_buffers = false,
-    debounce_delay = 300,
+    debounce_delay = 135,
     prompt_message = "",
   },
 }
