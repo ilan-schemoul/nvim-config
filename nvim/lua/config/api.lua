@@ -261,14 +261,18 @@ M.toggle_lazygit = function(force_new)
   else
     root = ""
   end
-  vim.print(root)
 
   if last_lazygit_root ~= root then
-    sticky_terminals["lazygit"] = nil
     last_lazygit_root = root
+    force_new = true
   end
 
-  M.toggle_persistent_floating_terminal("lazygit", "cd " .. root .. " && lazygit", nil, force_new, on_exit)()
+  M.toggle_persistent_floating_terminal("lazygit",
+                                        "cd " .. root .. " && lazygit",
+                                        {
+                                          force_new = force_new,
+                                          on_exit = on_exit
+                                        })()
 end
 
 local create_new_persistent_floating_terminal = function(terminal_type, cmd, env, on_exit)
@@ -286,32 +290,47 @@ local create_new_persistent_floating_terminal = function(terminal_type, cmd, env
   })
 end
 
-M.toggle_persistent_floating_terminal = function(terminal_type, cmd, not_q, force_new, on_exit, env)
+local toggle = function(terminal_type, cmd, opts)
+  local buffer_terminal
+
+  if sticky_terminals[terminal_type] ~= nil and not opts.force_new then
+    buffer_terminal = sticky_terminals[terminal_type]:toggle()
+  else
+    create_new_persistent_floating_terminal(terminal_type, cmd, opts.env, opts.on_exit)
+    buffer_terminal = sticky_terminals[terminal_type]:open()
+  end
+
+  if not opts.not_q then
+    vim.keymap.set("t", "q", function()
+      sticky_terminals[terminal_type]:toggle()
+    end, { buf = buffer_terminal.buf })
+  end
+end
+
+---@param opts? { not_q?: boolean, force_new?: boolean, on_exit?: function, env?: table }
+M.toggle_persistent_floating_terminal = function(terminal_type, cmd, opts)
+  opts = opts or {}
+
   return function()
-    local buffer_terminal
+    local old_term = sticky_terminals[terminal_type]
 
-    if force_new then
-      sticky_terminals[terminal_type] = nil
+    if opts.force_new and old_term then
+      -- XXX: buggy as hell. I spent a very long time debugging this s*** and
+      -- well nvim is buggy or IDK. But stopping a job randomly kills unrelated
+      -- jobs (like my shell running inside nvim). Adding a defer_fn to terminal
+      -- creation avoid being killed.
+      old_term:exit()
     end
 
-    if sticky_terminals[terminal_type] ~= nil then
-      buffer_terminal = sticky_terminals[terminal_type]:toggle()
-    else
-      create_new_persistent_floating_terminal(terminal_type, cmd, env, on_exit)
-      buffer_terminal = sticky_terminals[terminal_type]:open()
-    end
-
-    if not not_q then
-      vim.keymap.set("t", "q", function()
-        sticky_terminals[terminal_type]:toggle()
-      end, { buf = buffer_terminal.buf })
-    end
+    vim.defer_fn(function()
+      toggle(terminal_type, cmd, opts)
+    end, 20)
   end
 end
 
 M.kill_sticky_terminal = function(terminal_type)
   -- Not supported yet: https://github.com/numToStr/FTerm.nvim/issues/110
-  -- sticky_terminals[terminal_type]:exit()
+  sticky_terminals[terminal_type]:exit()
   sticky_terminals[terminal_type] = nil
 end
 
