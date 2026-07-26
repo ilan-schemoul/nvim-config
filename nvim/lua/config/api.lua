@@ -271,7 +271,8 @@ M.toggle_lazygit = function(force_new)
                                         "cd " .. root .. " && lazygit",
                                         {
                                           force_new = force_new,
-                                          on_exit = on_exit
+                                          on_exit = on_exit,
+                                          not_q = true
                                         })()
 end
 
