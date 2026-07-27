@@ -257,7 +257,7 @@ M.toggle_lazygit = function(force_new, cwd)
 
   local root = cwd or M.get_cwd()
   if root then
-    root = vim.fs.root(root, ".git") or ""
+    root = vim.fs.root(root, ".git") or root
   else
     root = ""
   end
@@ -340,7 +340,7 @@ end
 M.get_cwd = function()
   local path = vim.fn.expand('%:h')
 
-  if not vim.fn.filereadable(path) then
+  if not vim.fn.glob(path) then
     path = vim.fn.getcwd()
   end
 
