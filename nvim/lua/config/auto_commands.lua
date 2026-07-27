@@ -33,6 +33,11 @@ vim.api.nvim_create_autocmd("TermClose", {
   pattern = "*",
   callback = function()
     if (vim.bo.buftype == "terminal" or vim.bo.filetype == "lua") and vim.v.shell_error == 0 then
+      -- Let me see errors
+      if vim.bo.ft == "ft_aspire" then
+        return
+      end
+
       vim.cmd("bdelete! " .. vim.fn.expand("<abuf>"))
     end
   end,
