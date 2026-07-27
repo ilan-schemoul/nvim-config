@@ -131,15 +131,8 @@ set("u", "<cmd>Telescope undo<cr>")
 set("tt", "<cmd>Telescope<cr>")
 set("tg", "<cmd>Telescope live_grep<cr>")
 
-set("wh", function()
-  ast.set_mode("handler")
-  vim.cmd('Telescope ast_grep')
-end)
-
-set("ws", function()
-  ast.set_mode("sender")
-  vim.cmd('Telescope ast_grep')
-end)
+set("wh", ast.find_wolverine_handler)
+set("ws", ast.find_wolverine_sender)
 
 setv("tg", function()
   local selection_text = api.get_visual_selection()
