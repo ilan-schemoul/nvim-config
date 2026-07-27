@@ -57,6 +57,11 @@ vim.api.nvim_create_user_command("Rebuild", function(args)
   vim.system({ vim.o.shell, "-c", "rebuild " .. service }, {}, on_exit)
 end, { nargs = 1, complete = complete_rebuild })
 
+vim.api.nvim_create_user_command("ToggleFterm", function(args)
+  local term_name = args.fargs[1]
+  api.toggle_existing_sticky_term(term_name)
+end, { nargs = 1 })
+
 vim.api.nvim_create_user_command("Cedit", function(args)
   local id = args.fargs[1]
 

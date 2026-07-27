@@ -252,15 +252,15 @@ set("ik", "<cmd>cprev<cr>")
 set("go", api.toggle_lazygit)
 
 local pg_cmd = { "pgcli", "postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid" }
-set("op", api.toggle_sticky_term("pgcli", pg_cmd))
+set("op", api.toggle_or_create_sticky_term("pgcli", pg_cmd))
 
-set("ol", api.toggle_sticky_term("alogs", { "fish", "-c", "alogs" }))
+set("ol", api.toggle_or_create_sticky_term("alogs", { "fish", "-c", "alogs" }))
 -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
-set("oa", api.toggle_sticky_term("aspire", { "aspire", "run" }))
-set("oc", api.toggle_sticky_term("calc", { "calc" }))
+set("oa", api.toggle_or_create_sticky_term("aspire", { "aspire", "run" }))
+set("oc", api.toggle_or_create_sticky_term("calc", { "calc" }))
 set("ot", function()
     local env = { cwd = api.get_cwd() }
-    api.toggle_sticky_term("fish", "cd /tmp && fish", { env = env })()
+    api.toggle_or_create_sticky_term("fish", "cd /tmp && fish", { env = env })()
 end)
 set("og", api.toggle_lazygit)
 

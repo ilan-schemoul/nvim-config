@@ -267,36 +267,38 @@ M.toggle_lazygit = function(force_new, cwd)
     force_new = true
   end
 
-  M.toggle_sticky_term("lazygit",
-                                        "cd " .. root .. " && lazygit",
-                                        {
-                                          force_new = force_new,
-                                          on_exit = on_exit,
-                                        })()
+  local opts = {
+    force_new = force_new,
+    on_exit = on_exit,
+  }
+
+  M.toggle_or_create_sticky_term("lazygit", { "lazygit", "--path", root }, opts)()
 end
 
-local create_sticky_term = function(terminal_type, cmd, env, on_exit)
+local create_sticky_term = function(terminal_type, cmd, on_exit)
   ---@diagnostic disable-next-line: missing-fields
   sticky_terminals[terminal_type] = require('FTerm'):new({
     ft = "ft_" .. terminal_type,
     cmd = cmd,
     on_exit = on_exit,
-    env = env,
     ---@diagnostic disable-next-line: missing-fields
     dimensions = {
         height = 0.95,
         width = 0.95
     },
+    env = {
+      IS_FTERM = "1"
+    },
   })
 end
 
-local toggle = function(terminal_type, cmd, opts)
+local _toggle_or_create_sticky_term = function(terminal_type, cmd, opts)
   local buffer_terminal
 
   if sticky_terminals[terminal_type] ~= nil and not opts.force_new then
     buffer_terminal = sticky_terminals[terminal_type]:toggle()
   else
-    create_sticky_term(terminal_type, cmd, opts.env, opts.on_exit)
+    create_sticky_term(terminal_type, cmd, opts.on_exit)
     buffer_terminal = sticky_terminals[terminal_type]:open()
   end
 
@@ -305,8 +307,8 @@ local toggle = function(terminal_type, cmd, opts)
   end, { buf = buffer_terminal.buf })
 end
 
----@param opts? { q?: boolean, force_new?: boolean, on_exit?: function, env?: table }
-M.toggle_sticky_term = function(terminal_type, cmd, opts)
+---@param opts? { q?: boolean, force_new?: boolean, on_exit?: function }
+M.toggle_or_create_sticky_term = function(terminal_type, cmd, opts)
   opts = opts or {}
 
   return function()
@@ -320,7 +322,7 @@ M.toggle_sticky_term = function(terminal_type, cmd, opts)
       old_term:exit()
     end
 
-    toggle(terminal_type, cmd, opts)
+    _toggle_or_create_sticky_term(terminal_type, cmd, opts)
   end
 end
 
@@ -328,13 +330,22 @@ M.force_new_sticky_term = function(terminal_type, cmd, opts)
   opts = opts or {}
   opts.force_new = true
 
-  return M.toggle_sticky_term(terminal_type, cmd, opts)
+  return M.toggle_or_create_sticky_term(terminal_type, cmd, opts)
 end
 
 M.kill_sticky_terminal = function(terminal_type)
   -- Not supported yet: https://github.com/numToStr/FTerm.nvim/issues/110
   sticky_terminals[terminal_type]:exit()
   sticky_terminals[terminal_type] = nil
+end
+
+M.toggle_existing_sticky_term = function(terminal_type)
+  if not sticky_terminals[terminal_type] then
+    vim.notify('Sticky terminal does not exist', vim.log.levels.ERROR)
+    return
+  end
+
+  sticky_terminals[terminal_type]:toggle()
 end
 
 M.get_cwd = function()
