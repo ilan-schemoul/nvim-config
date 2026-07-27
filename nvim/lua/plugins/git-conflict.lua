@@ -1,6 +1,6 @@
 return {
   "akinsho/git-conflict.nvim",
-  event = "NormalBufferEnter",
+  lazy = false,
   keys = {
     { "<leader>xo", "<Plug>(git-conflict-ours)" },
     { "<leader>xt", "<Plug>(git-conflict-theirs)" },
