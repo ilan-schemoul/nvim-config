@@ -77,3 +77,19 @@ vim.api.nvim_create_autocmd({ "TermLeave"  }, {
   end,
 })
 
+-- Lazygit is weird, if you exit it you shift right so you counter-balance it by
+-- going left
+vim.api.nvim_create_autocmd({
+    "FileType",
+  },
+  {
+    pattern = "ft_lazygit",
+    callback = function()
+      vim.keymap.set("t", "<A-;>", function()
+        vim.cmd("stopinsert")
+        vim.fn.feedkeys("gg")
+        vim.fn.feedkeys("^") -- beginning of the sentence
+      end, { buffer = true })
+    end
+  })
+
