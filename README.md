@@ -23,6 +23,9 @@ Telescope bcommits bcommits_range
 - Improve ast grep queries for wolverine
 - Bring back obsession or similar
 - https://github.com/stevearc/overseer.nvim
+- https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
+- Rename vim lsp should save files
+- Yeet dotnet plugin
 ## Low priority
 - Search in past logs
 - Learn shortcut vim cmd mode ?
@@ -31,10 +34,7 @@ Telescope bcommits bcommits_range
 - Replace api by 1password call
 - Remainder plugin
 - Use clipboard shortcut
-- Rename vim lsp should save files
 - https://github.com/gbprod/substitute.nvim
-- https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
-- Yeet dotnet plugin
 - https://github.com/Wansmer/treesj
 - https://github.com/nvim-mini/mini.operators
 - https://github.com/nvim-mini/mini.ai

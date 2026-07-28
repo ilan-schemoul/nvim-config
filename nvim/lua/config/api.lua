@@ -291,6 +291,7 @@ local create_sticky_term = function(terminal_type, cmd, opts)
   opts.env = opts.env or {}
   opts.env.IS_FTERM = "1"
 
+  -- FIXME: swap file error opening lazygit. But it's scratch why swap
   ---@diagnostic disable-next-line: missing-fields
   sticky_terminals[terminal_type] = require('FTerm'):new({
     ft = opts.ft or ("ft_" .. terminal_type),
