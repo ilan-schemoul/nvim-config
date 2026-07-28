@@ -248,15 +248,17 @@ end
 
 local last_lazygit_root = nil
 
-M.toggle_lazygit = function(force_new, cwd)
-  local on_exit = function()
-    vim.schedule(function()
-      if vim.api.nvim_buf_get_name(0) ~= "" then
-        vim.cmd("Gitsigns refresh")
-        vim.cmd("windo e")
-      end
-    end)
+local refresh_buffer = function()
+  if vim.api.nvim_buf_get_name(0) ~= "" then
+    vim.cmd("Gitsigns refresh")
+    vim.cmd("windo e")
   end
+end
+
+M.toggle_lazygit = function(force_new, cwd)
+  local on_exit = vim.schedule(function()
+    pcall(refresh_buffer)
+  end)
 
   local root = cwd or M.get_cwd()
 
