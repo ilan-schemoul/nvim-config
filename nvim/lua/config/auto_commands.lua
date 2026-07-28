@@ -32,9 +32,10 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 vim.api.nvim_create_autocmd("TermClose", {
   pattern = "*",
   callback = function()
+    -- XXX: stop closing on error (e.g.: lazygit crash)
     if (vim.bo.buftype == "terminal" or vim.bo.filetype == "lua") and vim.v.shell_error == 0 then
       -- Let me see errors
-      if vim.bo.ft == "ft_aspire" then
+      if vim.bo.ft == "ft_aspire" or vim.bo.ft == "ft_lazygit" then
         return
       end
 
