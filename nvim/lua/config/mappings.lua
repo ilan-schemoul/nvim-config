@@ -125,7 +125,9 @@ set("m", "<cmd>Mason<cr>")
 -- Echo current filede
 set("F", "<cmd>echo @%<cr>")
 
-set("u", "<cmd>Telescope undo<cr>")
+set("tu", "<cmd>Telescope undo<cr>")
+
+set("tb", "<cmd>Telescope bookmarks<cr>")
 
 -- set("ty") by neoclip.lua
 set("tt", "<cmd>Telescope<cr>")
@@ -468,6 +470,7 @@ vim.keymap.set("n", "gcO", function()
 end)
 
 set("rp", ":%s/")
+setv("rp", ":s/")
 
 vim.keymap.set('n', "gca", function()
   local l_cms, r_cms = string.match(vim.bo.commentstring, '(.*)%%s(.*)')
