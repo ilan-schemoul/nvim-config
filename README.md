@@ -21,12 +21,10 @@ Telescope bcommits bcommits_range
 # TODO
 ## High priority
 - Improve ast grep queries for wolverine
-- Search in past logs
-- fix /Users/ilan/.config/nvim/lua/config/auto_commands.lua:35
-- Change color highlighted line based on mode + macro
 - Bring back obsession or similar
 - https://github.com/stevearc/overseer.nvim
 ## Low priority
+- Search in past logs
 - Learn shortcut vim cmd mode ?
 - Refact deeply config+nvim
 - Shortcut to open chrome/kitty

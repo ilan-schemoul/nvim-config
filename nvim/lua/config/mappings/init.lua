@@ -269,6 +269,18 @@ set("C", ":Rebuild ")
 
 vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
 
+vim.keymap.set("n", "q", function()
+  utils.start_recording_update_hl()
+  -- Recorder start/stop recording
+  vim.fn.feedkeys("∆")
+end)
+
+vim.keymap.set("n", "Q", function()
+  utils.stop_recording_update_hl()
+  -- Recorder start/stop recording
+  vim.fn.feedkeys("˚")
+end)
+
 set("xx", "<cmd>Trouble diagnostics toggle<cr>")
 
 if config.keyboard == "fr" then
