@@ -12,6 +12,7 @@ local sticky_term_cmds = {
   -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
   a = { name = "aspire", cmd = { "aspire", "run" } },
   c = { name = "calc", cmd = { "calc" } },
+  r = { name = "csharprepl", cmd = { "csharprepl" } },
 }
 
 for key, term in pairs(sticky_term_cmds) do

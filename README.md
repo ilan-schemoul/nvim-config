@@ -22,7 +22,6 @@ Telescope bcommits bcommits_range
 ## High priority
 - Improve ast grep queries for wolverine
 - Search in past logs
-- C# repl
 - fix /Users/ilan/.config/nvim/lua/config/auto_commands.lua:35
 - Change color highlighted line based on mode + macro
 - Bring back obsession or similar
