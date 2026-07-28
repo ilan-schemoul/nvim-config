@@ -118,3 +118,7 @@ end, { nargs = '+' })
 vim.api.nvim_create_user_command("KillStickyTerminal", function(args)
   api.kill_sticky_terminal(args.fargs[1])
 end, { nargs = 1 })
+
+vim.api.nvim_create_user_command("FormatJson", function(_)
+  vim.cmd(':%!jq .')
+end, { nargs = 0 })
