@@ -170,7 +170,7 @@ set("tq", function() require("telescope.builtin").quickfix({
 }) end)
 
 set("pn", api.open_unused_term_or_create)
-set("pN", "<cmd>term fish<cr>")
+set("pN", "<cmd>term<cr>")
 set("ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pj", "<cmd>belowright split | lua _G.OpenUnusedTermOrCreate()<cr>")
 set("pk", "<cmd>topleft split | lua _G.OpenUnusedTermOrCreate()<cr>")

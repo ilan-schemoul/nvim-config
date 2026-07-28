@@ -188,11 +188,10 @@ M.open_unused_term_or_create = function()
     end
   end
 
-  vim.cmd(":term fish")
+  vim.cmd(":term")
 end
 
 _G.OpenUnusedTermOrCreate = M.open_unused_term_or_create
-
 
 M.get_visual_selection = function()
   vim.cmd('noau normal! "vy"')
