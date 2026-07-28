@@ -1,4 +1,5 @@
 local api = require('config/api')
+local config = require('config/config')
 local ast_grep_rules = require('config/ast')
 
 return {
@@ -14,7 +15,11 @@ return {
     "debugloop/telescope-undo.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
     "jvgrootveld/telescope-zoxide",
-    "rcarriga/nvim-notify"
+    "rcarriga/nvim-notify",
+    {
+      "dhruvmanila/browser-bookmarks.nvim",
+      enabled = config.bookmarks
+    }
   },
   config = function()
     local zoxide = {
@@ -42,9 +47,16 @@ return {
       disable_prompt = true,
     }
 
+    ---@diagnostic disable-next-line: missing-fields
+    require('browser_bookmarks').setup({
+      selected_browser = config.bookmarks.browser,
+      profile_name = config.bookmarks.profile_name
+    })
+
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("undo")
     require("telescope").load_extension("notify")
+    require("telescope").load_extension("bookmarks")
 
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")

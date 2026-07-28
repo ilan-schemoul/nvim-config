@@ -7,5 +7,9 @@
   "ui": {
     "transparent_background": false
   },
-  "auto_format": false
+  "auto_format": false,
+  "bookmarks": {
+    "browser": "chrome",
+    "browser_config_dir": "/Users/ilan/Library/Application Support/Google/Chrome/Profile 1"
+  }
 }

@@ -17,3 +17,30 @@ Telescope bcommits bcommits_range
     - [plenary.profile](https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file) (wrapper around lua profiler)
     - profile.nvim (self described pile of hack)
     - perfanno to open the resulting trace file
+
+# TODO
+## High priority
+- Improve ast grep queries for wolverine
+- change terminal name based on what running
+- Search in past logs
+- delete confluence
+- C# repl
+- simpler way connect dev
+- fix /Users/ilan/.config/nvim/lua/config/auto_commands.lua:35
+- Change color highlighted line based on mode + macro
+- Bring back obsession or similar
+- https://github.com/stevearc/overseer.nvim
+## Low priority
+- Learn shortcut vim cmd mode ?
+- Refact deeply config+nvim
+- Shortcut to open chrome/kitty
+- Replace api by 1password call
+- Remainder plugin
+- Use clipboard shortcut
+- Rename vim lsp should save files
+- https://github.com/gbprod/substitute.nvim
+- https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
+- Yeet dotnet plugin
+- https://github.com/Wansmer/treesj
+- https://github.com/nvim-mini/mini.operators
+- https://github.com/nvim-mini/mini.ai
