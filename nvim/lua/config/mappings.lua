@@ -250,31 +250,43 @@ set("ij", "<cmd>cnext<cr>")
 set("ik", "<cmd>cprev<cr>")
 
 -- {{{ Floating terminals
+
+local pg_url = "postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid"
+
+-- letter -> { name, cmd } for toggle_or_create_sticky_term
+local sticky_term_cmds = {
+  p = { name = "pgcli", cmd = { "pgcli", pg_url } },
+  l = { name = "alogs", cmd = { "fish", "-c", "alogs" } },
+  -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
+  a = { name = "aspire", cmd = { "aspire", "run" } },
+  c = { name = "calc", cmd = { "calc" } },
+}
+
+for key, term in pairs(sticky_term_cmds) do
+  set("o" .. key, api.toggle_or_create_sticky_term(term.name, term.cmd))
+  set("o" .. key:upper(), api.toggle_or_create_sticky_term(term.name, term.cmd, {
+    force_new = true,
+  }))
+end
+
+-- <leader>o<letter> open fish in given directory (false = no override, use current session dir)
+local sticky_fish_cwds = {
+  t = false,
+  f = "/Users/ilan/code/liquid-server/test/Functional.Tests",
+  u = "/Users/ilan/code/liquid-server/test/Unit.Tests",
+  x = "/Users/ilan/code/liquid-server/src/LiquidCtl",
+}
+
+for key, cwd in pairs(sticky_fish_cwds) do
+  set("o" .. key, function()
+    api.toggle_or_create_fish_in_cwd(cwd or nil)
+  end)
+end
+
 set("go", api.toggle_lazygit)
-
-local pg_cmd = { "pgcli", "postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid" }
-set("op", api.toggle_or_create_sticky_term("pgcli", pg_cmd))
-
-set("ol", api.toggle_or_create_sticky_term("alogs", { "fish", "-c", "alogs" }))
--- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
-set("oa", api.toggle_or_create_sticky_term("aspire", { "aspire", "run" }))
-set("oc", api.toggle_or_create_sticky_term("calc", { "calc" }))
-set("ot", function()
-    local env = { cwd = api.get_cwd() }
-    api.toggle_or_create_sticky_term("fish", "cd /tmp && fish", { env = env })()
-end)
 set("og", api.toggle_lazygit)
-
--- new sticky term kills the old term if it exists
-set("oP", api.force_new_sticky_term("pgcli", pg_cmd))
-set("oL", api.force_new_sticky_term("alogs", { "fish", "-c", "alogs" }))
-set("oA", api.force_new_sticky_term("aspire", { "aspire", "run" }))
-set("oC", api.force_new_sticky_term("calc", { "calc" }))
-set("oT", function()
-  local cmd = "fish && cd " .. api.get_cwd()
-  api.force_new_sticky_term("fish", cmd)()
-end)
 set("oG", function() api.toggle_lazygit(true) end)
+
 -- }}}
 
 set("gl", require("config/telescope_git_diff"))
