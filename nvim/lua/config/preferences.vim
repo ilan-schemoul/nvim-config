@@ -27,6 +27,15 @@ highlight GitSignsChange guifg=#d7d803
 highlight TreesitterContext guibg=#1c1e2e
 highlight LspSignatureActiveParameter guifg=#ffaa00
 
+lua << EOF
+  require('config/utils').fterm_hl({
+    ft_fish = {
+      border = '#E89EB8',
+      bg = '#24273b',
+    }
+  })
+EOF
+
 let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
 execute 'highlight Hlargs guifg=' . fg_var_color
 
