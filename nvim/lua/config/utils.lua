@@ -85,4 +85,14 @@ M.fterm_hl = function(ft_to_hl)
   })
 end
 
+M.profile_fn = function(fn)
+  return function(...)
+    local start = vim.uv.hrtime()
+    local ret = fn(...)
+    vim.notify(("It took %.3fms"):format((vim.uv.hrtime() - start) / 1e6))
+
+    return ret
+  end
+end
+
 return M

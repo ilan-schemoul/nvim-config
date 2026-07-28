@@ -21,11 +21,8 @@ Telescope bcommits bcommits_range
 # TODO
 ## High priority
 - Improve ast grep queries for wolverine
-- change terminal name based on what running
 - Search in past logs
-- delete confluence
 - C# repl
-- simpler way connect dev
 - fix /Users/ilan/.config/nvim/lua/config/auto_commands.lua:35
 - Change color highlighted line based on mode + macro
 - Bring back obsession or similar
