@@ -155,4 +155,9 @@ augroup CursorLine
     au WinLeave * setlocal colorcolumn=""
 augroup END
 
+let &guicursor .= ',a:Cursor
+                  \,t:ver80-TermCursor'
+
+highlight TermCursor guibg=#babbf1
+
 au BufRead,BufNewFile behave_logs set filetype=behave_log

@@ -119,14 +119,6 @@ M.diagnostic_goto = function(next, severity)
   end
 end
 
-M.start_recording_update_hl = function()
-  vim.api.nvim_set_hl(0, 'CursorLineNr', {
-    bg = '#303348',
-    fg = '#f000ff',
-  })
-
-end
-
 M.stop_recording_update_hl = function()
   vim.api.nvim_create_autocmd('RecordingLeave', {
     callback = function()

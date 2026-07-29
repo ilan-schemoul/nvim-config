@@ -4,7 +4,7 @@ return {
   opts = {
     mapping = {
       startStopRecording = "∆",
-      playMacro = "˚",
+      playMacro = "Q",
       addBreakPoint = "¤",
     }
   },
