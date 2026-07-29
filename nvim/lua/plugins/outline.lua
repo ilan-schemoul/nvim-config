@@ -1,7 +1,7 @@
 return {
   "hedyhli/outline.nvim",
   keys = {
-    { "<leader>so", "<cmd>Outline<cr>" },
+    { "<leader>lo", "<cmd>Outline<cr>" },
   },
   opts = {
     outline_window = {
