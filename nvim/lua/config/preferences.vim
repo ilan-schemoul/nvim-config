@@ -32,6 +32,9 @@ lua << EOF
     ft_fish = {
       border = '#E89EB8',
       bg = '#24273b',
+    },
+    ft_lazygit = {
+      border = '#6c6f85'
     }
   })
 EOF

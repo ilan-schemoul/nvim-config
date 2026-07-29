@@ -20,7 +20,8 @@ Telescope bcommits bcommits_range
 
 # TODO
 ## High priority
-- Library system in claude code with auto-open auto-send etc.
+- Fix <c-p>/<c-n> to move back forth file
+- Fix swap file bug lazygit
 - Improve ast grep queries for wolverine
 - Bring back obsession or similar
 - https://github.com/stevearc/overseer.nvim
