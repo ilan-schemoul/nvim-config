@@ -3,6 +3,7 @@ require('config/mappings/diagnostics')
 require('config/mappings/vim')
 require('config/mappings/ts_textobjects')
 require('config/mappings/comments')
+require('config/mappings/library_mappings')
 local cursor_styling = require('config/styling/cursor')
 
 -- Available e (only E used), r (only R used), o (only O used), y, k (only ko used), f (only ff used)
