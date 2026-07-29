@@ -282,6 +282,10 @@ M.toggle_lazygit = function(force_new, cwd)
   local opts = {
     force_new = force_new,
     on_exit = on_exit,
+    dimensions = {
+      height = 1,
+      width = 1,
+    }
   }
 
   M.toggle_or_create_sticky_term("lazygit", { "lazygit", "--path", root }, opts)()
