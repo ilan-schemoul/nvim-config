@@ -23,20 +23,20 @@ Telescope bcommits bcommits_range
 - Fix <c-p>/<c-n> to move back forth file
 - Fix swap file bug lazygit
 - Improve ast grep queries for wolverine
-- Bring back obsession or similar
 - https://github.com/stevearc/overseer.nvim
-- https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
 - Rename vim lsp should save files
 - Yeet dotnet plugin
-## Low priority
-- Search in past logs
 - Learn shortcut vim cmd mode ?
+# Medium priority
+- https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
+- Bring back obsession or similar
+- Search in past logs
 - Refact deeply config+nvim
-- Shortcut to open chrome/kitty
 - Replace api by 1password call
-- Remainder plugin
 - Use clipboard shortcut
 - https://github.com/gbprod/substitute.nvim
-- https://github.com/Wansmer/treesj
 - https://github.com/nvim-mini/mini.operators
 - https://github.com/nvim-mini/mini.ai
+## Low priority
+- Remainder plugin
+- https://github.com/Wansmer/treesj
