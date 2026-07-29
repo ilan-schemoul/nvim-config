@@ -20,6 +20,7 @@ Telescope bcommits bcommits_range
 
 # TODO
 ## High priority
+- Library system in claude code with auto-open auto-send etc.
 - Improve ast grep queries for wolverine
 - Bring back obsession or similar
 - https://github.com/stevearc/overseer.nvim

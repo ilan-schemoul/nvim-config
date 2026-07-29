@@ -1,3 +1,5 @@
+local library = require('config/library')
+
 return {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
@@ -48,5 +50,9 @@ return {
     -- Diff management
     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+
+    -- My library
+    { "<leader>ag", "<cmd>ClaudeCodeSendText " .. library.commit .. "<cr>", },
+    { "<leader>ap", "<cmd>ClaudeCodeSendText " .. library.gitlab_push .. "<cr>", },
   },
 }
