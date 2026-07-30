@@ -1,6 +1,5 @@
 return {
   "akinsho/git-conflict.nvim",
-  lazy = false,
   keys = {
     { "<leader>xo", "<Plug>(git-conflict-ours)" },
     { "<leader>xt", "<Plug>(git-conflict-theirs)" },
