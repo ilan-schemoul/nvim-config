@@ -21,8 +21,6 @@ Telescope bcommits bcommits_range
 # TODO
 ## High priority
 - Quick FTerm claude
-- Fix <c-p>/<c-n> to move back forth file
-- Fix swap file bug lazygit
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim
 - Rename vim lsp should save files

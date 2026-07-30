@@ -256,9 +256,11 @@ local refresh_buffer = function()
 end
 
 M.toggle_lazygit = function(force_new, cwd)
-  local on_exit = vim.schedule(function()
-    pcall(refresh_buffer)
-  end)
+  local on_exit = function()
+      vim.schedule(function()
+        pcall(refresh_buffer)
+      end)
+  end
 
   local root = cwd or M.get_cwd()
 
@@ -316,6 +318,7 @@ local create_sticky_term = function(terminal_type, cmd, opts)
     },
     env = opts.env,
     border = opts.border,
+    z_index = 50,
   })
 end
 
