@@ -24,8 +24,6 @@ Telescope bcommits bcommits_range
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim
 - Rename vim lsp should save files
-- Yeet dotnet plugin
-- Learn shortcut vim cmd mode ?
 # Medium priority
 - https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
 - Bring back obsession or similar

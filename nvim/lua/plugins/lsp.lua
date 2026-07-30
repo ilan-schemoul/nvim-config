@@ -12,7 +12,7 @@ return
     -- Some LSP servers don't play well with gq, they ignore the textwidth for some
     -- reasons. For those, we need to remove the formatexpr they set. Others such
     -- as bashls, clangd work fine anyway.
-    local restore_gq = function(client, bufnr)
+    local restore_gq = function(_, bufnr)
       vim.bo[bufnr].formatexpr = ""
     end
 
