@@ -263,16 +263,16 @@ M.toggle_lazygit = function(force_new, cwd)
   local root = cwd or M.get_cwd()
 
   if not root then
-    return "/tmp"
+    root = last_lazygit_root
+  else
+    root = vim.uv.fs_realpath(root) or root
+
+    if not root then
+      root = last_lazygit_root
+    else
+      root = vim.fs.root(root, ".git") or last_lazygit_root
+    end
   end
-
-  root = vim.uv.fs_realpath(root) or root
-
-  if not root then
-    return "/tmp"
-  end
-
-  root = vim.fs.root(root, ".git") or root
 
   if last_lazygit_root ~= root then
     last_lazygit_root = root
@@ -289,7 +289,14 @@ M.toggle_lazygit = function(force_new, cwd)
     }
   }
 
-  M.toggle_or_create_sticky_term("lazygit", { "lazygit", "--path", root }, opts)()
+  local cmd = { "lazygit" }
+
+  if root then
+    table.insert(cmd, "--path")
+    table.insert(cmd, root)
+  end
+
+  M.toggle_or_create_sticky_term("lazygit", cmd, opts)()
 end
 
 local create_sticky_term = function(terminal_type, cmd, opts)
@@ -388,14 +395,14 @@ end
 M.get_cwd = function()
   local path = vim.fn.expand('%:p:h')
 
-  -- NOTE: on terminal the path in its name is not updated when you cd, so it's
-  -- rapidly out of date. It would be hard to get the current cwd from a running
-  -- terminal though.
   if path:find("://") then
     local _, j = path:find("://")
     path = path:sub(j + 1, path:len())
     local i, _ = path:find("//")
-    path = path:sub(1, i - 1)
+    -- For terminals
+    if i then
+      path = path:sub(1, i - 1)
+    end
   end
 
   return vim.fn.glob(path) or path

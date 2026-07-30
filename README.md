@@ -20,6 +20,7 @@ Telescope bcommits bcommits_range
 
 # TODO
 ## High priority
+- Quick FTerm claude
 - Fix <c-p>/<c-n> to move back forth file
 - Fix swap file bug lazygit
 - Improve ast grep queries for wolverine
