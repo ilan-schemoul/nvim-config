@@ -60,7 +60,7 @@ end
 
 local original_term_name = {}
 
-local function update_term_name()
+local function update_term_name(dir)
   local channel = vim.bo[0].channel
   local child_process = vim.api.nvim_get_proc_children(vim.fn.jobpid(channel))
   if #child_process > 0 then
@@ -97,3 +97,32 @@ vim.api.nvim_create_autocmd({
     end
   })
 
+local update_vim_dir = function(dir)
+  local buf = vim.api.nvim_buf_get_name(0)
+  local new = 'term://' .. dir .. '//'
+  local new_name = buf:gsub('^term://(.-)//', new, 1)
+  vim.api.nvim_buf_set_name(0, new_name)
+end
+
+local handle_dir_change = function(dir, buf)
+  if vim.fn.isdirectory(dir) == 0 then
+    vim.notify('invalid dir: '..dir)
+    return
+  end
+  if vim.api.nvim_get_current_buf() == buf then
+    vim.cmd.lcd(dir)
+
+    update_vim_dir(dir)
+  end
+end
+
+-- Straight from doc
+vim.api.nvim_create_autocmd({ 'TermRequest' }, {
+  desc = 'Handles OSC 7 dir change requests',
+  callback = function(ev)
+    local dir, n = string.gsub(ev.data.sequence, '\027]7;file://[^/]*', '')
+    if n > 0 then
+      handle_dir_change(dir, ev.buf)
+    end
+  end
+})
