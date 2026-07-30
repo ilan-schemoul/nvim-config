@@ -5,9 +5,10 @@ require('config/mappings/ts_textobjects')
 require('config/mappings/comments')
 require('config/mappings/library_mappings')
 require('config/mappings/cmdline')
+require('config/mappings/toggle')
 local cursor_styling = require('config/styling/cursor')
 
--- Available e (only E used), r (only R used), o (only O used), y, k (only ko used), f (only ff used)
+-- Available e (only E used), r (only R used), o (only O used), y, f (only ff used)
 local api = require("config/api")
 local utils = require("config/utils")
 local config = require("config/config")
@@ -47,33 +48,13 @@ set("bx", api.close_buffer)
 -- Close all buffers but one
 set("bX", api.close_other_tab_buffers)
 
-set("N", function()
-  if vim.wo[0].statuscolumn ~= "%l" then
-    vim.wo[0].statuscolumn = "%l"
-    vim.wo[0].number = true
-    vim.wo[0].relativenumber = true
-  else
-    require("config/utils").setup_separators()
-    vim.wo[0].number = false
-    vim.wo[0].relativenumber = false
-  end
-end)
-set("S", function()
-  if vim.wo[0].statuscolumn == utils.separator_char then
-    vim.wo[0].statuscolumn = ""
-    vim.wo[0].number = false
-    vim.wo[0].relativenumber = false
-  else
-    vim.wo[0].statuscolumn = utils.separator_char
-  end
-end)
-set("T", function()
-  if vim.o.showtabline >= 1 then
-    utils.set_hide_tab(true)
-  else
-    utils.set_hide_tab(false)
-  end
-end)
+-- set("T", function()
+--   if vim.o.showtabline >= 1 then
+--     utils.set_hide_tab(true)
+--   else
+--     utils.set_hide_tab(false)
+--   end
+-- end)
 
 set("E", "<cmd>:e!<cr>")
 set("ss", ":mksession! ~/Session.vim<cr>")

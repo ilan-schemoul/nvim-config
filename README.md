@@ -20,10 +20,11 @@ Telescope bcommits bcommits_range
 
 # TODO
 ## High priority
+- Add more togglers
+- Add more claude prompts
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim
 - Rename vim lsp should save files
-- https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
 - Bring back obsession or similar
 - https://github.com/gbprod/substitute.nvim
 # Medium priority
