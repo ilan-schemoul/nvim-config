@@ -20,18 +20,17 @@ Telescope bcommits bcommits_range
 
 # TODO
 ## High priority
-- Quick FTerm claude
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim
 - Rename vim lsp should save files
-# Medium priority
 - https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md Toggle obsession, markview, autopair, lsp
 - Bring back obsession or similar
+- https://github.com/gbprod/substitute.nvim
+# Medium priority
 - Search in past logs
 - Refact deeply config+nvim
 - Replace api by 1password call
 - Use clipboard shortcut
-- https://github.com/gbprod/substitute.nvim
 - https://github.com/nvim-mini/mini.operators
 - https://github.com/nvim-mini/mini.ai
 ## Low priority

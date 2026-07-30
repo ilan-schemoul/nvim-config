@@ -17,10 +17,14 @@ local sticky_term_cmds = {
 }
 
 for key, term in pairs(sticky_term_cmds) do
-  set("o" .. key, api.toggle_or_create_sticky_term(term.name, term.cmd))
-  set("o" .. key:upper(), api.toggle_or_create_sticky_term(term.name, term.cmd, {
-    force_new = true,
-  }))
+  set("o" .. key, function()
+    api.toggle_or_create_sticky_term(term.name, term.cmd)
+  end)
+  set("o" .. key:upper(), function()
+    api.toggle_or_create_sticky_term(term.name, term.cmd, {
+      force_new = true,
+    })
+  end)
 end
 
 -- <leader>o<letter> open fish in given directory (false = no override, use current session dir)

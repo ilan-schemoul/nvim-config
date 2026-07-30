@@ -1,7 +1,7 @@
 local utils = require("config/utils")
 local M = {}
 
-local sticky_terminals = {}
+M.sticky_terminals = {}
 
 local function execute_command(cmds, opts, index)
   if index > #cmds then
@@ -298,16 +298,15 @@ M.toggle_lazygit = function(force_new, cwd)
     table.insert(cmd, root)
   end
 
-  M.toggle_or_create_sticky_term("lazygit", cmd, opts)()
+  M.toggle_or_create_sticky_term("lazygit", cmd, opts)
 end
 
 local create_sticky_term = function(terminal_type, cmd, opts)
   opts.env = opts.env or {}
   opts.env.IS_FTERM = "1"
 
-  -- FIXME: swap file error opening lazygit. But it's scratch why swap
   ---@diagnostic disable-next-line: missing-fields
-  sticky_terminals[terminal_type] = require('FTerm'):new({
+  M.sticky_terminals[terminal_type] = require('FTerm'):new({
     ft = opts.ft or ("ft_" .. terminal_type),
     cmd = cmd,
     on_exit = opts.on_exit,
@@ -325,15 +324,15 @@ end
 local _toggle_or_create_sticky_term = function(terminal_type, cmd, opts)
   local buffer_terminal
 
-  if sticky_terminals[terminal_type] ~= nil and not opts.force_new then
-    buffer_terminal = sticky_terminals[terminal_type]:toggle()
+  if M.sticky_terminals[terminal_type] ~= nil and not opts.force_new then
+    buffer_terminal = M.sticky_terminals[terminal_type]:toggle()
   else
     create_sticky_term(terminal_type, cmd, opts)
-    buffer_terminal = sticky_terminals[terminal_type]:open()
+    buffer_terminal = M.sticky_terminals[terminal_type]:open()
   end
 
   vim.keymap.set("t", "<A-q>", function()
-    sticky_terminals[terminal_type]:toggle()
+    M.sticky_terminals[terminal_type]:toggle()
   end, { buf = buffer_terminal.buf })
 end
 
@@ -341,19 +340,17 @@ end
 M.toggle_or_create_sticky_term = function(terminal_type, cmd, opts)
   opts = opts or {}
 
-  return function()
-    local old_term = sticky_terminals[terminal_type]
+  local old_term = M.sticky_terminals[terminal_type]
 
-    if opts.force_new and old_term then
-      -- XXX: buggy as hell. I spent a very long time debugging this s*** and
-      -- well nvim is buggy or IDK. But stopping a job randomly kills unrelated
-      -- jobs (like my shell running inside nvim). Adding a defer_fn to terminal
-      -- creation avoid being killed.
-      old_term:exit()
-    end
-
-    _toggle_or_create_sticky_term(terminal_type, cmd, opts)
+  if opts.force_new and old_term then
+    -- XXX: buggy as hell. I spent a very long time debugging this s*** and
+    -- well nvim is buggy or IDK. But stopping a job randomly kills unrelated
+    -- jobs (like my shell running inside nvim). Adding a defer_fn to terminal
+    -- creation avoid being killed.
+    old_term:exit()
   end
+
+  _toggle_or_create_sticky_term(terminal_type, cmd, opts)
 end
 
 M.force_new_sticky_term = function(terminal_type, cmd, opts)
@@ -377,22 +374,22 @@ M.toggle_or_create_fish_in_cwd = function(cwd)
         height = 0.8,
         width = 0.6
     },
-  })()
+  })
 end
 
 M.kill_sticky_terminal = function(terminal_type)
   -- Not supported yet: https://github.com/numToStr/FTerm.nvim/issues/110
-  sticky_terminals[terminal_type]:exit()
-  sticky_terminals[terminal_type] = nil
+  M.sticky_terminals[terminal_type]:exit()
+  M.sticky_terminals[terminal_type] = nil
 end
 
 M.toggle_existing_sticky_term = function(terminal_type)
-  if not sticky_terminals[terminal_type] then
+  if not M.sticky_terminals[terminal_type] then
     vim.notify('Sticky terminal does not exist', vim.log.levels.ERROR)
     return
   end
 
-  sticky_terminals[terminal_type]:toggle()
+  M.sticky_terminals[terminal_type]:toggle()
 end
 
 M.get_cwd = function()

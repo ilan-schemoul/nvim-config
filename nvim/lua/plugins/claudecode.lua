@@ -1,10 +1,15 @@
+local my_claude_api = require('config/api/claude')
+
 return {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
   opts = {
     terminal = {
       split_width_percentage = 0.4,
-    }
+      provider = my_claude_api.claude_terminal_provider,
+      show_native_term_exit_tip = false,
+    },
+
   },
   cmd = {
     "ClaudeCode",
@@ -25,11 +30,11 @@ return {
   keys = {
     { "<leader>a", nil, desc = "AI/Claude Code" },
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-    { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+    { "<leader>af", my_claude_api.open_fterm, desc = "Add current buffer" },
     { "<leader>as", function()
       local current_buf = vim.api.nvim_get_current_buf()
       local file_path = vim.api.nvim_buf_get_name(current_buf)
