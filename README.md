@@ -22,7 +22,6 @@ Telescope bcommits bcommits_range
 ## High priority
 - Add shortcut to access claude artificats
 - Update commit's author all config
-- Add more togglers
 - Add more claude prompts
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim compile, rebuild, aspire run, start unit/functional/integration test

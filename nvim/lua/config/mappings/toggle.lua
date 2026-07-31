@@ -6,6 +6,12 @@ Snacks.toggle.option("spell", {
 
 Snacks.toggle.diagnostics():map("<leader>ud")
 
+Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+
+Snacks.toggle.treesitter():map("<leader>ut")
+Snacks.toggle.indent():map("<leader>ui")
+Snacks.toggle.dim():map("<leader>uD")
+
 Snacks.toggle.new({
   id = "number",
   name = "Toggle number",
@@ -30,12 +36,14 @@ Snacks.toggle.new({
   id = "number",
   name = "Toggle absolute number",
   get = function()
-    return vim.wo[0].relativenumber == false
+    return vim.wo[0].relativenumber == false and vim.wo[0].statuscolumn == "%l"
   end,
-  set = function(set_absolute)
-    vim.wo[0].relativenumber = set_absolute
+  set = function(absolute_nb)
+    vim.wo[0].statuscolumn = absolute_nb and "%l" or utils.separator_char
+    vim.wo[0].number = absolute_nb
+    vim.wo[0].relativenumber = not absolute_nb
   end,
-}):map("<leader>uN")
+}):map("<leader>ua")
 
 
 Snacks.toggle.new({

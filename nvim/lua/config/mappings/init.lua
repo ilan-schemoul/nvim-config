@@ -273,3 +273,5 @@ vim.cmd([[
 
 -- Don't touch unnamed register when pasting over visual selection
 vim.cmd("xnoremap <expr> p 'pgv\"' . v:register . 'y'")
+
+set(":", Snacks.picker.command_history)
