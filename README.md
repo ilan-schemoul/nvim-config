@@ -21,20 +21,17 @@ Telescope bcommits bcommits_range
 # TODO
 ## High priority
 - Add shortcut to access claude artificats
-- Update commit's author all config
 - Add more claude prompts
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim compile, rebuild, aspire run, start unit/functional/integration test
 - Rename vim lsp should save files
 - Bring back obsession or similar
-- https://github.com/gbprod/substitute.nvim
+- Replace api by 1password call
+- Refact deeply config+nvim
+- https://github.com/nvim-mini/mini.ai
 # Medium priority
 - Search in past logs
-- Refact deeply config+nvim
-- Replace api by 1password call
 - Use clipboard shortcut
-- https://github.com/nvim-mini/mini.operators
-- https://github.com/nvim-mini/mini.ai
 ## Low priority
 - Remainder plugin
 - https://github.com/Wansmer/treesj
