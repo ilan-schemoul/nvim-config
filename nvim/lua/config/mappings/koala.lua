@@ -1,4 +1,4 @@
-local library = require('config/library')
+local library = require('config/koala_prompts')
 local set = require('config/mappings/utils').set
 local internal_claude_api = require('config/api/claude')
 
