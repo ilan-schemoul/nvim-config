@@ -36,14 +36,13 @@ return {
   keys = {
     { "<leader>a", nil, desc = "AI/Claude Code" },
 
-    { "<leader>acc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-    { "<leader>ach", open("haiku"), desc = "Toggle Claude" },
-    { "<leader>acs", open("sonet"), desc = "Toggle Claude" },
-    { "<leader>aco", open("opus"), desc = "Toggle Claude" },
+    { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+    { "<leader>ah", open("haiku"), desc = "Toggle Claude" },
+    { "<leader>aS", open("sonet"), desc = "Toggle Claude" },
+    { "<leader>ao", open("opus"), desc = "Toggle Claude" },
 
     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-    { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
     { "<leader>af", my_claude_api.open_fterm, desc = "Add current buffer" },
     { "<leader>as", function()
