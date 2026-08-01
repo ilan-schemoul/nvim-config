@@ -19,7 +19,6 @@ Snacks.toggle.new({
     return vim.wo[0].statuscolumn == "%l"
   end,
   set = function(set_nb)
-    vim.notify(set_nb)
     if set_nb then
       vim.wo[0].statuscolumn = "%l"
       vim.wo[0].number = true
@@ -45,7 +44,6 @@ Snacks.toggle.new({
   end,
 }):map("<leader>ua")
 
-
 Snacks.toggle.new({
   id = "sign",
   name = "Toggle sign",
@@ -62,3 +60,12 @@ Snacks.toggle.new({
     end
   end,
 }):map("<leader>us")
+
+Snacks.toggle.new({
+  id = "markview",
+  name = "Toggle markview",
+  get = require("markview.state").enabled,
+  set = function(_)
+    vim.cmd("Markview")
+  end,
+}):map("<leader>um")
