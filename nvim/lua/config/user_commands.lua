@@ -59,7 +59,7 @@ end, { nargs = 1, complete = complete_rebuild })
 
 vim.api.nvim_create_user_command("ToggleFterm", function(args)
   local term_name = args.fargs[1]
-  api.toggle_existing_sticky_term(term_name)
+  api.sticky.toggle_existing(term_name)
 end, { nargs = 1 })
 
 vim.api.nvim_create_user_command("Cedit", function(args)
@@ -116,7 +116,7 @@ vim.api.nvim_create_user_command("FromFTToTab", function(args)
 end, { nargs = '+' })
 
 vim.api.nvim_create_user_command("KillStickyTerminal", function(args)
-  api.kill_sticky_terminal(args.fargs[1])
+  api.sticky.kill(args.fargs[1])
 end, { nargs = 1 })
 
 vim.api.nvim_create_user_command("FormatJson", function(_)

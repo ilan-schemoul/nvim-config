@@ -1,4 +1,5 @@
-M = {}
+-- Throwaway debug logs, tagged with `fix_me_now` so they can all be wiped again.
+local M = {}
 
 local function random_adjective()
     local words = {
@@ -30,7 +31,6 @@ local function random_emojis()
   return key, emojis[key]
 end
 
--- TODO: add function to remove all logs with fix_me_now
 local function insert_log(above)
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     if above then
@@ -55,14 +55,14 @@ local function insert_log(above)
     vim.fn.feedkeys("==")
 end
 
-M.insert_above = function() insert_log(true) end
-M.insert_below = function() insert_log(false) end
+M.insert_log_above = function() insert_log(true) end
+M.insert_log_below = function() insert_log(false) end
 
-M.clean = function()
+M.clean_logs = function()
   vim.cmd("g/fix_me_now/d")
 end
 
-M.clean_all_buffers = function()
+M.clean_all_logs = function()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     local readonly = vim.api.nvim_get_option_value("readonly", { buf = bufnr })
 
@@ -85,6 +85,17 @@ M.clean_all_buffers = function()
         vim.api.nvim_buf_call(bufnr, function() vim.cmd('w') end)
       end
     end
+  end
+end
+
+-- Wrap a function so calling it notifies how long it took
+M.profile = function(fn)
+  return function(...)
+    local start = vim.uv.hrtime()
+    local ret = fn(...)
+    vim.notify(("It took %.3fms"):format((vim.uv.hrtime() - start) / 1e6))
+
+    return ret
   end
 end
 

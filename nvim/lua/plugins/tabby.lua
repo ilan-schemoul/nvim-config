@@ -1,7 +1,7 @@
 return {}
 
 -- local Job = require("plenary.job")
--- local utils = require("config/utils")
+-- local api = require("config/api")
 -- local rebase_merge = false
 -- local rebase_apply = false
 -- -- Tabby loads this list. Then update_branch_async asynchronously for each id
@@ -135,7 +135,7 @@ return {}
 --       fill = { bg = "" },
 --     }
 --
---     local get_tab_folder = require("config/utils").get_tab_folder
+--     local get_tab_folder = require("config/api").tab.folder_name
 --     local tabby = require("tabby.tabline")
 --
 --     local function init_tab()

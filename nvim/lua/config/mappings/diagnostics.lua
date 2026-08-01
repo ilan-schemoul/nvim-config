@@ -1,18 +1,16 @@
-local utils = require('config/utils')
 local api = require('config/api')
-local mappings_utils = require('config/mappings/utils')
-local set = mappings_utils.set
+local set = api.keymap.leader
 
 for _, key in ipairs({ ")", "]" }) do
-  set(key .. "d", utils.diagnostic_goto(true), "Next diagnostic")
-  set(key .. "e", utils.diagnostic_goto(true, "ERROR"), "Next error")
-  set(key .. "w", utils.diagnostic_goto(true, "WARN"), "Next warning")
+  set(key .. "d", api.diagnostics.jump(true), "Next diagnostic")
+  set(key .. "e", api.diagnostics.jump(true, "ERROR"), "Next error")
+  set(key .. "w", api.diagnostics.jump(true, "WARN"), "Next warning")
 end
 
 for _, key in ipairs({ "(", "[" }) do
-  set(key .. "d", utils.diagnostic_goto(false), "Previous diagnostic")
-  set(key .. "e", utils.diagnostic_goto(false, "ERROR"), "Previous error")
-  set(key .. "w", utils.diagnostic_goto(false, "WARN"), "Previous warning")
+  set(key .. "d", api.diagnostics.jump(false), "Previous diagnostic")
+  set(key .. "e", api.diagnostics.jump(false, "ERROR"), "Previous error")
+  set(key .. "w", api.diagnostics.jump(false, "WARN"), "Previous warning")
 end
 
 set("lD", function() vim.diagnostic.open_float({ source = true }) end, "Show diagnostic in float")
@@ -24,5 +22,5 @@ set("ld", "<cmd>Telescope lsp_definitions<cr>", "Go to definition")
 set("lb", function() require("telescope.builtin").diagnostics({ sort_by="severity" }) end, "List diagnostics (by severity)")
 set("ls", "<cmd>Telescope lsp_workspace_symbols<cr>", "List workspace symbols")
 set("lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Search workspace symbols")
-set("ln", api.lsp_rename, "Rename symbol")
+set("ln", api.lsp.rename, "Rename symbol")
 set("la", vim.lsp.buf.code_action, "Code action")

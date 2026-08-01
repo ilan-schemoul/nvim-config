@@ -1,4 +1,3 @@
-local utils = require('config/utils')
 -- Absolute number if not focus
 vim.api.nvim_create_autocmd({ "WinEnter" }, {
   callback = function()

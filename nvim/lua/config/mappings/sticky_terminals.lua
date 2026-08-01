@@ -1,11 +1,10 @@
-local mappings_utils = require('config/mappings/utils')
 local api = require("config/api")
 
-local set = mappings_utils.set
+local set = api.keymap.leader
 
 local pg_url = "postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid"
 
--- letter -> { name, cmd } for toggle_or_create_sticky_term
+-- letter -> { name, cmd } for api.sticky.toggle_or_create
 local sticky_term_cmds = {
   p = { name = "pgcli", cmd = { "pgcli", pg_url } },
   l = { name = "alogs", cmd = { "fish", "-c", "alogs" } },
@@ -23,10 +22,10 @@ local sticky_term_cmds = {
 
 for key, term in pairs(sticky_term_cmds) do
   set("o" .. key, function()
-    api.toggle_or_create_sticky_term(term.name, term.cmd)
+    api.sticky.toggle_or_create(term.name, term.cmd)
   end, "Toggle " .. term.name .. " terminal")
   set("o" .. key:upper(), function()
-    api.toggle_or_create_sticky_term(term.name, term.cmd, {
+    api.sticky.toggle_or_create(term.name, term.cmd, {
       force_new = true,
     })
   end, "Open new " .. term.name .. " terminal")
@@ -42,11 +41,11 @@ local sticky_fish_cwds = {
 
 for key, cwd in pairs(sticky_fish_cwds) do
   set("o" .. key, function()
-    api.toggle_or_create_fish_in_cwd(cwd or nil)
+    api.sticky.fish_in_cwd(cwd or nil)
   end, "Toggle fish terminal" .. (cwd and (" in " .. cwd) or ""))
 end
 
-set("go", api.toggle_lazygit, "Toggle lazygit")
-set("og", api.toggle_lazygit, "Toggle lazygit")
-set("oG", function() api.toggle_lazygit(true) end, "Open new lazygit instance")
+set("go", api.sticky.lazygit.toggle, "Toggle lazygit")
+set("og", api.sticky.lazygit.toggle, "Toggle lazygit")
+set("oG", function() api.sticky.lazygit.toggle(true) end, "Open new lazygit instance")
 

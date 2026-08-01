@@ -1,9 +1,8 @@
-local api = require('config/api')
+local sticky = require('config/api/sticky')
 --TODO: call claude code start
 
 local M = {
   fterm_mode = nil,
-  init_called = false,
 }
 
 M.send_raw = function(txt)
@@ -63,7 +62,7 @@ local provider = {
 
   simple_toggle = function(cmd_string, env_table, effective_config)
     if M.fterm_mode then
-      api.toggle_or_create_sticky_term("claude", cmd_string, {
+      sticky.toggle_or_create("claude", cmd_string, {
         env = env_table
       })
     else
@@ -73,7 +72,7 @@ local provider = {
 
   focus_toggle = function(cmd_string, env_table, effective_config)
     if M.fterm_mode then
-      api.toggle_or_create_sticky_term("claude", cmd_string, {
+      sticky.toggle_or_create("claude", cmd_string, {
         env = env_table
       })
     else
@@ -83,7 +82,7 @@ local provider = {
 
   get_active_bufnr = function()
     if M.fterm_mode then
-      local term = api.sticky_terminals["ft_claude"]
+      local term = sticky.terminals["ft_claude"]
       return term and term.buf
     else
       return require("claudecode/terminal/native").get_active_bufnr()
@@ -95,7 +94,7 @@ local provider = {
   end,
 }
 
-M.claude_terminal_provider = provider
+M.terminal_provider = provider
 
 M.open_fterm = function()
   M.fterm_mode = true

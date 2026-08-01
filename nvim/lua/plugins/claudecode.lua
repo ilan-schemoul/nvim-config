@@ -1,4 +1,4 @@
-local my_claude_api = require('config/api/claude')
+local api = require('config/api')
 
 local open = function(model)
   return function()
@@ -12,7 +12,7 @@ return {
   opts = {
     terminal = {
       split_width_percentage = 0.4,
-      provider = my_claude_api.claude_terminal_provider,
+      provider = api.claude.terminal_provider,
       show_native_term_exit_tip = false,
     },
 
@@ -44,7 +44,7 @@ return {
     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-    { "<leader>af", my_claude_api.open_fterm, desc = "Add current buffer" },
+    { "<leader>af", api.claude.open_fterm, desc = "Add current buffer" },
 
     { "<leader>as", "<cmd>.ClaudeCodeSend<cr>", mode = "n", desc = "Send to Claude" },
 

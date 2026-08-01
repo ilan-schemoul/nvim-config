@@ -1,8 +1,6 @@
 local select_module = require('nvim-treesitter-textobjects.select')
 local move_module = require("nvim-treesitter-textobjects.move")
-local mappings_utils = require('config/mappings/utils')
-
-local set = mappings_utils.set
+local set = require('config/api').keymap.leader
 
 set("sl", function()
   require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")

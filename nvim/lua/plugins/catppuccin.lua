@@ -13,6 +13,7 @@ return {
     transparent_background = config.ui.transparent_background,
     dim_inactive = {
       enabled = not config.ui.transparent_background,
+      percentage = 0.7
     },
   },
 }

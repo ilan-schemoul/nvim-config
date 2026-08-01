@@ -1,4 +1,7 @@
-local function git_modified_files()
+local M = {}
+
+-- Telescope picker over the lines of every hunk gitsigns knows about
+M.pick_modified_hunks = function()
   local gitsigns = require("gitsigns")
   local actions = require "telescope.actions"
   local action_state = require "telescope.actions.state"
@@ -10,9 +13,9 @@ local function git_modified_files()
   end
 
   -- Collect modified file paths
-  for _, file in pairs(modified_files) do
-    for _, line in pairs(file.lines) do
-      local number = file.added.start
+  for _, f in pairs(modified_files) do
+    for _, line in pairs(f.lines) do
+      local number = f.added.start
       table.insert(file_list, { line = line, number = number })
     end
   end
@@ -46,4 +49,4 @@ local function git_modified_files()
   :find()
 end
 
-return git_modified_files
+return M

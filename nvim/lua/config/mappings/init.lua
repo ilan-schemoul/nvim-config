@@ -6,20 +6,17 @@ require('config/mappings/comments')
 require('config/mappings/koala')
 require('config/mappings/cmdline')
 require('config/mappings/toggle')
-local cursor_styling = require('config/styling/cursor')
 
 -- Available e (only E used), r (only R used), o (only O used), y, f (only ff used)
 local api = require("config/api")
 local config = require("config/config")
-local ast = require("config/ast")
 
-local mappings_utils = require('config/mappings/utils')
-local setv = mappings_utils.setv
-local set = mappings_utils.set
+local setv = api.keymap.leader_visual
+local set = api.keymap.leader
 
 vim.keymap.set("n", "<leader>,", "ggVG", { desc = "Select entire buffer" })
 
-vim.keymap.set("n", "K", api.open_help, { desc = "Open help under cursor" })
+vim.keymap.set("n", "K", api.help.open, { desc = "Open help under cursor" })
 
 -- ll set by ../plugins/smart-open.lua
 set("lc", "<cmd>Easypick changed_files<cr>", "List changed files (Easypick)")
@@ -33,9 +30,9 @@ set("L", "<cmd>Lazy<cr>", "Open Lazy plugin manager")
 -- Recognizes format such as foo.bar:32:10 => open foo.bar line 32 column 10
 vim.keymap.set({ "n", "v", "o" }, "gf", "gF", { remap = true, desc = "Open file under cursor (with line:col)" })
 
-set("O", api.open_file, "Open file under cursor")
-set(";", api.open_file_with_extension, "Open file under cursor (guess extension)")
-set(".", api.open_file_with_extension, "Open file under cursor (guess extension)")
+set("O", api.file.open_by_first_letter, "Open file under cursor")
+set(";", api.file.open_by_extension, "Open file under cursor (guess extension)")
+set(".", api.file.open_by_extension, "Open file under cursor (guess extension)")
 
 vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Show LSP signature help" })
 
@@ -46,15 +43,15 @@ set("bh", "<cmd>vsplit<cr>", "Split window vertically")
 set("bj", "<cmd>belowright split<cr>", "Split window below")
 set("bk", "<cmd>topleft split<cr>", "Split window above")
 set("bl", "<cmd>botright vs<cr>", "Split window to the right")
-set("bx", api.close_buffer, "Close current buffer")
+set("bx", api.buffer.close_current, "Close current buffer")
 -- Close all buffers but one
-set("bX", api.close_other_tab_buffers, "Close other buffers in tab")
+set("bX", api.buffer.close_hidden, "Close other buffers in tab")
 
 -- set("T", function()
 --   if vim.o.showtabline >= 1 then
---     utils.set_hide_tab(true)
+--     api.tab.set_hidden(true)
 --   else
---     utils.set_hide_tab(false)
+--     api.tab.set_hidden(false)
 --   end
 -- end)
 
@@ -62,7 +59,7 @@ set("E", "<cmd>:e!<cr>", "Reload file, discard changes")
 set("ss", ":mksession! ~/Session.vim<cr>", "Save session")
 
 -- Close current buffer
-set("q", api.close_window_if_not_last, "Close window (unless last)")
+set("q", api.window.close_if_not_last, "Close window (unless last)")
 -- Close neovim
 set("Q", "<cmd>qa!<cr>", "Quit Neovim, discard all changes")
 set("R", "<cmd>mksession! /tmp/Session.vim | restart source /tmp/Session.vim<cr>", "Restart Neovim, restoring session")
@@ -80,11 +77,11 @@ set("tb", "<cmd>Telescope bookmarks<cr>", "Open bookmarks")
 set("tt", "<cmd>Telescope<cr>", "Open Telescope picker list")
 set("tg", "<cmd>Telescope live_grep<cr>", "Live grep")
 
-set("wh", ast.find_wolverine_handler, "Find Wolverine handler")
-set("ws", ast.find_wolverine_sender, "Find Wolverine sender")
+set("wh", api.ast_grep.find_wolverine_handler, "Find Wolverine handler")
+set("ws", api.ast_grep.find_wolverine_sender, "Find Wolverine sender")
 
 setv("tg", function()
-  local selection_text = api.get_visual_selection()
+  local selection_text = api.text.visual_selection()
   require('telescope.builtin').live_grep({ default_text = selection_text })
 end, "Live grep selected text")
 set("tG", "<cmd>Telescope grep_string<cr>", "Grep word under cursor")
@@ -93,7 +90,7 @@ set("tr", "<cmd>Telescope resume<cr>", "Resume last Telescope search")
 set("tz", "<cmd>Telescope buffers<cr>", "List open buffers")
 set("tf", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy find in current buffer")
 setv("tf", function()
-  local selection_text = api.get_visual_selection()
+  local selection_text = api.text.visual_selection()
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = selection_text })
 end, "Fuzzy find selected text in buffer")
 set("tF", function()
@@ -114,7 +111,7 @@ end, "Grep in ~/.claude_artifacts")
 -- Switch to tab 4 with <leader>t4
 for i = 0, 9 do
   if config.keyboard == "fr" then
-    set("t" .. mappings_utils.fr[i + 1], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>", "Go to tab " .. tostring(i))
+    set("t" .. api.keymap.azerty_digits[i + 1], "<cmd>" .. tostring(i) .. "tabn" .. "<cr>", "Go to tab " .. tostring(i))
   end
 
   set("t" .. tostring(i), "<cmd>" .. tostring(i) .. "tabn" .. "<cr>", "Go to tab " .. tostring(i))
@@ -125,7 +122,7 @@ set("tq", function() require("telescope.builtin").quickfix({
   path_display = { "smart" }
 }) end, "Open quickfix list (Telescope)")
 
-set("pn", api.open_unused_term_or_create, "Open terminal (reuse unused)")
+set("pn", api.terminal.open_unused_or_create, "Open terminal (reuse unused)")
 set("pN", "<cmd>term<cr>", "Open new terminal")
 set("ph", "<cmd>vsplit | lua _G.OpenUnusedTermOrCreate()<cr>", "Open terminal in vertical split (left)")
 set("pj", "<cmd>belowright split | lua _G.OpenUnusedTermOrCreate()<cr>", "Open terminal in split below")
@@ -156,7 +153,7 @@ set("nm", "<cmd>e ~/notes/memory.norg<cr>", "Open memory notes")
 set("nM", "<cmd>botright 30vnew ~/notes/memory.norg | set invrelativenumber | set invnumber<cr>", "Open memory notes in side split")
 set("nl", "<cmd>Telescope find_files search_dirs={'~/notes'} follow=true<cr>", "Find files in notes")
 set("ng", "<cmd>Telescope live_grep search_dirs={'~/notes'}<cr>", "Grep in notes")
-set("nn", api.create_org_file, "Create new note file")
+set("nn", api.file.create_note, "Create new note file")
 vim.keymap.set("i", "<A-t>", "<cmd>Minuet virtualtext toggle<cr>", { desc = "Toggle Minuet AI virtual text" })
 
 set("no", "<cmd>Bmessages<cr>", "Open messages log")
@@ -188,16 +185,16 @@ set("sg", "zg", "Add word to dictionary")
 set("sw", "zw", "Remove word from dictionary")
 set("sb", "zw", "Remove word from dictionary")
 
-set("zz", require("config/center-window").center, "Center window")
-set("zc", require("config/center-window").close, "Close centered window")
-set("zx", require("config/center-window").close, "Close centered window")
+set("zz", api.window.center, "Center window")
+set("zc", api.window.close_centered, "Close centered window")
+set("zx", api.window.close_centered, "Close centered window")
 
 -- Open the extremely useful quickfix list (enhanced via bqf btw)
 set("io", "<cmd>copen<cr>", "Open quickfix list")
 set("ij", "<cmd>cnext<cr>", "Next quickfix item")
 set("ik", "<cmd>cprev<cr>", "Previous quickfix item")
 
-set("gl", require("config/telescope_git_diff"), "Git diff (Telescope)")
+set("gl", api.git.pick_modified_hunks, "Git diff (Telescope)")
 set("gH", function()
   require("telescope").extensions.git_file_history.git_file_history()
 end, "Git file history")
@@ -206,7 +203,7 @@ set("ga", function()
     GIT_SEQUENCE_EDITOR=":",
   }
   local opts = { env = env }
-  api.execute_async_cmd({ { "git", "add", "-u" }, { "git", "absorb", "--and-rebase" } }, opts, "absorbing")
+  api.job.run({ { "git", "add", "-u" }, { "git", "absorb", "--and-rebase" } }, opts, "absorbing")
 end, "Git absorb staged changes")
 set("gc", ":!glab mr checkout ", "Checkout merge request (glab)")
 
@@ -223,8 +220,8 @@ if config.keyboard == "fr" then
   for i = 0, 9 do
     -- HACK: use noremap instead of vim.keymap.set as otherwise motions
     -- such as d"j (d3j) does not work
-    vim.cmd("noremap <silent> " .. mappings_utils.fr[i + 1] .. " " .. tostring(i))
-    vim.cmd("noremap <silent> " .. tostring(i) .. " " .. mappings_utils.fr[i + 1])
+    vim.cmd("noremap <silent> " .. api.keymap.azerty_digits[i + 1] .. " " .. tostring(i))
+    vim.cmd("noremap <silent> " .. tostring(i) .. " " .. api.keymap.azerty_digits[i + 1])
   end
 end
 
@@ -238,11 +235,10 @@ vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Move left" })
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Move right" })
 vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Move down" })
 
-local smelly_sunflower = require('config/smelly_sunflower')
-set("wj", smelly_sunflower.insert_below, "Insert debug log below")
-set("wk", smelly_sunflower.insert_above, "Insert debug log above")
-set("wc", smelly_sunflower.clean, "Remove debug logs")
-set("wC", smelly_sunflower.clean_all_buffers, "Remove debug logs (all buffers)")
+set("wj", api.smelly_sunflower.insert_log_below, "Insert debug log below")
+set("wk", api.smelly_sunflower.insert_log_above, "Insert debug log above")
+set("wc", api.smelly_sunflower.clean_logs, "Remove debug logs")
+set("wC", api.smelly_sunflower.clean_all_logs, "Remove debug logs (all buffers)")
 
 set("vs", function()
   local path = vim.fn.expand("%")
@@ -267,7 +263,7 @@ set("uu", ":Undotree<cr>")
 vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
 
 vim.keymap.set("n", "q", function()
-  cursor_styling.stop_start_macro_event()
+  api.ui.toggle_recording_cursor_hl()
   -- Recorder start/stop recording
   vim.fn.feedkeys("∆")
 end, { desc = "Start/stop macro recording" })

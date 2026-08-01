@@ -1,4 +1,5 @@
-M = {}
+-- ast-grep rules driving the `Telescope ast_grep` picker
+local M = {}
 
 -- todo: create rule checking in the returns
 
@@ -47,7 +48,8 @@ M.find_wolverine_sender = function(word)
   vim.cmd('Telescope ast_grep')
 end
 
-M.search_handler = function(prompt)
+-- Telescope command generator: turns the prompt into an ast-grep invocation
+M.build_command = function(prompt)
   local word = force_word or prompt
 
   if prompt == "" then

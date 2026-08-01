@@ -12,7 +12,7 @@ return {
         if vim.bo.filetype == "oil" then
           vim.cmd('set statuscolumn=')
         elseif vim.bo.buftype == '' then
-          require("config/utils").setup_separators()
+          require("config/api").ui.set_separator_statuscolumn()
         end
       end,
     })

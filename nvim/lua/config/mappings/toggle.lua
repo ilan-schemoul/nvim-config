@@ -1,4 +1,4 @@
-local utils = require('config/utils')
+local api = require('config/api')
 
 Snacks.toggle.option("spell", {
   name = "Spelling"
@@ -24,7 +24,7 @@ Snacks.toggle.new({
       vim.wo[0].number = true
       vim.wo[0].relativenumber = true
     else
-      utils.setup_separators()
+      api.ui.set_separator_statuscolumn()
       vim.wo[0].number = false
       vim.wo[0].relativenumber = false
     end
@@ -38,7 +38,7 @@ Snacks.toggle.new({
     return vim.wo[0].relativenumber == false and vim.wo[0].statuscolumn == "%l"
   end,
   set = function(absolute_nb)
-    vim.wo[0].statuscolumn = absolute_nb and "%l" or utils.separator_char
+    vim.wo[0].statuscolumn = absolute_nb and "%l" or api.ui.separator_char
     vim.wo[0].number = absolute_nb
     vim.wo[0].relativenumber = not absolute_nb
   end,
@@ -48,11 +48,11 @@ Snacks.toggle.new({
   id = "sign",
   name = "Sign",
   get = function()
-    return vim.wo[0].statuscolumn == utils.separator_char
+    return vim.wo[0].statuscolumn == api.ui.separator_char
   end,
   set = function(set_sign)
     if set_sign then
-      vim.wo[0].statuscolumn = utils.separator_char
+      vim.wo[0].statuscolumn = api.ui.separator_char
     else
       vim.wo[0].statuscolumn = ""
       vim.wo[0].number = false

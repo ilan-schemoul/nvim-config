@@ -6,7 +6,7 @@ return {
     opts = {
         minimumBufferNum = 5,
         retirementAgeMins = 5,
-        deleteFunction = api.close_buffer_if_not_last,
+        deleteFunction = api.buffer.close_if_not_last,
     },
     event = "VeryLazy",
 }

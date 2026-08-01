@@ -28,13 +28,14 @@ gv last selection
     - perfanno to open the resulting trace file
 
 # TODO
+
 ## High priority
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim compile, rebuild, aspire run, start unit/functional/integration test
 - Bring back obsession or similar
 - Replace api by 1password call
-- Refact deeply config+nvim
 - https://github.com/nvim-mini/mini.ai
+
 # Medium priority
 - Search in past logs
 - Use clipboard shortcut

@@ -1,6 +1,5 @@
 local api = require('config/api')
 local config = require('config/config')
-local ast_grep_rules = require('config/ast')
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -26,7 +25,7 @@ return {
       mappings = {
         ["<C-g>"] = {
           action = function(selection)
-            api.toggle_lazygit(false, selection.path)
+            api.sticky.lazygit.toggle(false, selection.path)
           end,
         },
         ["<C-l>"] = {
@@ -41,7 +40,7 @@ return {
 
     local ast_grep = {
       cwd = "/Users/ilan/code/liquid-server",
-      command = ast_grep_rules.search_handler, -- must have --json=stream
+      command = api.ast_grep.build_command, -- must have --json=stream
       grep_open_files = false,
       lang = nil,
       disable_prompt = true,

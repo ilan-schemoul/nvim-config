@@ -1,15 +1,14 @@
-local utils = require("config/utils")
-local mappings_utils = require('config/mappings/utils')
+local api = require("config/api")
 
-local setv = mappings_utils.setv
-local set = mappings_utils.set
+local setv = api.keymap.leader_visual
+local set = api.keymap.leader
 
 vim.keymap.set("n", "gco", function()
-  utils.comment_above_or_below(0)
+  api.text.insert_comment_line(0)
 end, { desc = "Add comment below" })
 
 vim.keymap.set("n", "gcO", function()
-  utils.comment_above_or_below(-1)
+  api.text.insert_comment_line(-1)
 end, { desc = "Add comment above" })
 
 set("rp", ":%s/", "Replace in file")

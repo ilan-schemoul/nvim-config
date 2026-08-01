@@ -1,5 +1,5 @@
-local set = require('config/mappings/utils').set
-local internal_claude_api = require('config/api/claude')
+local api = require('config/api')
+local set = api.keymap.leader
 
 local letter_to_prompt = {
   c = "/commit",
@@ -9,6 +9,6 @@ local letter_to_prompt = {
 
 for letter, command in pairs(letter_to_prompt) do
   set("k" .. letter, function()
-    internal_claude_api.send(command)
+    api.claude.send(command)
   end, "Send " .. command .. " to Claude")
 end
