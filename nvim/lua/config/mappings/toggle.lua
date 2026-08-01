@@ -14,7 +14,7 @@ Snacks.toggle.dim():map("<leader>uD")
 
 Snacks.toggle.new({
   id = "number",
-  name = "Toggle number",
+  name = "Number",
   get = function()
     return vim.wo[0].statuscolumn == "%l"
   end,
@@ -32,8 +32,8 @@ Snacks.toggle.new({
 }):map("<leader>un")
 
 Snacks.toggle.new({
-  id = "number",
-  name = "Toggle absolute number",
+  id = "absolute_number",
+  name = "Absolute number",
   get = function()
     return vim.wo[0].relativenumber == false and vim.wo[0].statuscolumn == "%l"
   end,
@@ -46,7 +46,7 @@ Snacks.toggle.new({
 
 Snacks.toggle.new({
   id = "sign",
-  name = "Toggle sign",
+  name = "Sign",
   get = function()
     return vim.wo[0].statuscolumn == utils.separator_char
   end,
@@ -63,7 +63,7 @@ Snacks.toggle.new({
 
 Snacks.toggle.new({
   id = "markview",
-  name = "Toggle markview",
+  name = "Markview",
   get = require("markview.state").enabled,
   set = function(_)
     vim.cmd("Markview")

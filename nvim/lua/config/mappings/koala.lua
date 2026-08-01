@@ -10,5 +10,5 @@ local letter_to_prompt = {
 for letter, command in pairs(letter_to_prompt) do
   set("k" .. letter, function()
     internal_claude_api.send(command)
-  end)
+  end, "Send " .. command .. " to Claude")
 end

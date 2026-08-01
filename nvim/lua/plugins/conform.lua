@@ -11,6 +11,7 @@ return {
       "<leader>ff",
       "<cmd>lua require('conform').format({ async = true })<cr>",
       mode = { "n", "v" },
+      desc = "Format buffer",
     },
   },
   init = function()

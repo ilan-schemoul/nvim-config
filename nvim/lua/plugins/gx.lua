@@ -1,7 +1,7 @@
 return {
   "chrishrb/gx.nvim",
   -- Search on the internet
-  keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+  keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" }, desc = "Open link/search under cursor in browser" } },
   cmd = { "Browse" },
   opts = {
     select_prompt = false,

@@ -13,6 +13,6 @@ return {
       "Oil",
   },
   keys = {
-      { "<leader>dd", "<cmd>Oil<cr>", silent = true }
+      { "<leader>dd", "<cmd>Oil<cr>", silent = true, desc = "Open file explorer (Oil)" }
   },
 }

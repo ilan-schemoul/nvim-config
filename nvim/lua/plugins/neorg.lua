@@ -34,7 +34,8 @@ return {
       pattern = "norg",
       callback = function()
         vim.keymap.set("i", "<C-b>", "<Plug>(neorg.itero.next-iteration)", {
-          buffer = true
+          buffer = true,
+          desc = "Next iteration (Neorg)",
         })
       end,
     })

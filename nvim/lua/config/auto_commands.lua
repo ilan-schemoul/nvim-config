@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd({
         vim.cmd("stopinsert")
         vim.fn.feedkeys("gg")
         vim.fn.feedkeys("^") -- beginning of the sentence
-      end, { buffer = true })
+      end, { buffer = true, desc = "Exit terminal mode and go to start" })
     end
   })
 

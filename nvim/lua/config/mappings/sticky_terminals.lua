@@ -24,12 +24,12 @@ local sticky_term_cmds = {
 for key, term in pairs(sticky_term_cmds) do
   set("o" .. key, function()
     api.toggle_or_create_sticky_term(term.name, term.cmd)
-  end)
+  end, "Toggle " .. term.name .. " terminal")
   set("o" .. key:upper(), function()
     api.toggle_or_create_sticky_term(term.name, term.cmd, {
       force_new = true,
     })
-  end)
+  end, "Open new " .. term.name .. " terminal")
 end
 
 -- <leader>o<letter> open fish in given directory (false = no override, use current session dir)
@@ -43,10 +43,10 @@ local sticky_fish_cwds = {
 for key, cwd in pairs(sticky_fish_cwds) do
   set("o" .. key, function()
     api.toggle_or_create_fish_in_cwd(cwd or nil)
-  end)
+  end, "Toggle fish terminal" .. (cwd and (" in " .. cwd) or ""))
 end
 
-set("go", api.toggle_lazygit)
-set("og", api.toggle_lazygit)
-set("oG", function() api.toggle_lazygit(true) end)
+set("go", api.toggle_lazygit, "Toggle lazygit")
+set("og", api.toggle_lazygit, "Toggle lazygit")
+set("oG", function() api.toggle_lazygit(true) end, "Open new lazygit instance")
 

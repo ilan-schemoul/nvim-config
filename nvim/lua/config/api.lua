@@ -339,7 +339,7 @@ local _toggle_or_create_sticky_term = function(terminal_type, cmd, opts)
 
   vim.keymap.set("t", "<A-q>", function()
     M.sticky_terminals[terminal_type]:toggle()
-  end, { buf = buffer_terminal.buf })
+  end, { buffer = buffer_terminal.buf, desc = "Toggle " .. terminal_type .. " terminal" })
 end
 
 ---@param opts? { q?: boolean, force_new?: boolean, on_exit?: function }

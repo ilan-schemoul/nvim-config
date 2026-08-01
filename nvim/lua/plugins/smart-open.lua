@@ -10,8 +10,8 @@ return {
       require('telescope').extensions.smart_open.smart_open {
         cwd_only = true,
       }
-    end },
-    { "<leader>lL", "<cmd>Telescope smart_open<cr>" },
+    end, desc = "Smart open file (cwd)" },
+    { "<leader>lL", "<cmd>Telescope smart_open<cr>", desc = "Smart open file" },
   },
   config = function(_, _)
     local opts = {

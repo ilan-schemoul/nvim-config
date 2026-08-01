@@ -2,9 +2,6 @@ set shell=fish
 
 set clipboard+=unnamedplus
 
-" Recognizes format such as foo.bar:32:10 => open foo.bar line 32 column 10
-map gf gF
-
 set visualbell
 set termguicolors
 

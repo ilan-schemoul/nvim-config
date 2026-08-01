@@ -12,32 +12,33 @@ local spec = {
     staged_highlight_derivative_factor = 0.25
   },
   keys = {
-    { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>" },
+    { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
     {
       "<leader>gs",
       function()
         require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
       end,
       mode = "v",
+      desc = "Stage hunk",
     },
 
-    { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>" },
+    { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage buffer" },
 
-    { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", mode = "n" },
+    { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", mode = "n", desc = "Undo stage hunk" },
 
-    { "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>" },
-    { "<leader>gi", "<cmd>Gitsigns preview_hunk_inline<cr>" },
+    { "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
+    { "<leader>gi", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline" },
 
-    { "<leader>gD", "<cmd>DiffviewOpen<cr>" },
+    { "<leader>gD", "<cmd>DiffviewOpen<cr>", desc = "Open diff view" },
 
-    { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", mode = "n" },
+    { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", mode = "n", desc = "Reset hunk" },
 
-    { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>" },
+    { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", desc = "Reset buffer" },
 
-    { "<leader>gh", "<cmd>Gitsigns change_base<cr>" },
-    { "<leader>gp", "<cmd>Gitsigns change_base HEAD~1<cr>" },
+    { "<leader>gh", "<cmd>Gitsigns change_base<cr>", desc = "Change diff base" },
+    { "<leader>gp", "<cmd>Gitsigns change_base HEAD~1<cr>", desc = "Change diff base to HEAD~1" },
 
-    { "<leader>gP", ":Gitsigns change_base HEAD~" },
+    { "<leader>gP", ":Gitsigns change_base HEAD~", desc = "Change diff base to HEAD~N" },
 
     {
       'ih',
@@ -45,6 +46,7 @@ local spec = {
         require("gitsigns").select_hunk()
       end,
       mode = { 'o', 'x' },
+      desc = "Select hunk",
     },
 
     {
@@ -53,6 +55,7 @@ local spec = {
         require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
       end,
       mode = "v",
+      desc = "Reset hunk",
     },
 
     {
@@ -64,6 +67,7 @@ local spec = {
           require("gitsigns").nav_hunk("next")
         end
       end,
+      desc = "Next hunk",
     },
 
     {
@@ -75,6 +79,7 @@ local spec = {
           require("gitsigns").nav_hunk("prev")
         end
       end,
+      desc = "Previous hunk",
     },
 
     {
@@ -86,6 +91,7 @@ local spec = {
           require("gitsigns").nav_hunk("next")
         end
       end,
+      desc = "Next hunk",
     },
 
     {
@@ -97,6 +103,7 @@ local spec = {
           require("gitsigns").nav_hunk("prev")
         end
       end,
+      desc = "Previous hunk",
     },
   },
 }
@@ -105,6 +112,7 @@ for i = 1, 9 do
   table.insert(spec.keys, {
     "<leader>g" .. i .. "p",
     function() require("gitsigns").change_base("HEAD~" .. i) end,
+    desc = "Change diff base to HEAD~" .. i,
   })
 end
 
