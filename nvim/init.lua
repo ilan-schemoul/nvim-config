@@ -3,6 +3,7 @@ vim.env.PATH = '/home/ilan/.bin/nvim-internal-path:' .. vim.env.PATH
 
 require("config/lazy")
 
+require("config/native_plugins")
 require("config/api")
 require("config/user_commands")
 require("config/auto_commands")

@@ -262,6 +262,8 @@ end
 
 set("C", ":Rebuild ", "Rebuild")
 
+set("uu", ":Undotree<cr>")
+
 vim.cmd("autocmd FileType qf map <buffer> dd <tab>zN")
 
 vim.keymap.set("n", "q", function()
