@@ -46,7 +46,7 @@ local provider = {
 
   open = function(cmd_string, env_table, effective_config, focus)
     if M.fterm_mode then
-      M.sticky_terminals["ft_claude"]:open()
+      vim.notify('Not implemented')
     else
       require("claudecode/terminal/native").open(cmd_string, env_table, effective_config, focus)
     end
@@ -54,7 +54,7 @@ local provider = {
 
   close = function()
     if M.fterm_mode then
-      M.sticky_terminals["ft_claude"]:close()
+      vim.notify('Not implemented')
     else
       require("claudecode/terminal/native").close()
     end
@@ -82,8 +82,7 @@ local provider = {
 
   get_active_bufnr = function()
     if M.fterm_mode then
-      local term = sticky.terminals["ft_claude"]
-      return term and term.buf
+      vim.notify('Not implemented')
     else
       return require("claudecode/terminal/native").get_active_bufnr()
     end
