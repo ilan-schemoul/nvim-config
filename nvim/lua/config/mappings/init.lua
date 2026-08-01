@@ -10,7 +10,6 @@ local cursor_styling = require('config/styling/cursor')
 
 -- Available e (only E used), r (only R used), o (only O used), y, f (only ff used)
 local api = require("config/api")
-local utils = require("config/utils")
 local config = require("config/config")
 local ast = require("config/ast")
 
@@ -99,6 +98,15 @@ set("tF", function()
   require('telescope.builtin').current_buffer_fuzzy_find({ default_text = word })
 end)
 set("ts", "<cmd>Tabby jump_to_tab<cr>")
+
+set("tcl", function()
+  require('telescope.builtin').find_files({ cwd = "~/.claude_artifacts" })
+end)
+
+set("tcg", function()
+  require('telescope.builtin').live_grep({ cwd = "~/.claude_artifacts" })
+end)
+
 
 -- Switch to tab 4 with <leader>t4
 for i = 0, 9 do
