@@ -260,6 +260,8 @@ local refresh_buffer = function()
 end
 
 local get_lazygit_cwd = function(root)
+  root = root or M.get_cwd()
+
   if not root then
     root = last_lazygit_root
   else

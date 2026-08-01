@@ -90,15 +90,6 @@ local provider = {
     end
   end,
 
-  ensure_visible = function()
-    if M.fterm_mode then
-      local term = api.sticky_terminals["ft_claude"]
-      return term and term.buf
-    else
-      return require("claudecode/terminal").ensure_visible()
-    end
-  end,
-
   is_available = function()
     return true
   end,
