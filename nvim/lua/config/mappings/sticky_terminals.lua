@@ -41,7 +41,7 @@ local sticky_fish_cwds = {
 
 for key, cwd in pairs(sticky_fish_cwds) do
   set("o" .. key, function()
-    api.sticky.fish_in_cwd(cwd or nil)
+    api.sticky.fish_in_cwd(cwd or api.file.cwd())
   end, "Toggle fish terminal" .. (cwd and (" in " .. cwd) or ""))
 end
 
