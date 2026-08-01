@@ -6,7 +6,7 @@ local M = {
   init_called = false,
 }
 
-M.send = function(txt)
+M.send_raw = function(txt)
   vim.cmd({ cmd = 'ClaudeCodeSendText', args = { txt } })
 end
 
@@ -27,17 +27,15 @@ local do_when_ready = function(fn)
   end
 end
 
-M.send_with_model = function(model, prompt)
+M.send = function(prompt)
   local claude = require('claudecode')
 
   if claude.is_claude_connected() then
     claude._ensure_terminal_visible_if_connected()
-    M.send("/model " .. model)
-    M.send(prompt)
+    M.send_raw(prompt)
   else
-    vim.cmd("ClaudeCode " .. "--model " .. model)
     do_when_ready(function()
-      M.send(prompt)
+      M.send_raw(prompt)
     end)
   end
 end
