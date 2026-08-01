@@ -3,7 +3,8 @@ local api = require('config/api')
 local set = api.keymap.leader
 
 local nvim_config_path = vim.uv.fs_realpath(vim.fn.expand("~/.config/nvim"))
-local nvim_root_path = vim.fn.expand(nvim_config_path .. "/..")
+local nvim_root_path = vim.fn.fnamemodify(nvim_config_path, ":h")
+vim.print(nvim_root_path)
 nvim_config_path = nvim_config_path or "~/.config/nvim"
 
 set("vpl", "<cmd>Telescope find_files search_dirs=~/.local/share/nvim/lazy<cr>", "Find files in installed plugins")
