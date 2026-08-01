@@ -57,42 +57,11 @@ vim.api.nvim_create_user_command("Rebuild", function(args)
   vim.system({ vim.o.shell, "-c", "rebuild " .. service }, {}, on_exit)
 end, { nargs = 1, complete = complete_rebuild })
 
+-- Used by lazygit
 vim.api.nvim_create_user_command("ToggleFterm", function(args)
   local term_name = args.fargs[1]
   api.sticky.toggle_existing(term_name)
 end, { nargs = 1 })
-
-vim.api.nvim_create_user_command("Cedit", function(args)
-  local id = args.fargs[1]
-
-  local on_exit = function(obj)
-    if obj.code ~= 0 then
-      vim.notify('Failed to cedit: ' .. obj.stderr, vim.log.levels.ERROR)
-    end
-  end
-
-  vim.system({ vim.o.shell, "-c", "cedit " .. id }, {}, on_exit)
-end, { nargs = 1 })
-
-vim.api.nvim_create_user_command("Cupload", function(args)
-  local id = args.fargs[1]
-
-  local on_exit = function(obj)
-    if obj.code ~= 0 then
-      vim.notify('Failed to cupload: ' .. obj.stderr, vim.log.levels.ERROR)
-    else
-      vim.notify('Uploaded: ' .. obj.stdout, vim.log.levels.ERROR)
-    end
-  end
-
-  vim.system({ vim.o.shell, "-c", "cupload " .. id }, {}, on_exit)
-end, { nargs = 1 })
-
-vim.api.nvim_create_user_command("H", function(args)
-  local arg = args.fargs[1]
-  vim.cmd("helpg " .. arg)
-  require("telescope.builtin").quickfix()
-end, { nargs = '+' })
 
 -- Used by lazygit
 vim.api.nvim_create_user_command("FromFTToTab", function(args)
