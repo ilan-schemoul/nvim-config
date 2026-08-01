@@ -36,11 +36,11 @@ Telescope bcommits bcommits_range
 
 # Claude skills ideas
 ## To commit
-Commit
-Push
+- Commit
+- Push
 ## To write
-Fix tests
-Apply comments from Gitlab
-Review MPEG
-Blame (read commit, MPEG, jira ticket)
-Wolverine (cascading message)
+- Fix tests
+- Apply comments from Gitlab
+- Review MPEG
+- Blame (read commit, MPEG, jira ticket)
+- Wolverine (cascading message)
