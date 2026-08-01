@@ -11,7 +11,12 @@ local sticky_term_cmds = {
   l = { name = "alogs", cmd = { "fish", "-c", "alogs" } },
   -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
   a = { name = "aspire", cmd = { "aspire", "run" } },
-  c = { name = "claude", cmd = { "claude" } },
+
+  cc = { name = "claude_default", cmd = { "claude" } },
+  ch = { name = "claude_haiku", cmd = { "claude", "--model", "haiku" } },
+  cs = { name = "claude_sonnet", cmd = { "claude", "--model", "sonnet" } },
+  co = { name = "claude_opus", cmd = { "claude", "--model", "opus" } },
+
   m = { name = "calc", cmd = { "calc" } },
   r = { name = "csharprepl", cmd = { "csharprepl" } },
 }

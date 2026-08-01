@@ -1,5 +1,11 @@
 local my_claude_api = require('config/api/claude')
 
+local open = function(model)
+  return function()
+    vim.cmd("ClaudeCode " .. "--model " .. model)
+  end
+end
+
 return {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
@@ -29,7 +35,12 @@ return {
   },
   keys = {
     { "<leader>a", nil, desc = "AI/Claude Code" },
-    { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+
+    { "<leader>acc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+    { "<leader>ach", open("haiku"), desc = "Toggle Claude" },
+    { "<leader>acs", open("sonet"), desc = "Toggle Claude" },
+    { "<leader>aco", open("opus"), desc = "Toggle Claude" },
+
     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
