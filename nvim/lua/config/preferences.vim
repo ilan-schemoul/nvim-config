@@ -17,6 +17,7 @@ set colorcolumn=+0
 highlight DiffChange guibg=#2b3148
 " Less bright than default one
 highlight ColorColumn ctermbg=0 guibg=#212337
+highlight CursorLine guibg=#2a2c3f
 highlight CursorLineNr guifg=#aaaaaa
 highlight GitSignsAdd guifg=#279403
 highlight GitSignsDelete guifg=#b60e28
@@ -25,7 +26,7 @@ highlight TreesitterContext guibg=#1c1e2e
 highlight LspSignatureActiveParameter guifg=#ffaa00
 
 lua << EOF
-  require('config/utils').fterm_hl({
+  require('config/api').ui.set_float_hl_by_filetype({
     ft_fish = {
       border = '#E89EB8',
       bg = '#24273b',
@@ -39,9 +40,6 @@ EOF
 let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
 execute 'highlight Hlargs guifg=' . fg_var_color
 
-let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
-execute 'highlight Hlargs guifg=' . fg_var_color
-
 autocmd TermOpen * setlocal statuscolumn=""
 autocmd TermOpen * setlocal nonumber norelativenumber
 
@@ -50,7 +48,7 @@ autocmd TermOpen * lua vim.b.focus_disable = true
 " XXX: change the value in mappings <C-q> as well
 autocmd TermOpen * setlocal scrollback=20000
 autocmd TermOpen * setlocal nospell
-autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua require("config/api").start_insert_if_bottom()
+autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua require("config/api").terminal.start_insert_if_bottom()
 
 set spelllang=en_us,programming,fr
 set spellcapcheck=no
@@ -133,7 +131,7 @@ let g:matchparen_insert_timeout = 2
 " set nonumber
 " set norelativenumber
 
-lua require("config/utils").setup_separators()
+lua require("config/api").ui.set_separator_statuscolumn()
 set fillchars=vert:\ ,vertleft:─,vertright:\ ,stl:─,stlnc:─
 set statusline=─
 highlight StatusLine guibg=transparent guifg=#acaeb5
