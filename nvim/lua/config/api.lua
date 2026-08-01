@@ -259,6 +259,20 @@ local refresh_buffer = function()
   end
 end
 
+local get_lazygit_cwd = function(root)
+  if not root then
+    root = last_lazygit_root
+  else
+    root = vim.uv.fs_realpath(root) or root
+
+    if not root then
+      return last_lazygit_root
+    else
+      return vim.fs.root(root, ".git") or last_lazygit_root
+    end
+  end
+end
+
 M.toggle_lazygit = function(force_new, cwd)
   local on_exit = function()
       vim.schedule(function()
@@ -266,19 +280,7 @@ M.toggle_lazygit = function(force_new, cwd)
       end)
   end
 
-  local root = cwd or M.get_cwd()
-
-  if not root then
-    root = last_lazygit_root
-  else
-    root = vim.uv.fs_realpath(root) or root
-
-    if not root then
-      root = last_lazygit_root
-    else
-      root = vim.fs.root(root, ".git") or last_lazygit_root
-    end
-  end
+  local root = cwd or get_lazygit_cwd()
 
   if last_lazygit_root ~= root then
     last_lazygit_root = root
