@@ -8,8 +8,17 @@ For wsl markdownPreview support : `sudo apt-get install -y xdg-utils`
 
 # Tips
 https://thevaluable.dev/vim-advanced/
-Read user manual
 Telescope bcommits bcommits_range
+:g/TODO/d => delete line
+:g/TODO/norm A; => append A;
+visual selection then type norm A, => insert , at the end
+gi last insert position and go in insert mode
+g; jump previous change
+g, jump next change
+gv last selection
+`` previous position
+`. last change position
+`" position last file closed
 
 # Performance debug
   - For startup time `Lazy profile` (not perfect but good enough)
@@ -22,7 +31,6 @@ Telescope bcommits bcommits_range
 ## High priority
 - Improve ast grep queries for wolverine
 - https://github.com/stevearc/overseer.nvim compile, rebuild, aspire run, start unit/functional/integration test
-- Rename vim lsp should save files
 - Bring back obsession or similar
 - Replace api by 1password call
 - Refact deeply config+nvim

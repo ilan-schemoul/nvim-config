@@ -1,4 +1,5 @@
 local utils = require('config/utils')
+local api = require('config/api')
 local mappings_utils = require('config/mappings/utils')
 local set = mappings_utils.set
 
@@ -23,8 +24,5 @@ set("ld", "<cmd>Telescope lsp_definitions<cr>", "Go to definition")
 set("lb", function() require("telescope.builtin").diagnostics({ sort_by="severity" }) end, "List diagnostics (by severity)")
 set("ls", "<cmd>Telescope lsp_workspace_symbols<cr>", "List workspace symbols")
 set("lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Search workspace symbols")
-set("ln", function()
-  vim.lsp.buf.rename()
-  vim.cmd('silent! wa')
-end, "Rename symbol")
+set("ln", api.lsp_rename, "Rename symbol")
 set("la", vim.lsp.buf.code_action, "Code action")

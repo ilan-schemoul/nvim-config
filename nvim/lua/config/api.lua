@@ -3,6 +3,24 @@ local M = {}
 
 M.sticky_terminals = {}
 
+M.lsp_rename = function()
+  vim.lsp.buf.rename()
+
+  local id
+  id = vim.api.nvim_create_autocmd("LspRequest", {
+    callback = function(ev)
+      local request = ev.data.request
+      if request.method ~= "textDocument/rename" or request.type ~= "complete" then return end
+
+      vim.schedule(function()
+        vim.cmd('silent! wa')
+      end)
+
+      vim.api.nvim_del_autocmd(id)
+    end,
+  })
+end
+
 local function execute_command(cmds, opts, index)
   if index > #cmds then
     return
