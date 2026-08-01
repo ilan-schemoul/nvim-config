@@ -9,18 +9,21 @@ local function execute_command(cmds, opts, index)
 
   vim.system(cmds[index], opts, function(obj)
     if obj.code ~= 0 then
-      local message = cmds[index] .. " " .. obj.stderr
+      local message = table.concat(cmds[index], " ") .. " " .. (obj.stderr or "")
+      M._async_spinner:finish()
       vim.notify(message, vim.log.levels.ERROR)
+      return
     end
-
-    execute_command(cmds, opts, index + 1)
 
     if index == #cmds then
       M._async_spinner:finish()
-      if obj.code == 0 then
+      if obj.stdout and obj.stdout ~= "" then
         vim.notify(obj.stdout, vim.log.levels.INFO)
       end
+      return
     end
+
+    execute_command(cmds, opts, index + 1)
   end)
 end
 
