@@ -8,8 +8,8 @@ local letter_to_prompt = {
   r = library.review,
 }
 
-for letter, prompt in pairs(letter_to_prompt) do
+for letter, opts in pairs(letter_to_prompt) do
   set("k" .. letter, function()
-    internal_claude_api.send(prompt)
+    internal_claude_api.send_with_model(opts.model, opts.prompt)
   end)
 end

@@ -6,25 +6,38 @@ local M = {
   init_called = false,
 }
 
-M.send = function(opts)
-  local terminal = require("claudecode/terminal")
-  local claude = require("claudecode")
+M.send = function(txt)
+  vim.cmd({ cmd = 'ClaudeCodeSendText', args = { txt } })
+end
 
-  if claude.is_claude_connected() then
-    terminal.send_to_terminal("/model " .. opts.model)
-    terminal.send_to_terminal(opts.prompt)
-  else
-    terminal.open({}, " --model " .. opts.model)
+local do_when_ready = function(fn)
+  local claude = require('claudecode')
+  local timer = vim.uv.new_timer()
+  local wait_first_run_ms = 400
 
-    local timer = vim.uv.new_timer()
-    local wait_first_run_ms = 400
+  if timer then
     timer:start(wait_first_run_ms, 50, function ()
       vim.schedule(function()
         if claude.is_claude_connected() then
-          terminal.send_to_terminal(opts.prompt)
+          fn()
           timer:stop()
         end
       end)
+    end)
+  end
+end
+
+M.send_with_model = function(model, prompt)
+  local claude = require('claudecode')
+
+  if claude.is_claude_connected() then
+    claude._ensure_terminal_visible_if_connected()
+    M.send("/model " .. model)
+    M.send(prompt)
+  else
+    vim.cmd("ClaudeCode " .. "--model " .. model)
+    do_when_ready(function()
+      M.send(prompt)
     end)
   end
 end
@@ -76,6 +89,15 @@ local provider = {
       return term and term.buf
     else
       return require("claudecode/terminal/native").get_active_bufnr()
+    end
+  end,
+
+  ensure_visible = function()
+    if M.fterm_mode then
+      local term = api.sticky_terminals["ft_claude"]
+      return term and term.buf
+    else
+      return require("claudecode/terminal").ensure_visible()
     end
   end,
 

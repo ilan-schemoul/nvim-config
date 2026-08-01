@@ -1,18 +1,18 @@
 local _finding_jira_ticket = [[
 # Finding Jira ticket
 
-  As per the standard, you can add a reference to the ticket if you have one. If you do not
-  know it, you can find on the list of Jira tickets. Ask me if it's a related or a close.
+As per the standard, you can add a reference to the ticket if you have one. If you do not
+know it, you can find on the list of Jira tickets. Ask me if it's a related or a close.
 
-  Example: the commit's content is about implementing table XYZ, you find in Jira list,
-  implementing XYZ with ticket id MG-1234. You ask me if related or closed. I answer close,
-  you add "close MG-1234".
+Example: the commit's content is about implementing table XYZ, you find in Jira list,
+implementing XYZ with ticket id MG-1234. You ask me if related or closed. I answer close,
+you add "close MG-1234".
 
-  Example 2: the commit's content is about fixing the bug "foo". You search in the Jira list,
-  you find something that seems closely related but you are not sure. You ask for confirmation
-  of the relevance of the ticket, then ask if related/closed if the ticket is relevant.
+Example 2: the commit's content is about fixing the bug "foo". You search in the Jira list,
+you find something that seems closely related but you are not sure. You ask for confirmation
+of the relevance of the ticket, then ask if related/closed if the ticket is relevant.
 
-  Always provide a link and the title to the related ticket in the chat.
+Always provide a link and the title to the related ticket in the chat.
 ]]
 
 local commit_prompt = [[
