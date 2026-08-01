@@ -239,7 +239,11 @@ M.open_help = function(word)
   elseif vim.bo.ft == "c" then
     vim.cmd(string.format('Man %s', word))
   elseif vim.bo.ft == "lua" or vim.bo.ft == "vim" then
-    vim.cmd(string.format('help %s', word))
+    ---@diagnostic disable-next-line: param-type-mismatch
+    local ok = pcall(vim.cmd, string.format('help %s', word))
+    if not ok then
+      vim.cmd(string.format('helpg %s', word))
+    end
   else
     -- notify error to user
     vim.notify("No help available for this filetype", vim.log.levels.ERROR)
