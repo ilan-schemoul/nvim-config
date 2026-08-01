@@ -33,3 +33,14 @@ Telescope bcommits bcommits_range
 ## Low priority
 - Remainder plugin
 - https://github.com/Wansmer/treesj
+
+# Claude skills ideas
+## To commit
+Commit
+Push
+## To write
+Fix tests
+Apply comments from Gitlab
+Review MPEG
+Blame (read commit, MPEG, jira ticket)
+Wolverine (cascading message)
