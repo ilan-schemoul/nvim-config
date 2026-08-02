@@ -30,7 +30,6 @@ gv last selection
 # TODO
 
 ## Highest
-- Send claude
 - Improve ast grep queries for wolverine
 - Smelly sunflower
 

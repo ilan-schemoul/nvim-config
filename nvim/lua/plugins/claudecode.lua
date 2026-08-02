@@ -7,7 +7,8 @@ local open = function(model)
 end
 
 return {
-  "coder/claudecode.nvim",
+  "ilan-schemoul/claudecode.nvim",
+  branch = "fix/selection-empty-line-selection", -- pending upstream PR: https://github.com/coder/claudecode.nvim/pull/310
   dependencies = { "folke/snacks.nvim" },
   opts = {
     terminal = {
