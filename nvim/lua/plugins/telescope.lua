@@ -7,7 +7,7 @@ return {
     "Telescope",
   },
   dependencies = {
-    { "ilan-schemoul/telescope-sg", branch="command-function"},
+    "Marskey/telescope-sg",
     "nvim-tree/nvim-web-devicons",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
