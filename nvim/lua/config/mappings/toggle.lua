@@ -69,3 +69,20 @@ Snacks.toggle.new({
     vim.cmd("Markview")
   end,
 }):map("<leader>um")
+
+Snacks.toggle.new({
+  id = "rainbow_delimiters",
+  name = "Rainbow Delimiters",
+  get = function()
+    return require("rainbow-delimiters").is_enabled(0)
+  end,
+  set = function(enabled)
+    if enabled then
+      require("rainbow-delimiters").enable(0)
+    else
+      require("rainbow-delimiters").disable(0)
+    end
+  end,
+}):map("<leader>ur")
+
+--
