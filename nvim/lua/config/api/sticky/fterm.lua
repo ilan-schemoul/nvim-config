@@ -33,6 +33,12 @@ local toggle_or_create_term = function(terminal_type, cmd, opts)
     buffer_terminal = M.terminals[terminal_type]:open()
   end
 
+  if opts.q then
+    vim.keymap.set("t", "q", function()
+      M.terminals[terminal_type]:toggle()
+    end, { buffer = buffer_terminal.buf, desc = "Toggle " .. terminal_type .. " terminal" })
+  end
+
   vim.keymap.set("t", "<A-q>", function()
     M.terminals[terminal_type]:toggle()
   end, { buffer = buffer_terminal.buf, desc = "Toggle " .. terminal_type .. " terminal" })

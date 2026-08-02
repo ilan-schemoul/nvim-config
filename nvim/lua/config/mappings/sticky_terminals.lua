@@ -7,9 +7,9 @@ local pg_url = "postgresql://postgres:p4ssw0rd@localhost:5435/local-liquid"
 -- letter -> { name, cmd } for api.sticky.toggle_or_create
 local sticky_term_cmds = {
   p = { name = "pgcli", cmd = { "pgcli", pg_url } },
-  l = { name = "alogs", cmd = { "fish", "-c", "alogs" } },
+  l = { name = "alogs", cmd = { "fish", "-c", "alogs" }, q = true },
   -- dotnet watch --project /Users/ilan/code/liquid-server/src/AppHost/AppHost.csproj works too
-  a = { name = "aspire", cmd = { "aspire", "run" } },
+  a = { name = "aspire", cmd = { "aspire", "run" }, q = true },
 
   cc = { name = "claude_default", cmd = { "claude" } },
   ch = { name = "claude_haiku", cmd = { "claude", "--model", "haiku" } },
@@ -22,11 +22,14 @@ local sticky_term_cmds = {
 
 for key, term in pairs(sticky_term_cmds) do
   set("o" .. key, function()
-    api.sticky.toggle_or_create(term.name, term.cmd)
+    api.sticky.toggle_or_create(term.name, term.cmd, {
+      q = term.q
+    })
   end, "Toggle " .. term.name .. " terminal")
   set("o" .. key:upper(), function()
     api.sticky.toggle_or_create(term.name, term.cmd, {
       force_new = true,
+      q = term.q
     })
   end, "Open new " .. term.name .. " terminal")
 end

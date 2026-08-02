@@ -33,7 +33,6 @@ gv last selection
 - Fix focus lazygit
 - Fix <c-g> open namespace
 - Improve lnav
-- Fix "q" lnav and lazygit
 - Fix two lazygit same time
 - Improve ast grep queries for wolverine
 - Smelly sunflower
