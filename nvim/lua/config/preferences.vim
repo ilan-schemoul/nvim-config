@@ -98,6 +98,8 @@ set cursorline " hightlight current selected line
 set undofile
 set undodir=~/.vim/.undodir
 
+set noswapfile
+
 set number relativenumber
 set numberwidth=1
 
