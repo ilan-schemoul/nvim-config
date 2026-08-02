@@ -56,8 +56,8 @@ gv last selection
 - Commit
 - Push
 ## To write
-- Fix tests
-- Apply comments from Gitlab
 - Review MPEG
-- Blame (read commit, MPEG, jira ticket)
+- Apply comments from Gitlab
 - Wolverine (cascading message)
+- Fix tests
+- Blame (read commit, MPEG, jira ticket)
