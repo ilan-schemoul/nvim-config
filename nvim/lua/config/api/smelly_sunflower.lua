@@ -45,14 +45,20 @@ local function insert_log(above)
       log = 'logger_warning(&_G.logger, "' .. payload .. ' %s:%d' .. '", __FILE__, __LINE__);'
     elseif ft == "python" then
       log = 'LOGGER.warning("' .. payload .. '")'
+    elseif ft == "cs" then
+      log = 'System.Console.WriteLine("' .. payload .. '");'
     end
     vim.api.nvim_buf_set_lines(0, row, row, false, { log })
+
     if above then
       vim.fn.feedkeys("k")
     else
       vim.fn.feedkeys("j")
     end
-    vim.fn.feedkeys("==")
+
+    vim.schedule(function()
+      vim.fn.feedkeys("==")
+    end)
 end
 
 M.insert_log_above = function() insert_log(true) end
