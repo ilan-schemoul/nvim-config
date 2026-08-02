@@ -1,5 +1,5 @@
 return {
-  "aihke/wrapped.nvim",
+  "aikhe/wrapped.nvim",
   cmd = { "WrappedNvim" },
   dependencies = { "nvzone/volt" },
   opts = {
