@@ -21,16 +21,18 @@ gv last selection
 `" position last file closed
 
 # Performance debug
-  - For startup time `Lazy profile` (not perfect but good enough)
-  - For runtime:
-    - [plenary.profile](https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file) (wrapper around lua profiler)
-    - profile.nvim (self described pile of hack)
-    - perfanno to open the resulting trace file
+- For startup time `Lazy profile` (not perfect but good enough)
+- For runtime:
+ - [plenary.profile](https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file) (wrapper around lua profiler)
+ - profile.nvim (self described pile of hack)
+ - perfanno to open the resulting trace file
 
 # TODO
 
 ## Highest
+- Send claude
 - Improve ast grep queries for wolverine
+- Smelly sunflower
 
 ## High priority
 - https://github.com/stevearc/overseer.nvim compile, rebuild, start unit/functional/integration test
