@@ -28,7 +28,7 @@ local function execute_command(cmds, opts, index)
 end
 
 -- Run the given commands one after the other, notify the user on error
-M.run = function(cmds, opts, title)
+function M.run(cmds, opts, title)
   local fidget = require("fidget")
   M._async_spinner = fidget.progress.handle.create({
     title = title,
@@ -37,7 +37,7 @@ M.run = function(cmds, opts, title)
   execute_command(cmds, opts, 1)
 end
 
-M.run_shell = function(cmd, opts, title)
+function M.run_shell(cmd, opts, title)
   M.run({ { vim.o.shell, vim.o.shellcmdflag, cmd } }, opts, title)
 end
 

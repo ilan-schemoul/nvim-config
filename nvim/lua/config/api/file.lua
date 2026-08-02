@@ -1,7 +1,7 @@
 local M = {}
 
 -- Directory of the current buffer, stripping term:// style URI prefixes
-M.cwd = function()
+function M.cwd()
   local path = vim.fn.expand('%:p:h')
 
   if path:find("://") then
@@ -57,16 +57,16 @@ local function open_from_history(is_extension)
 end
 
 -- Read one char, open the most frecent smart_open history file with that extension
-M.open_by_extension = function()
+function M.open_by_extension()
   open_from_history(true)
 end
 
 -- Read one char, open the most frecent smart_open history file starting with it
-M.open_by_first_letter = function()
+function M.open_by_first_letter()
   open_from_history(false)
 end
 
-M.create_note = function()
+function M.create_note()
   local dirman = require("neorg").modules.get_module("core.dirman")
   local file = vim.fn.input("File : ", "", "file")
 

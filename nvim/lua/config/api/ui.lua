@@ -3,11 +3,11 @@ local M = {}
 local separator_char = "│"
 M.separator_char = separator_char
 
-M.set_separator_statuscolumn = function()
+function M.set_separator_statuscolumn()
   vim.cmd("set statuscolumn=" .. separator_char)
 end
 
-M.set_float_hl_by_filetype = function(ft_to_hl)
+function M.set_float_hl_by_filetype(ft_to_hl)
   local ns_id = 1000
 
   vim.api.nvim_create_autocmd('BufWinEnter', {
@@ -36,7 +36,7 @@ M.set_float_hl_by_filetype = function(ft_to_hl)
 end
 
 -- Called right before the recorder plugin toggles, hence the inverted check
-M.toggle_recording_cursor_hl = function()
+function M.toggle_recording_cursor_hl()
   local record = require("recorder")
   local status = record.recordingStatus()
   -- We put the opposite with not because we are warned of the opposite event

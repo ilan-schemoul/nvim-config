@@ -39,7 +39,7 @@ local toggle_or_create_term = function(terminal_type, cmd, opts)
 end
 
 ---@param opts? { q?: boolean, force_new?: boolean, on_exit?: function }
-M.toggle_or_create = function(terminal_type, cmd, opts)
+function M.toggle_or_create(terminal_type, cmd, opts)
   opts = opts or {}
 
   local old_term = M.terminals[terminal_type]
@@ -56,7 +56,7 @@ M.toggle_or_create = function(terminal_type, cmd, opts)
 end
 
 -- One sticky fish terminal per cwd, cd'd into it via PRIO_HOME_DIR_STARTUP (see fish config.fish)
-M.fish_in_cwd = function(cwd)
+function M.fish_in_cwd(cwd)
   -- used in ft, we cannot use paths (:/ etc.) so we hash it
   local cwd_hash = cwd and vim.fn.sha256(cwd)
   local terminal_type = "fish_" .. (cwd_hash or "default")
@@ -72,13 +72,13 @@ M.fish_in_cwd = function(cwd)
   })
 end
 
-M.kill = function(terminal_type)
+function M.kill(terminal_type)
   -- Not supported yet: https://github.com/numToStr/FTerm.nvim/issues/110
   M.terminals[terminal_type]:exit()
   M.terminals[terminal_type] = nil
 end
 
-M.toggle_existing = function(terminal_type)
+function M.toggle_existing(terminal_type)
   if not M.terminals[terminal_type] then
     vim.notify('Sticky terminal does not exist', vim.log.levels.ERROR)
     return

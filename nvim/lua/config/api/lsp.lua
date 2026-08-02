@@ -1,7 +1,7 @@
 local M = {}
 
 -- Rename, then write every buffer once the LSP is done applying the edits
-M.rename = function()
+function M.rename()
   vim.lsp.buf.rename()
 
   local id

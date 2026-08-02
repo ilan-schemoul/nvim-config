@@ -1,10 +1,10 @@
 local M = {}
 
-M.leader = function(keys, cmd, desc)
+function M.leader(keys, cmd, desc)
   vim.keymap.set("n", "<leader>" .. keys, cmd, { unique = true, desc = desc })
 end
 
-M.leader_visual = function(keys, cmd, desc)
+function M.leader_visual(keys, cmd, desc)
   vim.keymap.set("v", "<leader>" .. keys, cmd, { unique = true, desc = desc })
 end
 

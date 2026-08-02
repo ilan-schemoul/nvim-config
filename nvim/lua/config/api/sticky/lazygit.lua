@@ -29,7 +29,7 @@ local get_lazygit_cwd = function(root)
 end
 
 -- Fullscreen lazygit rooted at the git root, refreshing the buffers it touched on exit
-M.toggle = function(force_new, cwd)
+function M.toggle(force_new, cwd)
   local on_exit = function()
       vim.schedule(function()
         pcall(refresh_buffer)

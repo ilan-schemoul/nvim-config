@@ -1,7 +1,7 @@
 local M = {}
 
 -- Close window if it is a floating window or if it is not the last opened window in the current tab
-M.close_if_not_last = function(window)
+function M.close_if_not_last(window)
   window = window or vim.api.nvim_get_current_win()
   local current_win_is_floating = vim.api.nvim_win_get_config(window).relative ~= ""
 
@@ -23,7 +23,7 @@ M.close_if_not_last = function(window)
 end
 
 -- Open the current file in a new tab, centered between two scratch splits
-M.center = function(left_buffer, right_buffer)
+function M.center(left_buffer, right_buffer)
   left_buffer = left_buffer or "new"
   right_buffer = right_buffer or "new"
 
@@ -57,7 +57,7 @@ M.center = function(left_buffer, right_buffer)
   vim.api.nvim_win_set_cursor(0, { r, c })
 end
 
-M.close_centered = function()
+function M.close_centered()
   vim.cmd("tabclose")
   vim.cmd("tabprevious")
 end

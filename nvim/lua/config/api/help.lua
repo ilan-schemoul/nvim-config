@@ -1,7 +1,7 @@
 local M = {}
 
 -- Filetype aware help for the word under the cursor
-M.open = function(word)
+function M.open(word)
   word = word or vim.fn.expand("<cword>")
 
   if vim.bo.ft == "cs" then

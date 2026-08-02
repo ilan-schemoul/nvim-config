@@ -2,7 +2,7 @@ local window = require("config/api/window")
 
 local M = {}
 
-M.is_listed = function(buffer_to_find)
+function M.is_listed(buffer_to_find)
   local is_listed = vim.tbl_contains(vim.api.nvim_list_bufs(), function(buffer)
     return buffer_to_find == buffer and vim.bo[buffer].buflisted
   end, { predicate = true })
@@ -10,7 +10,7 @@ M.is_listed = function(buffer_to_find)
   return is_listed
 end
 
-M.is_outside_cwd = function()
+function M.is_outside_cwd()
   local path = vim.api.nvim_buf_get_name(0)
   local pwd = vim.fn.getcwd()
   -- Escape special characters from pwd so find doesn't interpret them
@@ -18,7 +18,7 @@ M.is_outside_cwd = function()
   return vim.bo.buftype == "" and path:find(pwd) == nil
 end
 
-M.close_if_not_last = function(buffer)
+function M.close_if_not_last(buffer)
   -- TODO: refactor with win_findbuf
   local win = -1
 
@@ -34,7 +34,7 @@ M.close_if_not_last = function(buffer)
   end
 end
 
-M.close_current = function()
+function M.close_current()
   if vim.startswith(vim.fn.expand("%"), "term://") then
     -- Closing buffer without closing window
     vim.cmd("bp|sp|bn|bd!")
@@ -51,7 +51,7 @@ local function get_listed_buffers()
 end
 
 -- Delete every listed buffer that is not displayed in a window
-M.close_hidden = function()
+function M.close_hidden()
   local buffers = get_listed_buffers()
   for _, buffer in ipairs(buffers) do
     local open = vim.fn.bufwinnr(buffer) > 0

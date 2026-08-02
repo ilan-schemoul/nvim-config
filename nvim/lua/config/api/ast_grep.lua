@@ -32,7 +32,7 @@ local rule_template
 local force_word
 local default_word
 
-M.find_wolverine_handler = function(word)
+function M.find_wolverine_handler(word)
   force_word = word
   default_word = vim.fn.expand("<cword>")
 
@@ -40,7 +40,7 @@ M.find_wolverine_handler = function(word)
   vim.cmd('Telescope ast_grep')
 end
 
-M.find_wolverine_sender = function(word)
+function M.find_wolverine_sender(word)
   force_word = word
   default_word = vim.fn.expand("<cword>")
 
@@ -49,7 +49,7 @@ M.find_wolverine_sender = function(word)
 end
 
 -- Telescope command generator: turns the prompt into an ast-grep invocation
-M.build_command = function(prompt)
+function M.build_command(prompt)
   local word = force_word or prompt
 
   if prompt == "" then

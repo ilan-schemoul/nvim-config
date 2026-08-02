@@ -61,14 +61,14 @@ local function insert_log(above)
     end)
 end
 
-M.insert_log_above = function() insert_log(true) end
-M.insert_log_below = function() insert_log(false) end
+function M.insert_log_above() insert_log(true) end
+function M.insert_log_below() insert_log(false) end
 
-M.clean_logs = function()
+function M.clean_logs()
   vim.cmd("g/fix_me_now/d")
 end
 
-M.clean_all_logs = function()
+function M.clean_all_logs()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     local readonly = vim.api.nvim_get_option_value("readonly", { buf = bufnr })
 
@@ -95,7 +95,7 @@ M.clean_all_logs = function()
 end
 
 -- Wrap a function so calling it notifies how long it took
-M.profile = function(fn)
+function M.profile(fn)
   return function(...)
     local start = vim.uv.hrtime()
     local ret = fn(...)

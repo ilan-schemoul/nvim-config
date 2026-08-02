@@ -5,7 +5,7 @@ local M = {
   fterm_mode = nil,
 }
 
-M.send_raw = function(txt)
+function M.send_raw(txt)
   vim.cmd({ cmd = 'ClaudeCodeSendText', args = { txt } })
 end
 
@@ -26,7 +26,7 @@ local do_when_ready = function(fn)
   end
 end
 
-M.send = function(prompt)
+function M.send(prompt)
   local claude = require('claudecode')
 
   if claude.is_claude_connected() then
@@ -95,7 +95,7 @@ local provider = {
 
 M.terminal_provider = provider
 
-M.open_fterm = function()
+function M.open_fterm()
   M.fterm_mode = true
   vim.cmd('ClaudeCode')
   M.fterm_mode = nil

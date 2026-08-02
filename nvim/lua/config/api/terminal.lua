@@ -2,7 +2,7 @@ local buffer = require("config/api/buffer")
 
 local M = {}
 
-M.start_insert_if_bottom = function()
+function M.start_insert_if_bottom()
   local total_number_of_lines = vim.fn.line("$")
   local current_line = vim.fn.line(".")
   local nb_lines_to_bottom_screen = total_number_of_lines - current_line
@@ -31,7 +31,7 @@ local function terminal_is_available(buf)
     return child_process_nb == 0
 end
 
-M.open_unused_or_create = function()
+function M.open_unused_or_create()
   local buffers = vim.api.nvim_list_bufs()
 
   for _, buf in ipairs(buffers) do

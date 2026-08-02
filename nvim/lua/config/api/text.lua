@@ -1,6 +1,6 @@
 local M = {}
 
-M.visual_selection = function()
+function M.visual_selection()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg('v')
   vim.fn.setreg('v', {})
@@ -14,7 +14,7 @@ M.visual_selection = function()
 end
 
 -- Insert an empty comment `lnum` lines away from the cursor and start typing in it
-M.insert_comment_line = function(lnum)
+function M.insert_comment_line(lnum)
   local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
   local comment_row = row + lnum
   local l_cms, r_cms = string.match(vim.bo.commentstring, '(.*)%%s(.*)')

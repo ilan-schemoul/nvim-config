@@ -1,7 +1,7 @@
 local M = {}
 
 -- Capitalized basename of the tab's cwd ("~" for $HOME)
-M.folder_name = function(tab_nr)
+function M.folder_name(tab_nr)
   local success, full_path = pcall(vim.fn.getcwd, -1, tab_nr)
 
   if not success then
@@ -25,11 +25,11 @@ end
 
 local hidden = false
 
-M.set_hidden = function(h)
+function M.set_hidden(h)
   hidden = h
 end
 
-M.is_hidden = function()
+function M.is_hidden()
   return hidden
 end
 

@@ -1,7 +1,7 @@
 local M = {}
 
 -- Telescope picker over the lines of every hunk gitsigns knows about
-M.pick_modified_hunks = function()
+function M.pick_modified_hunks()
   local gitsigns = require("gitsigns")
   local actions = require "telescope.actions"
   local action_state = require "telescope.actions.state"
