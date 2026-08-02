@@ -29,14 +29,16 @@ gv last selection
 
 # TODO
 
-## High priority
+## Highest
 - Improve ast grep queries for wolverine
-- https://github.com/stevearc/overseer.nvim compile, rebuild, aspire run, start unit/functional/integration test
-- Bring back obsession or similar
+
+## High priority
+- https://github.com/stevearc/overseer.nvim compile, rebuild, start unit/functional/integration test
 - Replace api by 1password call
 - https://github.com/nvim-mini/mini.ai
 
 # Medium priority
+- Bring back obsession or similar
 - Search in past logs
 - Use clipboard shortcut
 ## Low priority
