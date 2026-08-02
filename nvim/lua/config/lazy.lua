@@ -40,6 +40,11 @@ require("lazy").setup({
     enabled = false,
     notify = false, -- get a notification when changes are found
   },
+  -- Toggle if need more precise profiling (slightly slower)
+  profiling = {
+    loader = false,
+    require = false,
+  },
   performance = {
     rtp = {
       reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
@@ -48,7 +53,7 @@ require("lazy").setup({
         "gzip",
         -- "matchit",
         -- "matchparen",
-        -- "netrwPlugin",
+        "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
