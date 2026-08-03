@@ -64,7 +64,9 @@ Snacks.toggle.new({
 Snacks.toggle.new({
   id = "markview",
   name = "Markview",
-  get = require("markview.state").enabled,
+  get = function()
+    require("markview.state").enabled()
+  end,
   set = function(_)
     vim.cmd("Markview")
   end,
