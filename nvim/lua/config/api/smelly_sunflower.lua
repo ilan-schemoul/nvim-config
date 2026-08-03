@@ -1,6 +1,8 @@
 -- Throwaway debug logs, tagged with `fix_me_now` so they can all be wiped again.
 local M = {}
 
+math.randomseed(vim.uv.hrtime())
+
 local function random_adjective()
     local words = {
     "beautiful", "witty", "wicked", "confusing", "rich", "new", "strange",
@@ -39,7 +41,7 @@ local function insert_log(above)
     local word, emoji = random_emojis()
     local payload =  emoji .. ' ' .. random_adjective() .. ' ' .. word .. ' fix_me_now'
 
-    local log = ''
+    local log
     local ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
     if ft == "c" then
       log = 'logger_warning(&_G.logger, "' .. payload .. ' %s:%d' .. '", __FILE__, __LINE__);'
@@ -47,6 +49,9 @@ local function insert_log(above)
       log = 'LOGGER.warning("' .. payload .. '")'
     elseif ft == "cs" then
       log = 'System.Console.WriteLine("' .. payload .. '");'
+    else
+      vim.notify("No debug log template for filetype: " .. ft, vim.log.levels.ERROR)
+      return
     end
     vim.api.nvim_buf_set_lines(0, row, row, false, { log })
 
