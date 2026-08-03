@@ -6,7 +6,7 @@ function M.close_if_not_last(window)
   local current_win_is_floating = vim.api.nvim_win_get_config(window).relative ~= ""
 
   if current_win_is_floating then
-    vim.cmd("q")
+    vim.api.nvim_win_close(window, false)
   else
     local windows_in_tab = vim.tbl_filter(function(win)
       local is_valid = vim.api.nvim_win_is_valid(win)
@@ -17,7 +17,7 @@ function M.close_if_not_last(window)
     end, vim.api.nvim_tabpage_list_wins(0))
 
     if #windows_in_tab > 1 then
-      vim.cmd("q")
+      vim.api.nvim_win_close(window, false)
     end
   end
 end
