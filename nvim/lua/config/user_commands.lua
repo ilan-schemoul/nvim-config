@@ -58,10 +58,13 @@ vim.api.nvim_create_user_command("Rebuild", function(args)
 end, { nargs = 1, complete = complete_rebuild })
 
 -- Used by lazygit
-vim.api.nvim_create_user_command("ToggleFterm", function(args)
+-- I cannot just close "lazygit" term, because sometimes lazygit is inside a
+-- fish FTerm and I cannot easily know which one (depending on if you open fish
+-- fterm with a directory or another it changes its terminal name)
+vim.api.nvim_create_user_command("CloseFtermLazy", function(args)
   local term_name = args.fargs[1]
-  api.sticky.toggle_existing(term_name)
-end, { nargs = 1 })
+  api.sticky.lazygit.close_and_refresh()
+end, { nargs = 0 })
 
 -- Used by lazygit
 vim.api.nvim_create_user_command("FromFTToTab", function(args)

@@ -31,10 +31,9 @@ gv last selection
 
 ## Highest
 - Fix focus lazygit
-- Fix <c-g> open namespace
-- Improve lnav
-- Fix two lazygit same time
+- Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
+- Open Claude when sending Koala commands
 - Smelly sunflower
 
 ## High priority

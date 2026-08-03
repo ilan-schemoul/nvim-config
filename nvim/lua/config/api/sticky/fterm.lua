@@ -97,10 +97,6 @@ function M.toggle_existing(terminal_type)
     return
   end
 
-  if terminal_type == "lazygit" then
-    require('config/api/sticky/lazygit').refresh()
-  end
-
   M.terminals[terminal_type]:toggle()
 end
 

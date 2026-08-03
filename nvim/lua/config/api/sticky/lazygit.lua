@@ -9,6 +9,7 @@ local refresh_buffer = function()
   if vim.api.nvim_buf_get_name(0) ~= "" then
     vim.cmd("Gitsigns refresh")
     vim.cmd("checktime")
+    require("lint").try_lint()
   end
 end
 
@@ -36,6 +37,16 @@ function M.refresh()
   vim.defer_fn(function()
     pcall(refresh_buffer)
   end, 500)
+end
+
+function M.close_and_refresh()
+  local terminals = require('config/api/sticky').terminals
+
+  for _, term in pairs(terminals) do
+    term:close()
+  end
+
+  M.refresh()
 end
 
 -- Fullscreen lazygit rooted at the git root, refreshing the buffers it touched on exit
