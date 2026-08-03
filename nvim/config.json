@@ -1,15 +1,1 @@
-{
-  "ai": {
-    "completion": true
-  },
-  "os": "mac",
-  "keyboard": "us",
-  "ui": {
-    "transparent_background": false
-  },
-  "auto_format": false,
-  "bookmarks": {
-    "browser": "chrome",
-    "profile_name": "Ilan Metal Gear"
-  }
-}
+/Users/ilan/code/nvim-config/nvim/config_mac.json
