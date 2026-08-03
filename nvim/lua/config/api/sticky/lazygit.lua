@@ -54,7 +54,7 @@ function M.toggle(force_new, cwd)
     on_exit = on_exit,
     on_q = on_exit,
     border = 'rounded',
-    cwd = cwd,
+    cwd = root,
     dimensions = {
       height = 1,
       width = 1,
