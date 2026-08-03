@@ -12,7 +12,7 @@ vim.api.nvim_create_user_command("OpenSession", function(args)
   if #args.fargs == 1 then
     vim.cmd("source " .. args.fargs[1])
   else
-    if vim.fn.filereadable("./Session.vim") then
+    if vim.fn.filereadable("./Session.vim") == 1 then
       vim.cmd("source ./Session.vim")
     else
       vim.cmd("source ~/Session.vim")
