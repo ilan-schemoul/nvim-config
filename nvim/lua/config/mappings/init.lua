@@ -67,7 +67,11 @@ set("R", "<cmd>mksession! /tmp/Session.vim | restart source /tmp/Session.vim<cr>
 set("m", "<cmd>Mason<cr>", "Open Mason")
 
 -- Echo current filede
-set("F", "<cmd>echo @%<cr>", "Echo current file path")
+set("F", function()
+  local bufname = vim.api.nvim_buf_get_name(0)
+  local relative_path = vim.fn.fnamemodify(bufname, ":.")
+  vim.notify(relative_path)
+end, "Echo current file path")
 
 set("tu", "<cmd>Telescope undo<cr>", "Open undo history")
 
