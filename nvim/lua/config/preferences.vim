@@ -79,6 +79,10 @@ autocmd FileType gdscript set expandtab
 
 set tabstop=2 " number of spaces a tab is
 set shiftwidth=2 " number of spaces when using >> and autoindent
+
+autocmd FileType cs set tabstop=4
+autocmd FileType cs set shiftwidth=4
+
 set shiftround " round indent to multiples
 set signcolumn=no " show in the same column as the numbers, hide if no signs (like auto option)
 
