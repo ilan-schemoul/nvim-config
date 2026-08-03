@@ -47,20 +47,14 @@ function M.toggle(force_new, cwd)
     force_new = force_new,
     on_exit = on_exit,
     border = 'rounded',
+    cwd = cwd,
     dimensions = {
       height = 1,
       width = 1,
     }
   }
 
-  local cmd = { "lazygit" }
-
-  if root then
-    table.insert(cmd, "--path")
-    table.insert(cmd, root)
-  end
-
-  fterm.toggle_or_create("lazygit", cmd, opts)
+  fterm.toggle_or_create("lazygit", { "lazygit" }, opts)
 end
 
 return M

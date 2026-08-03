@@ -1,5 +1,5 @@
 {
-  "FTerm.nvim": { "branch": "master", "commit": "0676c8691492f629d2d79c9021d66d7e8e2acd76" },
+  "FTerm.nvim": { "branch": "master", "commit": "4b9676d6bd8ff274de0c9ca84b53f9cba61dbd87" },
   "LuaSnip": { "branch": "master", "commit": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24" },
   "automkdir.nvim": { "branch": "main", "commit": "e36da288764cc41864dc5b4e1234f1425033ce59" },
   "autosave.nvim": { "branch": "main", "commit": "348f72cf0241e3e736e3396c4834def2f8ef8d10" },

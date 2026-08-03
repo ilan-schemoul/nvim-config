@@ -3,7 +3,7 @@ local M = {}
 
 M.terminals = {}
 
-local create = function(terminal_type, cmd, opts)
+local function create_term(terminal_type, cmd, opts)
   opts.env = opts.env or {}
   opts.env.IS_FTERM = "1"
 
@@ -11,6 +11,7 @@ local create = function(terminal_type, cmd, opts)
   M.terminals[terminal_type] = require('FTerm'):new({
     ft = opts.ft or ("ft_" .. terminal_type),
     cmd = cmd,
+    cwd = opts.cwd,
     on_exit = opts.on_exit,
     ---@diagnostic disable-next-line: missing-fields
     dimensions = opts.dimensions or {
@@ -29,7 +30,7 @@ local toggle_or_create_term = function(terminal_type, cmd, opts)
   if M.terminals[terminal_type] ~= nil and not opts.force_new then
     buffer_terminal = M.terminals[terminal_type]:toggle()
   else
-    create(terminal_type, cmd, opts)
+    create_term(terminal_type, cmd, opts)
     buffer_terminal = M.terminals[terminal_type]:open()
   end
 
