@@ -36,11 +36,17 @@ local toggle_or_create_term = function(terminal_type, cmd, opts)
 
   if opts.q then
     vim.keymap.set("t", "q", function()
+      if opts.on_q then
+        opts.on_q()
+      end
       M.terminals[terminal_type]:toggle()
     end, { buffer = buffer_terminal.buf, desc = "Toggle " .. terminal_type .. " terminal" })
   end
 
   vim.keymap.set("t", "<A-q>", function()
+      if opts.on_q then
+        opts.on_q()
+      end
     M.terminals[terminal_type]:toggle()
   end, { buffer = buffer_terminal.buf, desc = "Toggle " .. terminal_type .. " terminal" })
 end
@@ -89,6 +95,10 @@ function M.toggle_existing(terminal_type)
   if not M.terminals[terminal_type] then
     vim.notify('Sticky terminal does not exist', vim.log.levels.ERROR)
     return
+  end
+
+  if terminal_type == "lazygit" then
+    require('config/api/sticky/lazygit').refresh()
   end
 
   M.terminals[terminal_type]:toggle()
