@@ -50,9 +50,8 @@ autocmd TermOpen * setlocal scrollback=20000
 autocmd TermOpen * setlocal nospell
 autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua require("config/api").terminal.start_insert_if_bottom()
 
-set spelllang=en_us,programming,fr
+" PERF: autocommand enables spell when leaving terminal mode (10ms)
 set spellcapcheck=no
-set spell
 set spellsuggest=best,5
 
 set magic " No need to escape in regex

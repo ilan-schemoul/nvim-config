@@ -96,6 +96,19 @@ vim.api.nvim_create_autocmd({
     end
   })
 
+-- Saving like 10ms
+vim.api.nvim_create_autocmd({ "User" },
+  {
+    pattern = "NormalBufferEnter",
+    callback = function()
+      vim.schedule(function()
+        vim.cmd("set spelllang=en_us,programming,fr")
+        vim.opt.spell = true
+      end)
+    end
+  })
+
+
 local update_vim_dir = function(dir)
   local buf = vim.api.nvim_buf_get_name(0)
   local new = 'term://' .. dir .. '//'
