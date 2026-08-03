@@ -21,11 +21,13 @@ event.mappings.NormalBufferEnter = {
   pattern = "NormalBufferEnter",
 }
 
-vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
+local normal_buffer_enter_id
+normal_buffer_enter_id = vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   callback = function()
     local normal_buftype = ''
     if vim.bo.buftype == normal_buftype and vim.api.nvim_buf_get_name(0) ~= "" then
       vim.api.nvim_exec_autocmds("User", { pattern = "NormalBufferEnter" })
+      vim.api.nvim_del_autocmd(normal_buffer_enter_id)
     end
   end
 })
@@ -34,7 +36,6 @@ require("lazy").setup({
   spec = {
       { import = "plugins" },
   },
-  import = "plugins",
   change_detection = {
     -- automatically check for config file changes and reload the ui
     enabled = false,
