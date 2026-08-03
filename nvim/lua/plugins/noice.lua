@@ -54,11 +54,6 @@ return {
   },
   dependencies = {
     "MunifTanjim/nui.nvim",
-    {
-      "rcarriga/nvim-notify",
-      opts = {
-        fps = 2,
-      },
-    },
+    "rcarriga/nvim-notify"
   },
 }

@@ -1,6 +1,6 @@
 return {
   "rcarriga/nvim-notify",
-  event = "BufEnter",
+  event = "VeryLazy",
   config = function()
     require("notify").setup({
       on_open = function(win)
