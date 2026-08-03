@@ -33,6 +33,8 @@ function M.send(prompt)
     claude._ensure_terminal_visible_if_connected()
     M.send_raw(prompt)
   else
+    vim.cmd('ClaudeCode')
+
     do_when_ready(function()
       M.send_raw(prompt)
     end)
