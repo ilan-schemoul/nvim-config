@@ -107,34 +107,3 @@ vim.api.nvim_create_autocmd({ "User" },
       end)
     end
   })
-
-
-local update_vim_dir = function(dir)
-  local buf = vim.api.nvim_buf_get_name(0)
-  local new = 'term://' .. dir .. '//'
-  local new_name = buf:gsub('^term://(.-)//', new, 1)
-  vim.api.nvim_buf_set_name(0, new_name)
-end
-
-local handle_dir_change = function(dir, buf)
-  if vim.fn.isdirectory(dir) == 0 then
-    vim.notify('invalid dir: '..dir)
-    return
-  end
-  if vim.api.nvim_get_current_buf() == buf then
-    vim.cmd.lcd(dir)
-
-    update_vim_dir(dir)
-  end
-end
-
--- Straight from doc
-vim.api.nvim_create_autocmd({ 'TermRequest' }, {
-  desc = 'Handles OSC 7 dir change requests',
-  callback = function(ev)
-    local dir, n = string.gsub(ev.data.sequence, '\027]7;file://[^/]*', '')
-    if n > 0 then
-      handle_dir_change(dir, ev.buf)
-    end
-  end
-})
