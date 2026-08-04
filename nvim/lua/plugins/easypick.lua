@@ -1,4 +1,3 @@
-
 return {
   "axkirillov/easypick.nvim",
   cmd = { "Easypick" },
@@ -53,6 +52,16 @@ return {
           name = "conflicts",
           command = "git diff --name-only --diff-filter=U --relative",
           previewer = easypick.previewers.file_diff()
+        },
+        {
+          name = "changed_files_nvim_config",
+          command = "cd ~/code/nvim-config && git diff --name-only HEAD | xargs -I{} realpath {}",
+          previewer = easypick.previewers.file_diff()
+        },
+        {
+          name = "changed_files_previous_commit_nvim_config",
+          command = "cd ~/code/nvim-config && git diff --name-only HEAD~ | xargs -I{} realpath {}",
+          previewer = diff_previous_commit()
         },
       }
     })

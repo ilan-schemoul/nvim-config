@@ -12,6 +12,8 @@ set("vm", "<cmd>Telescope find_files search_dirs=" .. nvim_config_path .. "/lua/
 set("vg", "<cmd>Telescope live_grep search_dirs=" .. nvim_root_path .. "<cr>", "Grep in nvim config")
 set("va", "<cmd>Telescope find_files search_dirs=" .. nvim_config_path .. "/lua/config/api<cr>", "Find files in api config")
 set("vl", "<cmd>Telescope find_files search_dirs=" .. nvim_root_path .. "<cr>", "Find files in nvim config")
+set("vc", "<cmd>Easypick changed_files_nvim_config<cr>", "Find files in nvim config")
+set("vC", "<cmd>Easypick changed_files_previous_commit_nvim_config<cr>", "Find files in nvim config")
 set("vG", function()
   api.sticky.lazygit.toggle(false, nvim_root_path)
 end, "Toggle lazygit in nvim config")
