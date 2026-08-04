@@ -28,6 +28,22 @@ return
        }
      })
 
+     vim.lsp.config('roslyn_ls', {
+      cmd = {
+          "roslyn-language-server",
+          "--stdio",
+          -- Start once in background, all other connect to it
+          "--daemon-mode"
+      },
+      settings = {
+        ["csharp|background_analysis"] = {
+          dotnet_analyzer_diagnostics_scope = "VisibleFilesAndOpenFilesWithPreviouslyReportedDiagnostics",
+          dotnet_compiler_diagnostics_scope = "VisibleFilesAndOpenFilesWithPreviouslyReportedDiagnostics"
+        },
+      }
+    })
+    vim.lsp.enable('roslyn_ls')
+
     vim.lsp.config('clangd', {
       capabilities = capabilities,
       cmd = {

@@ -30,29 +30,29 @@ gv last selection
 # TODO
 
 ## Highest
-- Fix focus lazygit
+- Make /commit ask EXPLICIT approval of commit msg
 - Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
-- Open Claude when sending Koala commands
-- Smelly sunflower
 
 ## High priority
-- https://github.com/stevearc/overseer.nvim compile, rebuild, start unit/functional/integration test
 - Replace api by 1password call
 - https://github.com/nvim-mini/mini.ai
+- mini operators
+- Use clipboard shortcut
+- Alert hot mac
 
 # Medium priority
+- https://github.com/stevearc/overseer.nvim compile, rebuild, start unit/functional/integration test
 - Bring back obsession or similar
 - Search in past logs
-- Use clipboard shortcut
 ## Low priority
 - Remainder plugin
 - https://github.com/Wansmer/treesj
 
 # Claude skills ideas
 ## To commit
-- Commit
-- Push
+- Commit (optimise first speed)
+- Push (optimise speed)
 ## To write
 - Review MPEG
 - Apply comments from Gitlab
