@@ -26,37 +26,6 @@ vim.api.nvim_create_user_command("Restart", function()
 end, { nargs = 0 })
 
 
-local resources = {
-  'anvil', 'solid', 'bank-listener', 'block-listener', 'exchange-listener',
-  'block-monitor', 'eva', 'postgres', 'redis', 'mock'
-}
-
-local complete_rebuild = function(ArgLead)
-  return vim.tbl_filter(function(resource)
-    return vim.startswith(resource, ArgLead)
-  end, resources)
-end
-
-vim.api.nvim_create_user_command("Rebuild", function(args)
-  local service = args.fargs[1]
-
-  local fidget = require("fidget")
-  local spinner = fidget.progress.handle.create({
-    title = "Building " .. service,
-  })
-
-  local on_exit = function(obj)
-    if obj.code == 0 then
-      vim.notify(service .. " has been rebuild")
-    else
-      vim.notify('Failed to rebuild ' .. service, vim.log.levels.ERROR)
-    end
-    spinner:finish()
-  end
-
-  vim.system({ vim.o.shell, "-c", "rebuild " .. service }, {}, on_exit)
-end, { nargs = 1, complete = complete_rebuild })
-
 -- Used by lazygit
 -- I cannot just close "lazygit" term, because sometimes lazygit is inside a
 -- fish FTerm and I cannot easily know which one (depending on if you open fish

@@ -2,7 +2,6 @@ require("config/lazy")
 
 require("config/native_plugins")
 require("config/user_commands")
-require("config/dotnet_quickfix")
 require("config/auto_commands")
 require("config/cron")
 

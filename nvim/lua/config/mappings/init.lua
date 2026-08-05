@@ -194,6 +194,7 @@ set("zc", api.window.close_centered, "Close centered window")
 set("zx", api.window.close_centered, "Close centered window")
 
 -- Open the extremely useful quickfix list (enhanced via bqf btw)
+set("it", api.dotnet.parse_test_file, "Open quickfix list")
 set("io", "<cmd>copen<cr>", "Open quickfix list")
 set("ij", "<cmd>cnext<cr>", "Next quickfix item")
 set("ik", "<cmd>cprev<cr>", "Previous quickfix item")
@@ -250,17 +251,10 @@ set("vs", function()
   os.execute("code -g " .. path .. ":" .. linenumber)
 end, "Open file at line in VS Code")
 
-for _, symbol in ipairs({ "#", "\"", "3", "c" }) do
-  set(symbol .. "R", ":Dotnet lsp restart<cr>", "Restart .NET LSP")
-  set(symbol .. "e", ":Dotnet<cr>", "Open .NET commands")
-  set(symbol .. "r", ":Dotnet run<cr>", "Run .NET project")
-  set(symbol .. "b", ":Dotnet build<cr>", "Build .NET project")
-  set(symbol .. "d", ":Dotnet debug<cr>", "Debug .NET project")
-  set(symbol .. "t", ":Dotnet testrunner<cr>", "Run .NET tests")
-  set(symbol .. "l", ":Dotnet lsp restart<cr>", "Restart .NET LSP")
-end
-
-set("C", ":Rebuild ", "Rebuild")
+set("ct", api.dotnet.parse_test_file, "Open quickfix list for test")
+set("cr", api.dotnet.rebuild, "Rebuild")
+set("cs", api.dotnet.rebuild, "Rebuild")
+set("cb", api.dotnet.build, "Build")
 
 set("uu", ":Undotree<cr>")
 

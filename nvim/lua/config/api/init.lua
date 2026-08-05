@@ -57,5 +57,7 @@ api.text = lazy('text')
 api.ui = lazy('ui')
 ---@module 'config.api.window'
 api.window = lazy('window')
+---@module 'config.api.dotnet'
+api.dotnet = lazy('dotnet')
 
 return api
