@@ -8,6 +8,7 @@ set termguicolors
 " Metal gear
 set textwidth=80
 autocmd FileType gitcommit set textwidth=80
+autocmd FileType markdown set textwidth=0
 autocmd FileType cs set textwidth=140
 autocmd FileType norg set textwidth=0
 
