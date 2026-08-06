@@ -17,4 +17,4 @@ set("vC", "<cmd>Easypick changed_files_previous_commit_nvim_config<cr>", "Find f
 set("vG", function()
   api.sticky.lazygit.toggle(false, nvim_root_path)
 end, "Toggle lazygit in nvim config")
-set("vt", "<cmd>e ~/nvim-main/todo.norg<cr>", "Open nvim config todo")
+set("vt", "<cmd>e " .. nvim_root_path .. "/README.md" .. "<cr>", "Open nvim config todo")
