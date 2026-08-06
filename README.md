@@ -35,6 +35,7 @@ gv last selection
 - Improve ast grep queries for wolverine
 
 ## High priority
+- When a test succeeds, "snapshot" of current code so if test fails after I can diff with current code
 - Replace api by 1password call
 - https://github.com/nvim-mini/mini.ai
 - mini operators
