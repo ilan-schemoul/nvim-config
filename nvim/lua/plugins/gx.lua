@@ -16,6 +16,39 @@ return {
           end
         end,
       },
+      regex101 = {
+        name = "regex101",
+        handle = function(mode, line, _)
+          local helper = require("gx.helper")
+          local valid_flags = "gimsuyxUJ"
+          local start = 1
+
+          while true do
+            -- /regex/, escaped slashes not counted as the closing delimiter
+            local i, j, regex = string.find(line, "/(.-[^\\/])/", start)
+            if not i then
+              return
+            end
+
+            local afterLastSlash = j + 1
+            -- If we have /blabla/ABC => ABC
+            local flags = line:match("^%a*", afterLastSlash)
+            if flags:find("[^" .. valid_flags .. "]") then
+              flags = ""
+            end
+
+            if helper.check_if_cursor_on_url(mode, i, j + #flags) then
+              local url = "https://regex101.com/?regex=" .. helper.urlencode(regex)
+              if flags ~= "" then
+                url = url .. "&flags=" .. flags
+              end
+              return url
+            end
+
+            start = j + 1
+          end
+        end,
+      },
     },
   },
   init = function()
