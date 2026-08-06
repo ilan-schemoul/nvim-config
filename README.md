@@ -30,7 +30,6 @@ gv last selection
 # TODO
 
 ## Highest
-- Make /commit ask EXPLICIT approval of commit msg
 - Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
 
