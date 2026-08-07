@@ -2,12 +2,12 @@ local config = require('config/config')
 
 return {
   "catppuccin/nvim",
-  name = "catppuccin",
-  init = function()
+  event = "VimEnter",
+  config = function(opts)
+    require('catppuccin').setup(opts)
     vim.cmd("colorscheme catppuccin-macchiato")
   end,
   priority = 1000,
-  lazy = true,
   opts = {
     default_integrations = true,
     transparent_background = config.ui.transparent_background,
