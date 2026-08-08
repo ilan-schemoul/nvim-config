@@ -49,6 +49,8 @@ api.lsp = lazy('lsp')
 api.sticky = lazy('sticky')
 ---@module 'config.api.tab'
 api.tab = lazy('tab')
+---@module 'config.api.telescope'
+api.telescope = lazy('telescope')
 ---@module 'config.api.terminal'
 api.terminal = lazy('terminal')
 ---@module 'config.api.text'

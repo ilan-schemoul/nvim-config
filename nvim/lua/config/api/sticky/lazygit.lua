@@ -3,8 +3,6 @@ local file = require("config/api/file")
 
 local M = {}
 
-local last_lazygit_root = nil
-
 local refresh_buffer = function()
   if vim.api.nvim_buf_get_name(0) ~= "" then
     vim.cmd("Gitsigns refresh")
@@ -13,20 +11,10 @@ local refresh_buffer = function()
   end
 end
 
-function M.get_lazygit_cwd(root)
-  root = root or file.cwd()
-
-  if not root then
-    root = last_lazygit_root
-  else
-    root = vim.uv.fs_realpath(root) or root
-
-    if not root then
-      return last_lazygit_root
-    else
-      return vim.fs.root(root, ".git") or last_lazygit_root
-    end
-  end
+function M.get_lazygit_cwd()
+  local root = file.cwd()
+  root = vim.uv.fs_realpath(root) or root
+  return root
 end
 
 function M.refresh()
@@ -39,29 +27,14 @@ function M.refresh()
   end, 500)
 end
 
-function M.close_and_refresh()
-  local terminals = require('config/api/sticky').terminals
-
-  for _, term in pairs(terminals) do
-    term:close()
-  end
-
-  M.refresh()
-end
-
 -- Fullscreen lazygit rooted at the git root, refreshing the buffers it touched on exit
 function M.toggle(force_new, cwd)
   local on_exit = M.refresh
 
   local root = cwd or M.get_lazygit_cwd()
 
-  if last_lazygit_root ~= root then
-    last_lazygit_root = root
-    force_new = true
-  end
-
   local opts = {
-    force_new = force_new,
+    force_new = true,
     on_exit = on_exit,
     on_q = on_exit,
     border = 'rounded',

@@ -1,3 +1,5 @@
+local api = require('config/api')
+
 return {
   "danielfalk/smart-open.nvim",
   dependencies = {
@@ -6,11 +8,7 @@ return {
   },
   lazy = true,
   keys = {
-    { "<leader>ll", function()
-      require('telescope').extensions.smart_open.smart_open {
-        cwd_only = true,
-      }
-    end, desc = "Smart open file (cwd)" },
+    { "<leader>ll", api.telescope.smart_open, desc = "Smart open file (cwd)" },
     { "<leader>lL", "<cmd>Telescope smart_open<cr>", desc = "Smart open file" },
   },
   config = function(_, _)

@@ -32,15 +32,15 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 vim.api.nvim_create_autocmd("TermClose", {
   pattern = "*",
   callback = function()
-    -- XXX: disable for all fterm and handle it myself
-    if (vim.bo.buftype == "terminal" or vim.bo.filetype == "lua") and vim.v.shell_error == 0 then
-      -- Let me see errors
-      if vim.bo.ft == "ft_aspire" or vim.bo.ft == "ft_lazygit" or vim.bo.ft == "ft_pgcli" then
-        return
-      end
-
-      vim.cmd("bdelete! " .. vim.fn.expand("<abuf>"))
+    if vim.bo.ft == "ft_aspire" or vim.bo.ft == "ft_pgcli" then
+      return
     end
+
+    if vim.bo.ft == "ft_lazygit" and vim.v.shell_error ~= 0 then
+      return
+    end
+
+    vim.cmd("bdelete! " .. vim.fn.expand("<abuf>"))
   end,
 })
 

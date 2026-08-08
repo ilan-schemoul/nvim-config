@@ -79,7 +79,7 @@ set("tb", "<cmd>Telescope bookmarks<cr>", "Open bookmarks")
 
 -- set("ty") by neoclip.lua
 set("tt", "<cmd>Telescope<cr>", "Open Telescope picker list")
-set("tg", "<cmd>Telescope live_grep<cr>", "Live grep")
+set("tg", api.telescope.live_grep, "Live grep")
 
 set("wh", api.ast_grep.find_wolverine_handler, "Find Wolverine handler")
 set("ws", api.ast_grep.find_wolverine_sender, "Find Wolverine sender")

@@ -34,14 +34,14 @@ gv last selection
 - Improve ast grep queries for wolverine
 
 ## High priority
-- When a test succeeds, "snapshot" of current code so if test fails after I can diff with current code
+- Use sfln (from vs code if exist, otherwise create)
 - Replace api by 1password call
 - https://github.com/nvim-mini/mini.ai
 - mini operators
 - Use clipboard shortcut
-- Alert hot mac
 
 # Medium priority
+- When a test succeeds, "snapshot" of current code so if test fails after I can diff with current code
 - https://github.com/stevearc/overseer.nvim compile, rebuild, start unit/functional/integration test
 - Bring back obsession or similar
 - Search in past logs
