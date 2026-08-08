@@ -63,7 +63,7 @@ set("ss", ":mksession! ~/Session.vim<cr>", "Save session")
 set("q", api.window.close_if_not_last, "Close window (unless last)")
 -- Close neovim
 set("Q", "<cmd>qa!<cr>", "Quit Neovim, discard all changes")
-set("R", "<cmd>mksession! /tmp/Session.vim | restart source /tmp/Session.vim<cr>", "Restart Neovim, restoring session")
+set("R", "<cmd>mksession! /tmp/Session.vim | restart | source /tmp/Session.vim<cr>", "Restart Neovim, restoring session")
 
 set("m", "<cmd>Mason<cr>", "Open Mason")
 
