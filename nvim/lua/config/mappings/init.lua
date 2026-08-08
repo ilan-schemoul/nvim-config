@@ -38,7 +38,8 @@ vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Show LSP sign
 
 set("A", "<cmd>NodeAction<cr>", "Run node action")
 
--- Open a new window with same file as current buffer
+-- Open a new empty buffer in the current window
+set("bn", "<cmd>enew<cr>", "New buffer in current window")
 set("bh", "<cmd>vsplit<cr>", "Split window vertically")
 set("bj", "<cmd>belowright split<cr>", "Split window below")
 set("bk", "<cmd>topleft split<cr>", "Split window above")

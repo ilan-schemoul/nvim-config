@@ -30,7 +30,6 @@ gv last selection
 # TODO
 
 ## Highest
-- fix bn
 - Fix highlight not green
 - Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
