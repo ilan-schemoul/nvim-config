@@ -158,6 +158,7 @@ end
 
 return {
   "folke/which-key.nvim",
+  event = "VeryLazy",
   config = function()
     -- ours win, then upstream's, then a catch-all so every desc gets something.
     -- Upstream rules must be inlined here: which-key stops at the first match in
