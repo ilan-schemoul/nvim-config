@@ -134,7 +134,9 @@ set("pk", "<cmd>topleft split | lua _G.OpenUnusedTermOrCreate()<cr>", "Open term
 set("pl", "<cmd>botright vs | lua _G.OpenUnusedTermOrCreate()<cr>", "Open terminal in vertical split (right)")
 
 -- Repeat last command (very useful)
-set("pr", "<cmd>SendToTerm !!<cr>", "Repeat last terminal command")
+set("pr", function()
+  require('nvim-send-to-term').send('!!')
+end, "Repeat last terminal command")
 set("ps", "<cmd>SendToTerm<cr>", "Send line/selection to terminal")
 
 -- If you juste do "p" and the text in the clipboard has no newline

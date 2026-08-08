@@ -30,8 +30,12 @@ gv last selection
 # TODO
 
 ## Highest
+- fix bn
+- Fix highlight not green
+- Fix !! pr
 - Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
+- use claude servers (like the one to include code and one for logs)
 
 ## High priority
 - Use sfln (from vs code if exist, otherwise create)
