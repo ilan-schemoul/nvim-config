@@ -1,3 +1,4 @@
+local api = require('config/api')
 -- Absolute number if not focus
 vim.api.nvim_create_autocmd({ "WinEnter" }, {
   callback = function()
@@ -48,6 +49,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.jpg", "*.png" },
   callback = function()
     vim.cmd("setfiletype img")
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufWrite" }, {
+  callback = function()
+    for i = 1, vim.fn.line("$") do
+      vim.fn.sign_place(0, "", "default", "", {
+        lnum = i,
+        priority = 0,
+      })
+    end
   end,
 })
 

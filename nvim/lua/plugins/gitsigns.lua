@@ -3,9 +3,37 @@ local spec = {
   cmd = "Gitsigns",
   event = "NormalBufferEnter",
   opts = {
-    signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
-    numhl = true,
+    signcolumn = true,
+    numhl = false,
     linehl = false,
+    signs = {
+      add          = { text = '│' },
+      change       = { text = '│' },
+      delete       = { text = '_', show_count = true },
+      topdelete    = { text = '‾', show_count = true },
+      changedelete = { text = '~', show_count = true },
+      untracked    = { text = '┆' },
+    },
+    signs_staged = {
+      add          = { text = '│' },
+      change       = { text = '│' },
+      delete       = { text = '_', show_count = true },
+      topdelete    = { text = '‾', show_count = true },
+      changedelete = { text = '~', show_count = true },
+      untracked    = { text = '┆' },
+    },
+    count_chars = {
+      "¹",
+      "²",
+      "³",
+      "⁴",
+      "⁵",
+      "⁶",
+      "⁷",
+      "⁸",
+      "⁹",
+      ["+"] = ">"
+    }
   },
   keys = {
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },

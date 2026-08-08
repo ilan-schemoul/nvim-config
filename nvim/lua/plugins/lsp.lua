@@ -16,7 +16,7 @@ return
       vim.bo[bufnr].formatexpr = ""
     end
 
-    vim.diagnostic.config({ update_in_insert = false })
+    vim.diagnostic.config({ update_in_insert = false, signs = false })
 
      vim.lsp.enable('ruff')
      -- vim.lsp.enable('ast_grep')

@@ -107,8 +107,12 @@ set undodir=~/.vim/.undodir
 
 set noswapfile
 
-set number relativenumber
-set numberwidth=1
+"set number relativenumber
+"set numberwidth=1
+
+set statuscolumn=%s
+set signcolumn=yes:1
+sign define default text=│
 
 " Open file with cursor set to where last modification happened
 autocmd BufReadPost *
@@ -140,7 +144,6 @@ let g:matchparen_insert_timeout = 2
 " set nonumber
 " set norelativenumber
 
-lua require("config/api").ui.set_separator_statuscolumn()
 set fillchars=vert:\ ,vertleft:─,vertright:\ ,stl:─,stlnc:─
 set statusline=─
 highlight StatusLine guibg=transparent guifg=#acaeb5
