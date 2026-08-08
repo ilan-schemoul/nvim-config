@@ -134,10 +134,7 @@ set("pk", "<cmd>topleft split | lua _G.OpenUnusedTermOrCreate()<cr>", "Open term
 set("pl", "<cmd>botright vs | lua _G.OpenUnusedTermOrCreate()<cr>", "Open terminal in vertical split (right)")
 
 -- Repeat last command (very useful)
-set("pr", function()
-  require('nvim-send-to-term').send('!!')
-end, "Repeat last terminal command")
-set("ps", "<cmd>SendToTerm<cr>", "Send line/selection to terminal")
+set("pr", api.terminal.repeat_last_command, "Repeat last terminal command")
 
 -- If you juste do "p" and the text in the clipboard has no newline
 -- then it will paste it in the middle of the current line.

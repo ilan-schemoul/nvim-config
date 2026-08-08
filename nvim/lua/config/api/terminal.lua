@@ -46,6 +46,10 @@ function M.open_unused_or_create()
   vim.cmd(":term")
 end
 
+function M.repeat_last_command()
+  require('nvim-send-to-term').send('!!')
+end
+
 -- Needed by the `<cmd>vsplit | lua ...<cr>` mappings, which cannot see locals
 _G.OpenUnusedTermOrCreate = M.open_unused_or_create
 
