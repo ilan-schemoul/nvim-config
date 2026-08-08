@@ -1,15 +1,11 @@
 local spec = {
-  -- autosync is enabled on my fork because the as
-  "ilan-schemoul/gitsigns.nvim",
+  "lewis6991/gitsigns.nvim",
   cmd = "Gitsigns",
   event = "NormalBufferEnter",
   opts = {
     signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
     numhl = true,
     linehl = false,
-    -- NOTE: my fork adds this. The (rude) owner of the plugin refuses
-    -- features so I have a gh action to sync my fork with his repo.
-    staged_highlight_derivative_factor = 0.25
   },
   keys = {
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },

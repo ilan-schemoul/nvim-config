@@ -20,9 +20,12 @@ highlight DiffChange guibg=#2b3148
 highlight ColorColumn ctermbg=0 guibg=#212337
 highlight CursorLine guibg=#2a2c3f
 highlight CursorLineNr guifg=#aaaaaa
-highlight GitSignsAdd guifg=#279403
-highlight GitSignsDelete guifg=#b60e28
+highlight GitSignsAdd guifg=#3ce505
+highlight GitSignsStagedAddNr guifg=#258e03
+highlight GitSignsDelete guifg=#ed193a
+highlight GitSignsStagedDeleteNr guifg=#ac0e26
 highlight GitSignsChange guifg=#d7d803
+highlight GitSignsStagedChangeNr guifg=#b0b102
 highlight TreesitterContext guibg=#1c1e2e
 highlight LspSignatureActiveParameter guifg=#ffaa00
 
