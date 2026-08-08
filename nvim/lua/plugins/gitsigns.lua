@@ -36,6 +36,7 @@ local spec = {
     }
   },
   keys = {
+    { "gB", "<cmd>Gitsigns blame<cr>", desc = "Toggle git blame" },
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
     {
       "<leader>gs",
@@ -128,6 +129,14 @@ local spec = {
         end
       end,
       desc = "Previous hunk",
+    },
+
+    {
+      'gQ', function() require('gitsigns').setqflist('all') end
+    },
+
+    {
+      'gq', function() require('gitsigns').setqflist() end,
     },
   },
 }
