@@ -119,3 +119,17 @@ vim.api.nvim_create_autocmd({ "User" },
       end)
     end
   })
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+  callback = function()
+    local path = vim.api.nvim_buf_get_name(0)
+    local root = vim.fs.root(path, ".git")
+
+    if root then
+      vim.wo[0].signcolumn = "yes:1"
+    else
+      vim.wo[0].signcolumn = "no"
+    end
+  end,
+})
+
