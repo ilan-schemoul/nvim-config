@@ -16,7 +16,19 @@ return
       vim.bo[bufnr].formatexpr = ""
     end
 
-    vim.diagnostic.config({ update_in_insert = false, signs = false })
+    vim.diagnostic.config({
+      update_in_insert = false,
+      -- Handled by tiny inline diagnostic
+      virtual_text = false,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = '󰅚 ',
+          [vim.diagnostic.severity.WARN] = '󰀪 ',
+          [vim.diagnostic.severity.INFO] = '󰋽 ',
+          [vim.diagnostic.severity.HINT] = '󰌶 ',
+        }
+      }
+    })
 
      vim.lsp.enable('ruff')
      -- vim.lsp.enable('ast_grep')
