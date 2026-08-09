@@ -3,10 +3,6 @@ local M = {}
 local separator_char = "│"
 M.separator_char = separator_char
 
-function M.set_separator_statuscolumn()
-  vim.cmd("set statuscolumn=" .. separator_char)
-end
-
 function M.set_float_hl_by_filetype(ft_to_hl)
   local ns_id = 1000
 

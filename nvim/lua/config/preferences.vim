@@ -88,7 +88,6 @@ autocmd FileType cs set tabstop=4
 autocmd FileType cs set shiftwidth=4
 
 set shiftround " round indent to multiples
-set signcolumn=no " show in the same column as the numbers, hide if no signs (like auto option)
 
 set scrolloff=4 " minimum number of lines below and above cursor
 set sidescrolloff=5 " columns to keep on right and left of cursor
@@ -110,7 +109,7 @@ set noswapfile
 set numberwidth=1
 
 set statuscolumn=%s
-set signcolumn=no
+set signcolumn=auto
 " If you want a default sign you also need to enable the corresponding autocommand
 " sign define default text=│ texthl=DefaultSign
 

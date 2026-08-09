@@ -24,7 +24,7 @@ Snacks.toggle.new({
       vim.wo[0].statuscolumn = "%l"
       vim.wo[0].relativenumber = true
     else
-      vim.wo[0].signcolumn = "yes:1"
+      vim.wo[0].signcolumn = "auto:1"
       vim.wo[0].statuscolumn = "%s"
       vim.wo[0].relativenumber = false
       vim.wo[0].number = false
@@ -40,7 +40,7 @@ Snacks.toggle.new({
   end,
   set = function(absolute_nb)
     vim.wo[0].statuscolumn = absolute_nb and "%l" or "%s"
-    vim.wo[0].signcolumn = absolute_nb and "no" or "yes:1"
+    vim.wo[0].signcolumn = absolute_nb and "no" or "auto:1"
     vim.wo[0].number = absolute_nb
     vim.wo[0].relativenumber = false
   end,
@@ -58,7 +58,7 @@ Snacks.toggle.new({
 
     if set_sign then
       vim.wo[0].statuscolumn = "%s"
-      vim.wo[0].signcolumn = "yes:1"
+      vim.wo[0].signcolumn = "auto:1"
     else
       vim.wo[0].statuscolumn = ""
       vim.wo[0].signcolumn = "no"
