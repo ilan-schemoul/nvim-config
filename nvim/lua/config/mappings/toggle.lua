@@ -16,20 +16,21 @@ Snacks.toggle.new({
   id = "number",
   name = "Number",
   get = function()
-    return vim.wo[0].statuscolumn == "%l"
+    return vim.wo[0].statuscolumn == "%l" and vim.wo[0].relativenumber == true
   end,
   set = function(set_nb)
     if set_nb then
+      vim.wo[0].signcolumn = "no"
       vim.wo[0].statuscolumn = "%l"
-      vim.wo[0].number = true
       vim.wo[0].relativenumber = true
     else
-      api.ui.set_separator_statuscolumn()
-      vim.wo[0].number = false
+      vim.wo[0].signcolumn = "yes:1"
+      vim.wo[0].statuscolumn = "%s"
       vim.wo[0].relativenumber = false
+      vim.wo[0].number = false
     end
   end,
-}):map("<leader>un")
+}):map("<leader>ur")
 
 Snacks.toggle.new({
   id = "absolute_number",
@@ -38,9 +39,10 @@ Snacks.toggle.new({
     return vim.wo[0].relativenumber == false and vim.wo[0].statuscolumn == "%l"
   end,
   set = function(absolute_nb)
-    vim.wo[0].statuscolumn = absolute_nb and "%l" or api.ui.separator_char
+    vim.wo[0].statuscolumn = absolute_nb and "%l" or "%s"
+    vim.wo[0].signcolumn = absolute_nb and "no" or "yes:1"
     vim.wo[0].number = absolute_nb
-    vim.wo[0].relativenumber = not absolute_nb
+    vim.wo[0].relativenumber = false
   end,
 }):map("<leader>ua")
 
@@ -48,15 +50,18 @@ Snacks.toggle.new({
   id = "sign",
   name = "Sign",
   get = function()
-    return vim.wo[0].statuscolumn == api.ui.separator_char
+    return vim.wo[0].statuscolumn == "%s"
   end,
   set = function(set_sign)
+    vim.wo[0].relativenumber = false
+    vim.wo[0].number = false
+
     if set_sign then
-      vim.wo[0].statuscolumn = api.ui.separator_char
+      vim.wo[0].statuscolumn = "%s"
+      vim.wo[0].signcolumn = "yes:1"
     else
       vim.wo[0].statuscolumn = ""
-      vim.wo[0].number = false
-      vim.wo[0].relativenumber = false
+      vim.wo[0].signcolumn = "no"
     end
   end,
 }):map("<leader>us")
@@ -85,6 +90,6 @@ Snacks.toggle.new({
       require("rainbow-delimiters").disable(0)
     end
   end,
-}):map("<leader>ur")
+}):map("<leader>ug")
 
 --
