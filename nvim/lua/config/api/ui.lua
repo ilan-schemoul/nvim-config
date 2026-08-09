@@ -1,8 +1,5 @@
 local M = {}
 
-local separator_char = "│"
-M.separator_char = separator_char
-
 function M.set_float_hl_by_filetype(ft_to_hl)
   local ns_id = 1000
 
@@ -43,6 +40,25 @@ function M.toggle_recording_cursor_hl()
     vim.api.nvim_set_hl(0, 'Cursor', {
       bg = '#ED5919',
     })
+  end
+end
+
+function M.set_signcolumn(set)
+  if set then
+    vim.wo[0].statuscolumn = "%s"
+    vim.wo[0].signcolumn = "yes:1"
+  else
+    vim.wo[0].statuscolumn = ""
+    vim.wo[0].signcolumn = "no"
+  end
+end
+
+function M.set_number_signcolumn(set)
+  if set then
+    vim.wo[0].statuscolumn = "%l"
+    vim.wo[0].signcolumn = "yes:1"
+  else
+    M.set_signcolumn(true)
   end
 end
 

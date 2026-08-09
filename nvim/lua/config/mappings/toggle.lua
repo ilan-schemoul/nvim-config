@@ -19,16 +19,10 @@ Snacks.toggle.new({
     return vim.wo[0].statuscolumn == "%l" and vim.wo[0].relativenumber == true
   end,
   set = function(set_nb)
-    if set_nb then
-      vim.wo[0].signcolumn = "no"
-      vim.wo[0].statuscolumn = "%l"
-      vim.wo[0].relativenumber = true
-    else
-      vim.wo[0].signcolumn = "auto:1"
-      vim.wo[0].statuscolumn = "%s"
-      vim.wo[0].relativenumber = false
-      vim.wo[0].number = false
-    end
+    api.ui.set_number_signcolumn(set_nb)
+
+    vim.wo[0].number = set_nb
+    vim.wo[0].relativenumber = set_nb
   end,
 }):map("<leader>ur")
 
@@ -36,13 +30,13 @@ Snacks.toggle.new({
   id = "absolute_number",
   name = "Absolute number",
   get = function()
-    return vim.wo[0].relativenumber == false and vim.wo[0].statuscolumn == "%l"
+    return vim.wo[0].number and vim.wo[0].statuscolumn == "%l"
   end,
   set = function(absolute_nb)
-    vim.wo[0].statuscolumn = absolute_nb and "%l" or "%s"
-    vim.wo[0].signcolumn = absolute_nb and "no" or "auto:1"
+    api.ui.set_number_signcolumn(absolute_nb)
+
     vim.wo[0].number = absolute_nb
-    vim.wo[0].relativenumber = false
+    vim.wo[0].relativenumber = not absolute_nb
   end,
 }):map("<leader>ua")
 
@@ -50,19 +44,13 @@ Snacks.toggle.new({
   id = "sign",
   name = "Sign",
   get = function()
-    return vim.wo[0].statuscolumn == "%s"
+    return vim.wo[0].statuscolumn ~= ""
   end,
   set = function(set_sign)
-    vim.wo[0].relativenumber = false
-    vim.wo[0].number = false
+    api.ui.set_signcolumn(set_sign)
 
-    if set_sign then
-      vim.wo[0].statuscolumn = "%s"
-      vim.wo[0].signcolumn = "auto:1"
-    else
-      vim.wo[0].statuscolumn = ""
-      vim.wo[0].signcolumn = "no"
-    end
+    vim.wo[0].number = false
+    vim.wo[0].relativenumber = false
   end,
 }):map("<leader>us")
 

@@ -121,3 +121,14 @@ vim.api.nvim_create_autocmd({ "User" },
     end
   })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufWrite" }, {
+  callback = function()
+    vim.schedule(function()
+      local gitsigns = require('gitsigns')
+      local hunks = gitsigns.get_hunks(0)
+
+      api.ui.set_signcolumn(hunks and #hunks > 0)
+    end)
+  end,
+})
+
