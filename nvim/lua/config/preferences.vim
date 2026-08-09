@@ -111,7 +111,8 @@ set numberwidth=1
 
 set statuscolumn=%s
 set signcolumn=no
-sign define default text=│
+" If you want a default sign you also need to enable the corresponding autocommand
+" sign define default text=│ texthl=DefaultSign
 
 " Open file with cursor set to where last modification happened
 autocmd BufReadPost *

@@ -52,16 +52,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufWrite" }, {
-  callback = function()
-    for i = 1, vim.fn.line("$") do
-      vim.fn.sign_place(0, "", "default", "", {
-        lnum = i,
-        priority = 0,
-      })
-    end
-  end,
-})
+-- Put default signs
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufWrite" }, {
+--   callback = function()
+--     for i = 1, vim.fn.line("$") do
+--       vim.fn.sign_place(0, "", "default", "", {
+--         lnum = i,
+--         priority = 0,
+--       })
+--     end
+--   end,
+-- })
 
 local create_term_name = function(process)
   local bin = vim.fn.exepath(process.name)
