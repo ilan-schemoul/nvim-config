@@ -52,16 +52,36 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- Put default signs
--- vim.api.nvim_create_autocmd({ "BufRead", "BufWrite" }, {
---   callback = function()
---     for i = 1, vim.fn.line("$") do
---       vim.fn.sign_place(0, "", "default", "", {
---         lnum = i,
---         priority = 0,
---       })
---     end
---   end,
+local stc_line_count = {}
+local update_height, _ = api.misc.debounce_trailing(function(args)
+    local time_before_refresh = 600
+
+    vim.defer_fn(function()
+      local buf = args.buf
+
+      if vim.bo[buf].buftype ~= "" then
+        return
+      end
+
+      local count = vim.api.nvim_buf_line_count(buf)
+      if stc_line_count[buf] == count then
+        return
+      end
+      stc_line_count[buf] = count
+
+      for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+        if vim.wo[win].statuscolumn ~= "" then
+          vim.wo[win].numberwidth = vim.wo[win].numberwidth
+        end
+      end
+    end, time_before_refresh)
+
+  end, 250)
+
+-- Refresh status column.
+-- Not enabled because I am not sure if I want this (it moves the column)
+-- vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+  -- callback = update_height,
 -- })
 
 local create_term_name = function(process)
@@ -120,15 +140,3 @@ vim.api.nvim_create_autocmd({ "User" },
       end)
     end
   })
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufWrite" }, {
-  callback = function()
-    vim.schedule(function()
-      local gitsigns = require('gitsigns')
-      local hunks = gitsigns.get_hunks(0)
-
-      api.ui.set_signcolumn(hunks and #hunks > 0)
-    end)
-  end,
-})
-

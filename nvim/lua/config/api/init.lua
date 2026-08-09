@@ -63,5 +63,9 @@ api.window = lazy('window')
 api.dotnet = lazy('dotnet')
 ---@module 'config.api.perf'
 api.perf = lazy('perf')
+---@module 'config.api.statuscolumn'
+api.status_column = lazy('statuscolumn')
+---@module 'config.api.misc'
+api.misc = lazy('misc')
 
 return api

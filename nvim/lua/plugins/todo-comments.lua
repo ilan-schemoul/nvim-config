@@ -10,6 +10,7 @@ return {
     { "[t", function() require("todo-comments").jump_prev({keywords = { "TODO" }}) end, desc = "Previous todo comment" },
   },
   opts = {
+    sign_priority = 5, -- sign priority
     search = {
       wrap = true,
     },

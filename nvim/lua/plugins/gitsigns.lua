@@ -23,7 +23,7 @@ local spec = {
       untracked    = { text = '┆' },
     },
     count_chars = {
-      "¹",
+      "",
       "²",
       "³",
       "⁴",

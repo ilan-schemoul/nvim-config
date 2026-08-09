@@ -19,7 +19,7 @@ Snacks.toggle.new({
     return vim.wo[0].statuscolumn == "%l" and vim.wo[0].relativenumber == true
   end,
   set = function(set_nb)
-    api.ui.set_number_signcolumn(set_nb)
+    api.status_column.set_number_signcolumn(set_nb)
 
     vim.wo[0].number = set_nb
     vim.wo[0].relativenumber = set_nb
@@ -30,10 +30,10 @@ Snacks.toggle.new({
   id = "absolute_number",
   name = "Absolute number",
   get = function()
-    return vim.wo[0].number and vim.wo[0].statuscolumn == "%l"
+    return vim.wo[0].statuscolumn == "%l" and vim.wo[0].relativenumber == false
   end,
   set = function(absolute_nb)
-    api.ui.set_number_signcolumn(absolute_nb)
+    api.status_column.set_number_signcolumn(absolute_nb)
 
     vim.wo[0].number = absolute_nb
     vim.wo[0].relativenumber = not absolute_nb
@@ -47,7 +47,7 @@ Snacks.toggle.new({
     return vim.wo[0].statuscolumn ~= ""
   end,
   set = function(set_sign)
-    api.ui.set_signcolumn(set_sign)
+    api.status_column.set_signcolumn(set_sign)
 
     vim.wo[0].number = false
     vim.wo[0].relativenumber = false

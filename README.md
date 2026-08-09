@@ -34,6 +34,7 @@ gv last selection
 - Improve ast grep queries for wolverine
 - use claude servers (like the one to include code and one for logs)
 - gitsigns stopped working if outside cwd ? (or never worked ?)
+- Improve cc
 
 ## High priority
 - Use sfln (from vs code if exist, otherwise create)

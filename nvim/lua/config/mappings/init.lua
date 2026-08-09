@@ -282,3 +282,7 @@ vim.cmd([[
 vim.cmd("xnoremap <expr> p 'pgv\"' . v:register . 'y'")
 
 set(":", Snacks.picker.command_history, "Command history")
+
+set("se", function()
+  vim.wo[0].nuw = vim.wo[0].nuw
+end)

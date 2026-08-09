@@ -49,7 +49,7 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Focus opens column line number which we don't want for terminals
 autocmd TermOpen * lua vim.b.focus_disable = true
-" XXX: change the value in mappings <C-q> as well
+" HACK: ed
 autocmd TermOpen * setlocal scrollback=20000
 autocmd TermOpen * setlocal nospell
 autocmd TermOpen,BufWinEnter,WinEnter,BufEnter term://* lua require("config/api").terminal.start_insert_if_bottom()
@@ -108,10 +108,10 @@ set noswapfile
 
 set numberwidth=1
 
-set statuscolumn=%s
-set signcolumn=auto
-" If you want a default sign you also need to enable the corresponding autocommand
-" sign define default text=│ texthl=DefaultSign
+" Sign column is always 2 cols width min. I do not like it at all.
+" So I rewrote my status column (which can be 1 width).
+set signcolumn=no
+lua require('config/api').status_column.enable()
 
 " Open file with cursor set to where last modification happened
 autocmd BufReadPost *
@@ -134,14 +134,6 @@ set backupdir=~/.vim/.backupdir
 " https://vi.stackexchange.com/questions/5128/matchpairs-makes-vim-slow/5318#5318
 let g:matchparen_timeout = 2
 let g:matchparen_insert_timeout = 2
-
-" One straight horizontal line between windows
-" set laststatus=3
-
-" Hidden by default
-" set statuscolumn="%l"
-" set nonumber
-" set norelativenumber
 
 set fillchars=vert:\ ,vertleft:─,vertright:\ ,stl:─,stlnc:─
 set statusline=─
