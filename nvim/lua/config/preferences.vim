@@ -107,11 +107,10 @@ set undodir=~/.vim/.undodir
 
 set noswapfile
 
-"set number relativenumber
-"set numberwidth=1
+set numberwidth=1
 
 set statuscolumn=%s
-set signcolumn=yes:1
+set signcolumn=no
 sign define default text=│
 
 " Open file with cursor set to where last modification happened
