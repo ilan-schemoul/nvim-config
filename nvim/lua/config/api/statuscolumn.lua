@@ -28,7 +28,7 @@ end
 
 local function first_col_empty(bufnr, lnum)
   local line = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1]
-  return line:sub(1, 1) == " "
+  return #line == 0 or line:sub(1, 1) == " "
 end
 
 local small_icon_equivalent = {
@@ -88,7 +88,7 @@ local function render_sign(sign, bufnr, lnum)
   if #sign.text >= 2 then
     text = handle_large_icons(sign.text, bufnr, lnum)
   else
-    text = vim.fn.strcharpart(text or "", 0, 1)
+    text = vim.fn.strcharpart(sign.text or "", 0, 1)
   end
 
   if sign.texthl then
