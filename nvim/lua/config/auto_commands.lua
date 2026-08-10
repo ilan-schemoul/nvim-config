@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 vim.api.nvim_create_autocmd("TermClose", {
   pattern = "*",
   callback = function()
-    if vim.bo.ft == "ft_aspire" or vim.bo.ft == "ft_pgcli" then
+    if vim.bo.ft == "ft_aspire" or vim.bo.ft == "ft_pgcli" or vim.bo.ft == "TelescopePrompt" then
       return
     end
 

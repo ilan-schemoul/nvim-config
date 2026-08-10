@@ -32,6 +32,8 @@ gv last selection
 ## Highest
 - Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
+- noice double not printed
+- K for select
 
 ## High priority
 - Use sfln (from vs code if exist, otherwise create)
