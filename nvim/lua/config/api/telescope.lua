@@ -2,11 +2,8 @@ local M = {}
 
 local function telescope_args()
   local oil_dir = require("oil").get_current_dir()
-  local bufname = vim.api.nvim_buf_get_name(0)
-  local git_root = vim.fs.root(bufname, ".git")
-  local root = oil_dir or git_root
+  local root = oil_dir or vim.fn.getcwd()
   local title = vim.fn.fnamemodify(root, ":~")
-  vim.print(title)
 
   return {
     cwd = root,
