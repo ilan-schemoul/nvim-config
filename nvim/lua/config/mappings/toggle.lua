@@ -84,10 +84,16 @@ Snacks.toggle.new({
   id = "colorcolumn",
   name = "Color column",
   get = function()
-    return vim.wo[0].colorcolumn == "+0"
+    return vim.wo[0].colorcolumn ~= "0"
   end,
   set = function(set_cc)
-    vim.wo[0].colorcolumn = set_cc and "+0" or "0"
+    if set_cc then
+      -- Force smart column refresh
+      vim.b[0].prev_state = false
+      vim.api.nvim_exec_autocmds("CursorMoved", { buffer = 0 })
+    else
+      vim.wo[0].colorcolumn = "0"
+    end
   end,
 }):map("<leader>uc")
 

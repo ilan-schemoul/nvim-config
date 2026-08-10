@@ -12,8 +12,6 @@ autocmd FileType markdown set textwidth=0
 autocmd FileType cs set textwidth=140
 autocmd FileType norg set textwidth=0
 
-set colorcolumn=+0
-
 " More bright than the default one
 highlight DiffChange guibg=#2b3148
 " Less bright than default one
@@ -150,9 +148,11 @@ augroup CursorLine
     au BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 
-    au VimEnter * setlocal colorcolumn=+0
-    au WinEnter * setlocal colorcolumn=+0
-    au BufWinEnter * setlocal colorcolumn=+0
+    " prev_state force status column to refresh
+    au VimEnter * let b:prev_state = v:false
+    au WinEnter * let b:prev_state = v:false
+    au BufWinEnter * let b:prev_state = v:false
+
     au WinLeave * setlocal colorcolumn=""
 augroup END
 

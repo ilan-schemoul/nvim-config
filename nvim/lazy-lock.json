@@ -71,6 +71,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "012f1480cd9a5fc99fce7678e0a536421a53fc46" },
   "scope.nvim": { "branch": "main", "commit": "228aabdb1b9cc74f0c0ccec88e79873857236e49" },
   "smart-open.nvim": { "branch": "main", "commit": "1082c18eabd0fb6fcdac4a828b698ccd6e25f291" },
+  "smartcolumn.nvim": { "branch": "main", "commit": "5351ae24e992a397d2abac48b7774dc8ef0acf40" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "spaceless.nvim": { "branch": "main", "commit": "927fb0afb416ea39306af5842c247d810dfd5938" },
   "sqlite.lua": { "branch": "master", "commit": "50092d60feb242602d7578398c6eb53b4a8ffe7b" },
