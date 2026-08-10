@@ -72,10 +72,14 @@ Snacks.toggle.new({
     return require("rainbow-delimiters").is_enabled(0)
   end,
   set = function(enabled)
+    local rainbow = require("rainbow-delimiters")
+
+    rainbow.enable(0)
+
     if enabled then
-      require("rainbow-delimiters").enable(0)
+      rainbow.enable(0)
     else
-      require("rainbow-delimiters").disable(0)
+      rainbow.disable(0)
     end
   end,
 }):map("<leader>ug")

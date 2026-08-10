@@ -1,4 +1,4 @@
 return {
-    "HiPhish/rainbow-delimiters.nvim",
-    event = { "NormalBufferEnter" },
+  "HiPhish/rainbow-delimiters.nvim",
+  lazy = true,
 }
