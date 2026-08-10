@@ -36,7 +36,7 @@ local spec = {
     }
   },
   keys = {
-    { "gB", "<cmd>Gitsigns blame<cr>", desc = "Toggle git blame" },
+    { "gb", "<cmd>Gitsigns blame<cr>", desc = "Toggle git blame" },
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
     {
       "<leader>gs",
