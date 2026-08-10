@@ -17,6 +17,7 @@ local set = api.keymap.leader
 vim.keymap.set("n", "<leader>,", "ggVG", { desc = "Select entire buffer" })
 
 vim.keymap.set("n", "K", api.help.open, { desc = "Open help under cursor" })
+vim.keymap.set("v", "K", function() api.help.open(nil, true) end, { desc = "Open help under cursor" })
 
 -- ll set by ../plugins/smart-open.lua
 set("lc", "<cmd>Easypick changed_files<cr>", "List changed files (Easypick)")

@@ -1,7 +1,21 @@
 local M = {}
 
--- Filetype aware help for the word under the cursor
-function M.open(word)
+local function get_visual_selection()
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+  if s_start[2] == 0 or s_end[2] == 0 then
+    return nil
+  end
+
+  local region = vim.fn.getregion(s_start, s_end)
+  return table.concat(region, " ")
+end
+
+-- Filetype aware help for the word under the cursor, or the visual selection if any
+function M.open(word, is_visual)
+  if is_visual then
+    word = get_visual_selection()
+  end
   word = word or vim.fn.expand("<cword>")
 
   if vim.bo.ft == "cs" then

@@ -32,10 +32,9 @@ gv last selection
 ## Highest
 - Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
-- noice double not printed
-- K for select
 
 ## High priority
+- noice double not printed
 - Use sfln (from vs code if exist, otherwise create)
 - Replace api by 1password call
 - https://github.com/nvim-mini/mini.ai
