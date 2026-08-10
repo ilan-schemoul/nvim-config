@@ -52,37 +52,31 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-local stc_line_count = {}
-local update_height, _ = api.misc.debounce_trailing(function(args)
-    local time_before_refresh = 600
+local function refresh_stc_width(args)
+  -- GitSignsUpdate carries the buffer in data, DiagnosticChanged in buf.
+  local buf = args.data and args.data.buffer or args.buf
 
-    vim.defer_fn(function()
-      local buf = args.buf
+  if not buf or not vim.api.nvim_buf_is_valid(buf) or vim.bo[buf].buftype ~= "" then
+    return
+  end
 
-      if vim.bo[buf].buftype ~= "" then
-        return
-      end
-
-      local count = vim.api.nvim_buf_line_count(buf)
-      if stc_line_count[buf] == count then
-        return
-      end
-      stc_line_count[buf] = count
-
-      for _, win in ipairs(vim.fn.win_findbuf(buf)) do
-        if vim.wo[win].statuscolumn ~= "" then
-          vim.wo[win].numberwidth = vim.wo[win].numberwidth
-        end
-      end
-    end, time_before_refresh)
-
-  end, 250)
+  for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+    if vim.wo[win].statuscolumn ~= "" then
+      -- Force refresh
+      vim.wo[win].numberwidth = vim.wo[win].numberwidth
+    end
+  end
+end
 
 -- Refresh status column.
 -- Not enabled because I am not sure if I want this (it moves the column)
--- vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
-  -- callback = update_height,
--- })
+vim.api.nvim_create_autocmd({ "User" }, {
+  pattern = "GitSignsUpdate",
+  callback = refresh_stc_width,
+})
+vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
+  callback = refresh_stc_width,
+})
 
 local create_term_name = function(process)
   local bin = vim.fn.exepath(process.name)
