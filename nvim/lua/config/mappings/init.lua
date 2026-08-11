@@ -287,3 +287,5 @@ set(":", Snacks.picker.command_history, "Command history")
 set("se", function()
   vim.wo[0].nuw = vim.wo[0].nuw
 end)
+
+set("'", '"', "Remap \" to <leader>' as it's easier", true)

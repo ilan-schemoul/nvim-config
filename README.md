@@ -35,11 +35,9 @@ gv last selection
 
 ## High priority
 - noice double not printed
-- Use sfln (from vs code if exist, otherwise create)
 - Replace api by 1password call
 - https://github.com/nvim-mini/mini.ai
 - mini operators
-- Use clipboard shortcut
 
 # Medium priority
 - When a test succeeds, "snapshot" of current code so if test fails after I can diff with current code

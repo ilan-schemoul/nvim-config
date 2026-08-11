@@ -1,7 +1,12 @@
 local M = {}
 
-function M.leader(keys, cmd, desc)
-  vim.keymap.set("n", "<leader>" .. keys, cmd, { unique = true, desc = desc })
+function M.leader(keys, cmd, desc, remap)
+  remap = remap or false
+  vim.keymap.set("n", "<leader>" .. keys, cmd, {
+    unique = true,
+    desc = desc,
+    remap = true
+  })
 end
 
 function M.leader_visual(keys, cmd, desc)
