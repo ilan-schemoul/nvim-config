@@ -2,9 +2,6 @@ return {
   "OXY2DEV/markview.nvim",
   cmd = { "Markview" },
   -- ft = { "markdown", "codecompanion" },
-  dependencies = {
-    "catppuccin/nvim",
-  },
   opts = {
     preview = {
       filetypes = { "markdown", "codecompanion" },

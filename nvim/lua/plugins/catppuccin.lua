@@ -1,6 +1,7 @@
 local config = require('config/config')
 
 return {
+  enabled = false,
   "catppuccin/nvim",
   event = "VimEnter",
   config = function(_, opts)

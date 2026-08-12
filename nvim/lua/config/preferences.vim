@@ -162,3 +162,7 @@ let &guicursor .= ',a:Cursor
 highlight TermCursor guibg=#babbf1
 
 au BufRead,BufNewFile behave_logs set filetype=behave_log
+colorscheme luna
+highlight Normal guibg=#0A0A0A
+highlight ColorColumn guibg=#080808
+highlight @variable.parameter guifg=#b8b8b8
