@@ -30,8 +30,8 @@ gv last selection
 # TODO
 
 ## Highest
-- Improve lnav (go to exception)
 - Improve ast grep queries for wolverine
+- Most important is ~/code/dotfiles2/claude/TODO.MD
 
 ## High priority
 - noice double not printed
@@ -41,20 +41,11 @@ gv last selection
 
 # Medium priority
 - When a test succeeds, "snapshot" of current code so if test fails after I can diff with current code
-- https://github.com/stevearc/overseer.nvim compile, rebuild, start unit/functional/integration test
-- Bring back obsession or similar
-- Search in past logs
+- Bring back obsession or similar or at least shortcut to save current session
+
 ## Low priority
+- Search in past logs
+- https://github.com/stevearc/overseer.nvim compile, rebuild, start unit/functional/integration test
 - Remainder plugin
 - https://github.com/Wansmer/treesj
 
-# Claude skills ideas
-## To commit
-- Commit (optimise first speed)
-- Push (optimise speed)
-## To write
-- Review MPEG
-- Apply comments from Gitlab
-- Wolverine (cascading message)
-- Fix tests
-- Blame (read commit, MPEG, jira ticket)
