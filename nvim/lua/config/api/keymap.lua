@@ -5,12 +5,17 @@ function M.leader(keys, cmd, desc, remap)
   vim.keymap.set("n", "<leader>" .. keys, cmd, {
     unique = true,
     desc = desc,
-    remap = true
+    remap = remap
   })
 end
 
-function M.leader_visual(keys, cmd, desc)
-  vim.keymap.set("v", "<leader>" .. keys, cmd, { unique = true, desc = desc })
+function M.leader_visual(keys, cmd, desc, remap)
+  remap = remap or false
+  vim.keymap.set("v", "<leader>" .. keys, cmd, {
+    unique = true,
+    desc = desc,
+    remap = remap
+  })
 end
 
 -- Characters on the digit row of an azerty keyboard, in 0-9 order
