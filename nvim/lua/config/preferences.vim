@@ -166,3 +166,6 @@ colorscheme luna
 highlight Normal guibg=#0A0A0A
 highlight ColorColumn guibg=#080808
 highlight @variable.parameter guifg=#b8b8b8
+highlight TelescopeResultsTitle guibg=#8c9cb8 guifg=#060606
+highlight TelescopePreviewTitle guibg=#605958 guifg=#e4e4e8
+highlight TelescopePromptTitle guibg=#605958 guifg=#e4e4e8

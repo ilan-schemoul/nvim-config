@@ -17,7 +17,7 @@ function M.live_grep()
 
   require("telescope.builtin").live_grep({
     cwd = opts.cwd,
-    prompt_title = " Grep in " .. opts.prompt_title,
+    prompt_title = "Grep in " .. opts.prompt_title,
   })
 end
 
@@ -27,7 +27,7 @@ function M.smart_open()
   require('telescope').extensions.smart_open.smart_open({
     cwd = opts.cwd,
     cwd_only = true,
-    prompt_title = "󰱼 Find a file in " .. opts.prompt_title,
+    prompt_title = "Find a file in " .. opts.prompt_title,
   })
 end
 
