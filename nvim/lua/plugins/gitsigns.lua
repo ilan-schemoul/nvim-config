@@ -36,7 +36,7 @@ local spec = {
     }
   },
   keys = {
-    { "gb", "<cmd>Gitsigns blame<cr>", desc = "Toggle git blame" },
+    { "<leader>gb", "<cmd>Gitsigns blame<cr>", desc = "Toggle git blame" },
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
     {
       "<leader>gs",
@@ -53,8 +53,6 @@ local spec = {
 
     { "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
     { "<leader>gi", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline" },
-
-    { "<leader>gD", "<cmd>DiffviewOpen<cr>", desc = "Open diff view" },
 
     { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", mode = "n", desc = "Reset hunk" },
 

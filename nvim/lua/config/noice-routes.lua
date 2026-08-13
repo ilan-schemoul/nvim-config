@@ -27,4 +27,18 @@ return {
   { filter = { event = "msg_show", kind = "", find = "fewer line" }, opts = { skip = true } },
   { filter = { event = "msg_show", kind = "", find = "line less" }, opts = { skip = true } },
   { filter = { event = "msg_show", kind = "", find = "change;" }, opts = { skip = true } },
+
+  {
+    filter = {
+      event = "notify",
+      find = "DiffBandit:",
+      ["not"] = {
+        warning = true,
+        error = true
+      }
+    },
+    opts = {
+      stop = true
+    }
+  },
 }

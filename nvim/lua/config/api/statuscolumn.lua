@@ -85,7 +85,7 @@ local function render_sign(sign, bufnr, lnum)
 
   -- If we an icon that takes 2 cols, we will trim it so it never takes 2 cols.
   -- Otherwise, the entire status column takes 2 cols which I hate
-  if #sign.text >= 2 then
+  if sign and sign.text and #sign.text >= 2 then
     text = handle_large_icons(sign.text, bufnr, lnum)
   else
     text = vim.fn.strcharpart(sign.text or "", 0, 1)
