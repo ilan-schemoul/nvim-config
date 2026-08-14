@@ -1,5 +1,6 @@
 return {
   "OXY2DEV/markview.nvim",
+  enabled = false,
   cmd = { "Markview" },
   -- ft = { "markdown", "codecompanion" },
   opts = {

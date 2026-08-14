@@ -104,4 +104,15 @@ function M.open_fterm()
 end
 
 
+function M.send_bookmarks(all)
+  local haunt_sk = require("haunt.sidekick")
+
+  local locations = haunt_sk.get_locations({ current_buffer = not all })
+  M.send(locations)
+end
+
+function M.send_all_bookmarks()
+  M.send_bookmarks(true)
+end
+
 return M

@@ -54,11 +54,14 @@ return {
     {
       "<leader>as",
       "<cmd>ClaudeCodeTreeAdd<cr>",
-     desc = "Add file",
+      desc = "Add file",
       ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw", "snacks_picker_list" },
     },
     -- Diff management
     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+
+    { "<leader>am", api.claude.send_bookmarks, mode = "n", desc = "Send buffer's bookmarks to Claude" },
+    { "<leader>aM", api.claude.send_all_bookmarks, mode = "n", desc = "Send bookmarks to Claude" },
   },
 }
