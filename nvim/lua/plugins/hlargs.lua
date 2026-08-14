@@ -1,6 +1,8 @@
 return {
   "m-demare/hlargs.nvim",
   event = "NormalBufferEnter",
-  opts = {},
+  opts = {
+    hl_priority = 130,
+  },
 }
 

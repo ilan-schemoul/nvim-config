@@ -12,21 +12,6 @@ autocmd FileType markdown set textwidth=0
 autocmd FileType cs set textwidth=140
 autocmd FileType norg set textwidth=0
 
-" More bright than the default one
-highlight DiffChange guibg=#2b3148
-" Less bright than default one
-highlight ColorColumn ctermbg=0 guibg=#212337
-highlight CursorLine guibg=#2a2c3f
-highlight CursorLineNr guifg=#aaaaaa
-highlight GitSignsAdd guifg=#3ce505
-highlight GitSignsStagedAddNr guifg=#258e03
-highlight GitSignsDelete guifg=#ed193a
-highlight GitSignsStagedDeleteNr guifg=#ac0e26
-highlight GitSignsChange guifg=#d7d803
-highlight GitSignsStagedChangeNr guifg=#b0b102
-highlight TreesitterContext guibg=#1c1e2e
-highlight LspSignatureActiveParameter guifg=#ffaa00
-
 lua << EOF
   require('config/api').ui.set_float_hl_by_filetype({
     ft_lazygit = {
@@ -34,9 +19,6 @@ lua << EOF
     }
   })
 EOF
-
-let fg_var_color = synIDattr(synIDtrans(hlID("@variable.parameter")), "fg#")
-execute 'highlight Hlargs guifg=' . fg_var_color
 
 autocmd TermOpen * setlocal statuscolumn=""
 autocmd TermOpen * setlocal nonumber norelativenumber
@@ -160,8 +142,31 @@ highlight TermCursor guibg=#babbf1
 au BufRead,BufNewFile behave_logs set filetype=behave_log
 colorscheme luna
 highlight Normal guibg=#0A0A0A
-highlight ColorColumn guibg=#080808
-highlight @variable.parameter guifg=#b8b8b8
-highlight TelescopeResultsTitle guibg=#8c9cb8 guifg=#060606
+highlight ColorColumn guibg=#121212
+
+highlight Hlargs guifg=#8c9cb8
+highlight TelescopeResultsTitle guibg=#8c9cb8 guifg=#1c1c1c
 highlight TelescopePreviewTitle guibg=#605958 guifg=#e4e4e8
 highlight TelescopePromptTitle guibg=#605958 guifg=#e4e4e8
+
+" Remove curl
+highlight clear DiagnosticUnnecessary
+highlight DiagnosticUnnecessary guifg=#7c7c7c
+highlight clear DiagnosticUnderlineHint
+highlight clear DiagnosticUnderlineError
+highlight clear DiagnosticUnderlineWarn
+highlight clear DiagnosticUnderlineInfo
+highlight clear DiagnosticUnderlineHint
+highlight clear DiagnosticUnderlineOk
+
+" Less bright than default one
+highlight CursorLine guibg=#141414
+highlight CursorLineNr guifg=#aaaaaa
+highlight GitSignsAdd guifg=#3ce505
+highlight GitSignsStagedAddNr guifg=#258e03
+highlight GitSignsDelete guifg=#ed193a
+highlight GitSignsStagedDeleteNr guifg=#ac0e26
+highlight GitSignsChange guifg=#d7d803
+highlight GitSignsStagedChangeNr guifg=#b0b102
+highlight TreesitterContext guibg=#141414
+highlight LspSignatureActiveParameter guifg=#ffaa00

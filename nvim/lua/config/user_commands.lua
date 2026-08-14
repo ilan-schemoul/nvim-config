@@ -26,10 +26,6 @@ vim.api.nvim_create_user_command("Restart", function()
 end, { nargs = 0 })
 
 
--- Used by lazygit
--- I cannot just close "lazygit" term, because sometimes lazygit is inside a
--- fish FTerm and I cannot easily know which one (depending on if you open fish
--- fterm with a directory or another it changes its terminal name)
 vim.api.nvim_create_user_command("CloseFtermLazy", function(args)
   local term_name = args.fargs[1]
   api.sticky.lazygit.close_and_refresh()

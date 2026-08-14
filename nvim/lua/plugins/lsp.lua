@@ -20,14 +20,15 @@ return
       update_in_insert = false,
       -- Handled by tiny inline diagnostic
       virtual_text = false,
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = '󰅚 ',
-          [vim.diagnostic.severity.WARN] = '󰀪 ',
-          [vim.diagnostic.severity.INFO] = '󰋽 ',
-          [vim.diagnostic.severity.HINT] = '󰌶 ',
-        }
-      }
+      signs = false,
+      -- signs = {
+      --   text = {
+      --     [vim.diagnostic.severity.ERROR] = '󰅚 ',
+      --     [vim.diagnostic.severity.WARN] = '󰀪 ',
+      --     [vim.diagnostic.severity.INFO] = '󰋽 ',
+      --     [vim.diagnostic.severity.HINT] = '󰌶 ',
+      --   }
+      -- }
     })
 
      vim.lsp.enable('ruff')
