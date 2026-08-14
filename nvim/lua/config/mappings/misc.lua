@@ -96,11 +96,11 @@ set("tF", function()
 end, "Fuzzy find word under cursor in buffer")
 set("ts", "<cmd>Tabby jump_to_tab<cr>", "Jump to tab")
 
-set("tcl", function()
+set("ta", function()
   require('telescope.builtin').find_files({ cwd = "~/.claude_artifacts" })
 end, "Find files in ~/.claude_artifacts")
 
-set("tcg", function()
+set("tA", function()
   require('telescope.builtin').live_grep({ cwd = "~/.claude_artifacts" })
 end, "Grep in ~/.claude_artifacts")
 
