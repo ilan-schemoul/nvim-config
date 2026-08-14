@@ -29,10 +29,6 @@ highlight LspSignatureActiveParameter guifg=#ffaa00
 
 lua << EOF
   require('config/api').ui.set_float_hl_by_filetype({
-    ft_fish = {
-      border = '#E89EB8',
-      bg = '#24273b',
-    },
     ft_lazygit = {
       border = '#6c6f85'
     }
