@@ -137,7 +137,8 @@ vim.api.nvim_create_autocmd({ "User" },
 
 vim.api.nvim_create_autocmd("DirChanged", {
   callback = function()
-    local project_bookmarks = vim.fn.getcwd() .. "/.bookmarks/"
+    local cache = vim.fn.stdpath("cache")
+    local project_bookmarks = cache .. "/haunt_bookmarks/" .. vim.fn.getcwd()
     require("haunt.api").change_data_dir(project_bookmarks)
   end,
 })
