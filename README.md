@@ -31,13 +31,17 @@ gv last selection
 
 # TODO
 
+- Most important is ~/code/dotfiles2/claude/TODO.MD
+
 ## Highest
 - Improve ast grep queries for wolverine
-- Learn diffbandit and set it up
-- Most important is ~/code/dotfiles2/claude/TODO.MD
-- fix restart taking 10 mn randomly
+- fix auto save diffbandit (add local variable buffer bandit)
 
 ## High priority
+- Add force push on lazygit itself (custom command doesn't work)
+- fix conflict not detect first time
+- fix restart taking 10 mn randomly
+- fix separators
 - noice double not printed
 - Replace api by 1password call
 - https://github.com/nvim-mini/mini.ai
