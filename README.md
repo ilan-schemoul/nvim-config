@@ -1,4 +1,6 @@
- neovim config.
+My neovim config.
+
+# Install
 
 Install.sh creates symbolic links to this folder.
 
@@ -31,7 +33,9 @@ gv last selection
 
 ## Highest
 - Improve ast grep queries for wolverine
+- Learn diffbandit and set it up
 - Most important is ~/code/dotfiles2/claude/TODO.MD
+- fix restart taking 10 mn randomly
 
 ## High priority
 - noice double not printed
