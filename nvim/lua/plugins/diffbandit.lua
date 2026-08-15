@@ -4,9 +4,36 @@ return {
     { "<leader>dg", "<cmd>DiffBanditGitMenu<cr>" },
     { "<leader>dc", "<cmd>DiffBanditCommitPanel<cr>" },
     { "<leader>dx", "<cmd>DiffBanditMerge<cr>" },
-    { "<leader>dm", "<cmd>DiffBanditMerge<cr>" }
+    { "<leader>dm", "<cmd>DiffBanditMerge<cr>" },
   },
   opts = {
+    ui = {
+      connector_width = 1,
+      connector_max_width = 1,
+    },
+    -- Conflict (only real usage)
+    merge = {
+      keys = {
+        next_conflict = "]x",
+        prev_conflict = "[x",
+
+        -- Also equivalent defined in mappings
+        accept_local = "<leader>dl",
+        accept_remote = "<leader>dr",
+        accept_both = "<leader>db",
+        apply_non_conflicting = "<leader>da",
+
+        focus_panel = "<leader>dp",
+        snap = "]s",
+        toggle_panel = "<leader>dP",
+        toggle_local = "<leader>dL",
+        toggle_remote = "<leader>dR",
+        show_all = "<leader>dA",
+        close = "q",
+      },
+    },
+
+    -- Commit (I prefer lazygit)
     git = {
       panel = {
         keys = {
@@ -21,23 +48,7 @@ return {
         },
       },
     },
-    merge = {
-      keys = {
-        next_conflict = "]c",
-        prev_conflict = "[c",
-        accept_local = "<leader>d",
-        accept_remote = "<leader>dr",
-        accept_both = "<leader>db",
-        apply_non_conflicting = "<leader>da",
-        focus_panel = "<leader>dp",
-        snap = "]s",
-        toggle_panel = "<leader>dP",
-        toggle_local = "<leader>dL",
-        toggle_remote = "<leader>dR",
-        show_all = "<leader>dA",
-        close = "q",
-      },
-    },
+    -- Not properly configured yet (no usage as for now)
     folder = {
       keys = {
         open = "<CR>",

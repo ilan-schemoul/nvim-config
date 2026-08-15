@@ -281,3 +281,16 @@ set("se", function()
 end)
 
 set("'", '"', "Remap \" to <leader>' as it's easier", true)
+
+set("xo", api.conflict.accept_local)
+set("xl", api.conflict.accept_local)
+set("do", api.conflict.accept_local)
+set("dl", api.conflict.accept_local)
+
+set("xt", api.conflict.accept_remote)
+set("xr", api.conflict.accept_remote)
+set("dt", api.conflict.accept_remote)
+set("dr", api.conflict.accept_remote)
+
+set("xb", api.conflict.accept_both)
+set("xn", api.conflict.none)

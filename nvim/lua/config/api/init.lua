@@ -67,5 +67,7 @@ api.perf = lazy('perf')
 api.status_column = lazy('statuscolumn')
 ---@module 'config.api.misc'
 api.misc = lazy('misc')
+---@module 'config.api.conflict'
+api.conflict = lazy('conflict')
 
 return api
