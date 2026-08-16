@@ -29,7 +29,7 @@ function M.center(left_buffer, right_buffer)
 
   local r, c = unpack(vim.api.nvim_win_get_cursor(0))
   local width = vim.fn.winwidth(0)
-  local split_width = width / 3
+  local split_width = width / 4
 
   -- New tab
   vim.cmd("tabedit %")
