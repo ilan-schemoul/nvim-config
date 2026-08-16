@@ -1,7 +1,7 @@
 M = {}
 
 local function bandit_exec(keys)
-  if vim.fn.maparg('<leader>' .. keys, 'n', false, true) then
+  if require('diffbandit').is_running() then
     vim.fn.feedkeys(' ' .. keys)
   end
 end
