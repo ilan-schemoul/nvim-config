@@ -111,12 +111,10 @@ set backupdir=~/.vim/.backupdir
 let g:matchparen_timeout = 2
 let g:matchparen_insert_timeout = 2
 
-set fillchars=vert:\ ,vertleft:─,vertright:\ ,stl:─,stlnc:─
+set fillchars=vert:│,vertleft:─,vertright:\ ,stl:─,stlnc:─
 set statusline=─
-highlight StatusLine guibg=transparent guifg=#acaeb5
-highlight StatusLineNC guibg=transparent
-highlight WinSeparator guifg=#383c51
-highlight TabLineFill guibg=transparent
+highlight StatusLine guibg=transparent guifg=#1c1c1c
+highlight StatusLineNC guibg=transparent guifg=#1c1c1c
 
 " Disable cursorline if not focused
 augroup CursorLine
