@@ -1,6 +1,13 @@
 return {
-  "0x00-ketsu/autosave.nvim",
+  "ilan-schemoul/autosave.nvim",
   event = { "NormalBufferEnter" },
+  config = function(_, opts)
+    require('autosave').setup(opts)
+
+    require('autosave').hook_before_saving = function ()
+      -- vim.g.auto_save_abort = require('diffbandit').is_running()
+    end
+  end,
   opts = {
     enable = true,
     events = { "InsertLeave", "TextChanged" },
