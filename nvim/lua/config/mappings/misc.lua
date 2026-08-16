@@ -289,7 +289,6 @@ set("dl", api.conflict.accept_local)
 
 set("xt", api.conflict.accept_remote)
 set("xr", api.conflict.accept_remote)
-set("dt", api.conflict.accept_remote)
 set("dr", api.conflict.accept_remote)
 
 set("xb", api.conflict.accept_both)

@@ -1,10 +1,46 @@
+-- Used for conflicts <leader>dx and possibly to see file history <leader>dg => file history
 return {
   "CoreyKaylor/diffbandit.nvim",
+
+  cmd = {
+    -- Compare two files
+    "DiffBandit",
+    -- Compare two folders
+    "DiffBanditFolderDiff",
+
+    -- Compare two buffers
+    "DiffBanditBuffers",
+
+    -- Compare all diff of repo
+    "DiffBanditGit", -- all files
+    "DiffBanditGitCurrent", -- current file
+
+    -- Commit (unused)
+    "DiffBanditCommitPanel",
+    "DiffBanditToggleStageHunk",
+    "DiffBanditStageHunk",
+    "DiffBanditUnstageHunk",
+    "DiffBanditDiscardHunk",
+    "DiffBanditApplyLeftHunk",
+    "DiffBanditApplyRightHunk",
+    "DiffBanditUndo",
+
+    "DiffBanditGitMenu",
+    "DiffBanditGitLog",
+    "DiffBanditGitCommit",
+    "DiffBanditGitCompare",
+    "DiffBanditGitCheckout",
+
+    -- Merge/rebase conflict (most useful)
+    "DiffBanditMerge",
+  },
+
   keys = {
     { "<leader>dg", "<cmd>DiffBanditGitMenu<cr>" },
     { "<leader>dc", "<cmd>DiffBanditCommitPanel<cr>" },
     { "<leader>dx", "<cmd>DiffBanditMerge<cr>" },
     { "<leader>dm", "<cmd>DiffBanditMerge<cr>" },
+    { "<leader>dt", "<cmd>DiffBandit /tmp/a /tmp/b<cr>" },
   },
   opts = {
     ui = {
@@ -33,7 +69,6 @@ return {
       },
     },
 
-    -- Commit (I prefer lazygit)
     git = {
       panel = {
         keys = {
@@ -42,7 +77,7 @@ return {
           focus_panel = "<leader>dp",
           focus_commit = "<leader>dc",
           file_actions = "<leader>df",
-          toggle_amend = "<leader>ds",
+          toggle_amend = "<leader>da",
           refresh = "<leader>dr",
           close = "q",
         },
