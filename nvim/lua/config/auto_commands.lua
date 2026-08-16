@@ -142,3 +142,15 @@ vim.api.nvim_create_autocmd("DirChanged", {
     require("haunt.api").change_data_dir(project_bookmarks)
   end,
 })
+
+-- NormalBufferEnter loads git-conflicts, but for some reasons the conflicts are ignored so we also
+-- have to force a refresh
+vim.api.nvim_create_autocmd({ "User" },
+  {
+    pattern = "NormalBufferEnter",
+    callback = function()
+      vim.schedule(function()
+        vim.cmd(':GitConflictRefresh')
+      end)
+    end
+  })
