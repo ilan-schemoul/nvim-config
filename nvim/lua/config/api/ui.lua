@@ -36,7 +36,9 @@ function M.toggle_recording_cursor_hl()
   -- We put the opposite with not because we are warned of the opposite event
   -- (we are called before the recorder plugin).
   if #status > 0 then
-    vim.api.nvim_set_hl(0, 'Cursor', {})
+    vim.api.nvim_set_hl(0, 'Cursor', {
+      bg = '#b8b8b8'
+    })
   else
     vim.api.nvim_set_hl(0, 'Cursor', {
       bg = '#ED5919',

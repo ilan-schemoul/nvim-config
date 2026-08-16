@@ -171,7 +171,6 @@ highlight GitSignsStagedChangeNr guifg=#b0b102
 highlight TreesitterContext guibg=#141414
 highlight LspSignatureActiveParameter guifg=#ffaa00
 
-" FIXME:
-highlight TermCursor guibg=#bbb0f1
+highlight Cursor guibg=#b8b8b8
 
 " }}}
