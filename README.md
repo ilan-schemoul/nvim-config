@@ -33,9 +33,6 @@ gv last selection
 
 - Most important is ~/code/dotfiles2/claude/TODO.MD
 
-## Highest
-- fix separators
-
 ## High priority
 - Improve ast grep queries for wolverine
 - Add force push on lazygit itself (custom command doesn't work)

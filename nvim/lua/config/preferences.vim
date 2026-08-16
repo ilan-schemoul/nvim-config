@@ -111,11 +111,6 @@ set backupdir=~/.vim/.backupdir
 let g:matchparen_timeout = 2
 let g:matchparen_insert_timeout = 2
 
-set fillchars=vert:│,vertleft:─,vertright:\ ,stl:─,stlnc:─
-set statusline=─
-highlight StatusLine guibg=transparent guifg=#1c1c1c
-highlight StatusLineNC guibg=transparent guifg=#1c1c1c
-
 " Disable cursorline if not focused
 augroup CursorLine
     au!
@@ -132,13 +127,20 @@ augroup CursorLine
     au WinLeave * setlocal colorcolumn=""
 augroup END
 
-let &guicursor .= ',a:Cursor
-                  \,t:ver80-TermCursor'
+let &guicursor .= ',a:Cursor,t:ver80-TermCursor'
 
-highlight TermCursor guibg=#babbf1
-
-au BufRead,BufNewFile behave_logs set filetype=behave_log
+" {{{ Theme
+"
 colorscheme luna
+
+set fillchars=vert:│,vertleft:─,vertright:\ ,stl:─,stlnc:─
+set statusline=─
+
+highlight StatusLine guibg=transparent guifg=#404040
+highlight StatusLineNC guibg=transparent guifg=#1c1c1c
+
+highlight WinSeparator guibg=transparent guifg=#1c1c1c
+
 highlight Normal guibg=#0A0A0A
 highlight ColorColumn guibg=#121212
 
@@ -168,3 +170,8 @@ highlight GitSignsChange guifg=#d7d803
 highlight GitSignsStagedChangeNr guifg=#b0b102
 highlight TreesitterContext guibg=#141414
 highlight LspSignatureActiveParameter guifg=#ffaa00
+
+" FIXME:
+highlight TermCursor guibg=#bbb0f1
+
+" }}}
