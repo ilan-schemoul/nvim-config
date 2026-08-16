@@ -142,7 +142,7 @@ highlight StatusLineNC guibg=transparent guifg=#1c1c1c
 highlight WinSeparator guibg=transparent guifg=#1c1c1c
 
 highlight Normal guibg=#0A0A0A
-highlight ColorColumn guibg=#121212
+highlight ColorColumn guibg=#0e0e0e
 
 highlight Hlargs guifg=#8c9cb8
 highlight TelescopeResultsTitle guibg=#8c9cb8 guifg=#1c1c1c
