@@ -7,7 +7,7 @@ local nvim_root_path = vim.fn.fnamemodify(nvim_config_path, ":h")
 
 set("vpl", "<cmd>Telescope find_files search_dirs=~/.local/share/nvim/lazy<cr>", "Find files in installed plugins")
 set("vpg", "<cmd>Telescope live_grep search_dirs=~/.local/share/nvim/lazy<cr>", "Grep in installed plugins")
-set("vw", "<cmd>tcd " .. nvim_root_path .. "<cr>", "Cd to nvim config root")
+set("vw", "<cmd>tcd " .. nvim_root_path .. " | echo 'Nvim workspace'<cr>", "Cd to nvim config root")
 set("vm", "<cmd>Telescope find_files search_dirs=" .. nvim_config_path .. "/lua/config/mappings<cr>", "Find files in mappings config")
 set("vg", "<cmd>Telescope live_grep search_dirs=" .. nvim_root_path .. "<cr>", "Grep in nvim config")
 set("va", "<cmd>Telescope find_files search_dirs=" .. nvim_config_path .. "/lua/config/api<cr>", "Find files in api config")
