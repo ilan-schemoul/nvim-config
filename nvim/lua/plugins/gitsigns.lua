@@ -4,7 +4,7 @@ local spec = {
   event = "NormalBufferEnter",
   opts = {
     signcolumn = true,
-    numhl = false,
+    numhl = true,
     linehl = false,
     signs = {
       add          = { text = '│' },
