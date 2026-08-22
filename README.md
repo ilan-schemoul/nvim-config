@@ -35,14 +35,11 @@ gv last selection
 
 ## High priority
 - Improve ast grep queries for wolverine
-- Add force push on lazygit itself (custom command doesn't work)
-- fix restart taking 10 mn randomly
-- noice double not printed
-- Replace api by 1password call
-- https://github.com/nvim-mini/mini.ai
-- mini operators
+- Add force push on lazygit itself (custom command doesn't work) (https://github.com/jesseduffield/lazygit/issues/5966)
 
 # Medium priority
+- Replace api by 1password call
+- fix restart taking 10 mn randomly (no clue why, cant reproduce...)
 - When a test succeeds, "snapshot" of current code so if test fails after I can diff with current code
 - Bring back obsession or similar or at least shortcut to save current session
 
