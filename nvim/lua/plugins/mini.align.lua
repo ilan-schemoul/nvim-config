@@ -1,9 +1,10 @@
 return {
   "echasnovski/mini.align",
-  keys = { "<leader>al" },
+  keys = { "ga" },
   opts = {
     mappings = {
-      start = '<leader>al',
+      start = 'ga',
+      start_with_preview = 'gA',
     },
   },
 }
