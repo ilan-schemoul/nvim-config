@@ -44,6 +44,7 @@
   "mason-update-all": { "branch": "main", "commit": "332aa2586295f93a32643eb2b580f899458215a1" },
   "mason.nvim": { "branch": "main", "commit": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d" },
   "mini.align": { "branch": "main", "commit": "77d7446b9f2452193f13ced9fb73a8b3aa4a4f4d" },
+  "mini.operators": { "branch": "main", "commit": "9e0aa164b097c6cb45e59b9371c9347ac06eb822" },
   "minuet-ai.nvim": { "branch": "main", "commit": "479487c34041f53aad3184597428e42d9f3333b5" },
   "neorg": { "branch": "main", "commit": "a09e0bb9b32e2d0406d4503ae8c1a7ad2ca83eae" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },

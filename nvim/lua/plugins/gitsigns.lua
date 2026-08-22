@@ -37,16 +37,7 @@ local spec = {
   },
   keys = {
     { "<leader>gb", "<cmd>Gitsigns blame<cr>", desc = "Toggle git blame" },
-    { "gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
-    {
-      "gs",
-      function()
-        require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-      end,
-      mode = "v",
-      desc = "Stage hunk",
-    },
     {
       "<leader>gs",
       function()
@@ -56,9 +47,7 @@ local spec = {
       desc = "Stage hunk",
     },
 
-    { "gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage buffer" },
     { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage buffer" },
-
     { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", mode = "n", desc = "Undo stage hunk" },
 
     { "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
