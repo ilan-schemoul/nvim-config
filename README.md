@@ -31,11 +31,8 @@ gv last selection
 
 # TODO
 
-- Most important is ~/code/dotfiles2/claude/TODO.MD
-
-## High priority
-- Improve ast grep queries for wolverine
-- Add force push on lazygit itself (custom command doesn't work) (https://github.com/jesseduffield/lazygit/issues/5966)
+- Claude: is ~/code/dotfiles2/claude/TODO.MD
+- lazygit: Waiting on add force push on lazygit itself (custom command doesn't work) (https://github.com/jesseduffield/lazygit/issues/5966)
 
 # Medium priority
 - Replace api by 1password call

@@ -4,28 +4,39 @@ local M = {}
 -- todo: create rule checking in the returns
 
 local sender_rule = [[
+id: sender
 language: csharp
+
 rule:
   any:
-    - kind: method_declaration
-      has:
-        field: returns
-        regex: REPLACEME
+    - kind: implicit_object_creation_expression
+      inside:
+        kind: method_declaration
+        stopBy: end
+        has:
+          field: returns
+          any:
+            - has:
+                kind: identifier
+                regex: ^REPLACEME$
+                stopBy: end
+            - regex: ^REPLACEME$
+
     - kind: object_creation_expression
-      regex: REPLACEME
+      has:
+        kind: identifier
+        regex: ^REPLACEME$
+        stopBy: end
+
 ]]
 
 local caller_rule = [[
 language: csharp
 rule:
-  kind: method_declaration
-  has:
-    field: parameters
-    has:
-      kind: parameter
-      has:
-        field: type
-        regex: ^REPLACEME.*
+  kind: parameter
+  regex: ^REPLACEME.*
+  inside:
+    kind: parameter_list
 ]]
 
 local rule_template
