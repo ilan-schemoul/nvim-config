@@ -2,15 +2,15 @@ local api = require('config/api')
 local set = api.keymap.leader
 
 for _, key in ipairs({ ")", "]" }) do
-  set(key .. "d", api.diagnostics.jump(true), "Next diagnostic")
-  set(key .. "e", api.diagnostics.jump(true, "ERROR"), "Next error")
-  set(key .. "w", api.diagnostics.jump(true, "WARN"), "Next warning")
+  vim.keymap.set("n", key .. "d", api.diagnostics.jump(true), { desc = "Next diagnostic" })
+  vim.keymap.set("n", key .. "e", api.diagnostics.jump(true, "ERROR"), { desc = "Next error" })
+  vim.keymap.set("n", key .. "w", api.diagnostics.jump(true, "WARN"), { desc = "Next warning" })
 end
 
 for _, key in ipairs({ "(", "[" }) do
-  set(key .. "d", api.diagnostics.jump(false), "Previous diagnostic")
-  set(key .. "e", api.diagnostics.jump(false, "ERROR"), "Previous error")
-  set(key .. "w", api.diagnostics.jump(false, "WARN"), "Previous warning")
+  vim.keymap.set("n", key .. "d", api.diagnostics.jump(false), { desc = "Previous diagnostic" })
+  vim.keymap.set("n", key .. "e", api.diagnostics.jump(false, "ERROR"), { desc = "Previous error" })
+  vim.keymap.set("n", key .. "w", api.diagnostics.jump(false, "WARN"), { desc = "Previous warning" })
 end
 
 set("lD", function() vim.diagnostic.open_float({ source = true }) end, "Show diagnostic in float")
